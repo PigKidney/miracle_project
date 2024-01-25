@@ -10,7 +10,6 @@ public class LogoBoardDTO {
 	private String board_title;
 	private String board_content;
 	private String board_category;
-	private String board_notice_category;
 	private Integer board_good_count;
 	private Integer user_id;
 	private Integer view_count;
