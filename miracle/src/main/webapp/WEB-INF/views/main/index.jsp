@@ -69,7 +69,6 @@
 			<div>ㅎㅅㅎ</div>
 		</div>
 	</div>
-	<div class="w-1120px h-280px main m-div6">bot</div>
 </div>
 <script type="text/javascript" src="/resources/main/index.js">
 	
