@@ -1,0 +1,22 @@
+#body2{
+	padding-top: 68px;
+}
+.w-1120px{
+	width: 1120px;
+	border: 1px yellow solid;
+}
+
+.h-280px{
+	height: 280px;
+}
+
+.m-div2{
+	height: 100px;
+
+}
+.m-div3{
+	height: 300px;
+}
+.item-center{
+	align-items: center;
+}
