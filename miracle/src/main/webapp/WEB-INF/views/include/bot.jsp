@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <div id="botfix" class="flex-just-center">
 	<div class="mainWhite w-1120px h-280px item-center justify-between">
 		<div style="font-size: 12px; width: 860px;">© 2022 KorLARK. KorLARK isn’t

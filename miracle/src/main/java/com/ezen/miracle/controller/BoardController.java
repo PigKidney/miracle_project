@@ -16,5 +16,11 @@ public class BoardController {
 		log.info("/board/index OK");
 		return "board/index";
 	}
+	
+	@GetMapping("/write")
+	public String write() {
+		log.info("/board/write OK");
+		return "board/write";
+	}
 
 }

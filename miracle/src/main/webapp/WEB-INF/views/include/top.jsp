@@ -4,11 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" name='view-transition'>
 <title></title>
+<script src="/resources/jquery/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
+<script src="/resources/summernote/summernote-lite.js"></script>
+<script src="/resources/summernote/lang/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="/resources/include/include.css" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+	
+
 </head>
 <body>
 	<div id="topfix" class="flex-test">
@@ -54,5 +60,4 @@
 			<span class="material-symbols-outlined cursor login-ok">expand_more</span>
 		</div>
 	</div>
-	
 	<script src="/resources/include/include.js"></script>

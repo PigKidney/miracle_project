@@ -21,7 +21,7 @@ function showTabs() {
         }
     }, 2000)
 }
-showTabs();
+// showTabs();
 
 function showTime() {
     let today = new Date();
