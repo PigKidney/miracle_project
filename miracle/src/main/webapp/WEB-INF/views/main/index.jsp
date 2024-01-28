@@ -52,20 +52,17 @@
 			<span id="islandDate" class="mainWhite bold font-20"></span>
 		</div>
 
-
 	</div>
 	<div class="w-1120px h-280px main m-div3 flex justify-between">
 
 		<div>
-			<img alt="배너 이미지" fetchpriority="high" height="280" data-nimg="1"
+			<img alt="배너 이미지" height="298" data-nimg="1"
 				src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/c8cfe8f7128547eebf34aaba9b0696ff.jpg">
 		</div>
 		<div>
-			<img
-				src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/e7a08f22b56549e1868cfa7bdc1b1913.jpg"
-				alt="" height="280" />
+			<img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/e7a08f22b56549e1868cfa7bdc1b1913.jpg"
+				height="298" />
 		</div>
-
 
 	</div>
 
