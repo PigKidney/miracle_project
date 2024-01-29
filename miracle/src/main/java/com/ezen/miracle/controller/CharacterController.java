@@ -16,5 +16,10 @@ public class CharacterController {
 		log.info("/character/index OK");
 		return "character/index";
 	}
+	
+	@GetMapping("/detail")
+	public String detail() {
+		return "character/detail";
+	}
 
 }

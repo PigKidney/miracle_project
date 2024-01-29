@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+/* * {
+    box-sizing: border-box;
+} */
+
+body{
+	margin: 0;
+}
+
+#backBoard{
+    display: flex;
+    padding-top: 68px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#inBoard {
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 1200px;
+   	
+
+}
+
+#rs {
+    width: 400px;
+    height: 1500px;
+    display: flex;
+    flex-direction: column;
+}
+
+#rs > div {
+    margin: 10px;
+}
+
+#ls {
+    width: 800px;
+    height: 1500px;
+    display: flex;
+    flex-direction: column;
+}
+
+#ls > div {
+    margin: 10px;
+}
+
+#equi{
+    height: 740px;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+}
+
+#equi > div{
+   margin: 2px;
+}
+
+#gem {
+    height: 98px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#gem-list {
+    width: 740px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#gem-list > div {
+    width: 44px;
+    height: 44px;
+}
+
+#property{
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+}
+
+#characteristic{
+    width: 370px;
+}
+
+#engrave{
+    width: 370px;
+}
+
+#card{
+    height: 247px;
+}
+
+#chImage{
+    height: 300px;
+}
+
+#rank{
+    height: 70px;
+}
+
+#eta{
+    height: 550px;
+}
+
+.b-1p { 
+	border: 1px solid rgb(178, 178, 178);
+}
+
+.radius{
+    border-radius: 15px;
+}
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+.pd-10{
+    padding: 10px;
+}
+
+.ma-10 {
+    margin: 10px;
+}

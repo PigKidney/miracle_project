@@ -5,27 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
-<<<<<<< HEAD
-<link rel="stylesheet" href="/resources/include/top.css" />
-
-<div class="header">
-	<div id="topfix">
-		<div><a href="/main/index">LOGO</a> </div>
-		<div><a href="/notice/index">공지사항</a> </div>
-		<div><a href="/character/index">전투정보실</a> </div>
-		<div><a href="/board/index">게시판</a> </div>
-		<div><a href="">검색</a> </div>
-		<div><a href="">다크모드</a> </div>
-<!-- 		<a href="/login/index">로그인</a>
- -->	</div>
-</div>
-<br />
-
-
-</head>
-<body>
-=======
 <link rel="stylesheet" href="/resources/include/include.css" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -72,8 +51,8 @@
 			<a href="/login/index">로그인</a>
 			<span class="cursor login-ok">로그인하면 id보여줄거임</span>
 			<span class="material-symbols-outlined cursor login-ok">expand_more</span>
+			
 		</div>
 	</div>
 	
 	<script src="/resources/include/include.js"></script>
->>>>>>> 6d1d422b369760ccfb805af5d2b1151fbf9eda2c

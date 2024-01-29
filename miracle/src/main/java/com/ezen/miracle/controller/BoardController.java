@@ -16,5 +16,7 @@ public class BoardController {
 		log.info("/board/index OK");
 		return "board/index";
 	}
+	
+	
 
 }
