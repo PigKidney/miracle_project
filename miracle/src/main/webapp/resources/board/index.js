@@ -1,6 +1,7 @@
 const beginningToWriteBtn = document.getElementById('beginningToWriteBtn');
 
-beginningToWriteBtn.addEventListener('click', ()=>{
+beginningToWriteBtn.addEventListener('click', () => {
 
-    location.href('/board/write');
+    window.location.href = '/board/write';
+
 })
