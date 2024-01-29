@@ -10,12 +10,19 @@
 	height: 280px;
 }
 
+.font-24{
+	font-size: 24px;
+}
+.font-16{
+	font-size: 16px;
+}
 #topfix {
 	position: fixed;
 	top: 0%;
 	left: 0%;
 	background-color: #42464D;
 	height: 68px;
+	z-index: 99;
 }
 
 .flex-test {

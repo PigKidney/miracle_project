@@ -68,6 +68,7 @@
   
   width: 1120px;
   height: 280px;
+  z-index: -1;
 }
 
 .slide {
