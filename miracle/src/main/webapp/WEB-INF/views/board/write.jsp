@@ -6,12 +6,12 @@
 <div class="include-top">
 	<div class="w-1120px">
 		<p style="color: white;">글쓰는곳이야</p>
-			<input id="noteTitle" type="text" name="board_title" form="writeForm" /> <select
-				name="board_category" form="writeForm">
+			<select name="board_category" form="writeForm">
 				<option>잡담</option>
 				<option>삽니다</option>
 				<option>팝니다</option>
 			</select>
+			<input id="noteTitle" type="text" name="board_title" form="writeForm" /> 
 			<textarea id="noteContent" class="summernote" name="board_content" form="writeForm" ></textarea>
 			<div style="text-align: right;">
 				<button id="writeBtn" class="btn-two green rounded font-16 bald">작성완료</button>
