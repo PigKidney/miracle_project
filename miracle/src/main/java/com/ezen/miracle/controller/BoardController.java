@@ -24,7 +24,6 @@ public class BoardController {
 	public String board(Model model) {
 		boardService.list(model);
 		log.info("GET : /board/index OK");
-		System.out.println("dataModel : " + model);
 		return "board/index";
 	}
 
