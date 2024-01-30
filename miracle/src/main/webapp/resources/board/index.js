@@ -4,3 +4,4 @@ beginningToWriteBtn.addEventListener('click', () => {
 
 
     window.location.href = '/board/write';
+});

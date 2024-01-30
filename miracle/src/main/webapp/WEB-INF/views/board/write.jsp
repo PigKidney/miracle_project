@@ -8,8 +8,8 @@
 		<p style="color: white;">글쓰는곳이야</p>
 			<select name="board_category" form="writeForm">
 				<option>잡담</option>
-				<option>삽니다</option>
-				<option>팝니다</option>
+				<option>구매</option>
+				<option>판매</option>
 			</select>
 			<input id="noteTitle" type="text" name="board_title" form="writeForm" /> 
 			<textarea id="noteContent" class="summernote" name="board_content" form="writeForm" ></textarea>

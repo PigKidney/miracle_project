@@ -27,7 +27,7 @@ const writeForm = document.getElementById('writeForm');
 
 writeBtn.addEventListener('click', () => {
     if(noteContent.value.trim()=='' || noteTitle.value.trim()==''){
-        alert('글 제목 또는 내용을 입력해주세요');
+        alert('제목 또는 내용을 입력해주세요');
         return;
     }
     writeForm.submit();

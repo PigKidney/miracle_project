@@ -24,7 +24,6 @@ public class BoardController {
 	public String board(Model model) {
 		boardService.list(model);
 		log.info("GET : /board/index OK");
-		System.out.println("dataModel : " + model);
 		return "board/index";
 	}
 
@@ -40,6 +39,14 @@ public class BoardController {
 		log.info("PK : " + board_id);
 		log.info("POST : redirect:/board/index OK");
 		return "redirect:/board/index";
+	}
+
+	@GetMapping("/read")
+	public String read(Model model, int board_id) {
+		log.info("PK : " + board_id);
+		boardService.one(model, board_id);
+		log.info("GET : /board/read OK");
+		return "board/read";
 	}
 
 }

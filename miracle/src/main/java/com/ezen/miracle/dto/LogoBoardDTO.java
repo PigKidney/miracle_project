@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class LogoBoardDTO {
-	private Integer board_id; 
+	private Integer board_id;
 	private String board_title;
 	private String board_content;
 	private String board_category;

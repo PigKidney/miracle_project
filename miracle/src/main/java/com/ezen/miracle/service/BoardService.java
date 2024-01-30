@@ -1,7 +1,5 @@
 package com.ezen.miracle.service;
 
-import java.util.List;
-
 import org.springframework.ui.Model;
 
 import com.ezen.miracle.dto.LogoBoardDTO;
@@ -9,6 +7,7 @@ import com.ezen.miracle.dto.LogoBoardDTO;
 public interface BoardService {
 	
 	void list(Model model);
+	void one(Model model, int board_id);
 	int write(LogoBoardDTO dto);
 
 }
