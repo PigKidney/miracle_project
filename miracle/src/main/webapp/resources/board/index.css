@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.grid-board{
+	display: grid;
+	grid-template-columns: repeat(7,1fr);
+}
+.grid-board>div{
+	border: 1px blue solid;
+	text-align: center;
+	
+}
