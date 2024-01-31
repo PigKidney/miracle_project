@@ -9,6 +9,7 @@
 <script src="/resources/jquery/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet" href="/resources/button/button.css" />
 <link rel="stylesheet" href="/resources/board/index.css" />
+<link rel="stylesheet" href="/resources/board/read.css" />
 <link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
 <script src="/resources/summernote/summernote-lite.js"></script>
 <script src="/resources/summernote/lang/summernote-ko-KR.js"></script>

@@ -10,5 +10,6 @@ public interface BoardService {
 	void one(Model model, int board_id);
 	int write(LogoBoardDTO dto);
 	int rewrite(LogoBoardDTO dto);
+	int delete(int board_id);
 
 }
