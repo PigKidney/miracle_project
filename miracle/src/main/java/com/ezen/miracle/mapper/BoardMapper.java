@@ -9,5 +9,6 @@ public interface BoardMapper {
 	List<LogoBoardDTO> getAll();
 	LogoBoardDTO get(int board_id);
 	int write(LogoBoardDTO dto);
+	int rewrite(LogoBoardDTO dto);
 
 }

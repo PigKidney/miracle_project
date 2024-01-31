@@ -21,9 +21,9 @@ $('.summernote').summernote('backColor', '#2b2d31');
 $('.summernote').summernote('foreColor', 'white');
 
 const writeBtn = document.getElementById('writeBtn');
+const writeForm = document.getElementById('writeForm');
 const noteContent = document.getElementById('noteContent');
 const noteTitle = document.getElementById('noteTitle');
-const writeForm = document.getElementById('writeForm');
 
 writeBtn.addEventListener('click', () => {
     if(noteContent.value.trim()=='' || noteTitle.value.trim()==''){

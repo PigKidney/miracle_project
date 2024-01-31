@@ -19,15 +19,15 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	BoardMapper boardMapper;
-	
+
 	SimpleDateFormat sdf = new SimpleDateFormat("MM/DD HH:mm");
 
 	@Override
 	public void list(Model model) {
 		List<LogoBoardDTO> list = boardMapper.getAll();
 		List<String> date = new ArrayList<String>();
-		
-		for(int i=0; i<list.size();i++) {
+
+		for (int i = 0; i < list.size(); i++) {
 			date.add(sdf.format(list.get(i).getCreated_at()));
 		}
 		model.addAttribute("date", date);
@@ -48,10 +48,26 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void one(Model model, int board_id) {
-		LogoBoardDTO read = boardMapper.get(board_id);
-		model.addAttribute("read", read);
-		log.info("read : " + read);
+	public int rewrite(LogoBoardDTO dto) {
+		int result = boardMapper.rewrite(dto);
+		if (result == 1) {
+			return 1;
+		} else {
+			return -1;
+		}
 	}
 
+	@Override
+	public void one(Model model, int board_id) {
+		LogoBoardDTO read = boardMapper.get(board_id);
+		String date;
+		if(read.getModified_at()==null) {
+			date = sdf.format(read.getCreated_at());			
+		} else {
+			date = sdf.format(read.getModified_at()) + "(수정)";
+		}
+		model.addAttribute("read", read);
+		model.addAttribute("date", date);
+		log.info("read : " + read);
+	}
 }

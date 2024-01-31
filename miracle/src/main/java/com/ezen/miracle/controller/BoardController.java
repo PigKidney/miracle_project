@@ -43,10 +43,27 @@ public class BoardController {
 
 	@GetMapping("/read")
 	public String read(Model model, int board_id) {
-		log.info("PK : " + board_id);
+		log.info("read PK : " + board_id);
 		boardService.one(model, board_id);
 		log.info("GET : /board/read OK");
 		return "board/read";
+	}
+	
+	@PostMapping("/read")
+	public String afterModi(Model model, int board_id, LogoBoardDTO dto) {
+		log.info("afterModi PK : " + board_id);
+		boardService.rewrite(dto);
+		boardService.one(model, board_id);
+		log.info("POST : /board/read OK");
+		return "board/read";
+	}
+	
+	@GetMapping("/modify")
+	public String modify(Model model, int board_id) {
+		boardService.one(model, board_id);
+		log.info("modi PK : " + board_id);
+		log.info("GET : /board/modify OK");
+		return "board/modify";
 	}
 
 }

@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+.grid-read{
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
