@@ -35,7 +35,8 @@ public class CharacterController {
             Elements titleUrlElements = document.getElementsByClass("title_area");   
             Elements titleElements2 = document.select("div.title_area > a.title");
             Elements titleElements3 = document.select("a.thumb_area > img");
-            	for (int i=0; i<10; i++) {
+            	
+            for (int i=0; i<10; i++) {
             		final String enterTitle = titleElements2.get(i).text();
             		final String enterImgLink = titleElements3.get(i).absUrl("src");
             		final String enterTag = titleElements2.get(i).absUrl("href");
