@@ -40,32 +40,34 @@ function showTime() {
     let month = today.getMonth() + 1;
     let year = today.getFullYear();
     islandDate.innerText = year + '년 ' + month + '월';
-    islandTime.innerHTML = hour + ':' + minute + ':' + second
+    islandTime.innerHTML = hour + ':' + minute + ':' + second;
 }
 setInterval(() => {
     showTime();
 }, 1000)
 
-/*
-function showTime() {
-        let hour = today.getHours();
-        let minute = today.getMinutes();
-        let second = today.getSeconds();
 
-        if(hour<10){
-            hour = '0' +hour;
-        }
-        if(minute<10){
-            minute = '0' + minute;
-        }
-        if(second<10){
-            second = '0' + second;
-        }
-        islandTime.innerText = hour + ':' + minute + ':' + second;
-        setTimeout(showTime,1000);
-}
-*/
+window.onload = () => {
+    const fragment = new URLSearchParams(window.location.hash.slice(1));
+    const [accessToken, tokenType] = ['bg8O3QboII5nJmh5ISjxKywijz9Jqr', 'Bearer'];
+    console.log(accessToken);
 
+    if (!accessToken) {
+        return (document.getElementById('login').style.display = 'block');
+    }
 
+    fetch('https://discord.com/api/users/@me', {
+        headers: {
+            authorization: `${tokenType} ${accessToken}`,
+        },
+    })
+        .then(result => result.json())
+        .then(response => {
+            const { username, discriminator } = response;
+            document.getElementById('info').innerText += ` ${username}#${discriminator}`;
+        })
+        .catch(console.error);
+        console.log("5 : "+response);
+};
 
 

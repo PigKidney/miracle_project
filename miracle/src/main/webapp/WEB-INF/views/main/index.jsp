@@ -65,6 +65,21 @@
 		</div>
 
 	</div>
+	
+	
+	<div id="info">Hoi!</div>
+<a id="login" style="display: none;" 
+href="https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email">Identify Yourself</a>
+?
+<%String token = request.getParameter("code"); %>
+<%=token + " 1" %>
+
+
+	
+	
+	
+	
+	
 
 	<div class="w-1120px h-320px main m-div5 flex justify-between">
 		<div class="w-550h-280 grid m-top40">
