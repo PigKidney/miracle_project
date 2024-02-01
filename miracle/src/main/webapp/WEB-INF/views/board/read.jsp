@@ -19,8 +19,6 @@
 			<button id="deleteBtn" class="btn-two green rounded font-16 bald">삭제하기</button>
 		</div>
 		
-		
-		
 		<div>
 		
 		</div>
