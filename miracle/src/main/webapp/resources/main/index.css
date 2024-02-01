@@ -82,14 +82,13 @@
 
   animation: slider 12s infinite linear;
 }
-
 .slide:nth-child(1) {
 /* 카멘 */
-  background-image: url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
+  background-image: url(https://cdn.korlark.com/artworks/home/541657180860978066.webp);
   animation-delay: 0;
 }
 .slide:nth-child(2) {
-  background-image: url(https://cdn.korlark.com/artworks/home/509107984186712397.webp?t=1698938628000);
+  background-image: url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
   animation-delay: -3s;
 }
 .slide:nth-child(3) {
@@ -97,7 +96,7 @@
   animation-delay: -6s;
 }
 .slide:nth-child(4) {
-  background-image: url(https://cdn.korlark.com/artworks/home/526277166854538395.webp);
+  background-image: url(https://cdn.korlark.com/artworks/home/417339171099840946.webp?t=1689753102000);
   animation-delay: -9s;
 }
 

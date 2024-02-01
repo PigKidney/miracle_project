@@ -65,5 +65,13 @@ public class BoardController {
 		log.info("GET : /board/modify OK");
 		return "board/modify";
 	}
+	
+	@GetMapping("/delete")
+	public String delete(int board_id) {
+		boardService.delete(board_id);
+		log.info("delete PK : " + board_id);
+		log.info("GET : redirect:/board/index");
+		return "redirect:/board/index";
+	}
 
 }

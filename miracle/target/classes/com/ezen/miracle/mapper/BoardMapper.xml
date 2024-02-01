@@ -6,30 +6,39 @@
 
 	<select id="getAll"
 		resultType="com.ezen.miracle.dto.LogoBoardDTO">
-	select * from logo_board order by board_id desc
+		select * from logo_board where board_show = 1 order by board_id desc
 
 	</select>
 
 	<insert id="write">
 		insert into logo_board (board_id, board_title,
 		board_content, board_category, user_id, view_count, created_at)
-		values (board_id_seq.nextval, #{board_title}, #{board_content},
+		values
+		(board_id_seq.nextval, #{board_title}, #{board_content},
 		#{board_category}, 1,
 		0, systimestamp)
 	</insert>
-	
+
 	<select id="get" resultType="com.ezen.miracle.dto.LogoBoardDTO">
-	select * from logo_board where board_id = #{board_id}
-	
+		select * from logo_board where board_id = #{board_id}
+
 	</select>
-	
+
 	<update id="rewrite">
-	
-	update logo_board set board_category = #{board_category}, board_content = #{board_content},
-	 board_title = #{board_title}, modified_at = systimestamp where board_id = #{board_id}
-	
+
+		update logo_board set board_category = #{board_category}, board_content =
+		#{board_content},
+		board_title = #{board_title}, modified_at = systimestamp where board_id =
+		#{board_id}
+
 	</update>
 
+	<update id="delete">
+		update logo_board set board_show = 0 where board_id = #{board_id}
+	</update>
+	<update id="deleteReply">
+		update logo_reply set reply_show = 0 where board_id = #{board_id}
+	</update>
 	<!-- private Integer board_id; private String board_title; private String 
 		board_content; private String board_category; private Integer board_good_count; 
 		private Integer user_id; private Integer view_count; private Date created_at; 

@@ -61,13 +61,23 @@ public class BoardServiceImpl implements BoardService {
 	public void one(Model model, int board_id) {
 		LogoBoardDTO read = boardMapper.get(board_id);
 		String date;
-		if(read.getModified_at()==null) {
-			date = sdf.format(read.getCreated_at());			
+		if (read.getModified_at() == null) {
+			date = sdf.format(read.getCreated_at());
 		} else {
 			date = sdf.format(read.getModified_at()) + "(수정)";
 		}
 		model.addAttribute("read", read);
 		model.addAttribute("date", date);
 		log.info("read : " + read);
+	}
+
+	@Override
+	public int delete(int board_id) {
+		int result = boardMapper.delete(board_id);
+		if (result == 1) {
+			return 1;
+		} else {
+			return -1;
+		}
 	}
 }
