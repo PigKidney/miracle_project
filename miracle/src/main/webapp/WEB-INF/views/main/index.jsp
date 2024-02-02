@@ -8,38 +8,10 @@
 <div class="include-top">
 	<div class="w-1120px h-280px main m-div1">
 		<div class="slider">
-			<div id="bannerImg1" class="slide">
-				<!-- 
-				
-				 <img alt="배너 이미지" width="1120" height="280"
-					src="https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000"
-					style="color: transparent;">
-				 -->
-			</div>
-			<div id="bannerImg2 " class="slide">
-				<!-- 
-			
-				<img alt="배너 이미지" width="1120" height="280"
-					src="https://cdn.korlark.com/artworks/home/509107984186712397.webp?t=1698938628000"
-					style="color: transparent;">
-				 -->
-			</div>
-			<div id="bannerImg3" class="slide">
-				<!-- 
-			
-				<img alt="배너 이미지" width="1120" height="280"
-					src="https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000"
-					style="color: transparent;">
-				 -->
-			</div>
-			<div id="bannerImg4" class="slide">
-				<!-- 
-			
-				<img alt="배너 이미지" width="1120" height="280"
-					src="https://cdn.korlark.com/artworks/home/526277166854538395.webp"
-					style="color: transparent;">
-				 -->
-			</div>
+			<div id="bannerImg1" class="slide"></div>
+			<div id="bannerImg2 " class="slide"></div>
+			<div id="bannerImg3" class="slide"></div>
+			<div id="bannerImg4" class="slide"></div>
 		</div>
 	</div>
 	<div class="w-1120px h-280px main m-div2 flex justify-between">
@@ -65,21 +37,8 @@
 		</div>
 
 	</div>
-	
-	
-	<div id="info">Hoi!</div>
-<a id="login" style="display: none;" 
-href="https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email">Identify Yourself</a>
-?
-<%String token = request.getParameter("code"); %>
-<%=token + " 1" %>
 
 
-	
-	
-	
-	
-	
 
 	<div class="w-1120px h-320px main m-div5 flex justify-between">
 		<div class="w-550h-280 grid m-top40">

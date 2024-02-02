@@ -122,6 +122,12 @@ body {
 	color: #8045dd;
 }
 
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
 
 .slider {
   position: relative;

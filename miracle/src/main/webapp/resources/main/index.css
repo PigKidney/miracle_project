@@ -83,7 +83,6 @@
   animation: slider 12s infinite linear;
 }
 .slide:nth-child(1) {
-/* 카멘 */
   background-image: url(https://cdn.korlark.com/artworks/home/541657180860978066.webp);
   animation-delay: 0;
 }
