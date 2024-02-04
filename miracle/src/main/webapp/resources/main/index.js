@@ -47,27 +47,13 @@ setInterval(() => {
 }, 1000)
 
 
-window.onload = () => {
-    const fragment = new URLSearchParams(window.location.hash.slice(1));
-    const [accessToken, tokenType] = ['bg8O3QboII5nJmh5ISjxKywijz9Jqr', 'Bearer'];
-    console.log(accessToken);
-
-    if (!accessToken) {
-        return (document.getElementById('login').style.display = 'block');
-    }
-
-    fetch('https://discord.com/api/users/@me', {
-        headers: {
-            authorization: `${tokenType} ${accessToken}`,
-        },
-    })
-        .then(result => result.json())
-        .then(response => {
-            const { username, discriminator } = response;
-            document.getElementById('info').innerText += ` ${username}#${discriminator}`;
-        })
-        .catch(console.error);
-        console.log("5 : "+response);
-};
 
 
+/*
+if (userId.value != null && !submitCheck) {
+    loginForm.submit();
+    submitCheck = true;
+    console.log('submit');
+    return;
+} 
+*/

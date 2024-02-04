@@ -20,7 +20,7 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardMapper boardMapper;
 
-	SimpleDateFormat sdf = new SimpleDateFormat("MM/DD HH:mm");
+	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm");
 
 	@Override
 	public void list(Model model) {

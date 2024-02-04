@@ -11,7 +11,6 @@
 		<div class="mainWhite bold font-24">게시판</div>
 		<div class="mainWhite grid-board">
 			<c:forEach items="${list}" begin="0" end="9" var="list" varStatus="status">
-
 			<div class="item-center">
 				<div><p>${list.board_id}</p></div>
 				<div><p>${list.board_category}  &nbsp;&nbsp;&nbsp;</p></div>
@@ -26,15 +25,11 @@
 		<div style="text-align: right;">
 			<button id="beginningToWriteBtn" class="btn-two green rounded font-16 bald">글쓰기</button>
 		</div>
-
 		<div class="slider">
 			<div class="slide"></div>
 			<div class="slide"></div>
 			<div class="slide"></div>
 		</div>
-
-
-
 	</div>
 </div>
 <script src="/resources/board/index.js"></script>

@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/resources/include/include.css" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-	
+
 
 </head>
 <body>
@@ -29,38 +29,53 @@
 		<!-- 올리면 글자색깔바뀌면서 밑줄생기는 이벤트리스너 추가 -->
 		<div id="top-tab2" class="item-center">
 			<div class="item-center tab2">
-			<div>
-				<a class="mainWhite bold underline-none"  href="/notice/index">공지사항</a> 
-			</div>
-			<div>
-				<a class="mainWhite bold underline-none"  href="/character/index">전투정보실</a>
-			</div>
-			<div>
-				<a class="mainWhite bold underline-none"  href="/board/index">게시판</a>
-			</div>
+				<div>
+					<a class="mainWhite bold underline-none" href="/notice/index">공지사항</a>
+				</div>
+				<div>
+					<a class="mainWhite bold underline-none" href="/character/index">전투정보실</a>
+				</div>
+				<div>
+					<a class="mainWhite bold underline-none" href="/board/index">게시판</a>
+				</div>
 
 			</div>
 			<div class="top-text">
-				<span class="material-symbols-outlined search"> search </span>
-				 <input class="top-box" type="text" maxlength="12" spellcheck="false"
+				<span class="material-symbols-outlined search"> search </span> <input
+					class="top-box" type="text" maxlength="12" spellcheck="false"
 					placeholder="캐릭터명을 입력해주세요" />
 			</div>
 		</div>
 
 		<div id="top-tab3" class="item-center login">
-		
-		<!-- dark, light 클래스 활용해서 일단 뭐 만들어야함 -->
-		<div class="dark light">
-			<span class="material-symbols-outlined cursor"> dark_mode </span> 
-		</div>
-		<div class="dark">
-			<span class="material-symbols-outlined cursor"> light_mode </span> 
-		</div>
-		
-			<span class="mainWhite"  class="material-symbols-outlined cursor login-ok"> sms </span>
-			<a class="mainWhite underline-none"  href="/login/index">로그인</a>
-			<span class="mainWhite"  class="cursor login-ok">로그인하면 id보여줄거임</span>
-			<span class="material-symbols-outlined cursor login-ok">expand_more</span>
+
+			<!-- dark, light 클래스 활용해서 일단 뭐 만들어야함 -->
+			<div class="dark light">
+				<span class="material-symbols-outlined cursor"> dark_mode </span>
+			</div>
+			<div class="dark">
+				<span class="material-symbols-outlined cursor"> light_mode </span>
+			</div>
+			<div id="smsBtn" class="hide">
+				<span class="mainWhite material-symbols-outlined cursor hide">sms</span>
+			</div>
+			<a id="loginTag" class="mainWhite underline-none" href="/login/index">로그인</a> 
+			<div id="nickName" class="hide">
+				<span class="mainWhite"></span>
+			</div>
+			<div id="addadd" class="hide">
+				<span class="material-symbols-outlined cursor">expand_more</span>
+			</div>
 		</div>
 	</div>
+
+	<form id="loginForm" action="/main/index" method="get">
+		<input id="userId" name="user_id" type="hidden"
+			value="${user_id.value}" /> <input id="userEmail" name="user_email"
+			type="hidden" value="${user_email.value}" /> <input id="userPassword"
+			name="user_password" type="hidden" value="${user_password.value}" />
+		<input id="userNickname" name="user_nickname" type="hidden"
+			value="${user_nickname.value}" />
+	</form>
+
 	<script src="/resources/include/include.js"></script>
