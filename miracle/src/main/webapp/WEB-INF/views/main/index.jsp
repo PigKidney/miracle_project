@@ -17,7 +17,7 @@
 	<div class="w-1120px h-280px main m-div2 flex justify-between">
 		<div class="m-top40 island">
 
-			<span class="island mainWhite bold font-20">모험섬</span> <span
+			<span class="island mainWhite bold font-20">현재 시간</span> <span
 				id="islandTime" class="islandTime mainPurple bold font-20"></span>
 		</div>
 		<div class="m-top40 island">
@@ -38,6 +38,13 @@
 
 	</div>
 
+<form id="loginForm2"action="/main/login" method="POST">
+<input type="hidden" name="user_id" value="${userId.value}" />
+<input type="hidden" name="user_email" value="${userEmail.value}" />
+<input type="hidden" name="user_password" value="${userPassword.value}" />
+<input type="hidden" name="user_nickname" value="${userNickname.value}" />
+</form>
+
 
 
 	<div class="w-1120px h-320px main m-div5 flex justify-between">
@@ -51,6 +58,7 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript" src="/resources/main/index.js">
 	
 </script>

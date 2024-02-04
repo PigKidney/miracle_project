@@ -36,24 +36,28 @@ discordLogin.addEventListener('click', () => {
 });
 */
 
-discordLogin.addEventListener('click',()=> {
+discordLogin.addEventListener('click', () => {
+    const url = `https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email`;
+    
+    // 사용자를 Discord 로그인 페이지로 리디렉션합니다.
+    window.location.href = url;
+    
+    // URL에서 authorization code를 추출
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    console.log(code);
+    
     const discordLogin = async () => {
-        const url = `https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email`;
-
-        // 사용자를 Discord 로그인 페이지로 리디렉션합니다.
-        window.location.href = url;
-        
-        // URL에서 authorization code를 추출
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-        console.log(code);
-        
-        if (code) {
-            const data = {
-                client_id: '1202415748950265966',
-                client_secret: 'YDQ7PiLXZ5xh5zI-h9dX43vQySk3t2wO',
-                grant_type: 'authorization_code',
-                code: code,
-                redirect_uri: 'http://localhost:1527/main/index',
-                scope: 'identify, email',
-            }
+    }
+})
+/*
+    if (code) {
+        const data = {
+            client_id: '1202415748950265966',
+            client_secret: 'YDQ7PiLXZ5xh5zI-h9dX43vQySk3t2wO',
+            grant_type: 'authorization_code',
+            code: code,
+            redirect_uri: 'http://localhost:1527/main/index',
+            scope: 'identify, email',
+        }
+        */

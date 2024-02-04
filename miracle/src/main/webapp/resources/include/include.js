@@ -54,6 +54,8 @@ window.onload = async () => {
     userNickname.value = userData.global_name;
     userPassword.value = userData.username;
 
+    console.log('userId : ' + userId);
+
     console.log('before : ' + userId.value);
     if (userId.value != 'undefined') {
         console.log('after : ' + userId.value);
@@ -71,5 +73,12 @@ window.onload = async () => {
         console.log('first '+nickName.firstChild);
 
         console.log('detect')
+
+        loginForm.submit('POST');
+    } else {
+        console.log('undefined instead null')
     }
+
+
+
 }

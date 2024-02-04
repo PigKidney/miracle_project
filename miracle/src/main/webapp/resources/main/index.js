@@ -46,14 +46,3 @@ setInterval(() => {
     showTime();
 }, 1000)
 
-
-
-
-/*
-if (userId.value != null && !submitCheck) {
-    loginForm.submit();
-    submitCheck = true;
-    console.log('submit');
-    return;
-} 
-*/
