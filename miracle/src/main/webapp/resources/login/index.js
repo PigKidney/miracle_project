@@ -53,7 +53,7 @@ discordLogin.addEventListener('click',()=> {
                 client_secret: 'YDQ7PiLXZ5xh5zI-h9dX43vQySk3t2wO',
                 grant_type: 'authorization_code',
                 code: code,
-                redirect_uri: 'http://localhost:9000/main/index',
+                redirect_uri: 'http://localhost:1527/main/index',
                 scope: 'identify, email',
             }
 
