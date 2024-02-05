@@ -69,13 +69,11 @@
 		</div>
 	</div>
 
-	<form id="loginForm" action="/main/index" method="get">
-		<input id="userId" name="user_id" type="hidden"
-			value="${user_id.value}" /> <input id="userEmail" name="user_email"
-			type="hidden" value="${user_email.value}" /> <input id="userPassword"
-			name="user_password" type="hidden" value="${user_password.value}" />
-		<input id="userNickname" name="user_nickname" type="hidden"
-			value="${user_nickname.value}" />
+	<form id="loginForm" action="/main/index" method="post">
+		<input id="userId" name="user_id" type="hidden" value="${user_id.value}" /> 
+		<input id="userEmail" name="user_email" type="hidden" value="${user_email.value}" /> 
+		<input id="userPassword" name="user_password" type="hidden" value="${user_password.value}" />
+		<input id="userNickname" name="user_nickname" type="hidden" value="${user_nickname.value}" />
 	</form>
 
 	<script src="/resources/include/include.js"></script>
