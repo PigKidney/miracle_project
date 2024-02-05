@@ -19,19 +19,19 @@
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <%
 
-String user_id = (String) session.getAttribute("login_nickname");
+Long user_id = (Long) session.getAttribute("login_id");
 String user_nickname = (String) session.getAttribute("login_nickname");
 String user_password = (String) session.getAttribute("login_password");
 String user_email = (String) session.getAttribute("login_email");
 Object isAdmin = session.getAttribute("login_admin");
-
-System.out.println("-1이면 비회원, 0이면 일반회원, 1이면 관리자 : " + isAdmin);
+System.out.println("Login Type : " + isAdmin);
 
 %>
 </head>
 <body>
 <script>
 const loginCheck = '${login_admin}';
+const idCheck = '${login_id}'
 console.log("loginCheck : " + loginCheck);
 </script>
 
@@ -75,17 +75,30 @@ console.log("loginCheck : " + loginCheck);
 			<div id="smsBtn" class="hide">
 				<span class="mainWhite material-symbols-outlined cursor">sms</span>
 			</div>
-			<div class="">
-			<a id="loginTag" class="mainWhite underline-none " href="/login/index">
-				로그인
-			</a>
-			</div>
-			<div id="nickName" class="hide">
-				<span class="mainWhite"><%=user_nickname%></span>
-			</div>
-			<div id="addadd" class="hide">
-				<span class="material-symbols-outlined cursor">expand_more</span>
-			</div>
+		
+		<div id="showbox" class="">
+					<div class="item-center justify-between cursor">
+			
+						<div class="">
+							<a id="loginTag" class="mainWhite underline-none" href="/login/index">
+							로그인
+							</a>
+						</div>
+						<div id="nickName" class="hide">
+							<span class="mainWhite"><%=user_nickname%></span>
+						</div>
+						<div id="addadd" class="hide">
+							<span class="material-symbols-outlined">expand_more</span>
+						</div>
+					</div>
+				<div class="dropdown-content">
+						<a href="">MY PAGE </a>
+						<a href="">ㅇㅅㅇ</a>
+						<a href="">LOG OUT</a>
+				</div>
+		</div>
+			
+		
 		</div>
 	</div>
 

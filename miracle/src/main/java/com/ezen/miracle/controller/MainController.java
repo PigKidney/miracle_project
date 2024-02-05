@@ -25,7 +25,7 @@ public class MainController {
 
 	@GetMapping("/index")
 	public String main(Long user_id) {
-		log.info("USER ID :" + user_id);
+		log.info("USER ID : " + user_id);
 		log.info("GET : /main/index OK");
 		return "main/index";
 	}
