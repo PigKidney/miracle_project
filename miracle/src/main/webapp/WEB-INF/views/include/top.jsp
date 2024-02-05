@@ -1,3 +1,4 @@
+<%@page import="oracle.jdbc.internal.XSSessionNamespace"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,14 +17,29 @@
 <link rel="stylesheet" href="/resources/include/include.css" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<%
 
+String user_id = (String) session.getAttribute("login_nickname");
+String user_nickname = (String) session.getAttribute("login_nickname");
+String user_password = (String) session.getAttribute("login_password");
+String user_email = (String) session.getAttribute("login_email");
+Object isAdmin = session.getAttribute("login_admin");
 
+System.out.println("-1이면 비회원, 0이면 일반회원, 1이면 관리자 : " + isAdmin);
+
+%>
 </head>
 <body>
+<script>
+const loginCheck = '${login_admin}';
+console.log("loginCheck : " + loginCheck);
+</script>
+
 	<div id="topfix" class="flex-test">
 		<div id="top-tab1" class="item-center">
 			<div>
 				<a class="mainWhite bold underline-none" href="/main/index">LOGO</a>
+
 			</div>
 		</div>
 		<!-- 올리면 글자색깔바뀌면서 밑줄생기는 이벤트리스너 추가 -->
@@ -47,21 +63,25 @@
 			</div>
 		</div>
 
-		<div id="top-tab3" class="item-center login">
+		<div id="top-tab3" class="item-center login tab3">
 
 			<!-- dark, light 클래스 활용해서 일단 뭐 만들어야함 -->
-			<div class="dark light">
+			<div class="dark">
 				<span class="material-symbols-outlined cursor"> dark_mode </span>
 			</div>
-			<div class="dark">
+			<div class="dark light">
 				<span class="material-symbols-outlined cursor"> light_mode </span>
 			</div>
 			<div id="smsBtn" class="hide">
-				<span class="mainWhite material-symbols-outlined cursor hide">sms</span>
+				<span class="mainWhite material-symbols-outlined cursor">sms</span>
 			</div>
-			<a id="loginTag" class="mainWhite underline-none" href="/login/index">로그인</a> 
+			<div class="">
+			<a id="loginTag" class="mainWhite underline-none " href="/login/index">
+				로그인
+			</a>
+			</div>
 			<div id="nickName" class="hide">
-				<span class="mainWhite"></span>
+				<span class="mainWhite"><%=user_nickname%></span>
 			</div>
 			<div id="addadd" class="hide">
 				<span class="material-symbols-outlined cursor">expand_more</span>
@@ -72,7 +92,7 @@
 	<form id="loginForm" action="/main/index" method="post">
 		<input id="userId" name="user_id" type="hidden" value="${user_id.value}" /> 
 		<input id="userEmail" name="user_email" type="hidden" value="${user_email.value}" /> 
-		<input id="userPassword" name="user_password" type="hidden" value="${user_password.value}" />
+		<input id="userPassword" name="user_password" type="hidden" value="${user_password.value}" /> 
 		<input id="userNickname" name="user_nickname" type="hidden" value="${user_nickname.value}" />
 	</form>
 

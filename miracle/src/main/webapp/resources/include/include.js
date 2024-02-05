@@ -57,28 +57,41 @@ window.onload = async () => {
     console.log('userId : ' + userId);
 
     console.log('before : ' + userId.value);
+
+    console.log('로긴첵 : ' + loginCheck);
+    console.log(typeof (loginCheck));
+
     if (userId.value != 'undefined') {
-        console.log('after : ' + userId.value);
-
-        smsBtn.classList.remove('hide');
-        nickName.classList.remove('hide');
-        addadd.classList.remove('hide');
-
-        loginTag.classList.add('hide');
-        smsBtn.classList.add('show');
-        nickName.classList.add('show');
-        addadd.classList.add('show');
-
-        nickName.firstChild = userNickname.value;
-        console.log('first '+nickName.firstChild);
-
-        console.log('detect')
-
         loginForm.submit('POST');
     } else {
-        console.log('undefined instead null')
+        console.log('이프문2')
+        loginTag.classList.remove('hide');
+        loginTag.classList.add('show');
+
+        smsBtn.classList.remove('show');
+        smsBtn.classList.add('hide');
+
+        nickName.classList.remove('show');
+        nickName.classList.add('hide');
+
+        addadd.classList.remove('show');
+        addadd.classList.add('hide');
     }
 
+    if (loginCheck == 0 && code!=null) {
+        console.log('이프문3')
+        smsBtn.classList.remove('hide');
+        smsBtn.classList.add('show');
 
+        nickName.classList.remove('hide');
+        nickName.classList.add('show');
 
+        loginTag.classList.remove('show');
+        loginTag.classList.add('hide');
+
+        addadd.classList.remove('hide');
+        addadd.classList.add('show');
+    }
 }
+
+

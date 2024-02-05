@@ -1,5 +1,7 @@
 package com.ezen.miracle.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +23,8 @@ public class BoardController {
 	BoardService boardService;
 
 	@GetMapping("/index")
-	public String board(Model model) {
-		boardService.list(model);
+	public String board(Model model, Long user_id, HttpSession session) {
+		boardService.list(model);		
 		log.info("GET : /board/index OK");
 		return "board/index";
 	}

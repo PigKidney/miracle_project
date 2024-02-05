@@ -21,10 +21,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int get(Model model, Long user_id) {
 		LogoUserDTO dto = userMapper.get(user_id);
-		
+
 		if (dto != null) {
 			model.addAttribute("info", dto);
-			log.info("get : "+dto);
+			log.info("get : " + dto);
 			return 1;
 		} else {
 			log.fatal("USER_ID IS NULL");
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 	public int write(LogoUserDTO dto) {
 		int result = userMapper.write(dto);
 		if (result == 1) {
-			log.info("write : "+ dto);
+			log.info("write : " + dto);
 			return 1;
 		} else {
 			log.fatal("이미 가입된 회원");

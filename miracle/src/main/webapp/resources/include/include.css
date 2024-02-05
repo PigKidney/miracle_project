@@ -96,7 +96,7 @@ body {
 .dark{
 	display: none;
 }
-.darker{
+.light{
 	display: block;
 }
 .cursor{
@@ -127,6 +127,13 @@ body {
 }
 .show{
 	display: block;
+}
+.login-admin{
+	visibility: hidden;
+}
+
+.tab3>*{
+	padding-left: 20px;
 }
 
 .slider {
