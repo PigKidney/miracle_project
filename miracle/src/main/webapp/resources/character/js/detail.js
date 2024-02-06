@@ -18,29 +18,112 @@ const l2ImageP = document.querySelector("#l2Image");
 const l2Tooltip = document.getElementById('l2Tooltip');
 
 const l3 = document.getElementById('l3'); //상의
-const l3Image = document.querySelector("#l3 > img");
+const l3Image = document.querySelector("#l3Image > img");
+const l3ImageP = document.querySelector("#l3Image");
+const l3Tooltip = document.getElementById('l3Tooltip');
 
 const l4 = document.getElementById('l4'); //바지
-const l4Image = document.querySelector("#l4 > img");
+const l4Image = document.querySelector("#l4Image > img");
+const l4ImageP = document.querySelector("#l4Image");
+const l4Tooltip = document.getElementById('l4Tooltip');
 
 const l5 = document.getElementById('l5'); //장갑
-const l5Image = document.querySelector("#l5 > img");
+const l5Image = document.querySelector("#l5Image > img");
+const l5ImageP = document.querySelector("#l5Image");
+const l5Tooltip = document.getElementById('l5Tooltip');
 
 const l6 = document.getElementById('l6'); //무기
-const l6Image = document.querySelector("#l6 > img");
+const l6Image = document.querySelector("#l6Image > img");
+const l6ImageP = document.querySelector("#l6Image");
+const l6Tooltip = document.getElementById('l6Tooltip');
 
 const l7 = document.getElementById('l7'); //각인
 const l7Image = document.querySelector("#l7 > img");
 
 
 const r1 = document.getElementById('r1'); //목걸이
-const r2 = document.getElementById('r2'); //귀걸이1
-const r3 = document.getElementById('r3'); //귀걸이2
-const r4 = document.getElementById('r4'); //반지1
-const r5 = document.getElementById('r5'); //반지2
-const r6 = document.getElementById('r6'); //팔찌
-const r7 = document.getElementById('r7'); //스톤
+const r1Image = document.querySelector("#r1Image > img");
+const r1ImageP = document.querySelector("#r1Image");
+const r1Tooltip = document.getElementById('r1Tooltip');
 
+const r2 = document.getElementById('r2'); //귀걸이1
+const r2Image = document.querySelector("#r2Image > img");
+const r2ImageP = document.querySelector("#r2Image");
+const r2Tooltip = document.getElementById('r2Tooltip');
+
+const r3 = document.getElementById('r3'); //귀걸이2
+const r3Image = document.querySelector("#r3Image > img");
+const r3ImageP = document.querySelector("#r3Image");
+const r3Tooltip = document.getElementById('r3Tooltip');
+
+const r4 = document.getElementById('r4'); //반지1
+const r4Image = document.querySelector("#r4Image > img");
+const r4ImageP = document.querySelector("#r4Image");
+const r4Tooltip = document.getElementById('r4Tooltip');
+
+const r5 = document.getElementById('r5'); //반지2
+const r5Image = document.querySelector("#r5Image > img");
+const r5ImageP = document.querySelector("#r5Image");
+const r5Tooltip = document.getElementById('r5Tooltip');
+
+const r6 = document.getElementById('r6'); //팔찌
+const r6Image = document.querySelector("#r6Image > img");
+const r6ImageP = document.querySelector("#r6Image");
+const r6Tooltip = document.getElementById('r6Tooltip');
+
+const r7 = document.getElementById('r7'); //스톤
+const r7Image = document.querySelector("#r7Image > img");
+const r7ImageP = document.querySelector("#r7Image");
+const r7Tooltip = document.getElementById('r7Tooltip');
+
+const g1 = document.getElementById('g1'); //보석
+const g1Image = document.querySelector("#g1Image > img");
+
+const g2 = document.getElementById('g2'); //보석
+const g2Image = document.querySelector("#g2Image > img");
+
+const g3 = document.getElementById('g3'); //보석
+const g3Image = document.querySelector("#g3Image > img");
+
+const g4 = document.getElementById('g4'); //보석
+const g4Image = document.querySelector("#g4Image > img");
+
+const g5 = document.getElementById('g5'); //보석
+const g5Image = document.querySelector("#g5Image > img");
+
+const g6 = document.getElementById('g6'); //보석
+const g6Image = document.querySelector("#g6Image > img");
+
+const g7 = document.getElementById('g7'); //보석
+const g7Image = document.querySelector("#g7Image > img");
+
+const g8 = document.getElementById('g8'); //보석
+const g8Image = document.querySelector("#g8Image > img");
+
+const g9 = document.getElementById('g9'); //보석
+const g9Image = document.querySelector("#g9Image > img");
+
+const g10 = document.getElementById('g10'); //보석
+const g10Image = document.querySelector("#g10Image > img");
+
+const g11 = document.getElementById('g11'); //보석
+const g11Image = document.querySelector("#g11Image > img");
+
+const l7_1 = document.querySelector('#l7-1  > img');
+const l7_1Tooltip = document.getElementById('l7-1Tooltip');
+
+const l7_2 = document.querySelector('#l7-2  > img');
+const l7_2Tooltip = document.getElementById('l7-2Tooltip');
+
+const gemEffectDiv = document.querySelector("#gem-effects");
+
+const engrave = document.querySelector('#engrave');
+const states = document.querySelector("#states");
+const states_etc = document.querySelector("#states-etc");
+const tendencies = document.querySelector('#tendencies');
+
+const cards = document.querySelector('#cards');
+const cardsStates = document.querySelector('#cards-states');
 
 function addSpan(text) {
     const span = document.createElement('sapn');
@@ -109,87 +192,119 @@ exbtn.addEventListener('click', (e) => {
             townDiv.appendChild(addSpanWhite(' '+'Lv.'+chInfo.ArmoryProfile.TownLevel+' '+ chInfo.ArmoryProfile.TownName));
             const chEq_h = JSON.parse(chInfo.ArmoryEquipment[1].Tooltip);
             console.dir(chEq_h);
+           
             // 머리
-            l1Image.src = chInfo.ArmoryEquipment[1].Icon;
-            l1Image.alt = chInfo.ArmoryEquipment[1].Name;
-            l1Image.title = chInfo.ArmoryEquipment[1].Type;
-            
-            const l1ImageDiv = document.createElement('div');
-            l1ImageDiv.innerText = chEq_h.Element_001.value.qualityValue;
-            l1ImageDiv.classList.add('eimg-div');
-            console.log(chEq_h.Element_001.value.qualityValue);
-            l1ImageP.appendChild(l1ImageDiv);
-            
-            const l1TooltipSpan = document.createElement('span');
-            l1TooltipSpan.innerHTML = chEq_h.Element_007.value.Element_000.topStr;
-            l1Tooltip.appendChild(l1TooltipSpan);
+            addEqui(chInfo, 1, l1Image, l1ImageP , l1Tooltip);
+            // 어깨
+            addEqui(chInfo, 5, l2Image, l2ImageP , l2Tooltip);
+            // 상의
+            addEqui(chInfo, 2, l3Image, l3ImageP , l3Tooltip);
+            // 하의
+            addEqui(chInfo, 3, l4Image, l4ImageP , l4Tooltip);
+            // 장갑
+            addEqui(chInfo, 4, l5Image, l5ImageP , l5Tooltip);
+            // 무기
+            addEqui(chInfo, 0, l6Image, l6ImageP , l6Tooltip);
 
-            const l1TooltipName = document.createElement('h4');
-            l1TooltipName.classList.add('p-m0');
-            l1TooltipName.innerText = chInfo.ArmoryEquipment[1].Name;
-            l1Tooltip.appendChild(l1TooltipName);
+            // 목걸이
+            addEqui(chInfo, 6, r1Image, r1ImageP , r1Tooltip);
+            // 귀걸이
+            addEqui(chInfo, 7, r2Image, r2ImageP , r2Tooltip);
+            // 귀걸이
+            addEqui(chInfo, 8, r3Image, r3ImageP , r3Tooltip);
+            // 반지
+            addEqui(chInfo, 9, r4Image, r4ImageP , r4Tooltip);
+            // 반지
+            addEqui(chInfo, 10, r5Image, r5ImageP , r5Tooltip);
+            // 팔찌
+            addEqui(chInfo, 12, r6Image, r6ImageP , r6Tooltip);
 
-            const l1TooltipSet = document.createElement('span');
-            l1TooltipSet.innerHTML = chEq_h.Element_011.value.firstMsg+" "+chEq_h.Element_011.value.itemData.Element_001.label+" ";
-            l1Tooltip.appendChild(l1TooltipSet);
+            addEqui(chInfo, 11, r7Image, r7ImageP , r7Tooltip);
 
-            const elixir1 = chEq_h.Element_008.value.Element_000.contentStr.Element_000.contentStr.split("<br>");
-            console.log(elixir1[0]);
+            // 장착 각인
+            l7_1.src = chInfo.ArmoryEngraving.Engravings[0].Icon;
+            const l7_1_h4 = document.createElement('h4');
+            l7_1_h4.classList.add('white_text');
+            l7_1_h4.innerText = chInfo.ArmoryEngraving.Engravings[0].Name;
+            l7_1Tooltip.appendChild(l7_1_h4);
 
-            const elixir2 = chEq_h.Element_008.value.Element_000.contentStr.Element_001.contentStr.split("<br>");
-            console.log(elixir2[0]);
 
-            const l1TooltipElixir = document.createElement('span');
-            l1TooltipElixir.innerHTML = elixir1[0]+" "+elixir2[0];
-            l1Tooltip.appendChild(l1TooltipElixir);
+            l7_2.src = chInfo.ArmoryEngraving.Engravings[1].Icon;
+            const l7_2_h4 = document.createElement('h4');
+            l7_2_h4.classList.add('white_text');
+            l7_2_h4.innerText = chInfo.ArmoryEngraving.Engravings[1].Name;
+            l7_2Tooltip.appendChild(l7_2_h4);
 
-             // 어깨
-             l2Image.src = chInfo.ArmoryEquipment[5].Icon;
-             l2Image.alt = chInfo.ArmoryEquipment[5].Name;
-             l2Image.title = chInfo.ArmoryEquipment[5].Type;
-             
-             const chEq_s = JSON.parse(chInfo.ArmoryEquipment[5].Tooltip);
-            console.dir(chEq_s);
-
-             const l2ImageDiv = document.createElement('div');
-             l2ImageDiv.innerText = chEq_s.Element_001.value.qualityValue;
-             l2ImageDiv.classList.add('eimg-div');
-
-             console.log(chEq_s.Element_005.value.qualityValue);
-             l2ImageP.appendChild(l2ImageDiv);
-             
-             const l2TooltipSpan = document.createElement('span');
-             l2TooltipSpan.innerHTML = chEq_s.Element_007.value.Element_000.topStr;
-             l2Tooltip.appendChild(l2TooltipSpan);
- 
-             const l2TooltipName = document.createElement('h4');
-             l2TooltipName.classList.add('p-m0');
-             l2TooltipName.innerText = chInfo.ArmoryEquipment[5].Name;
-             l2Tooltip.appendChild(l2TooltipName);
- 
-             const l2TooltipSet = document.createElement('span');
-             l2TooltipSet.innerHTML = chEq_s.Element_010.value.firstMsg+" "+chEq_s.Element_010.value.itemData.Element_001.label+" ";
-             l2Tooltip.appendChild(l2TooltipSet);
- 
-             const l2elixir1 = chEq_s.Element_008.value.Element_000.contentStr.Element_000.contentStr.split("<br>");
-             console.log(elixir1[0]);
- 
-             const l2elixir2 = chEq_s.Element_008.value.Element_000.contentStr.Element_001.contentStr.split("<br>");
-             console.log(elixir2[0]);
- 
-             const l2TooltipElixir = document.createElement('span');
-             l2TooltipElixir.innerHTML = l2elixir1[0]+" "+l2elixir2[0];
-             l2Tooltip.appendChild(l2TooltipElixir);
-     
             // 캐릭터 사진
             image.src = chInfo.ArmoryProfile.CharacterImage;
             
+            // 보석
+            if(chInfo.ArmoryGem != null){
+                addGem(chInfo, 0 , g1, g1Image);
+                addGem(chInfo, 1 , g2, g2Image);
+                addGem(chInfo, 2 , g3, g3Image);
+                addGem(chInfo, 3 , g4, g4Image);
+                addGem(chInfo, 4 , g5, g5Image);
+                addGem(chInfo, 5 , g6, g6Image);
+                addGem(chInfo, 6 , g7, g7Image);
+                addGem(chInfo, 7 , g8, g8Image);
+                addGem(chInfo, 8 , g9, g9Image);
+                addGem(chInfo, 9 , g10, g10Image);
+                addGem(chInfo, 10 , g11, g11Image);
+                
+                
+                // 보석 마우스 이벤트 등록
+                const gems = document.querySelectorAll('#gem-over');
+                let gemList = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11];
+                let gemImageList = [g1Image, g2Image, g3Image, g4Image, g5Image, g6Image, g7Image, g8Image, g9Image, g10Image, g11Image];
+    
+                for(let i=0;i<gems.length;i++){
+                    gemList[i].addEventListener('mouseover', (e) => {
+                        gems[i].classList.remove("gem-hidden");
+                        gemImageList[i].classList.add('gem-select');
+                    });
+                    gemList[i].addEventListener('mouseout', (e) => {
+                        gems[i].classList.add("gem-hidden");
+                        gemImageList[i].classList.remove('gem-select');
+                    });
+                }
+            }
             
+            // 각인
+            for(let i=0;i<chInfo.ArmoryEngraving.Effects.length;i++){
+                const div = document.createElement('div');
+                div.classList.add('flex-dir-c');
+                if(i!=chInfo.ArmoryEngraving.Effects.length){
+                    div.classList.add('pd-b-10');
+                }
+                engrave.appendChild(div);
+                addEngrave(chInfo, div, i);
+            }
+
+            // 특성값
+            let ststes = ['치명','특화','신속','제압','인내','숙련'];
+            for(let i=0;i<ststes.length;i++){
+                addState(chInfo, states , ststes[i]);
+            }
+
+            let etc = ['공격력' , '최대 생명력'];
+            for(let i=0;i<etc.length;i++){
+                addState(chInfo, states_etc , etc[i]);
+            }
+
+            let tendent = ['지성', '담력', '매력', '친절'];
+            addTendencies(chInfo, tendencies);
+            
+
+            //카드 
+
+            addCards(chInfo, cards);
+            addCardEffects(chInfo, cardsStates);
         }
         
     });
     
-    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/주다영", true);
+    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/소윤선", true);
     xmlHttpRequest.setRequestHeader('accept', 'application/json');
     xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
     xmlHttpRequest.onreadystatechange = () => { };
@@ -197,19 +312,356 @@ exbtn.addEventListener('click', (e) => {
     
 });
 
+// 장비
+function addEqui(ch , num , image , imageP ,  tooltip){
+    coloerFilter(ch.ArmoryEquipment[num], image)
+    image.src = ch.ArmoryEquipment[num].Icon;
+    image.alt = ch.ArmoryEquipment[num].Name;
+    image.title = ch.ArmoryEquipment[num].Type;
+    
+    const chEq_a = JSON.parse(ch.ArmoryEquipment[num].Tooltip);
+
+    const imageDiv = document.createElement('div');
+    imageDiv.innerText = chEq_a.Element_001.value.qualityValue;
+    coloerFilterP(chEq_a.Element_001.value.qualityValue,imageP);
+    imageDiv.classList.add('eimg-div');
+
+    imageP.appendChild(imageDiv);
+
+    const tooltipName = document.createElement('h4');
+    tooltipName.classList.add('p-m0');
+    tooltipName.classList.add('white_text');
+    tooltipName.innerText = ch.ArmoryEquipment[num].Name;
+    tooltip.appendChild(tooltipName);
+}
+
+// 장비등급
+function coloerFilter(ch, image){
+    if(ch.Grade == '에스더'){
+        image.classList.add('item-coloer-7');
+    } else if(ch.Grade == '유물'){
+        image.classList.add('item-coloer-1');
+    } else if(ch.Grade == '전설'){
+        image.classList.add('item-coloer-2');
+    } else if(ch.Grade == '영웅'){
+        image.classList.add('item-coloer-3');
+    } else if(ch.Grade == '희귀'){
+        image.classList.add('item-coloer-4');
+    } else if(ch.Grade == '고급'){
+        image.classList.add('item-coloer-5');
+    } else if(ch.Grade == '일반'){
+        image.classList.add('item-coloer-6');
+    }
+}
+
+// 품질
+function coloerFilterP(percent, image){
+    if(percent == 100){
+        image.classList.add('item-coloer-1-p');
+    } else if(percent < 100 && percent >= 90){
+        image.classList.add('item-coloer-2-p');
+    } else if(percent < 90 && percent >= 70){
+        image.classList.add('item-coloer-3-p');
+    } else if(percent < 70 && percent >= 40){
+        image.classList.add('item-coloer-4-p');
+    } else if(percent < 40 && percent >= 10){
+        image.classList.add('item-coloer-5-p');
+    } else {
+        image.classList.add('item-coloer-6-p');
+    } 
+}
+
+// 카드 테두리
+function cardGrade(grade, image){
+    if(grade == '유물'){
+        image.classList.add('card-pos-6');
+    } else if(grade == '전설'){
+        image.classList.add('card-pos-5');
+    } else if(grade == '영웅'){
+        image.classList.add('card-pos-4');
+    } else if(grade == '희귀'){
+        image.classList.add('card-pos-3');
+    } else if(grade == '고급'){
+        image.classList.add('card-pos-2');
+    } else if(grade == '일반'){
+        image.classList.add('card-pos-1');
+    } 
+}
+
+function cardAwake(awake, div){
+    if(awake == '5'){
+        div.style.width = '100px';
+    } else if(awake == 4){
+        div.style.width = '75px';
+    } else if(awake == 3){
+        div.style.width = '58px';
+    } else if(awake == 2){
+        div.style.width = '40px';
+    } else if(awake == 1){
+        div.style.width = '20px';
+    } else if(awake == 0){
+        div.style.width = '0px';
+    } 
+}
+
+
+function cardNameColoer(grade, image){
+    if(grade == '유물'){
+        image.classList.add('card-name-g-5');
+    } else if(grade == '전설'){
+        image.classList.add('card-name-g-1');
+    } else if(grade == '영웅'){
+        image.classList.add('card-name-g-2');
+    } else if(grade == '희귀'){
+        image.classList.add('card-name-g-3');
+    } else if(grade == '고급'){
+        image.classList.add('card-name-g-4');
+    } 
+}
+
+// 보석
+function addGem(ch , num , imageP , image) {
+
+    coloerFilter(ch.ArmoryGem.Gems[num], image)
+    // imageP.classList.add('overflow-h');
+    image.src = ch.ArmoryGem.Gems[num].Icon;
+    image.alt = ch.ArmoryGem.Gems[num].Name;
+    image.classList.add('w-h44');
+    image.classList.add('gem-radius');
+
+    
+    const gemEffect = document.createElement('span');
+    gemEffect.classList.add('white_text');
+    gemEffect.classList.add('gem-font');
+    // gemEffect.innerHTML = ch.ArmoryGem.Gems[num].Name;
+    if(ch.ArmoryGem.Gems[num].Name.search('홍염')){
+        gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 홍염';
+    } else if (ch.ArmoryGem.Gems[num].Name.search('멸화')) {
+        gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 멸화';
+    }
+    imageP.appendChild(gemEffect);
+    
+    
+    
+    
+    // 보석 효과
+    for(let i=0; i<ch.ArmoryGem.Effects.length; i++){
+        if(ch.ArmoryGem.Gems[num].Slot == ch.ArmoryGem.Effects[i].GemSlot){
+            
+            const gemEffect = document.createElement('h2');
+            gemEffect.id = 'gem-over';
+            gemEffect.classList.add('white_text');
+            gemEffect.classList.add('gem-hidden');
+            gemEffect.classList.add('gem-radius');
+            gemEffect.classList.add('coloer-select');
+            gemEffect.innerText = ch.ArmoryGem.Effects[i].Name + ch.ArmoryGem.Effects[i].Description;
+            gemEffectDiv.appendChild(gemEffect);
+            
+            const image = document.createElement('img');
+            image.classList.add('radius100');
+            image.classList.add('w-h44');
+            image.src=ch.ArmoryGem.Effects[i].Icon;
+            gemEffect.appendChild(image);
+        }
+    }
+    
+    
+}
+
+// 각인
+function addEngrave(ch, div , num){
+    let image = document.createElement('img');
+    image.src = ch.ArmoryEngraving.Effects[num].Icon;
+    image.alt = ch.ArmoryEngraving.Effects[num].Name;
+    image.title = ch.ArmoryEngraving.Effects[num].Description;
+    image.classList.add('radius100');
+    image.classList.add('w-h33');
+    image.classList.add('dis-block');
+    div.appendChild(image);
+
+    let name = document.createElement('span');
+    name.classList.add('white_text');
+    name.classList.add('t-indent');
+    name.innerText = ch.ArmoryEngraving.Effects[num].Name;
+    div.appendChild(name);
+
+}
+
+// 특성
+function addState(ch, div , name){
+   for(let i=0; i<ch.ArmoryProfile.Stats.length;i++){
+       if(ch.ArmoryProfile.Stats[i].Type == name){
+            const column = document.createElement('div');
+            column.classList.add('dis-flex');
+            column.classList.add('jc-sb');
+            column.classList.add('magin-b10');
+            div.appendChild(column);
+            let type = document.createElement('span');
+            type.classList.add('white_text');
+            type.classList.add('bold700');
+            type.innerText = ch.ArmoryProfile.Stats[i].Type;
+            column.appendChild(type);
+        
+            let value = document.createElement('span');
+            value.classList.add('white_text');
+            value.classList.add('align-right');
+            value.innerText = ch.ArmoryProfile.Stats[i].Value;
+            column.appendChild(value);
+
+        }
+   }
+}
+
+// 성향
+function addTendencies(ch, div){
+    for(let i=0; i<ch.ArmoryProfile.Tendencies.length;i++){
+        const column = document.createElement('div');
+        column.classList.add('dis-flex');
+        column.classList.add('jc-sb');
+        column.classList.add('magin-b10');
+        div.appendChild(column);
+
+        let type = document.createElement('span');
+        type.classList.add('white_text');
+        type.classList.add('bold700');
+        type.innerText = ch.ArmoryProfile.Tendencies[i].Type;
+        column.appendChild(type);
+    
+        let value = document.createElement('span');
+        value.classList.add('white_text');
+        value.classList.add('align-right');
+        value.innerText = ch.ArmoryProfile.Tendencies[i].Point;
+        column.appendChild(value);
+
+        const bar = document.createElement('div');
+        bar.classList.add('progress-bar');
+        column.appendChild(bar);
+        
+        const bar_p = document.createElement('div');
+        bar_p.classList.add('progress');
+        bar.appendChild(bar_p);
+        let p = ch.ArmoryProfile.Tendencies[i].Point*(0.1);
+        bar_p.style.width = p+'%';
+    }
+ }
+
+const img_g_uri = 'https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/profile/img_card_grade.png?f9e0ffc8a709611354db408dd0e7a7bb';
+
+// 카드
+function addCards(ch, div){
+    for(let i=0; i<ch.ArmoryCard.Cards.length;i++){
+        const column = document.createElement('div');
+        // column.classList.add('flex-dir-c');
+        column.classList.add('jc-sb');
+        column.classList.add('magin-b10');
+        div.appendChild(column);
+        
+        // 카드 이미지
+        let img = document.createElement('img');
+        img.classList.add('cards-size');
+        img.src = ch.ArmoryCard.Cards[i].Icon;
+        column.appendChild(img);
+        
+        // 테두리
+        let img_g = document.createElement('img');
+        img_g.src = img_g_uri;
+        cardGrade(ch.ArmoryCard.Cards[i].Grade, img_g);
+        column.appendChild(img_g);
+        
+        
+        // 카드이름
+        let value = document.createElement('div');
+        cardNameColoer(ch.ArmoryCard.Cards[i].Grade, value);
+        value.classList.add('white_text');
+        value.classList.add('al-center');
+        value.classList.add('dis-block');
+        value.classList.add('card-name');
+        value.innerText = ch.ArmoryCard.Cards[i].Name;
+        column.appendChild(value);
+        
+        // 카드 각성단계
+        let awake_b = document.createElement('div');
+        awake_b.classList.add('awake-back');
+        column.appendChild(awake_b);
+        cardAwake(ch.ArmoryCard.Cards[i].AwakeTotal,awake_b);
+        
+        let awake = document.createElement('div');
+        awake.classList.add('awake-front');
+        column.appendChild(awake);
+        cardAwake(ch.ArmoryCard.Cards[i].AwakeCount,awake);
+    }
+}
+
+// 카드 효과
+function addCardEffects(ch, div){
+    const cardEffectsBack = document.createElement('div');
+    cardEffectsBack.classList.add('card-states-back');
+    div.appendChild(cardEffectsBack);
+    cardEffectsBack.style.gridTemplateColumns=`repeat(${ch.ArmoryCard.Effects.length},minmax(0,1fr))`;
+    for(let i=0; i<ch.ArmoryCard.Effects.length;i++){
+        const cardEffects = document.createElement('div');
+        cardEffects.classList.add('radius');
+        cardEffects.classList.add('magin-b10');
+        cardEffects.classList.add('card-states');
+        
+        cardEffectsBack.appendChild(cardEffects);
+
+        for(let j=0; j<ch.ArmoryCard.Effects[i].Items.length;j++){
+            const column = document.createElement('div');
+            column.classList.add('jc-sb');
+            column.classList.add('magin-b10');
+            column.classList.add('white_text');
+            column.classList.add('al-center');
+            column.classList.add('dis-block');
+            column.innerText = ch.ArmoryCard.Effects[i].Items[j].Name;
+            column.style.marginLeft = '1rem';
+            column.style.marginTop = '15px';
+            cardEffects.appendChild(column);
+
+            let value = document.createElement('ul');
+            column.appendChild(value);
+
+            let effects = document.createElement('li');
+            effects.classList.add('white_text');
+            effects.classList.add('al-center');
+            effects.classList.add('dis-block');
+            effects.innerText = ch.ArmoryCard.Effects[i].Items[j].Description;
+            effects.style.marginTop = ' -0.6rem';
+            value.appendChild(effects);
+        }
+
+    }
+}
+
+
 btn.addEventListener('click', (e) => {
     var xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.addEventListener ('readystatechange', (e) => {
         if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
             console.log(xmlHttpRequest.responseText);
             const chInfo = JSON.parse(xmlHttpRequest.responseText);
+            // const chEq_h = JSON.parse(chInfo.ArmoryEquipment[1].Tooltip);
             console.dir(chInfo);
+            // console.dir(chEq_h);
+        
+            // for (const type in chEq_h) {
+
+            //     if(chEq_h[type].type =="IndentStringGroup"){
+
+            //         for (const value in chEq_h[type]) {
+
+            //             console.log(chEq_h[type][value]); 
             
+            //         }
+            //     }
+            // }
+
+        
         }
         
     });
     
-    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/보라다육", true);
+    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/소윤선", true);
     xmlHttpRequest.setRequestHeader('accept', 'application/json');
     xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
     xmlHttpRequest.onreadystatechange = () => { };
