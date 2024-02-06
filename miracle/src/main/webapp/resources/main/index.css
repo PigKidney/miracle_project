@@ -6,6 +6,9 @@
 	width: 1120px;
 	border: 1px yellow solid;
 }
+.h-100px{
+	height: 100px;
+}
 
 .h-280px {
 	height: 280px;
@@ -30,6 +33,9 @@
 .flex {
 	display: flex;
 	margin: 0 auto;	
+}
+.inline-flex{
+	display: inline-flex;
 }
 
 .justify-between {
@@ -82,18 +88,22 @@
 
   animation: slider 12s infinite linear;
 }
+/* 에키드나 */
 .slide:nth-child(1) {
   background-image: url(https://cdn.korlark.com/artworks/home/541657180860978066.webp);
   animation-delay: 0;
 }
+/* 카멘 */
 .slide:nth-child(2) {
   background-image: url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
   animation-delay: -3s;
 }
+/* 상아탑 */
 .slide:nth-child(3) {
   background-image: url(https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000);
   animation-delay: -6s;
 }
+/* 가르가디스 */
 .slide:nth-child(4) {
   background-image: url(https://cdn.korlark.com/artworks/home/417339171099840946.webp?t=1689753102000);
   animation-delay: -9s;
@@ -118,4 +128,9 @@
   100% {
     transform: translateX(0);
   }
+}
+
+.grid-2row{
+	display: grid;
+	grid-template-rows: 1fr, 1fr;
 }

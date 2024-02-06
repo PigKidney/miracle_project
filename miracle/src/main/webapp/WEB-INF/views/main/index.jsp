@@ -7,35 +7,103 @@
 <link rel="stylesheet" href="/resources/main/index.css" />
 <div class="include-top">
 	<div class="w-1120px h-280px main m-div1">
-		<div class="slider">
-			<div id="bannerImg1" class="slide"></div>
-			<div id="bannerImg2 " class="slide"></div>
-			<div id="bannerImg3" class="slide"></div>
-			<div id="bannerImg4" class="slide"></div>
+		<div class="slider cursor">
+			<div id="bannerImg1" class="slide cursor"></div>
+			<div id="bannerImg2" class="slide cursor"></div>
+			<div id="bannerImg3" class="slide cursor"></div>
+			<div id="bannerImg4" class="slide cursor"></div>
 		</div>
 	</div>
 	<div class="w-1120px h-280px main m-div2 flex justify-between">
 		<div class="m-top40 island">
-
-			<span class="island mainWhite bold font-20">현재 시간</span> <span
-				id="islandTime" class="islandTime mainPurple bold font-20"></span>
+			<span class="island mainWhite bold font-20">현재 시간</span> 
+			<span id="islandTime" class="islandTime mainPurple bold font-20"></span>
 		</div>
 		<div class="m-top40 island">
 			<span id="islandDate" class="mainWhite bold font-20"></span>
 		</div>
-
 	</div>
-	<div class="w-1120px h-280px main m-div3 flex justify-between">
-
-		<div>
-			<img alt="배너 이미지" height="298" data-nimg="1"
-				src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/c8cfe8f7128547eebf34aaba9b0696ff.jpg">
-		</div>
-		<div>
-			<img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/e7a08f22b56549e1868cfa7bdc1b1913.jpg"
-				height="298" />
-		</div>
-
+	
+	<div class="w-1120px h-280px main m-div3 justify-between">
+			
+			<div class="mainWhite h-100px flex justify-between">
+			
+				<div class="grid-2row cursor">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>오늘</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				<div class="grid-2row">
+					<div>요일</div>
+					<div>1</div>
+				</div>
+				
+			</div>
+			<hr />
+			
+			<div class="flex justify-between">
+			
+				<div class="mainWhite">
+							1
+				</div>
+				<div class="mainWhite">
+							2
+				</div>
+				<div class="mainWhite">
+							3
+				</div>
+			</div>
 	</div>
 
 <form id="loginForm2"action="/main/login" method="POST">
