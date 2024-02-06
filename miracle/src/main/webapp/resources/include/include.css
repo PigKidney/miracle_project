@@ -1,13 +1,27 @@
 * {
 	box-sizing: border-box;
 }
+.w-1120px {
+	width: 1120px;
+}
 
+.h-280px {
+	height: 280px;
+}
+
+.font-24{
+	font-size: 24px;
+}
+.font-16{
+	font-size: 16px;
+}
 #topfix {
 	position: fixed;
 	top: 0%;
 	left: 0%;
 	background-color: #42464D;
 	height: 68px;
+	z-index: 99;
 }
 
 .flex-test {
@@ -19,31 +33,20 @@
 body {
 	min-width: 100vw;
 	height: 100vh;
-	background-color: gray;
-}
-
-#botfix {
-	background-color: gray;
+	background-color: #2b2d31;
 }
 
 #top-tab1 {
 	padding-right: 20px;
 	padding-left: 40px;
-	background-color: red;
 }
 
 #top-tab2 {
 	background-color: #42464D;
 }
 
-#top-tab2>a {
-	background-color: green;
-}
-
 #top-tab3 {
 	padding-right: 24px;
-	background-color: skyblue;
-	
 }
 
 .include-top {
@@ -67,7 +70,7 @@ body {
 	border-radius: 10px;
 	outline: none;
 	padding-left: 10px;
-	background-color: #42464D; display : flex;
+	background-color: #42464D;
 	align-items: center;
 	display: flex;
 }
@@ -98,4 +101,78 @@ body {
 }
 .cursor{
 	cursor: pointer;
+}
+.bold{
+	font: bold;
+}
+.flex-just-center{
+	display: flex;
+	justify-content: center;
+}
+.justify-between{
+	justify-content: space-between;
+}
+.underline-none{
+	text-decoration: none;
+}
+.mainWhite{
+	color: #eaf0ec;
+}
+.mainPurple{
+	color: #8045dd;
+}
+
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  
+  width: 1120px;
+  height: 280px;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+
+  animation: slider 7.5s infinite linear;
+}
+
+.slide:nth-child(1) {
+  background-image: url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
+  animation-delay: 0;
+}
+.slide:nth-child(2) {
+  background-image: url(https://cdn.korlark.com/artworks/home/509107984186712397.webp?t=1698938628000);
+  animation-delay: -2.5s;
+}
+.slide:nth-child(3) {
+  background-image: url(https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000);
+  animation-delay: -5s;
+}
+
+@keyframes slider {
+  0% {
+    transform: translateX(0);
+  }
+
+  26% {
+    transform: translateX(0);
+  }
+  33% {
+    transform: translateX(-100%);
+    animation-timing-function: step-end;
+  }
+  93% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
