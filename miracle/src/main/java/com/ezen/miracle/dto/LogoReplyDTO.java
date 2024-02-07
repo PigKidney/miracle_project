@@ -9,7 +9,7 @@ public class LogoReplyDTO {
 	private Integer reply_id;
 	private Integer board_id;
 	private String reply_content;
-	private Integer user_id;
+	private Long user_id;
 	private Date created_at;
 	private Date modified_at; 
 	private Integer reply_show;

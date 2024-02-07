@@ -24,14 +24,14 @@ String user_nickname = (String) session.getAttribute("login_nickname");
 String user_password = (String) session.getAttribute("login_password");
 String user_email = (String) session.getAttribute("login_email");
 Object isAdmin = session.getAttribute("login_admin");
-System.out.println("Login Type : " + isAdmin);
 
 %>
 </head>
 <body>
 <script>
 const loginCheck = '${login_admin}';
-const idCheck = '${login_id}'
+const idCheck = '${login_id}';
+const nameCheck = '${login_nickname}';
 console.log("loginCheck : " + loginCheck);
 </script>
 
@@ -81,11 +81,11 @@ console.log("loginCheck : " + loginCheck);
 			
 						<div class="">
 							<a id="loginTag" class="mainWhite underline-none" href="/login/index">
-							로그인
+							
 							</a>
 						</div>
-						<div id="nickName" class="hide">
-							<span class="mainWhite"><%=user_nickname%></span>
+						<div id="nickName" class="mainWhite">
+							
 						</div>
 						<div id="addadd" class="hide">
 							<span class="material-symbols-outlined">expand_more</span>
@@ -94,7 +94,7 @@ console.log("loginCheck : " + loginCheck);
 				<div class="dropdown-content">
 						<a href="">MY PAGE </a>
 						<a href="">ㅇㅅㅇ</a>
-						<a href="">LOG OUT</a>
+						<a href="/main/logout">LOG OUT</a>
 				</div>
 		</div>
 			

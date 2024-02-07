@@ -6,3 +6,19 @@
 	grid-template-columns: 1fr 9fr 1fr;
 	border: 1px solid yellow;
 }
+
+
+.red{
+	color: red;
+}
+
+
+.reply-body{
+	display: grid;
+	grid-template-columns: 1fr 15fr 2fr 1fr;
+
+}
+
+.mainContent{
+	padding-left: 20px;
+}

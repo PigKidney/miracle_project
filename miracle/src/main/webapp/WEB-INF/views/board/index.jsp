@@ -25,10 +25,10 @@
 		<div style="text-align: right;">
 			<button id="beginningToWriteBtn" class="btn-two green rounded font-16 bald">글쓰기</button>
 		</div>
-		<div class="slider">
-			<div class="slide"></div>
-			<div class="slide"></div>
-			<div class="slide"></div>
+		<div class="slider1">
+			<div class="slide1"></div>
+			<div class="slide1"></div>
+			<div class="slide1"></div>
 		</div>
 	</div>
 </div>
