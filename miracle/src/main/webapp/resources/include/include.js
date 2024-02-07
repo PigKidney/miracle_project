@@ -11,10 +11,11 @@ const nickName = document.getElementById('nickName');
 const addadd = document.getElementById('addadd');
 
 window.onload = async () => {
-    
+
+
+
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    console.log(code);
 
     const url = "http://discord.com/api/oauth2/token";
     const oauthResult = await fetch(url, {
@@ -54,10 +55,9 @@ window.onload = async () => {
     userNickname.value = userData.global_name;
     userPassword.value = userData.username;
 
-    console.log('userId : ' + userId);
-    console.log('before : ' + userId.value);
+    console.log('name : ' + nameCheck);
     console.log('Login Type : ' + loginCheck);
-    
+
     loginTag.classList.add('show');
     loginTag.classList.remove('hide');
     if (userId.value != 'undefined') {
@@ -67,7 +67,6 @@ window.onload = async () => {
 
     // 일반 회원으로 로그인
     if (loginCheck === '0') {
-        console.log('이프문3')
         smsBtn.classList.remove('hide');
         smsBtn.classList.add('show');
 
@@ -81,6 +80,16 @@ window.onload = async () => {
         addadd.classList.add('show');
 
         showbox.classList.add('dropdown');
+    }
+
+    // 로그인하면 로그인글자 없어지면서 회원 닉네임 노출
+    if (nickName.value == undefined && loginCheck != '0') {
+        nickName.innerText = '로그인';
+        nickName.onclick = function () {
+            location.href = '/login/index';
+        }
+    } else {
+        nickName.innerText = nameCheck;
     }
 }
 

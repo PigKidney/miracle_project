@@ -6,12 +6,12 @@
 
 <link rel="stylesheet" href="/resources/main/index.css" />
 <div class="include-top">
-	<div class="w-1120px h-280px main m-div1">
+	<div class="w-1120px h-280px main m-div1 cursor">
 		<div class="slider cursor">
-			<div id="bannerImg1" class="slide cursor"></div>
-			<div id="bannerImg2" class="slide cursor"></div>
-			<div id="bannerImg3" class="slide cursor"></div>
-			<div id="bannerImg4" class="slide cursor"></div>
+			<div id="bannerImg1" class="slide"></div>
+			<div id="bannerImg2" class="slide"></div>
+			<div id="bannerImg3" class="slide"></div>
+			<div id="bannerImg4" class="slide"></div>
 		</div>
 	</div>
 	<div class="w-1120px h-280px main m-div2 flex justify-between">
@@ -117,7 +117,7 @@
 
 	<div class="w-1120px h-320px main m-div5 flex justify-between">
 		<div class="w-550h-280 grid m-top40">
-			<div class="mainWhite">로아 공지</div>
+			<div class="mainWhite cursor" onclick=moving()>로아 공지</div>
 			<div class="mainWhite">ㅇㅅㅇ</div>
 		</div>
 		<div class="w-550h-280 grid m-top40">

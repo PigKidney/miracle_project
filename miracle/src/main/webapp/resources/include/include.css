@@ -136,7 +136,7 @@ body {
 	padding-left: 20px;
 }
 
-.slider {
+.slider1 {
   position: relative;
   overflow: hidden;
   
@@ -144,7 +144,7 @@ body {
   height: 280px;
 }
 
-.slide {
+.slide1 {
   position: absolute;
   top: 0;
   left: 0;
@@ -153,23 +153,23 @@ body {
   background-size: cover;
   background-position: center;
 
-  animation: slider 7.5s infinite linear;
+  animation: slider1 7.5s infinite linear;
 }
 
-.slide:nth-child(1) {
+.slide1:nth-child(1) {
   background-image: url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
   animation-delay: 0;
 }
-.slide:nth-child(2) {
+.slide1:nth-child(2) {
   background-image: url(https://cdn.korlark.com/artworks/home/509107984186712397.webp?t=1698938628000);
   animation-delay: -2.5s;
 }
-.slide:nth-child(3) {
+.slide1:nth-child(3) {
   background-image: url(https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000);
   animation-delay: -5s;
 }
 
-@keyframes slider {
+@keyframes slider1 {
   0% {
     transform: translateX(0);
   }

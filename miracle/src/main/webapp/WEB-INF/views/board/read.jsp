@@ -20,25 +20,42 @@
 			<button id="deleteBtn" class="btn-two green rounded font-16 bald">삭제하기</button>
 		</div>
 		
-
+		<div class="grid-row2 mainWhite">
+		<c:forEach items="${replyList}" var="replyList" varStatus="status">
+		<hr />
+		<div class="reply-body">
+		<div>${replyList.user_id}</div>
+		<div class="mainContent">${replyList.reply_content}</div>
+		<div>${replyDate[status.index]}</div>
+		<input type="hidden" value="${replyList.reply_id}" name="reply_id" form="deleteReplyForm"/>
+		<input type="hidden" value="${read.board_id}" name="board_id" form="deleteReplyForm"/>
+		<span id="deleteReplyBtn" class="material-symbols-outlined cursor red">close</span>	
+		</div>
+		</c:forEach>
+		<hr />
+		</div>
 		
-
+		
 		<div class="grid-reply">
 			<div class="mainWhite" style="padding-top: 15px;padding-left: 15px; padding-right:15px;">
-				닉네임
+				${login_nickname}
 			</div>
 			<div style="padding-top: 15px;">
-				<textarea style="padding-left: 15px; padding-right:15px; padding-top: 10px;" rows="3" cols="100"
+				<textarea id="replyTextBox"  form="replyForm" name="reply_content" style="padding-left: 15px; padding-right:15px; padding-top: 10px;" rows="3" cols="100"
 					placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌받을 수 있습니다."></textarea>
 			</div>
 			<div>
 				<button id="addReplyBtn" class="btn-two red rounded font-16 bald">댓글작성</button>
 			</div>
-
 		</div>
+			<input type="hidden" value="${login_id}" name="user_id" form="replyForm"/>
+			<input type="hidden" value="${read.board_id}" name="board_id" form="replyForm"/>
+		
+		
+		<form action="/board/reply" method="post" id="replyForm"></form>
+		<form action="/board/deleteReply" method="post" id="deleteReplyForm"></form>
 		<script>
 			const board_id = ${read.board_id};
-			console.log('board_id = ' + board_id);
 		</script>
 	</div>
 </div>
