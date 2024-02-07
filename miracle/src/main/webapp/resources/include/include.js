@@ -3,15 +3,15 @@ const userEmail = document.getElementById('userEmail');
 const userPassword = document.getElementById('userPassword');
 const userNickname = document.getElementById('userNickname');
 const loginForm = document.getElementById('loginForm');
+const showbox = document.getElementById('showbox');
 
 const smsBtn = document.getElementById('smsBtn');
 const loginTag = document.getElementById('loginTag');
 const nickName = document.getElementById('nickName');
 const addadd = document.getElementById('addadd');
 
-let check = false;
-
 window.onload = async () => {
+    
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     console.log(code);
@@ -55,30 +55,18 @@ window.onload = async () => {
     userPassword.value = userData.username;
 
     console.log('userId : ' + userId);
-
     console.log('before : ' + userId.value);
-
-    console.log('로긴첵 : ' + loginCheck);
-    console.log(typeof (loginCheck));
-
+    console.log('Login Type : ' + loginCheck);
+    
+    loginTag.classList.add('show');
+    loginTag.classList.remove('hide');
     if (userId.value != 'undefined') {
+        console.log('loginForm submit');
         loginForm.submit('POST');
-    } else {
-        console.log('이프문2')
-        loginTag.classList.remove('hide');
-        loginTag.classList.add('show');
-
-        smsBtn.classList.remove('show');
-        smsBtn.classList.add('hide');
-
-        nickName.classList.remove('show');
-        nickName.classList.add('hide');
-
-        addadd.classList.remove('show');
-        addadd.classList.add('hide');
     }
 
-    if (loginCheck == 0 && code!=null) {
+    // 일반 회원으로 로그인
+    if (loginCheck === '0') {
         console.log('이프문3')
         smsBtn.classList.remove('hide');
         smsBtn.classList.add('show');
@@ -91,6 +79,8 @@ window.onload = async () => {
 
         addadd.classList.remove('hide');
         addadd.classList.add('show');
+
+        showbox.classList.add('dropdown');
     }
 }
 
