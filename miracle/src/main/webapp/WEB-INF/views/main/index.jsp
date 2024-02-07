@@ -117,12 +117,22 @@
 
 	<div class="w-1120px h-320px main m-div5 flex justify-between">
 		<div class="w-550h-280 grid m-top40">
-			<div class="mainWhite cursor" onclick=moving()>로아 공지</div>
-			<div class="mainWhite">ㅇㅅㅇ</div>
+			<div class="mainWhite cursor">로아 공지</div>
+			<div class="justify-between grid-main-board">
+			<c:forEach begin="0" end="4" step="1" var="i">
+				<div class="mainWhite">${i}</div>
+				<div class="mainWhite">ㅇㅅㅇ/</div>
+			</c:forEach>
+			</div>
 		</div>
 		<div class="w-550h-280 grid m-top40">
-			<div class="mainWhite">로고 공지</div>
-			<div class="mainWhite">ㅎㅅㅎ</div>
+			<div class="mainWhite cursor">로고 공지</div>
+			<div class="justify-between grid-main-board">
+			<c:forEach begin="0" end="4" step="1" var="i">
+				<div class="mainWhite">${i}</div>
+				<div class="mainWhite">ㅇㅠㅇ/</div>
+			</c:forEach>
+			</div>
 		</div>
 	</div>
 </div>

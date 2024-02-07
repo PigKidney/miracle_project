@@ -12,11 +12,10 @@
 		</div>
 		<div>
 			<div style="font-size: 12px"><a class="mainWhite underline-none" href="">이용약관</a> | <a class="mainWhite underline-none" href="">개인정보처리방침</a></div>
-			<div>디스코드</div>
+			<img src="/resources/img/gitcat.png" alt="gitcat" />
 		</div>
 	</div>
 </div>
-
 
 </body>
 </html>
