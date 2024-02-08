@@ -26,82 +26,57 @@
 	
 	<div class="w-1120px h-280px main m-div3 justify-between">
 			
-			<div class="mainWhite h-100px flex justify-between">
-			
-				<div class="grid-2row cursor">
-					<div>요일</div>
-					<div>1</div>
+			<div class="h-100px">
+				<div id="calendarList" class="mainWhite grid-2row justify-between flex">
 				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
+				<div id="daylight"class="mainWhite grid-2row justify-between flex">
 				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>오늘</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				<div class="grid-2row">
-					<div>요일</div>
-					<div>1</div>
-				</div>
-				
 			</div>
 			<hr />
 			
 			<div class="flex justify-between">
 			
 				<div class="mainWhite">
-							1
+							<div class="island-border-out grid-2row">
+								<div class="grid-3col">
+									<div>img</div>
+									<div>필드보스</div>
+									<div>시간</div>
+								</div>
+								<div class="grid-3col">
+									<div>ㅇ</div>
+									<div>ㅅ</div>
+									<div>ㅇ</div>
+								</div>
+							</div>
 				</div>
 				<div class="mainWhite">
-							2
+							<div class="island-border-out grid-2row">
+							<div class="grid-3col">
+									<div>img</div>
+									<div>우렁선</div>
+									<div>시간</div>
+								</div>
+								<div class="grid-3col">
+									<div>ㅇ</div>
+									<div>ㅠ</div>
+									<div>ㅇ</div>
+								</div>
+							</div>
 				</div>
 				<div class="mainWhite">
-							3
+							<div class="island-border-out grid-2row">
+							<div class="grid-3col">
+									<div>img</div>
+									<div>카오스게이트</div>
+									<div>시간</div>
+								</div>
+								<div class="grid-3col">
+									<div>ㅎ</div>
+									<div>ㅅ</div>
+									<div>ㅎ</div>
+								</div>
+							</div>
 				</div>
 			</div>
 	</div>
@@ -117,16 +92,12 @@
 
 	<div class="w-1120px h-320px main m-div5 flex justify-between">
 		<div class="w-550h-280 grid m-top40">
-			<div class="mainWhite cursor">로아 공지</div>
-			<div class="justify-between grid-main-board">
-			<c:forEach begin="0" end="4" step="1" var="i">
-				<div class="mainWhite">${i}</div>
-				<div class="mainWhite">ㅇㅅㅇ/</div>
-			</c:forEach>
+			<div class="mainWhite">로아 공지</div>
+			<div id="noticeList" class="justify-between grid-main-board">
 			</div>
 		</div>
 		<div class="w-550h-280 grid m-top40">
-			<div class="mainWhite cursor">로고 공지</div>
+			<div class="mainWhite">로고 공지</div>
 			<div class="justify-between grid-main-board">
 			<c:forEach begin="0" end="4" step="1" var="i">
 				<div class="mainWhite">${i}</div>
@@ -138,6 +109,5 @@
 </div>
 
 <script type="text/javascript" src="/resources/main/index.js">
-	
 </script>
 <jsp:include page="../include/bot.jsp" />
