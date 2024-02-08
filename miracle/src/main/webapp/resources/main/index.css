@@ -32,8 +32,9 @@
   grid-template-columns: 1fr 5fr;
 
 }
-.grid-main-board>div{
-  border-right: red solid 1px;	
+.grid-main-board>*{
+  border-right: blue solid 1px;	
+  margin-bottom: 20px;
 }
 
 .bannerShow {
@@ -153,5 +154,31 @@
 
 .grid-2row {
   display: grid;
-  grid-template-rows: 1fr, 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.grid-2row>div{
+	display: grid;
+}
+
+.island-border-out{
+	border: 1px solid green;
+	width: 300px;
+	height: 180px;
+}
+
+.grid-3col{
+  display: grid;
+  grid-template-columns: 2fr 8fr 4fr;
+}
+.grid-3col>*{
+  
+  border: 1px blue solid;
+}
+
+#daybydaylight>div{
+	border: 1px gray solid;
+}
+#calendarList{
+	border: 1px gray solid;
+	
 }
