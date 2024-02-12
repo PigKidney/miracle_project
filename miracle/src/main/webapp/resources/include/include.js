@@ -10,6 +10,9 @@ const loginTag = document.getElementById('loginTag');
 const nickName = document.getElementById('nickName');
 const addadd = document.getElementById('addadd');
 
+const myIP = '118.33.154.162';
+const local = 'localhost';
+
 window.onload = async () => {
 
 
@@ -25,7 +28,7 @@ window.onload = async () => {
             client_secret: 'YDQ7PiLXZ5xh5zI-h9dX43vQySk3t2wO',
             grant_type: 'authorization_code',
             code: code,
-            redirect_uri: 'http://localhost:9000/main/index',
+            redirect_uri: 'http://' + myIP + ':9000/main/index',
             scope: 'identify, email',
         }),
         headers: {

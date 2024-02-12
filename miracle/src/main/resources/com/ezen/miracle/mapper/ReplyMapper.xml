@@ -5,7 +5,7 @@
 <mapper namespace="com.ezen.miracle.mapper.ReplyMapper">
 
 	<select id="getAll" resultType="com.ezen.miracle.dto.LogoReplyDTO">
-		select * from logo_reply where board_id = #{board_id} and reply_show = 1
+		select * from logo_reply inner join logo_user using(user_id) where board_id = #{board_id} and reply_show = 1
 	</select>
 
 	<insert id="write">

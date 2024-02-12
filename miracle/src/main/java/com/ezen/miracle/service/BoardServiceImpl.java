@@ -38,6 +38,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int write(LogoBoardDTO dto) {
 		int result = boardMapper.write(dto);
+		log.info("user_id : " + dto.getUser_id());
 		if (result == 1) {
 			return 1;
 			// 나중에 댓글 추가할 때 사용할 예정
@@ -74,6 +75,26 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int delete(int board_id) {
 		int result = boardMapper.delete(board_id);
+		if (result == 1) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	@Override
+	public int chuchu(int board_id) {
+		int result = boardMapper.chuchu(board_id);
+		if (result == 1) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	@Override
+	public int viewCount(int board_id) {
+		int result = boardMapper.viewCount(board_id);
 		if (result == 1) {
 			return 1;
 		} else {

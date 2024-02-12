@@ -33,6 +33,7 @@ const loginCheck = '${login_admin}';
 const idCheck = '${login_id}';
 const nameCheck = '${login_nickname}';
 console.log("loginCheck : " + loginCheck);
+console.log("user_id : " + idCheck);
 </script>
 
 	<div id="topfix" class="flex-test">

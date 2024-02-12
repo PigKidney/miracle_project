@@ -11,5 +11,7 @@ public interface BoardService {
 	int write(LogoBoardDTO dto);
 	int rewrite(LogoBoardDTO dto);
 	int delete(int board_id);
+	int chuchu(int board_id);
+	int viewCount(int board_id);
 
 }

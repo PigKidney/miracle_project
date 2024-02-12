@@ -18,6 +18,10 @@
 	text-align: left;
 	text-decoration: none;	
 }
+.nick-deco{
+	border-left: #33353A 2px solid;
+	border-right: #33353A 2px solid;
+}
 
 .board-content:visited {
 	color: #eaf0ec;

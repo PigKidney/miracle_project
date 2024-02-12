@@ -4,7 +4,6 @@
 
 .w-1120px {
   width: 1120px;
-  border: 1px yellow solid;
 }
 
 .h-100px {
@@ -30,11 +29,23 @@
 .grid-main-board {
   display: grid;
   grid-template-columns: 1fr 5fr;
-
 }
+
 .grid-main-board>*{
-  border-right: blue solid 1px;	
+
   margin-bottom: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.maybe{
+	font-size: 18px;
+}
+.grid-main-board>*:nth-child(2n-1){
+  border-right: #42464D solid 2px;	
+}
+.notice-margin{
+	margin-left: 15px;
+	margin-bottom: 15px;
 }
 
 .bannerShow {
@@ -68,10 +79,6 @@
   grid-template-rows: 1fr 4fr;
 }
 
-.w-550h-280>div {
-  border: 1px red solid;
-}
-
 .h-320px {
   height: 320px;
 }
@@ -80,8 +87,8 @@
   font: bold;
 }
 
-.font-20 {
-  font-size: 20px;
+.font-18 {
+  font-size: 18px;
 }
 
 .slider {
@@ -170,15 +177,44 @@
   display: grid;
   grid-template-columns: 2fr 8fr 4fr;
 }
-.grid-3col>*{
-  
-  border: 1px blue solid;
+
+#daylight>div{
+	border: 1px gray solid;
+	width: 20px;
+	padding-top: 25px;
+	text-align: center;
+}
+#calendarList>div{
+	border: 1px gray solid;
+	width: 20px;
+	padding-top: 20px;
+	text-align: center;
 }
 
-#daybydaylight>div{
-	border: 1px gray solid;
+.add-cursor>div{
+	cursor: pointer;
 }
-#calendarList{
-	border: 1px gray solid;
+.aa{
+  justify-content: space-around;
+}
+
+.island-grid{
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+}
+.island-grid>*{
+	border: 1px solid red;
+}
+.grid-4col{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	padding-left: 10px;
+}
+.island-box{
+	border: 2px solid #42464D;
+	border-radius: 5px;
+}
+.box-background-color{
 	
+	background-color: #33353A;
 }

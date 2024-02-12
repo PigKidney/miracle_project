@@ -11,10 +11,12 @@ public class LogoBoardDTO {
 	private String board_content;
 	private String board_category;
 	private Integer board_good_count;
+	private String user_nickname;
 	private Long user_id;
 	private Integer view_count;
 	private Date created_at;
 	private Date modified_at;
 	private Integer board_show;
+	private Integer reply_count;
 
 }
