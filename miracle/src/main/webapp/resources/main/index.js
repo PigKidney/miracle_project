@@ -200,7 +200,7 @@ function island() {
                 }
             }
             bossNgate_2.children[0].innerHTML = '<img style="border-radius: 5px;" height="40px" width="40px" src="' + voyageList[voyageList.length - 1].ContentsIcon + '"></img>';
-    //      bossNgate_2.children[1].innerHTML = voyageList[voyageList.length - 1].CategoryName;
+            //      bossNgate_2.children[1].innerHTML = voyageList[voyageList.length - 1].CategoryName;
             bossNgate_2.children[1].innerHTML = '유령선';
 
         }
@@ -253,15 +253,14 @@ function adventureTimer() {
 
     if (eventTimeMin < 10) {
         eventTimeMin = '0' + eventTimeMin;
-    } else if (eventTimeMin == 59) {
-        eventTimeMin = '00';
-    }
+    } 
 
     if (eventTimeSec < 10) {
         eventTimeSec = '0' + eventTimeSec;
     } else if (eventTimeSec == 60) {
         eventTimeSec = '00';
-        eventTimeMin += 1;
+        eventTimeMin = parseInt(eventTimeMin);
+        eventTimeMin++;
     }
 
     let eventTable = today.getDay();

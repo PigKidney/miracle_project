@@ -130,6 +130,7 @@ public class BoardController {
 
 	@GetMapping("/good")
 	public String good(Model model, int board_id) {
+		log.info("ㅇㅇ");
 		boardService.chuchu(board_id);
 		log.info("/good >> redirect:/board/read");
 		return "redirect:/board/read?board_id=" + board_id;
