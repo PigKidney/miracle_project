@@ -108,11 +108,11 @@
 				<!-- 각인 -->
 				<div id="l7" class="list-def">
 					<div id="l7-1" class="flex-dir-c ">
-						<img src="" alt="" title="" class="w-h50 radius100" />
+						<img src="" alt="" title="" class="w-h44 radius100" />
 						<div id="l7-1Tooltip" class="p15-m0"></div>
 					</div>
 					<div id="l7-2" class="flex-dir-c">
-						<img src="" alt="" title="" class="w-h50 radius100 " />
+						<img src="" alt="" title="" class="w-h44 radius100 " />
 						<div id="l7-2Tooltip" class="p15-m0"></div>
 					</div>
 				</div>

@@ -64,9 +64,4 @@
 			
 		</div>
 	</div>
-<<<<<<< HEAD
-	
 	<script src="/resources/include/include.js"></script>
-=======
-	<script src="/resources/include/include.js"></script>
->>>>>>> cea8739eab7b47be01254c6d84a649b700a3e436

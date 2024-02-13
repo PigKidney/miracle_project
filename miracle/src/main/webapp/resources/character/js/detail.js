@@ -125,6 +125,11 @@ const tendencies = document.querySelector('#tendencies');
 const cards = document.querySelector('#cards');
 const cardsStates = document.querySelector('#cards-states');
 
+const ststes = ['치명','특화','신속','제압','인내','숙련'];
+const img_g_uri = 'https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/profile/img_card_grade.png?f9e0ffc8a709611354db408dd0e7a7bb';
+
+
+
 function addSpan(text) {
     const span = document.createElement('sapn');
     span.classList.add('image-box-text');
@@ -205,7 +210,18 @@ exbtn.addEventListener('click', (e) => {
             addEqui(chInfo, 4, l5Image, l5ImageP , l5Tooltip);
             // 무기
             addEqui(chInfo, 0, l6Image, l6ImageP , l6Tooltip);
-
+            if(searchTotailTranscendence(chInfo.ArmoryEquipment[1]) != undefined){
+                const eq_img = document.createElement('img');
+                eq_img.classList.add('w-h20');
+                eq_img.classList.add('trans-img-pos');
+                eq_img.src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/game/ico_tooltip_transcendence.png";
+                l6Tooltip.appendChild(eq_img);
+                const eq_lv = document.createElement('span');
+                eq_lv.classList.add('eqi-EngravePoint');
+                eq_lv.classList.add('magin-r10');
+                eq_lv.innerText = searchTotailTranscendence(chInfo.ArmoryEquipment[1]);
+                l6Tooltip.appendChild(eq_lv);
+            }
             // 목걸이
             addEqui(chInfo, 6, r1Image, r1ImageP , r1Tooltip);
             // 귀걸이
@@ -218,22 +234,36 @@ exbtn.addEventListener('click', (e) => {
             addEqui(chInfo, 10, r5Image, r5ImageP , r5Tooltip);
             // 팔찌
             addEqui(chInfo, 12, r6Image, r6ImageP , r6Tooltip);
-
+            
             addEqui(chInfo, 11, r7Image, r7ImageP , r7Tooltip);
-
+            
+            // const trans_img = document.querySelectorAll('#trans > img');
+            // for(let i=0;i<trans_img.length;i++){
+            //     trans_img[i].src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/game/ico_tooltip_transcendence.png";
+            // }
             // 장착 각인
             l7_1.src = chInfo.ArmoryEngraving.Engravings[0].Icon;
             const l7_1_h4 = document.createElement('h4');
-            l7_1_h4.classList.add('white_text');
+            l7_1_h4.classList.add('eqi-EngraveName');
             l7_1_h4.innerText = chInfo.ArmoryEngraving.Engravings[0].Name;
             l7_1Tooltip.appendChild(l7_1_h4);
+            const l7_1_span = document.createElement('span');
+            l7_1_span.classList.add('eqi-EngravePoint');
+            l7_1_span.innerText = searchEngravePoint(chInfo.ArmoryEngraving.Engravings[0]);
+            l7_1Tooltip.appendChild(l7_1_span);
+
+
 
 
             l7_2.src = chInfo.ArmoryEngraving.Engravings[1].Icon;
             const l7_2_h4 = document.createElement('h4');
-            l7_2_h4.classList.add('white_text');
+            l7_2_h4.classList.add('eqi-EngraveName');
             l7_2_h4.innerText = chInfo.ArmoryEngraving.Engravings[1].Name;
             l7_2Tooltip.appendChild(l7_2_h4);
+            const l7_2_span = document.createElement('span');
+            l7_2_span.classList.add('eqi-EngravePoint');
+            l7_2_span.innerText = searchEngravePoint(chInfo.ArmoryEngraving.Engravings[1]);
+            l7_2Tooltip.appendChild(l7_2_span);
 
             // 캐릭터 사진
             image.src = chInfo.ArmoryProfile.CharacterImage;
@@ -282,7 +312,6 @@ exbtn.addEventListener('click', (e) => {
             }
 
             // 특성값
-            let ststes = ['치명','특화','신속','제압','인내','숙련'];
             for(let i=0;i<ststes.length;i++){
                 addState(chInfo, states , ststes[i]);
             }
@@ -304,7 +333,7 @@ exbtn.addEventListener('click', (e) => {
         
     });
     
-    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/소윤선", true);
+    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/우레", true);
     xmlHttpRequest.setRequestHeader('accept', 'application/json');
     xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
     xmlHttpRequest.onreadystatechange = () => { };
@@ -321,18 +350,65 @@ function addEqui(ch , num , image , imageP ,  tooltip){
     
     const chEq_a = JSON.parse(ch.ArmoryEquipment[num].Tooltip);
 
-    const imageDiv = document.createElement('div');
-    imageDiv.innerText = chEq_a.Element_001.value.qualityValue;
-    coloerFilterP(chEq_a.Element_001.value.qualityValue,imageP);
-    imageDiv.classList.add('eimg-div');
+    if(num != 11 && num != 12 ){
+        const imageDiv = document.createElement('div');
+        imageDiv.innerText = chEq_a.Element_001.value.qualityValue;
+        coloerFilterP(chEq_a.Element_001.value.qualityValue,imageP);
+        imageDiv.classList.add('eimg-div');
+        imageP.appendChild(imageDiv);
+    }
 
-    imageP.appendChild(imageDiv);
-
+    if(searchTranscendence(ch.ArmoryEquipment[num]) != undefined){
+        const eq_img = document.createElement('img');
+        eq_img.classList.add('w-h20');
+        eq_img.classList.add('trans-img-pos');
+        eq_img.src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/game/ico_tooltip_transcendence.png";
+        tooltip.appendChild(eq_img);
+        const eq_lv = document.createElement('span');
+        eq_lv.classList.add('eqi-EngravePoint');
+        eq_lv.innerHTML = searchTranscendence(ch.ArmoryEquipment[num]);
+        tooltip.appendChild(eq_lv);
+    }
+    
     const tooltipName = document.createElement('h4');
     tooltipName.classList.add('p-m0');
     tooltipName.classList.add('white_text');
+    if(num<=12 && num>=6 || num ==0){
+        tooltipName.classList.add('magin-t6');
+    }
     tooltipName.innerText = ch.ArmoryEquipment[num].Name;
     tooltip.appendChild(tooltipName);
+    
+    if(searchEqiStatePoint(ch.ArmoryEquipment[num]) != undefined && num != 12 || num == 11){
+        if(num != 11){
+            const eq_lv = document.createElement('div');
+            // eq_lv.classList.add('white_text');
+            eq_lv.classList.add('eqi-StatePoint');
+            eq_lv.innerText = searchEqiStatePoint(ch.ArmoryEquipment[num]);
+            tooltip.appendChild(eq_lv);
+        }
+        
+        
+        searchEqiEngravePoint(ch.ArmoryEquipment[num], tooltip);
+        
+    }
+    
+    if(searchFunction(ch.ArmoryEquipment[num], setValue) != undefined){
+        const eq_lv = document.createElement('span');
+        eq_lv.classList.add('eqi-EngravePoint');
+        eq_lv.classList.add('magin-r10');
+        eq_lv.innerHTML = searchFunction(ch.ArmoryEquipment[num], setValue);
+        tooltip.appendChild(eq_lv);
+        
+        searchTranscendence(ch.ArmoryEquipment[num])
+    }
+    if(num<6){
+        searchElixirPoint(ch.ArmoryEquipment[num],tooltip);
+    }
+    if(num == 12){
+        searchBraceletEP(ch.ArmoryEquipment[num], tooltip);
+    }
+
 }
 
 // 장비등급
@@ -487,6 +563,17 @@ function addEngrave(ch, div , num){
 
 }
 
+// 장착각인활성포인트
+function searchEngravePoint(json){
+    var tooltip = JSON.parse(json.Tooltip);
+    console.dir(tooltip);
+    for (const type in tooltip) {
+        if(tooltip[type].type == "EngraveSkillTitle"){
+            return tooltip[type].value.leftText.substring(tooltip[type].value.leftText.search('각인 활성 포인트'),tooltip[type].value.leftText.indexOf('</FONT>'));
+        }
+    }
+}
+
 // 특성
 function addState(ch, div , name){
    for(let i=0; i<ch.ArmoryProfile.Stats.length;i++){
@@ -545,7 +632,6 @@ function addTendencies(ch, div){
     }
  }
 
-const img_g_uri = 'https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/profile/img_card_grade.png?f9e0ffc8a709611354db408dd0e7a7bb';
 
 // 카드
 function addCards(ch, div){
@@ -634,16 +720,305 @@ function addCardEffects(ch, div){
 }
 
 
+
+let setValue = ['사멸','갈망','배신','지배',"환각",'파괴','악몽'];
+// 세트효과
+function searchFunction( json , arr){
+    var tooltip = JSON.parse(json.Tooltip);
+    
+    for (const type in tooltip) {
+        if(tooltip[type].type == "ItemPartBox"){
+            for (const value in tooltip[type]) {
+                if(value == 'value'){
+                    for(const a in tooltip[type][value]){
+                        for(let i=0; i<arr.length ; i++){
+                            if(tooltip[type][value][a].includes(arr[i])){
+                                let lv = tooltip[type][value][a].substring(tooltip[type][value][a].indexOf('Lv.'),tooltip[type][value][a].indexOf('Lv.')+4);
+                                return arr[i]+' '+lv;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+// 초월
+function searchTranscendence(json){
+    var tooltip = JSON.parse(json.Tooltip);
+    for (const type in tooltip) {
+        if(tooltip[type].type == "IndentStringGroup"){
+            for (const value in tooltip[type]) {
+                if(value == 'value'){
+                    for(const a in tooltip[type][value]){
+                        for(const t in tooltip[type][value][a]){
+                            if(t == 'topStr'){
+                                if(tooltip[type][value][a][t].includes('초월')){
+                                    let index = tooltip[type][value][a][t].search('</FONT>단계');
+                                    let point =tooltip[type][value][a][t].substring(tooltip[type][value][a][t].length,tooltip[type][value][a][t].length-2);
+                                    let step = tooltip[type][value][a][t].substring(index-1,index)+'단계';
+                                    console.log(point + ' ' + step);
+                                    return point + ' ' + step ;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 초월 총단계
+function searchTotailTranscendence(json){
+    var tooltip = JSON.parse(json.Tooltip);
+    for (const type in tooltip) {
+        if(tooltip[type].type == "IndentStringGroup"){
+            for (const value in tooltip[type]) {
+                if(value == 'value'){
+                    for(const a in tooltip[type][value]){
+                        for(const t in tooltip[type][value][a]){
+                            for(const total in tooltip[type][value][a][t]){
+                                if(tooltip[type][value][a][t][total].contentStr.includes('모든 방어구에 적용된 총')){
+                                        console.log(tooltip[type][value][a][t][total].contentStr);
+                                        let start = tooltip[type][value][a][t][total].contentStr.search('</img>')+6;
+                                        let index = tooltip[type][value][a][t][total].contentStr.search('개</FONT>');
+                                        let step = '총 '+tooltip[type][value][a][t][total].contentStr.substring(start,index)+'단계';
+                                        return step ;
+                                    }
+                                
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 엘릭서
+function searchElixirPoint(ch,div){
+    const json = JSON.parse(ch.Tooltip);
+    for (const type in json) {
+        if(json[type].type == "IndentStringGroup"){
+            for (const value in json[type]) {
+                if(value == 'value'){
+                    for(const a in json[type][value]){
+                        if(json[type][value][a].topStr.includes('엘릭서 효과')){
+                            for(const p in json[type][value][a]){
+                                if(p == 'contentStr'){
+                                    for(const lv in json[type][value][a][p]){
+                                        if(p == 'contentStr'){
+                                            // console.log(json[type][value][a][p][lv].contentStr.substring(
+                                            //     json[type][value][a][p][lv].contentStr.indexOf(']')+8,
+                                            //     json[type][value][a][p][lv].contentStr.indexOf('</FONT><br>')
+                                            // ).replace('<FONT color=\'#FFD200\'>',' '));
+                                            let point = json[type][value][a][p][lv].contentStr.substring(
+                                                json[type][value][a][p][lv].contentStr.indexOf(']')+8,
+                                                json[type][value][a][p][lv].contentStr.indexOf('</FONT><br>')
+                                            ).replace('<FONT color=\'#FFD200\'>',' ');
+                                            const el_p = document.createElement('span');
+                                            el_p.classList.add('eqi-EngravePoint');
+                                            el_p.classList.add('magin-r10');
+                                            el_p.innerText = point;
+                                            div.appendChild(el_p);
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+    }
+};
+
+// 악세서리 특성
+function searchEqiStatePoint(ch){
+    const json = JSON.parse(ch.Tooltip);
+    for (const type in json) {
+        if(json[type].type == "ItemPartBox"){
+            for (const value in json[type]) {
+                if(value == 'value'){
+                    for(const a in json[type][value]){
+                        for(let i=0; i<ststes.length ; i++){
+                            if(json[type][value][a].includes(ststes[i])){
+                                return json[type][value][a].replace('<BR>', ' ');
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
+// 악세서리 각인
+function searchEqiEngravePoint(ch , div){
+    const json = JSON.parse(ch.Tooltip);
+    for (const type in json) {
+        if(json[type].type == "IndentStringGroup"){
+            for (const value in json[type]) {
+                if(value == 'value'){
+                    for(const a in json[type][value]){
+                        for(const t in json[type][value][a]){
+                            if(t == 'contentStr'){
+                                for(const p in json[type][value][a][t]){
+                                    const point = json[type][value][a][t][p].contentStr.substring(23, 
+                                        json[type][value][a][t][p].contentStr.search('</FONT>'))
+                                    +' '+ json[type][value][a][t][p].contentStr.substring(
+                                        json[type][value][a][t][p].contentStr.indexOf('+')+1, 
+                                    json[type][value][a][t][p].contentStr.search('<BR>'));
+                                    const eq_p = document.createElement('span');
+                                    eq_p.classList.add('eqi-EngravePoint');
+                                    eq_p.classList.add('magin-r10');
+                                    if(point.includes('감소')){
+                                        eq_p.classList.add('minus-color');
+                                    }
+                                    eq_p.innerText = point;
+                                    div.appendChild(eq_p);
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
+// 팔찌 특성
+function searchBraceletEP(ch , div){
+    const json = JSON.parse(ch.Tooltip);
+    for (const type in json) {
+        if(json[type].type == "ItemPartBox"){
+            for (const value in json[type]) {
+                if(value == 'value'){
+                    for(const a in json[type][value]){
+                        for(let i=0; i<ststes.length ; i++){ 
+                            if(json[type][value][a].includes(`${ststes[i]} +`)){
+                                // console.log(json[type][value][a]);
+                                // console.log(json[type][value][a].search(`${ststes[i]} +`));
+                                // console.log(json[type][value][a].substring(
+                                //     json[type][value][a].search(`${ststes[i]} +`),json[type][value][a].search(`${ststes[i]} +`)+7));
+                                const point = json[type][value][a].substring(
+                                    json[type][value][a].search(`${ststes[i]} +`),json[type][value][a].search(`${ststes[i]} +`)+7);
+
+                                const eq_p = document.createElement('span');
+                                eq_p.classList.add('eqi-StatePoint');
+                                eq_p.classList.add('magin-r10');
+                                eq_p.innerText = point;
+                                div.appendChild(eq_p);
+                            } 
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
+// test
+function test(ch){
+    const json = JSON.parse(ch.Tooltip);
+    for (const type in json) {
+        if(json[type].type == "IndentStringGroup"){
+            for (const value in json[type]) {
+                if(value == 'value'){
+                    for(const a in json[type][value]){
+                        for(const t in json[type][value][a]){
+                            if(t == 'contentStr'){
+                                for(const p in json[type][value][a][t]){
+                                    const point = json[type][value][a][t][p].contentStr.substring(23, 
+                                        json[type][value][a][t][p].contentStr.search('</FONT>'))
+                                    +' '+ json[type][value][a][t][p].contentStr.substring(
+                                        json[type][value][a][t][p].contentStr.indexOf('+')+1, 
+                                    json[type][value][a][t][p].contentStr.search('<BR>'));
+                                    console.log(point);
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
+function test2(ch ){
+    const json = JSON.parse(ch.Tooltip);
+    for (const type in json) {
+        if(json[type].type == "ItemPartBox"){
+            for (const value in json[type]) {
+                if(value == 'value'){
+                    for(const a in json[type][value]){
+                        for(let i=0; i<ststes.length ; i++){ 
+                            if(json[type][value][a].includes(`${ststes[i]} +`)){
+                                console.log(json[type][value][a]);
+                                console.log(json[type][value][a].search(`${ststes[i]} +`));
+                                console.log(json[type][value][a].substring(
+                                    json[type][value][a].search(`${ststes[i]} +`),json[type][value][a].search(`${ststes[i]} +`)+7));
+
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
+// 엘릭서 테스트
+function test3(ch){
+    const json = JSON.parse(ch.Tooltip);
+    for (const type in json) {
+        if(json[type].type == "IndentStringGroup"){
+            for (const value in json[type]) {
+                if(value == 'value'){
+                    for(const a in json[type][value]){
+                        if(json[type][value][a].topStr.includes('엘릭서 효과')){
+                            for(const p in json[type][value][a]){
+                                if(p == 'contentStr'){
+                                    for(const lv in json[type][value][a][p]){
+                                        if(p == 'contentStr'){
+                                            console.log(json[type][value][a][p][lv].contentStr.substring(
+                                                json[type][value][a][p][lv].contentStr.indexOf(']')+8,
+                                                json[type][value][a][p][lv].contentStr.indexOf('</FONT><br>')
+                                            ).replace('<FONT color=\'#FFD200\'>',' '));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
 btn.addEventListener('click', (e) => {
     var xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.addEventListener ('readystatechange', (e) => {
         if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
             console.log(xmlHttpRequest.responseText);
             const chInfo = JSON.parse(xmlHttpRequest.responseText);
-            // const chEq_h = JSON.parse(chInfo.ArmoryEquipment[1].Tooltip);
-            console.dir(chInfo);
-            // console.dir(chEq_h);
-        
+            console.dir(JSON.parse(chInfo.ArmoryEquipment[1].Tooltip));
+            // for(let i=0; i<chInfo.ArmoryEquipment.length ; i++){
+            //     console.log(searchFunction(chInfo.ArmoryEquipment[i], setValue));
+            // }
+
+            // console.log(test2(chInfo.ArmoryEquipment[12]));
+            // test(chInfo.ArmoryEquipment[11]);
+            // test3(chInfo.ArmoryEquipment[4]);
+            console.log(searchTotailTranscendence(chInfo.ArmoryEquipment[4]));
             // for (const type in chEq_h) {
 
             //     if(chEq_h[type].type =="IndentStringGroup"){
@@ -661,11 +1036,10 @@ btn.addEventListener('click', (e) => {
         
     });
     
-    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/소윤선", true);
+    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/주다영", true);
     xmlHttpRequest.setRequestHeader('accept', 'application/json');
     xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
     xmlHttpRequest.onreadystatechange = () => { };
     xmlHttpRequest.send();
     
 });
-
