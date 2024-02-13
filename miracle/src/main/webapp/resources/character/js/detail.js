@@ -126,6 +126,8 @@ const cards = document.querySelector('#cards');
 const cardsStates = document.querySelector('#cards-states');
 
 const ststes = ['치명','특화','신속','제압','인내','숙련'];
+const elixirs = ['강맹', '달인', '선각자', '선봉대', '신념', '진군', '칼날 방패', '행운', '회심'];
+
 const img_g_uri = 'https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/profile/img_card_grade.png?f9e0ffc8a709611354db408dd0e7a7bb';
 
 
@@ -180,7 +182,11 @@ exbtn.addEventListener('click', (e) => {
             const titleDiv = document.createElement('div');
             chImage.appendChild(titleDiv);
             titleDiv.appendChild(addSpan(' 칭호 '));
-            titleDiv.appendChild(addSpanWhite(' '+chInfo.ArmoryProfile.Title));
+            if(chInfo.ArmoryProfile.Title == null){
+                titleDiv.appendChild(addSpanWhite(' 미장착'));
+            } else {
+                titleDiv.appendChild(addSpanWhite(' '+chInfo.ArmoryProfile.Title));
+            }
             
             
             // pvp
@@ -195,72 +201,87 @@ exbtn.addEventListener('click', (e) => {
             chImage.appendChild(townDiv);
             townDiv.appendChild(addSpan(' 영지 '));
             townDiv.appendChild(addSpanWhite(' '+'Lv.'+chInfo.ArmoryProfile.TownLevel+' '+ chInfo.ArmoryProfile.TownName));
+            
             if(chInfo.ArmoryEquipment != null){
-                // 머리
-                addEqui(chInfo, 1, l1Image, l1ImageP , l1Tooltip);
-                // 어깨
-                addEqui(chInfo, 5, l2Image, l2ImageP , l2Tooltip);
-                // 상의
-                addEqui(chInfo, 2, l3Image, l3ImageP , l3Tooltip);
-                // 하의
-                addEqui(chInfo, 3, l4Image, l4ImageP , l4Tooltip);
-                // 장갑
-                addEqui(chInfo, 4, l5Image, l5ImageP , l5Tooltip);
-                // 무기
-                addEqui(chInfo, 0, l6Image, l6ImageP , l6Tooltip);
-
-                if(searchTotailTranscendence(chInfo.ArmoryEquipment[1]) != undefined){
-                    const eq_img = document.createElement('img');
-                    eq_img.classList.add('w-h20');
-                    eq_img.classList.add('trans-img-pos');
-                    eq_img.src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/game/ico_tooltip_transcendence.png";
-                    l6Tooltip.appendChild(eq_img);
-                    const eq_lv = document.createElement('span');
-                    eq_lv.classList.add('eqi-EngravePoint');
-                    eq_lv.classList.add('magin-r10');
-                    eq_lv.innerText = searchTotailTranscendence(chInfo.ArmoryEquipment[1]);
-                    l6Tooltip.appendChild(eq_lv);
+                var earring = false;
+                var ring = false;
+                for(let i = 0 ; i < chInfo.ArmoryEquipment.length ; i++){
+                    let type = chInfo.ArmoryEquipment[i].Type;
+                    if(type == '무기'){
+                        addEqui(chInfo, i, l6Image, l6ImageP , l6Tooltip);
+                    } else if(type == '투구'){
+                        addEqui(chInfo, i, l1Image, l1ImageP , l1Tooltip);
+                        // 초월 총 합산
+                        if(searchTotailTranscendence(chInfo.ArmoryEquipment[i]) != undefined){
+                            const eq_img = document.createElement('img');
+                            eq_img.classList.add('w-h20');
+                            eq_img.classList.add('trans-img-pos');
+                            eq_img.src = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/game/ico_tooltip_transcendence.png";
+                            l6Tooltip.appendChild(eq_img);
+                            const eq_lv = document.createElement('span');
+                            eq_lv.classList.add('eqi-EngravePoint');
+                            eq_lv.classList.add('magin-r10');
+                            eq_lv.innerText = searchTotailTranscendence(chInfo.ArmoryEquipment[i]);
+                            l6Tooltip.appendChild(eq_lv);
+                        }
+                        // 엘릭서 활성 단계
+                        if(searchElixirTotailPoint(chInfo.ArmoryEquipment[i]) != undefined){
+                            const eq_lv = document.createElement('span');
+                            eq_lv.classList.add('eqi-EngravePoint');
+                            eq_lv.classList.add('magin-r10');
+                            eq_lv.innerText = searchElixirTotailPoint(chInfo.ArmoryEquipment[i]);
+                            l6Tooltip.appendChild(eq_lv);
+                        }
+                    } else if(type == '상의'){
+                        addEqui(chInfo, i, l3Image, l3ImageP , l3Tooltip);
+                    } else if(type == '하의'){
+                        addEqui(chInfo, i, l4Image, l4ImageP , l4Tooltip);
+                    } else if(type == '장갑'){
+                        addEqui(chInfo, i, l5Image, l5ImageP , l5Tooltip);
+                    } else if(type == '어깨'){
+                        addEqui(chInfo, i, l2Image, l2ImageP , l2Tooltip);
+                    } else if(type == '목걸이'){
+                        addEqui(chInfo, i, r1Image, r1ImageP , r1Tooltip);
+                    } else if(type == '귀걸이'&& !earring){
+                        earring=true;
+                        addEqui(chInfo, i, r2Image, r2ImageP , r2Tooltip);
+                    } else if(type == '귀걸이' && earring){
+                        addEqui(chInfo, i, r3Image, r3ImageP , r3Tooltip);
+                    } else if(type == '반지' && !ring){
+                        ring=true;
+                        addEqui(chInfo, i, r4Image, r4ImageP , r4Tooltip);
+                    } else if(type == '반지' && ring){
+                        addEqui(chInfo, i, r5Image, r5ImageP , r5Tooltip);
+                    } else if(type == '팔찌'){
+                        addEqui(chInfo, i, r6Image, r6ImageP , r6Tooltip);
+                    } else if(type == '어빌리티 스톤'){
+                        addEqui(chInfo, i, r7Image, r7ImageP , r7Tooltip);
+                    }
                 }
-                // 목걸이
-                addEqui(chInfo, 6, r1Image, r1ImageP , r1Tooltip);
-                // 귀걸이
-                addEqui(chInfo, 7, r2Image, r2ImageP , r2Tooltip);
-                // 귀걸이
-                addEqui(chInfo, 8, r3Image, r3ImageP , r3Tooltip);
-                // 반지
-                addEqui(chInfo, 9, r4Image, r4ImageP , r4Tooltip);
-                // 반지
-                addEqui(chInfo, 10, r5Image, r5ImageP , r5Tooltip);
-                // 팔찌
-                addEqui(chInfo, 12, r6Image, r6ImageP , r6Tooltip);
-                
-                addEqui(chInfo, 11, r7Image, r7ImageP , r7Tooltip);
                 
                 // 장착 각인
-                l7_1.src = chInfo.ArmoryEngraving.Engravings[0].Icon;
-                const l7_1_h4 = document.createElement('h4');
-                l7_1_h4.classList.add('eqi-EngraveName');
-                l7_1_h4.innerText = chInfo.ArmoryEngraving.Engravings[0].Name;
-                l7_1Tooltip.appendChild(l7_1_h4);
-                const l7_1_span = document.createElement('span');
-                l7_1_span.classList.add('eqi-EngravePoint');
-                l7_1_span.innerText = searchEngravePoint(chInfo.ArmoryEngraving.Engravings[0]);
-                l7_1Tooltip.appendChild(l7_1_span);
+                if(chInfo.ArmoryEngraving != null){
+                    var used = false;
+                    for(let i=0; i < chInfo.ArmoryEngraving.Engravings.length ; i++){
+                        if(!used){
+                            addEquiEngrave(chInfo.ArmoryEngraving.Engravings[i],l7_1,l7_1Tooltip);
+                            used = true;
+                        } else {
+                            addEquiEngrave(chInfo.ArmoryEngraving.Engravings[i],l7_2,l7_2Tooltip);
+                        }
+                    }
 
-
-
-
-                l7_2.src = chInfo.ArmoryEngraving.Engravings[1].Icon;
-                const l7_2_h4 = document.createElement('h4');
-                l7_2_h4.classList.add('eqi-EngraveName');
-                l7_2_h4.innerText = chInfo.ArmoryEngraving.Engravings[1].Name;
-                l7_2Tooltip.appendChild(l7_2_h4);
-                const l7_2_span = document.createElement('span');
-                l7_2_span.classList.add('eqi-EngravePoint');
-                l7_2_span.innerText = searchEngravePoint(chInfo.ArmoryEngraving.Engravings[1]);
-                l7_2Tooltip.appendChild(l7_2_span);
-            
-            
+                    // 활성 각인
+                    for(let i=0;i<chInfo.ArmoryEngraving.Effects.length;i++){
+                        const div = document.createElement('div');
+                        div.classList.add('flex-dir-c');
+                        if(i!=chInfo.ArmoryEngraving.Effects.length){
+                            div.classList.add('pd-b-10');
+                        }
+                        engrave.appendChild(div);
+                        addEngrave(chInfo, div, i);
+                    }
+                }     
             
                 // 보석
                 if(chInfo.ArmoryGem != null){
@@ -292,18 +313,10 @@ exbtn.addEventListener('click', (e) => {
                             gemImageList[i].classList.remove('gem-select');
                         });
                     }
-                }
+                } 
             
-                // 각인
-                for(let i=0;i<chInfo.ArmoryEngraving.Effects.length;i++){
-                    const div = document.createElement('div');
-                    div.classList.add('flex-dir-c');
-                    if(i!=chInfo.ArmoryEngraving.Effects.length){
-                        div.classList.add('pd-b-10');
-                    }
-                    engrave.appendChild(div);
-                    addEngrave(chInfo, div, i);
-                }
+                
+                
 
                 // 특성값
                 for(let i=0;i<ststes.length;i++){
@@ -320,9 +333,10 @@ exbtn.addEventListener('click', (e) => {
                 
 
                 //카드 
-
-                addCards(chInfo, cards);
-                addCardEffects(chInfo, cardsStates);
+                if(chInfo.ArmoryCard != null){
+                    addCards(chInfo, cards);
+                    addCardEffects(chInfo, cardsStates);
+                }
             }
             // 캐릭터 사진
             image.src = chInfo.ArmoryProfile.CharacterImage;
@@ -330,7 +344,7 @@ exbtn.addEventListener('click', (e) => {
         
     });
     
-    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/븨레키", true);
+    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/버서커", true);
     xmlHttpRequest.setRequestHeader('accept', 'application/json');
     xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
     xmlHttpRequest.onreadystatechange = () => { };
@@ -340,11 +354,13 @@ exbtn.addEventListener('click', (e) => {
 
 // 장비
 function addEqui(ch , num , image , imageP ,  tooltip){
-    coloerFilter(ch.ArmoryEquipment[num], image)
+    if(ch.ArmoryEquipment[num] != undefined){
+        coloerFilter(ch.ArmoryEquipment[num], image)
+    }
     image.src = ch.ArmoryEquipment[num].Icon;
     image.alt = ch.ArmoryEquipment[num].Name;
     image.title = ch.ArmoryEquipment[num].Type;
-    
+    image.classList.add('w-h50');
     const chEq_a = JSON.parse(ch.ArmoryEquipment[num].Tooltip);
 
     if(num != 11 && num != 12 ){
@@ -418,11 +434,25 @@ function addEqui(ch , num , image , imageP ,  tooltip){
 
 }
 
+// 장착 각인
+function addEquiEngrave(ch, img , div){
+    img.src = ch.Icon;
+    img.classList.add('w-h44');
+
+    const h4 = document.createElement('h4');
+    h4.classList.add('eqi-EngraveName');
+    h4.innerText = ch.Name;
+    div.appendChild(h4);
+
+    const span = document.createElement('span');
+    span.classList.add('eqi-EngravePoint');
+    span.innerText = searchEngravePoint(ch);
+    div.appendChild(span);
+}
+
 // 장비등급
 function coloerFilter(ch, image){
-    if(ch.Grade == '에스더'){
-        image.classList.add('item-coloer-7');
-    } else if(ch.Grade == '유물'){
+    if(ch.Grade == '유물'){
         image.classList.add('item-coloer-1');
     } else if(ch.Grade == '전설'){
         image.classList.add('item-coloer-2');
@@ -434,6 +464,10 @@ function coloerFilter(ch, image){
         image.classList.add('item-coloer-5');
     } else if(ch.Grade == '일반'){
         image.classList.add('item-coloer-6');
+    } else if(ch.Grade == '에스더'){
+        image.classList.add('item-coloer-7');
+    } else if(ch.Grade == '고대'){
+        image.classList.add('item-coloer-8');
     }
 }
 
@@ -471,6 +505,7 @@ function cardGrade(grade, image){
     } 
 }
 
+// 카드 각성단계
 function cardAwake(awake, div){
     if(awake == '5'){
         div.style.width = '100px';
@@ -487,7 +522,7 @@ function cardAwake(awake, div){
     } 
 }
 
-
+// 카드 이름 색상
 function cardNameColoer(grade, image){
     if(grade == '유물'){
         image.classList.add('card-name-g-5');
@@ -504,47 +539,44 @@ function cardNameColoer(grade, image){
 
 // 보석
 function addGem(ch , num , imageP , image) {
+    if(ch.ArmoryGem.Gems[num] != undefined){
+        coloerFilter(ch.ArmoryGem.Gems[num], image)
+        image.src = ch.ArmoryGem.Gems[num].Icon;
+        image.alt = ch.ArmoryGem.Gems[num].Name;
+        image.classList.add('w-h44');
+        image.classList.add('gem-radius');
 
-    coloerFilter(ch.ArmoryGem.Gems[num], image)
-    // imageP.classList.add('overflow-h');
-    image.src = ch.ArmoryGem.Gems[num].Icon;
-    image.alt = ch.ArmoryGem.Gems[num].Name;
-    image.classList.add('w-h44');
-    image.classList.add('gem-radius');
+        const gemEffect = document.createElement('span');
+        gemEffect.classList.add('white_text');
+        gemEffect.classList.add('gem-font');
 
-    
-    const gemEffect = document.createElement('span');
-    gemEffect.classList.add('white_text');
-    gemEffect.classList.add('gem-font');
-    // gemEffect.innerHTML = ch.ArmoryGem.Gems[num].Name;
-    if(ch.ArmoryGem.Gems[num].Name.search('홍염')){
-        gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 홍염';
-    } else if (ch.ArmoryGem.Gems[num].Name.search('멸화')) {
-        gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 멸화';
-    }
-    imageP.appendChild(gemEffect);
-    
-    
-    
-    
-    // 보석 효과
-    for(let i=0; i<ch.ArmoryGem.Effects.length; i++){
-        if(ch.ArmoryGem.Gems[num].Slot == ch.ArmoryGem.Effects[i].GemSlot){
-            
-            const gemEffect = document.createElement('h2');
-            gemEffect.id = 'gem-over';
-            gemEffect.classList.add('white_text');
-            gemEffect.classList.add('gem-hidden');
-            gemEffect.classList.add('gem-radius');
-            gemEffect.classList.add('coloer-select');
-            gemEffect.innerText = ch.ArmoryGem.Effects[i].Name + ch.ArmoryGem.Effects[i].Description;
-            gemEffectDiv.appendChild(gemEffect);
-            
-            const image = document.createElement('img');
-            image.classList.add('radius100');
-            image.classList.add('w-h44');
-            image.src=ch.ArmoryGem.Effects[i].Icon;
-            gemEffect.appendChild(image);
+        if(ch.ArmoryGem.Gems[num].Name.search('홍염')){
+            gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 홍염';
+        } else if (ch.ArmoryGem.Gems[num].Name.search('멸화')) {
+            gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 멸화';
+        }
+        imageP.appendChild(gemEffect);
+
+
+        // 보석 효과
+        for(let i=0; i<ch.ArmoryGem.Effects.length; i++){
+            if(ch.ArmoryGem.Gems[num].Slot == ch.ArmoryGem.Effects[i].GemSlot){
+                
+                const gemEffect = document.createElement('h2');
+                gemEffect.id = 'gem-over';
+                gemEffect.classList.add('white_text');
+                gemEffect.classList.add('gem-hidden');
+                gemEffect.classList.add('gem-radius');
+                gemEffect.classList.add('coloer-select');
+                gemEffect.innerText = ch.ArmoryGem.Effects[i].Name + ch.ArmoryGem.Effects[i].Description;
+                gemEffectDiv.appendChild(gemEffect);
+                
+                const image = document.createElement('img');
+                image.classList.add('radius100');
+                image.classList.add('w-h44');
+                image.src=ch.ArmoryGem.Effects[i].Icon;
+                gemEffect.appendChild(image);
+            }
         }
     }
     
@@ -765,7 +797,6 @@ function searchTranscendence(json){
                                     let index = tooltip[type][value][a][t].search('</FONT>단계');
                                     let point =tooltip[type][value][a][t].substring(tooltip[type][value][a][t].length,tooltip[type][value][a][t].length-2);
                                     let step = tooltip[type][value][a][t].substring(index-1,index)+'단계';
-                                    console.log(point + ' ' + step);
                                     return point + ' ' + step ;
                                 } 
                             }
@@ -847,6 +878,30 @@ function searchElixirPoint(ch,div){
     }
 };
 
+// 엘릭서 활성단계
+function searchElixirTotailPoint(ch){
+    const json = JSON.parse(ch.Tooltip);
+    for (const type in json) {
+        if(json[type].type == "IndentStringGroup"){
+            for (const value in json[type]) {
+                if(value == 'value'){
+                    for(const a in json[type][value]){
+                        if(json[type][value][a].topStr.includes('연성 추가 효과')){
+                            let str = json[type][value][a].topStr;
+                            for(let i=0; i<elixirs.length ; i++){
+                                if(str.includes(elixirs[i])){
+                                    let index = str.indexOf(elixirs[i]);
+                                    return str.substring(index, str.length-7).replace('(','').replace(')','');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
 // 악세서리 특성
 function searchEqiStatePoint(ch){
     const json = JSON.parse(ch.Tooltip);
@@ -918,7 +973,8 @@ function searchBraceletEP(ch , div){
                                 // console.log(json[type][value][a].substring(
                                 //     json[type][value][a].search(`${ststes[i]} +`),json[type][value][a].search(`${ststes[i]} +`)+7));
                                 const point = json[type][value][a].substring(
-                                    json[type][value][a].search(`${ststes[i]} +`),json[type][value][a].search(`${ststes[i]} +`)+7);
+                                    json[type][value][a].search(`${ststes[i]} +`),json[type][value][a].search(`${ststes[i]} +`)+7)
+                                    .replace('<','').replace('>','');
 
                                 const eq_p = document.createElement('span');
                                 eq_p.classList.add('eqi-StatePoint');
@@ -986,7 +1042,6 @@ function test2(ch ){
         }
     }
 };
-
 // 엘릭서 테스트
 function test3(ch){
     const json = JSON.parse(ch.Tooltip);
@@ -995,17 +1050,17 @@ function test3(ch){
             for (const value in json[type]) {
                 if(value == 'value'){
                     for(const a in json[type][value]){
-                        if(json[type][value][a].topStr.includes('엘릭서 효과')){
-                            for(const p in json[type][value][a]){
-                                if(p == 'contentStr'){
-                                    for(const lv in json[type][value][a][p]){
-                                        if(p == 'contentStr'){
-                                            console.log(json[type][value][a][p][lv].contentStr.substring(
-                                                json[type][value][a][p][lv].contentStr.indexOf(']')+8,
-                                                json[type][value][a][p][lv].contentStr.indexOf('</FONT><br>')
-                                            ).replace('<FONT color=\'#FFD200\'>',' '));
-                                        }
-                                    }
+                        if(json[type][value][a].topStr.includes('연성 추가 효과')){
+                            let str = json[type][value][a].topStr;
+                            console.log(str);
+
+                            for(let i=0; i<elixirs.length ; i++){
+                                if(str.includes(elixirs[i])){
+                                    let index = str.indexOf(elixirs[i]);
+                                    console.log(index);
+                                    
+
+                                    return str.substring(index, str.length-7).replace('(','').replace(')','');
                                 }
                             }
                         }
@@ -1028,8 +1083,8 @@ btn.addEventListener('click', (e) => {
 
             // console.log(test2(chInfo.ArmoryEquipment[12]));
             // test(chInfo.ArmoryEquipment[11]);
-            // test3(chInfo.ArmoryEquipment[4]);
-            console.log(searchTotailTranscendence(chInfo.ArmoryEquipment[4]));
+            console.log(test3(chInfo.ArmoryEquipment[1]));
+            // console.log(searchTotailTranscendence(chInfo.ArmoryEquipment[4]));
             // for (const type in chEq_h) {
 
             //     if(chEq_h[type].type =="IndentStringGroup"){
@@ -1047,7 +1102,7 @@ btn.addEventListener('click', (e) => {
         
     });
     
-    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/주다영", true);
+    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/서다슬", true);
     xmlHttpRequest.setRequestHeader('accept', 'application/json');
     xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
     xmlHttpRequest.onreadystatechange = () => { };

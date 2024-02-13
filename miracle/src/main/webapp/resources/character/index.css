@@ -219,12 +219,6 @@ label {
   margin-right: 0.5em;
 }
 
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 
 
 /* 테두리 컨테이너의 스타일 */
