@@ -1,6 +1,5 @@
 $('.summernote').summernote(
     {
-        placeholder: 'ㅇㅅㅇ/',
         tabsize: 2,
         height: 480,
         toolbar: [['style', ['style']],
@@ -21,13 +20,16 @@ $('.summernote').summernote('backColor', '#2b2d31');
 $('.summernote').summernote('foreColor', 'white');
 
 const writeBtn = document.getElementById('writeBtn');
+const writeForm = document.getElementById('writeForm');
 const noteContent = document.getElementById('noteContent');
 const noteTitle = document.getElementById('noteTitle');
-const writeForm = document.getElementById('writeForm');
+const userId1 = document.getElementById('userId1');
+console.dir('밸류  : ' + userId1.value);
+
 
 writeBtn.addEventListener('click', () => {
-    if(noteContent.value.trim()=='' || noteTitle.value.trim()==''){
-        alert('글 제목 또는 내용을 입력해주세요');
+    if (noteContent.value.trim() == '' || noteTitle.value.trim() == '') {
+        alert('제목 또는 내용을 입력해주세요');
         return;
     }
     writeForm.submit();

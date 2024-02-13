@@ -6,22 +6,19 @@
 <div class="include-top">
 	<div class="w-1120px">
 		<p style="color: white;">글쓰는곳이야</p>
-			<input id="noteTitle" type="text" name="board_title" form="writeForm" /> <select
-				name="board_category" form="writeForm">
+		<input id="userId1" type="hidden" value="${login_id}" name="user_id" form="writeForm"/>
+			<select name="board_category" form="writeForm">
 				<option>잡담</option>
-				<option>삽니다</option>
-				<option>팝니다</option>
+				<option>구매</option>
+				<option>판매</option>
 			</select>
+			<input id="noteTitle" type="text" name="board_title" form="writeForm" /> 
 			<textarea id="noteContent" class="summernote" name="board_content" form="writeForm" ></textarea>
 			<div style="text-align: right;">
 				<button id="writeBtn" class="btn-two green rounded font-16 bald">작성완료</button>
 			</div>
 		<form action="/board/index" method="post" id="writeForm"></form>
 	</div>
-
-
-
-
 </div>
 <script src="/resources/board/write.js"></script>
 <script src="/resources/button/button.js"></script>
