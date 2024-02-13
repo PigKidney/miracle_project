@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8" name='view-transition'>
 <title></title>
 <script src="/resources/jquery/jquery-3.7.1.min.js"></script>
@@ -100,8 +101,17 @@ console.log("user_id : " + idCheck);
 		</div>
 			
 		
+<<<<<<< HEAD
+=======
+			<span class="mainWhite"  class="material-symbols-outlined cursor login-ok"> sms </span>
+			<a class="mainWhite underline-none"  href="/login/index">로그인</a>
+			<span class="mainWhite"  class="cursor login-ok">로그인하면 id보여줄거임</span>
+			<span class="material-symbols-outlined cursor login-ok">expand_more</span>
+			
+>>>>>>> refs/remotes/origin/Yang
 		</div>
 	</div>
+<<<<<<< HEAD
 
 	<form id="loginForm" action="/main/index" method="post">
 		<input id="userId" name="user_id" type="hidden" value="${user_id.value}" /> 
@@ -111,3 +121,6 @@ console.log("user_id : " + idCheck);
 	</form>
 
 	<script src="/resources/include/include.js"></script>
+=======
+	<script src="/resources/include/include.js"></script>
+>>>>>>> refs/remotes/origin/Yang

@@ -39,6 +39,8 @@ public class BoardController {
 		log.info("GET : /board/index OK");
 		return "board/index";
 	}
+	
+	
 
 	@GetMapping("/write")
 	public String write(HttpSession session) {
