@@ -25,7 +25,7 @@ String user_nickname = (String) session.getAttribute("login_nickname");
 String user_password = (String) session.getAttribute("login_password");
 String user_email = (String) session.getAttribute("login_email");
 Object isAdmin = session.getAttribute("login_admin");
-
+String characterSearch = request.getParameter("characterSearch");
 %>
 </head>
 <body>
@@ -59,9 +59,9 @@ console.log("user_id : " + idCheck);
 
 			</div>
 			<div class="top-text">
-				<span class="material-symbols-outlined search"> search </span> <input
-					class="top-box" type="text" maxlength="12" spellcheck="false"
-					placeholder="캐릭터명을 입력해주세요" />
+				<span class="material-symbols-outlined search"> search </span> 
+				<input class="top-box" type="text" maxlength="12" spellcheck="false"
+					id="characterSearch" name="characterSearch" placeholder="캐릭터명을 입력해주세요" />
 			</div>
 		</div>
 
