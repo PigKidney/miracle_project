@@ -11,13 +11,13 @@
 		<div class="mainWhite bold font-24">게시판</div>
 		<div class="mainWhite grid-board">
 		<div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div class="p-b10">조회</div>
-		<div class="p-b10">추천</div>	
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div class="p-b10">조회</div>
+			<div class="p-b10">추천</div>	
 		</div>
 			<c:forEach items="${list}" begin="0" end="9" var="list" varStatus="status">
 			<div class="item-center">

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8" name='view-transition'>
 <title></title>
 <script src="/resources/jquery/jquery-3.7.1.min.js"></script>
@@ -98,10 +99,10 @@ console.log("user_id : " + idCheck);
 						<a href="/main/logout">LOG OUT</a>
 				</div>
 		</div>
-			
-		
+
 		</div>
 	</div>
+
 
 	<form id="loginForm" action="/main/index" method="post">
 		<input id="userId" name="user_id" type="hidden" value="${user_id.value}" /> 

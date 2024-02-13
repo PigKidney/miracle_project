@@ -32,7 +32,8 @@
 					<div class="mainContent">${replyList.reply_content}</div>
 					<div>${replyDate[status.index]}</div>
 					<input type="hidden" value="${replyList.reply_id}" name="reply_id"
-						form="deleteReplyForm" /> <input type="hidden"
+						form="deleteReplyForm" /> 
+					<input type="hidden"
 						value="${read.board_id}" name="board_id" form="deleteReplyForm" />
 					<span id="deleteReplyBtn"
 						class="material-symbols-outlined cursor red">close</span>
@@ -41,7 +42,6 @@
 			</c:forEach>
 			<hr />
 		</div>
-
 
 		<div class="grid-reply">
 			<div class="mainWhite"
@@ -57,15 +57,14 @@
 				<button id="addReplyBtn" class="btn-two red rounded font-16 bald">댓글작성</button>
 			</div>
 		</div>
-		<input type="hidden" value="${login_id}" name="user_id"
-			form="replyForm" /> <input type="hidden" value="${read.board_id}"
-			name="board_id" form="replyForm" />
-
+		<input type="hidden" value="${login_id}" name="user_id" form="replyForm" /> 
+		<input type="hidden" value="${read.board_id}" name="board_id" form="replyForm" />
 
 		<form action="/board/reply" method="post" id="replyForm"></form>
 		<form action="/board/deleteReply" method="post" id="deleteReplyForm"></form>
 		<script>
 			const board_id = ${read.board_id};
+			const user_id = ${read.user_id};
 		</script>
 	</div>
 </div>
