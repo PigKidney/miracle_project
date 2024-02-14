@@ -22,8 +22,21 @@
 			</div>
 			<div id="collectionPoints" class="radius b-1p color-back pd-15 dis-block">
 				<div class="collection_title">수집 포인트</div>
+				<div id="collection_title" class="dis-flex jc-sb"></div>
 			</div>
-			<div id="eta" class="radius b-1p color-back"></div>
+			<div id="eta" class="radius b-1p color-back p15-m0 pd-15">
+				<div id="eta_btn" class="eta_title">캐릭터 기타 정보</div>
+				<div id="eta_btns" class="hidden">
+					<h3>스 킬</h3>
+					<h3>아바타</h3>
+					<h3>보유캐릭터</h3>
+					<h3>길 드</h3>
+					<h3>증명의 전장</h3>
+				</div>
+				<div id="logo">
+					<img src="/resources/img/LOGO.png" alt="logo" class="logo">
+				</div>
+			</div>
 		</div>
 
 		<!-- 800px -->
@@ -209,8 +222,8 @@
 	</div>
 </div>
 <div id='clear'></div>
-<button id="exbtn">불러오기</button>
-<button id="btn">222</button>
+<!-- <button id="exbtn">불러오기</button>
+ --><button id="btn">test</button> 
 
 
 

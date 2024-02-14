@@ -259,3 +259,9 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.logo{
+    width: 100px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
