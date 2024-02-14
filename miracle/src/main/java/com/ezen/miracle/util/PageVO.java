@@ -1,5 +1,8 @@
 package com.ezen.miracle.util;
 
+import lombok.Data;
+
+@Data
 public class PageVO {
 	private Integer nowPage; // 현재 페이지
 	private Integer startPage; // 탭 내 처음 페이지
@@ -7,9 +10,10 @@ public class PageVO {
 	private Integer total; // 게시글의 수
 	private Integer cntPerPage; // 페이지당 게시글의 수
 	private Integer lastPage; // 맨 마지막 페이지
-	private Integer cntPage = 5; // 탭에 최대 5개의 페이지를 보여줌
 	private Integer start; // 해당 페이지에서 불러올 처음 게시글의 번호
 	private Integer end; // 해당 페이지에서 불러올 마지막 게시글의 번호
+	
+	private Integer cntPage = 5; // 탭에 최대 5개의 페이지를 보여줌
 
 	public PageVO() {
 	}
@@ -57,75 +61,5 @@ public class PageVO {
 		setStart(getEnd() - cntPerPage + 1);
 	}
 
-	public int getNowPage() {
-		return nowPage;
-	}
 
-	public void setNowPage(int nowPage) {
-		this.nowPage = nowPage;
-	}
-
-	public int getStartPage() {
-		return startPage;
-	}
-
-	public void setStartPage(int startPage) {
-		this.startPage = startPage;
-	}
-
-	public int getEndPage() {
-		return endPage;
-	}
-
-	public void setEndPage(int endPage) {
-		this.endPage = endPage;
-	}
-
-	public int getTotal() {
-		return total;
-	}
-
-	public void setTotal(int total) {
-		this.total = total;
-	}
-
-	public int getCntPerPage() {
-		return cntPerPage;
-	}
-
-	public void setCntPerPage(int cntPerPage) {
-		this.cntPerPage = cntPerPage;
-	}
-
-	public int getLastPage() {
-		return lastPage;
-	}
-
-	public void setLastPage(int lastPage) {
-		this.lastPage = lastPage;
-	}
-
-	public int getStart() {
-		return start;
-	}
-
-	public void setStart(int start) {
-		this.start = start;
-	}
-
-	public int getEnd() {
-		return end;
-	}
-
-	public void setEnd(int end) {
-		this.end = end;
-	}
-
-	public int getCntPage() {
-		return cntPage;
-	}
-
-	public void setCntPage(int cntPage) {
-		this.cntPage = cntPage;
-	}
 }
