@@ -20,7 +20,9 @@
 			<div id="chImage" class="radius b-1p">
 				<img src="" alt="캐릭터이미지" title="캐릭터이미지"/>
 			</div>
-			<div id="rank" class="radius b-1p color-back"></div>
+			<div id="collectionPoints" class="radius b-1p color-back pd-15 dis-block">
+				<div class="collection_title">수집 포인트</div>
+			</div>
 			<div id="eta" class="radius b-1p color-back"></div>
 		</div>
 
@@ -31,76 +33,76 @@
 			
 				<div id="l1" class=" list-def">
 					<div id="l1Image" class="eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l " />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="l1Tooltip" class="p15-m0"></div>
 				</div>
 				
 				<div id="r1" class=" list-def">
 					<div id="r1Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l " />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="r1Tooltip" class="p15-m0"></div>
 				</div>
 				
 				<div id="l2" class=" list-def">
 					<div id="l2Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l" />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="l2Tooltip" class="p15-m0"></div>
 				</div>
 				
 				<div id="r2" class=" list-def">
 					<div id="r2Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l " />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="r2Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="l3" class="list-def">
 					<div id="l3Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l" />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="l3Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="r3" class=" list-def">
 					<div id="r3Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l " />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="r3Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="l4" class="list-def">
 					<div id="l4Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l" />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="l4Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="r4" class=" list-def">
 					<div id="r4Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l " />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="r4Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="l5" class="list-def">
 					<div id="l5Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l" />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="l5Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="r5" class="list-def">
 					<div id="r5Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l " />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="r5Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="l6" class="list-def">
 					<div id="l6Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l" />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="l6Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="r6" class="list-def">
 					<div id="r6Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l " />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="r6Tooltip" class="p15-m0"></div>
 				</div>
@@ -108,18 +110,18 @@
 				<!-- 각인 -->
 				<div id="l7" class="list-def">
 					<div id="l7-1" class="flex-dir-c ">
-						<img src="" alt="" title="" class="w-h44 radius100" />
+						<img src="" alt="" title="" class="radius100" />
 						<div id="l7-1Tooltip" class="p15-m0"></div>
 					</div>
 					<div id="l7-2" class="flex-dir-c">
-						<img src="" alt="" title="" class="w-h44 radius100 " />
+						<img src="" alt="" title="" class="radius100 " />
 						<div id="l7-2Tooltip" class="p15-m0"></div>
 					</div>
 				</div>
 				
 				<div id="r7" class="list-def">
 					<div id="r7Image" class=" eq-img">
-						<img src="" alt="" title="" class="w-h50 eq-l  " />
+						<img src="" alt="" title="" class="" />
 					</div>
 					<div id="r7Tooltip" class="p15-m0"></div>
 				</div>
@@ -206,7 +208,7 @@
 		</div>
 	</div>
 </div>
-
+<div id='clear'></div>
 <button id="exbtn">불러오기</button>
 <button id="btn">222</button>
 

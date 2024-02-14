@@ -192,6 +192,9 @@ body{
     height: 50px;
 }
 
+#clear{
+    height: 150px;
+}
 #states{
     display: grid;
     grid-template-columns: repeat(3,minmax(0,1fr));
@@ -220,7 +223,7 @@ body{
      /* position: absolute; */
      background-image: linear-gradient(to right, rgba(27, 27, 27, 0.345) , rgba(255, 255, 255, 0));
      /* z-index : -1; */
-     background-color: #E3C7A1;
+     /* background-color: #E3C7A1; */
 }
 
 .eimg-div{
@@ -415,6 +418,10 @@ p{
     background: linear-gradient(135deg,#0c2e2c,#2faba8);
 }
 
+.item-coloer-8{
+    background: linear-gradient(135deg,#3d3325,#dcc999);
+}
+
 .item-coloer-1-p{
     background-color: rgb(249, 146, 0);
 }
@@ -587,6 +594,16 @@ p{
     text-align: center;
     padding: 5px;
     font-size: 15px;
+    font-weight: 700;
+}
+
+.collection_title{
+    margin-bottom: 15px;
+    border-bottom: 2px solid #262626;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 18px;
     font-weight: 700;
 }
 
