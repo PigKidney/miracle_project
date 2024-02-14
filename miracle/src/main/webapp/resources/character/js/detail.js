@@ -1,6 +1,9 @@
 const APIkey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDAxNDE1ODYifQ.Bn7XzBd0CuG5V_hWQu9YImuuc1gch1jTfj4Cu7-lkZE6sI7IWhrf9jpJyBm6e3XuHjOethwA8T3ZJnUqmztITYEjBNQjEAX2SIdtTK_HM0AkwEaIziHLOQuE9372Sf55NzK6yv5eM74EJmHR8X8D8C9lLxmkvc4lyPBRH3icmAIZFhTJiIxWskUzPsqXXT5mmmibvfX52eBW3XHdMqe3--6iOHTv50BrPfYV0MqglDLh_XOZUYJAdHiG3J1PzCiQyprHbAEAjwiYlh1k6PveX6ZYCSnFOlaFSmCaLWxbwe1XIXgSFBtsfpwabXjDPNqyTc-pds76WZKacYjIY2dbCQ';
 const exbtn = document.getElementById('exbtn'); // 임시버튼
 const btn = document.getElementById('btn'); // 임시버튼
+const URLforParameter = new URL(window.location.href);
+const getParam = URLforParameter.searchParams;
+const getName = getParam.get('search');
 
 // 정보창
 const chImage = document.querySelector("#chImage");
@@ -344,7 +347,7 @@ exbtn.addEventListener('click', (e) => {
         
     });
     
-    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/버서커", true);
+    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/"+getName, true);
     xmlHttpRequest.setRequestHeader('accept', 'application/json');
     xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
     xmlHttpRequest.onreadystatechange = () => { };
@@ -1070,7 +1073,9 @@ function test3(ch){
         }
     }
 };
-btn.addEventListener('click', (e) => {
+
+btn.addEventListener('click', ()=>{
+
     var xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.addEventListener ('readystatechange', (e) => {
         if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
@@ -1078,34 +1083,34 @@ btn.addEventListener('click', (e) => {
             const chInfo = JSON.parse(xmlHttpRequest.responseText);
             console.dir(JSON.parse(chInfo.ArmoryEquipment[1].Tooltip));
             // for(let i=0; i<chInfo.ArmoryEquipment.length ; i++){
-            //     console.log(searchFunction(chInfo.ArmoryEquipment[i], setValue));
-            // }
-
-            // console.log(test2(chInfo.ArmoryEquipment[12]));
-            // test(chInfo.ArmoryEquipment[11]);
-            console.log(test3(chInfo.ArmoryEquipment[1]));
-            // console.log(searchTotailTranscendence(chInfo.ArmoryEquipment[4]));
-            // for (const type in chEq_h) {
-
-            //     if(chEq_h[type].type =="IndentStringGroup"){
-
-            //         for (const value in chEq_h[type]) {
-
-            //             console.log(chEq_h[type][value]); 
-            
-            //         }
-            //     }
-            // }
-
-        
-        }
-        
-    });
-    
-    xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/서다슬", true);
-    xmlHttpRequest.setRequestHeader('accept', 'application/json');
-    xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
-    xmlHttpRequest.onreadystatechange = () => { };
-    xmlHttpRequest.send();
-    
-});
+                //     console.log(searchFunction(chInfo.ArmoryEquipment[i], setValue));
+                // }
+                
+                // console.log(test2(chInfo.ArmoryEquipment[12]));
+                // test(chInfo.ArmoryEquipment[11]);
+                // test3(chInfo.ArmoryEquipment[4]);
+                console.log(searchTotailTranscendence(chInfo.ArmoryEquipment[4]));
+                // for (const type in chEq_h) {
+                    
+                    //     if(chEq_h[type].type =="IndentStringGroup"){
+                        
+                        //         for (const value in chEq_h[type]) {
+                            
+                            //             console.log(chEq_h[type][value]); 
+                            
+                            //         }
+                            //     }
+                            // }
+                            
+                            
+                        }
+                        
+                    });
+                    
+                    xmlHttpRequest.open("GET", 'https://developer-lostark.game.onstove.com/armories/characters/' + getName, true);
+                    xmlHttpRequest.setRequestHeader('accept', 'application/json');
+                    xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
+                    xmlHttpRequest.onreadystatechange = () => { };
+                    xmlHttpRequest.send();
+                })
+                    

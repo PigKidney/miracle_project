@@ -9,13 +9,21 @@ const smsBtn = document.getElementById('smsBtn');
 const loginTag = document.getElementById('loginTag');
 const nickName = document.getElementById('nickName');
 const addadd = document.getElementById('addadd');
+const characterSearch = document.getElementById('characterSearch');
 
 const myIP = '118.33.154.162';
 const local = 'localhost';
 
 window.onload = async () => {
 
-
+    characterSearch.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter'){
+            console.log(e);
+            console.log(characterSearch.value);
+            location.href = '/character/search?characterSearch=' + characterSearch.value ;
+        }
+        
+    })
 
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
