@@ -170,7 +170,22 @@ body{
 }
 
 #eta{
-    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#eta_btns > h3{
+    color: white;
+    margin-bottom: 5px;
+    background-color: #2626266e;
+    border-radius: 10px;
+    text-align: center;
+    padding: -8px;
+    font-weight: 500;
+    width: 250px;
+    height: 50px;
+    line-height: 52px;
 }
 
 #states-etc{
@@ -507,7 +522,7 @@ p{
     align-self: center;
 }
 
-.gem-hidden{
+.hidden{
     display: none;
 }
 .chid-al-center{
@@ -638,6 +653,78 @@ p{
     left: 4px;
 }
 
+.collection{
+    background: url(https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/sprite/sprite_profile.png?84b2cecac8652fc498fbe05c5df2d4f3) no-repeat 0 0;
+    /* position: absolute; */
+    background-size: 257px 236px;
+}
+
+/* 거심 */
+.collection-1{
+    width: 23px;
+    height: 22px;
+    background-position: -205px -171px;
+}
+/* 섬마 */
+.collection-2{
+    width: 23px;
+    height: 22px;
+    background-position: -234px -23px;
+}
+/* 모코코 */
+.collection-3{
+    width: 23px;
+    height: 22px;
+    background-position: -234px -92px;
+}
+/* 미술품 */
+.collection-4{
+    width: 23px;
+    height: 22px;
+    background-position: -181px -171px;
+}
+/* 모험물 */
+.collection-5{
+    width: 23px;
+    height: 22px;
+    background-position: -234px -115px;
+}
+
+/* 세계수 */
+.collection-6{
+    width: 23px;
+    height: 22px;
+    background-position: -234px -46px;
+}
+
+/* 이그네아 */
+.collection-7{
+    width: 23px;
+    height: 22px;
+    background-position: -234px 0;
+}
+
+/* 오페별 */
+.collection-8{
+    width: 23px;
+    height: 22px;
+    background-position: -234px -69px;
+}
+
+/* 오르골 */
+.collection-9{
+    width: 20px;
+    height: 22px;
+    background-position: 0 -216px;
+}
+
+.collection-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
 .card-states{
     background-color: #262626;
     padding: 15px;
@@ -663,4 +750,29 @@ p{
 .trans-img-pos{
     position: relative;
     top: 4px;
+}
+
+.logo{
+    width: 100px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #262626;
+    top: 10px;
+    position: relative;
+    width: 300px;
+    /* border-bottom: 2px solid #262626; */
+}
+
+.eta_title{
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 700;
 }
