@@ -140,6 +140,12 @@ const collections_img = "https://cdn-lostark.game.onstove.com/2018/obt/assets/im
 
 const eta = document.getElementById('eta');
 const etaBtnList = document.getElementById('eta_btns');
+const cardEffectsDiv = document.getElementById('card-effect-div');
+
+const collectionPoints = document.getElementById('collectionPoints');
+const collectionPopup = document.getElementById('collectionPopup');
+const ls = document.getElementById('ls');
+const collectionBar = document.getElementById('collectionBar');
 
 document.addEventListener('DOMContentLoaded', (e) => {
     var xmlHttpRequest = new XMLHttpRequest();
@@ -271,7 +277,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
                     for(let i=0;i<chInfo.ArmoryEngraving.Effects.length;i++){
                         const div = document.createElement('div');
                         div.classList.add('flex-dir-c');
-                        if(i!=chInfo.ArmoryEngraving.Effects.length){
+                        div.classList.add('magin-l15');
+                        if(i !=chInfo.ArmoryEngraving.Effects.length-1){
                             div.classList.add('pd-b-10');
                         }
                         engrave.appendChild(div);
@@ -331,7 +338,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 //카드 
                 if(chInfo.ArmoryCard != null){
                     addCards(chInfo, cards);
-                    addCardEffects(chInfo, cardsStates);
+                    addCardEffects(chInfo, cardEffectsDiv);
+                    cardEffectsDiv.classList.add('hidden');
                 }
             }
 
@@ -339,6 +347,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
             // 캐릭터 사진 -> 로딩 후 최종적으로 캐릭터 사진 나오면 문제 X
             image.src = chInfo.ArmoryProfile.CharacterImage;
+
+            addCollectibles(chInfo,collectionBar);
         }
         
     });
@@ -350,6 +360,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     xmlHttpRequest.send();
 });
 
+// 기타 버튼
 eta.addEventListener('mouseover', (e) => {
     etaBtnList.classList.remove("hidden");
 });
@@ -357,6 +368,23 @@ eta.addEventListener('mouseover', (e) => {
 eta.addEventListener('mouseout', (e) => {
     etaBtnList.classList.add('hidden');
 });
+
+// 카드 상세내용
+cardsStates.addEventListener('mouseout', (e) => {
+    cardEffectsDiv.classList.add('hidden');
+});
+
+cardsStates.addEventListener('mouseover', (e) => {
+    cardEffectsDiv.classList.remove("hidden");
+});
+
+// 수집품 내용
+collectionPoints.addEventListener('click', (e) => {
+    collectionPopup.classList.toggle("hidden");
+    collectionPoints.classList.toggle("gem-select");
+    ls.classList.toggle("hidden");
+});
+
 
 function addSpan(text) {
     const span = document.createElement('sapn');
@@ -560,8 +588,10 @@ function addGem(ch , num , imageP , image) {
     if(ch.ArmoryGem.Gems[num] != undefined){
         coloerFilter(ch.ArmoryGem.Gems[num], image)
         image.src = ch.ArmoryGem.Gems[num].Icon;
-        image.alt = ch.ArmoryGem.Gems[num].Name;
-        image.classList.add('w-h44');
+        image.alt = ch.ArmoryGem.Gems[num].Name.substring(
+            ch.ArmoryGem.Gems[num].Name.search('레벨')-2,ch.ArmoryGem.Gems[num].Name.length
+        ).replace("</FONT></P>",'').replace(">",'');
+        image.classList.add('w-h50');
         image.classList.add('gem-radius');
 
         const gemEffect = document.createElement('span');
@@ -580,17 +610,19 @@ function addGem(ch , num , imageP , image) {
         for(let i=0; i<ch.ArmoryGem.Effects.length; i++){
             if(ch.ArmoryGem.Gems[num].Slot == ch.ArmoryGem.Effects[i].GemSlot){
                 
-                const gemEffect = document.createElement('h2');
+                const gemEffect = document.createElement('div');
                 gemEffect.id = 'gem-over';
                 gemEffect.classList.add('white_text');
                 gemEffect.classList.add('hidden');
+                gemEffect.classList.add('all-center');
                 gemEffect.classList.add('gem-radius');
                 gemEffect.classList.add('coloer-select');
-                gemEffect.innerText = ch.ArmoryGem.Effects[i].Name + ch.ArmoryGem.Effects[i].Description;
+                gemEffect.innerText = ch.ArmoryGem.Effects[i].Name + ' - [ ' + ch.ArmoryGem.Effects[i].Description+' ]';
                 gemEffectDiv.appendChild(gemEffect);
                 
                 const image = document.createElement('img');
                 image.classList.add('radius100');
+                image.classList.add('all-center');
                 image.classList.add('w-h44');
                 image.src=ch.ArmoryGem.Effects[i].Icon;
                 gemEffect.appendChild(image);
@@ -738,12 +770,13 @@ function addCards(ch, div){
 function addCardEffects(ch, div){
     const cardEffectsBack = document.createElement('div');
     cardEffectsBack.classList.add('card-states-back');
+    // cardEffectsBack.classList.add('hidden');
     div.appendChild(cardEffectsBack);
     cardEffectsBack.style.gridTemplateColumns=`repeat(${ch.ArmoryCard.Effects.length},minmax(0,1fr))`;
     for(let i=0; i<ch.ArmoryCard.Effects.length;i++){
         const cardEffects = document.createElement('div');
         cardEffects.classList.add('radius');
-        cardEffects.classList.add('magin-b10');
+        // cardEffects.classList.add('magin-b10');
         cardEffects.classList.add('card-states');
         
         cardEffectsBack.appendChild(cardEffects);
@@ -1004,34 +1037,37 @@ function searchBraceletEP(ch , div){
     }
 };
 
+// 수집품 사진 위치
+function collectFilter(ch, img){
+    if(ch.Type == "거인의 심장"){
+        img.classList.add('collection-1');
+    } else if(ch.Type == "섬의 마음"){
+        img.classList.add('collection-2');
+    } else if(ch.Type == "모코코 씨앗"){
+        img.classList.add('collection-3');
+    } else if(ch.Type == "위대한 미술품"){
+        img.classList.add('collection-4');
+    } else if(ch.Type == "항해 모험물"){
+        img.classList.add('collection-5');
+    } else if(ch.Type == "세계수의 잎"){
+        img.classList.add('collection-6');
+    } else if(ch.Type == "이그네아의 징표"){
+        img.classList.add('collection-7');
+    } else if(ch.Type == "오르페우스의 별"){
+        img.classList.add('collection-8');
+    } else if(ch.Type == "기억의 오르골"){
+        img.classList.add('collection-9');
+    }
+}
 // 수집품
 function searchCollectionPoint(ch, div){
     const collection = ch.Collectibles
     for(let i=0; i<collection.length ; i++){
-        console.log()
         let collect = document.createElement('div');
         collect.classList.add('collection-div');
         let img = document.createElement('div');
         img.classList.add('collection');
-        if(collection[i].Type == "거인의 심장"){
-            img.classList.add('collection-1');
-        } else if(collection[i].Type == "섬의 마음"){
-            img.classList.add('collection-2');
-        } else if(collection[i].Type == "모코코 씨앗"){
-            img.classList.add('collection-3');
-        } else if(collection[i].Type == "위대한 미술품"){
-            img.classList.add('collection-4');
-        } else if(collection[i].Type == "항해 모험물"){
-            img.classList.add('collection-5');
-        } else if(collection[i].Type == "세계수의 잎"){
-            img.classList.add('collection-6');
-        } else if(collection[i].Type == "이그네아의 징표"){
-            img.classList.add('collection-7');
-        } else if(collection[i].Type == "오르페우스의 별"){
-            img.classList.add('collection-8');
-        } else if(collection[i].Type == "기억의 오르골"){
-            img.classList.add('collection-9');
-        }
+        collectFilter(collection[i],img);
         collect.appendChild(img);
 
         let point = document.createElement('div');
@@ -1044,6 +1080,69 @@ function searchCollectionPoint(ch, div){
     
 }
 
+// 
+function addCollectibles(ch, div){
+    const collection = ch.Collectibles
+    for(let i=0; i<ch.Collectibles.length;i++){
+        
+        const column = document.createElement('div');
+        column.classList.add('dis-flex');
+        column.classList.add('jc-sb');
+        column.classList.add('magin-b10');
+        div.appendChild(column);
+
+        const bar = document.createElement('div');
+        bar.classList.add('c-progress-bar');
+        column.appendChild(bar);
+        
+        const bar_p = document.createElement('div');
+        bar_p.classList.add('c-progress');
+        bar.appendChild(bar_p);
+        let p = ((collection[i].Point/collection[i].MaxPoint)*100).toFixed(2);
+        console.log(p);
+        bar_p.style.width = p+'%';
+
+        let collect = document.createElement('div');
+        collect.classList.add('collection-pop-div');
+        collect.classList.add('jc-sb');
+
+        let imgDiv = document.createElement('div');
+        imgDiv.classList.add('collection-pop-div');
+
+        let img = document.createElement('div');
+        img.classList.add('collection');
+        img.classList.add('collection-pop');
+        img.classList.add('div-m10');
+        collectFilter(collection[i],img);
+        imgDiv.appendChild(img);
+        
+        let name = document.createElement('span');
+        // name.classList.add('');
+        // name.classList.add('collection');
+        name.classList.add('collection-pop');
+        name.classList.add('eqi-EngravePoint');
+        name.classList.add('div-m10');
+        name.innerText = collection[i].Type;
+        imgDiv.appendChild(name);
+        collect.appendChild(imgDiv);
+
+        let parsent = document.createElement('div');
+        parsent.classList.add('collection-div');
+        parsent.classList.add('collection-pop');
+        parsent.classList.add('eqi-EngravePoint');
+        parsent.classList.add('magin-r10');
+        parsent.innerText = p+'%';
+        collect.appendChild(parsent);
+
+        let check = document.createElement('span');
+        name.classList.add('eqi-EngravePoint');
+        // name.classList.add('collection');
+        check.innerText = collection[i].Point + '/' + collection[i].MaxPoint;
+        parsent.appendChild(check);
+
+        bar.appendChild(collect);
+    }
+ }
 
 btn.addEventListener('click', ()=>{
 

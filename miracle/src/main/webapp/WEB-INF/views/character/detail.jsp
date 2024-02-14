@@ -217,9 +217,14 @@
 			</div>
 			<div id='cards-states' class="radius b-1p color-back pd-15">
 				<div id="cards" class=""></div>
+					<div id="card-effect-div"></div>
 			</div>
 		</div>
 	</div>
+</div>
+
+<div id="collectionPopup" class="hidden">
+	<div id="collectionBar"></div>
 </div>
 <div id='clear'></div>
 <!-- <button id="exbtn">불러오기</button>
