@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 
 import com.ezen.miracle.dto.LogoBoardDTO;
 import com.ezen.miracle.mapper.BoardMapper;
+import com.ezen.miracle.util.PageVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -100,5 +101,35 @@ public class BoardServiceImpl implements BoardService {
 		} else {
 			return -1;
 		}
+	}
+
+	@Override
+	public int countBoard() {
+		return boardMapper.countBoard();
+	}
+
+	@Override
+	public void selectBoard(Model model, PageVO vo, Integer nowPage, Integer cntPerPage) {
+		int total = countBoard();
+		// 처음 화면은 1~5페이지가 나옴
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = 1;
+			cntPerPage = 5;
+		} else if (nowPage == null) {
+			nowPage = 1;
+		} else if (cntPerPage == null) {
+			cntPerPage = 5;
+		}
+		vo = new PageVO(total, nowPage, cntPerPage);
+		List<LogoBoardDTO> list = boardMapper.selectBoard(vo);
+		List<String> date = new ArrayList<String>();
+
+		for (int i = 0; i < list.size(); i++) {
+			date.add(sdf.format(list.get(i).getCreated_at()));
+		}
+		model.addAttribute("page", vo);
+		model.addAttribute("list", list);
+		model.addAttribute("date", date);
+		log.info("page, list, date");
 	}
 }
