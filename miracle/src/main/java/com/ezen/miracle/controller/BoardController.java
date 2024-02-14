@@ -19,6 +19,7 @@ import com.ezen.miracle.dto.LogoBoardDTO;
 import com.ezen.miracle.dto.LogoReplyDTO;
 import com.ezen.miracle.service.BoardService;
 import com.ezen.miracle.service.ReplyService;
+import com.ezen.miracle.util.PageVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -34,7 +35,9 @@ public class BoardController {
 	ReplyService replyService;
 
 	@GetMapping("/index")
-	public String board(Model model, Long user_id, HttpSession session) {
+	public String board(Model model, Long user_id, PageVO vo) {
+		boardService.countBoard();
+	//	boardService.selectBoard(model);
 		boardService.list(model);
 		log.info("GET : /board/index OK");
 		return "board/index";
