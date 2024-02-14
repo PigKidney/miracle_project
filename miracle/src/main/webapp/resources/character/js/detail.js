@@ -5,6 +5,7 @@ const URLforParameter = new URL(window.location.href);
 const getParam = URLforParameter.searchParams;
 const getName = getParam.get('search');
 
+
 // 정보창
 const chImage = document.querySelector("#chImage");
 const image = document.querySelector("#chImage > img");
@@ -130,6 +131,7 @@ const cardsStates = document.querySelector('#cards-states');
 
 const ststes = ['치명','특화','신속','제압','인내','숙련'];
 const elixirs = ['강맹', '달인', '선각자', '선봉대', '신념', '진군', '칼날 방패', '행운', '회심'];
+const setValue = ['사멸','갈망','배신','지배',"환각",'파괴','악몽'];
 
 const img_g_uri = 'https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/profile/img_card_grade.png?f9e0ffc8a709611354db408dd0e7a7bb';
 
@@ -148,7 +150,7 @@ function addSpanWhite(text) {
     return span;
 }
 
-exbtn.addEventListener('click', (e) => {
+document.addEventListener('DOMContentLoaded', (e) => {
     var xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.addEventListener ('readystatechange', (e) => {
         if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
@@ -205,6 +207,7 @@ exbtn.addEventListener('click', (e) => {
             townDiv.appendChild(addSpan(' 영지 '));
             townDiv.appendChild(addSpanWhite(' '+'Lv.'+chInfo.ArmoryProfile.TownLevel+' '+ chInfo.ArmoryProfile.TownName));
             
+            // 장비 정보
             if(chInfo.ArmoryEquipment != null){
                 var earring = false;
                 var ring = false;
@@ -341,7 +344,7 @@ exbtn.addEventListener('click', (e) => {
                     addCardEffects(chInfo, cardsStates);
                 }
             }
-            // 캐릭터 사진
+            // 캐릭터 사진 -> 로딩 후 최종적으로 캐릭터 사진 나오면 문제 X
             image.src = chInfo.ArmoryProfile.CharacterImage;
         }
         
@@ -352,7 +355,6 @@ exbtn.addEventListener('click', (e) => {
     xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
     xmlHttpRequest.onreadystatechange = () => { };
     xmlHttpRequest.send();
-    
 });
 
 // 장비
@@ -553,9 +555,13 @@ function addGem(ch , num , imageP , image) {
         gemEffect.classList.add('white_text');
         gemEffect.classList.add('gem-font');
 
-        if(ch.ArmoryGem.Gems[num].Name.search('홍염')){
+        if(ch.ArmoryGem.Gems[num].Name.includes('홍염')){
+            console.log('홍염');
+            console.log(ch.ArmoryGem.Gems[num].Name);
             gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 홍염';
-        } else if (ch.ArmoryGem.Gems[num].Name.search('멸화')) {
+        } else if (ch.ArmoryGem.Gems[num].Name.includes('멸화')) {
+            console.log('멸화');
+            console.log(ch.ArmoryGem.Gems[num].Name);
             gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 멸화';
         }
         imageP.appendChild(gemEffect);
@@ -761,9 +767,6 @@ function addCardEffects(ch, div){
     }
 }
 
-
-
-let setValue = ['사멸','갈망','배신','지배',"환각",'파괴','악몽'];
 // 세트효과
 function searchFunction( json , arr){
     var tooltip = JSON.parse(json.Tooltip);
@@ -994,85 +997,7 @@ function searchBraceletEP(ch , div){
     }
 };
 
-// test
-function test(ch){
-    const json = JSON.parse(ch.Tooltip);
-    for (const type in json) {
-        if(json[type].type == "IndentStringGroup"){
-            for (const value in json[type]) {
-                if(value == 'value'){
-                    for(const a in json[type][value]){
-                        for(const t in json[type][value][a]){
-                            if(t == 'contentStr'){
-                                for(const p in json[type][value][a][t]){
-                                    const point = json[type][value][a][t][p].contentStr.substring(23, 
-                                        json[type][value][a][t][p].contentStr.search('</FONT>'))
-                                    +' '+ json[type][value][a][t][p].contentStr.substring(
-                                        json[type][value][a][t][p].contentStr.indexOf('+')+1, 
-                                    json[type][value][a][t][p].contentStr.search('<BR>'));
-                                    console.log(point);
-                                }
-                            }
-                            
-                        }
-                    }
-                }
-            }
-        }
-    }
-};
 
-function test2(ch ){
-    const json = JSON.parse(ch.Tooltip);
-    for (const type in json) {
-        if(json[type].type == "ItemPartBox"){
-            for (const value in json[type]) {
-                if(value == 'value'){
-                    for(const a in json[type][value]){
-                        for(let i=0; i<ststes.length ; i++){ 
-                            if(json[type][value][a].includes(`${ststes[i]} +`)){
-                                console.log(json[type][value][a]);
-                                console.log(json[type][value][a].search(`${ststes[i]} +`));
-                                console.log(json[type][value][a].substring(
-                                    json[type][value][a].search(`${ststes[i]} +`),json[type][value][a].search(`${ststes[i]} +`)+7));
-
-                            }
-                            
-                        }
-                    }
-                }
-            }
-        }
-    }
-};
-// 엘릭서 테스트
-function test3(ch){
-    const json = JSON.parse(ch.Tooltip);
-    for (const type in json) {
-        if(json[type].type == "IndentStringGroup"){
-            for (const value in json[type]) {
-                if(value == 'value'){
-                    for(const a in json[type][value]){
-                        if(json[type][value][a].topStr.includes('연성 추가 효과')){
-                            let str = json[type][value][a].topStr;
-                            console.log(str);
-
-                            for(let i=0; i<elixirs.length ; i++){
-                                if(str.includes(elixirs[i])){
-                                    let index = str.indexOf(elixirs[i]);
-                                    console.log(index);
-                                    
-
-                                    return str.substring(index, str.length-7).replace('(','').replace(')','');
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-};
 
 btn.addEventListener('click', ()=>{
 
@@ -1081,36 +1006,17 @@ btn.addEventListener('click', ()=>{
         if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
             console.log(xmlHttpRequest.responseText);
             const chInfo = JSON.parse(xmlHttpRequest.responseText);
-            console.dir(JSON.parse(chInfo.ArmoryEquipment[1].Tooltip));
-            // for(let i=0; i<chInfo.ArmoryEquipment.length ; i++){
-                //     console.log(searchFunction(chInfo.ArmoryEquipment[i], setValue));
-                // }
-                
-                // console.log(test2(chInfo.ArmoryEquipment[12]));
-                // test(chInfo.ArmoryEquipment[11]);
-                // test3(chInfo.ArmoryEquipment[4]);
-                console.log(searchTotailTranscendence(chInfo.ArmoryEquipment[4]));
-                // for (const type in chEq_h) {
-                    
-                    //     if(chEq_h[type].type =="IndentStringGroup"){
+            console.dir(JSON.parse(chInfo.ArmoryEquipment[1].Tooltip));     
+            console.log(searchTotailTranscendence(chInfo.ArmoryEquipment[4]));
+                  
+        }
                         
-                        //         for (const value in chEq_h[type]) {
-                            
-                            //             console.log(chEq_h[type][value]); 
-                            
-                            //         }
-                            //     }
-                            // }
-                            
-                            
-                        }
-                        
-                    });
+    });
                     
-                    xmlHttpRequest.open("GET", 'https://developer-lostark.game.onstove.com/armories/characters/' + getName, true);
-                    xmlHttpRequest.setRequestHeader('accept', 'application/json');
-                    xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
-                    xmlHttpRequest.onreadystatechange = () => { };
-                    xmlHttpRequest.send();
-                })
+    xmlHttpRequest.open("GET", 'https://developer-lostark.game.onstove.com/armories/characters/' + getName, true);
+    xmlHttpRequest.setRequestHeader('accept', 'application/json');
+    xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
+    xmlHttpRequest.onreadystatechange = () => { };
+    xmlHttpRequest.send();
+})
                     
