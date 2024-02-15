@@ -31,8 +31,8 @@ public class NoticeController {
 
 	@GetMapping("/index")
 	public String notice(Model model, PageVO vo, Integer nowPage, Integer cntPerPage) {
-		boardservice.countBoard();
-		log.info("countBoard µ¥ÀÌÅÍ ¼ö"  + boardservice.countBoard());
+		boardservice.countBoardNotice();
+		log.info("countBoard ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½"  + boardservice.countBoardNotice());
 		boardservice.selectBoard(model, vo, nowPage, cntPerPage);
 		log.info(model);
 		log.info("now0 : " + nowPage + " , cPP0 : " + cntPerPage + ", vo :" + vo);
@@ -68,17 +68,17 @@ public class NoticeController {
 	@GetMapping("/detail")
 	public String detail(Model model, int board_id, HttpServletResponse response, HttpServletRequest request) {
 		
-		// ±Û ¹øÈ£¿Í °°Àº ÀÌ¸§À» Áö´Ñ ÄíÅ°°¡ Á¸ÀçÇÏ´ÂÁö ¿©ºÎ¸¦ Ã¼Å© true½Ã Á¶È¸¼öÁõ°¡x
+		// ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¸ï¿½ Ã¼Å© trueï¿½ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x
 		boolean exist = false;
-		// ÄíÅ°¹è¿­·Î ÀüºÎ ²¨³»±â  getCookies(); //ÄíÅ° ¸ñ·Ï ¹Þ¾Æ¿À±â
+		// ï¿½ï¿½Å°ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  getCookies(); //ï¿½ï¿½Å° ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 		Cookie[] cookies = request.getCookies();
-		log.info("ÄíÅ° : " + cookies);
-		// ÄíÅ°ÀÖÀ¸¸é ±× ¾È¿¡ ÀÖ´Â ÄíÅ°¸¦ ²¨³»°í
+		log.info("ï¿½ï¿½Å° : " + cookies);
+		// ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for (Cookie cookie : cookies) {
-			// ÄíÅ°ÀÌ¸§ °¡Á®¿À´Â ¸Þ¼­µå getName()
+			// ï¿½ï¿½Å°ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ getName()
 			String name = cookie.getName();
-			log.info("ÄíÅ°name : 	" + name);
-			// ÄíÅ°¸¦ ¸¸µé¶§ board_id °ªÀ» »ç¿ëÇØ¼­ ¸¸µë
+			log.info("ï¿½ï¿½Å°name : 	" + name);
+			// ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½é¶§ board_id ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 			if (name.equals("" + board_id)) {
 				log.info("board_id :" + board_id);
 				exist = true;
@@ -90,12 +90,12 @@ public class NoticeController {
 		if(!exist) {
 			Cookie viewCookie = new Cookie("" + board_id, "1");
 			log.info("viewCookie :" + viewCookie);
-			//5ÃÊµ¿¾È ÄíÅ°(board_id) ÀÖ°ÔÇØ Á¶È¸¼ö ¾È¿Ã¶ó°¡°Ô ÇØ³í°Å
+			//5ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½Å°(board_id) ï¿½Ö°ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ ï¿½È¿Ã¶ó°¡°ï¿½ ï¿½Ø³ï¿½ï¿½
 			viewCookie.setMaxAge(5);
-			//ÀÀ´ä¹ÞÀº°÷¿¡ viewCookie addCookieÇØÁÖ±â
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ viewCookie addCookieï¿½ï¿½ï¿½Ö±ï¿½
 			response.addCookie(viewCookie);
-			//ºäÄ«¿îÆ® Áõ°¡½ÃÄÑÁÖ´Â°Å
-			boardservice.viewCount(board_id);
+			//ï¿½ï¿½Ä«ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Â°ï¿½
+			boardservice.viewCountNotice(board_id);
 			log.info("viewCount +1");
 		} else {
 			log.info("viewCount +0");			
@@ -126,7 +126,7 @@ public class NoticeController {
 	
 	@GetMapping("/delete")
 	public String delete(int board_id) {
-		boardservice.delete(board_id);
+		boardservice.deleteNotice(board_id);
 //		log.info("delete PK : " + board_id);
 		return "redirect:/notice/index";
 	}

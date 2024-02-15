@@ -1,0 +1,22 @@
+.asd{
+	width:1200px;
+}
+
+#justify{
+    justify-content: center;
+}
+
+#submit{
+	 text-align: center;
+	width:1200px;
+}
+
+.btn{
+	display:flex;
+	 justify-content: center;
+	 margirn-top:30px;
+	 border: 0 solid #e5e7eb;
+}
+.material-symbols-outlined{
+	 background-color:#0a0a23;
+}

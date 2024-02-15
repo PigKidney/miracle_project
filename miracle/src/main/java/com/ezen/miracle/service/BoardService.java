@@ -22,9 +22,9 @@ public interface BoardService {
 	void detail(int board_id, Model model);
 	int insertNotice(LogoBoardDTO dto);
 	int updateNotice(LogoBoardDTO dto);
-//	int delete(int board_id);
+	int deleteNotice(int board_id);
 	int rec(int board_id);
-//	int viewCount(int board_id);
-//	int countBoard();
-//	void selectBoard(Model model, PageVO vo, Integer nowPage, Integer cntPerPage);
+	int viewCountNotice(int board_id);
+	int countBoardNotice();
+	void selectBoardNotice(Model model, PageVO vo, Integer nowPage, Integer cntPerPage);
 }

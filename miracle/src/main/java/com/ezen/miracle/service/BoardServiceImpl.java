@@ -140,6 +140,35 @@ public class BoardServiceImpl implements BoardService {
 		log.info("page, list, date");
 	}
 
+//	@Override
+//	public void listNotice(Model model) {
+//		List<LogoBoardDTO> board = boardMapper.getNoticeAll();
+//		List<String> date = new ArrayList<String>();
+//		
+//		for (int i = 0; i < board.size(); i++) {
+//			date.add(sdf.format(board.get(i).getCreated_at()));
+//		}
+//		model.addAttribute("date", date);
+//		model.addAttribute("boards", board);
+//		log.info("getAll");
+//	}
+	
+	@Override
+	public void detail(int board_id, Model model) {
+		
+		LogoBoardDTO board = boardMapper.get(board_id);
+		String date;
+		if(board.getModified_at() == null) {
+			date = sdf.format(board.getCreated_at());
+		} else {
+			date = sdf.format(board.getModified_at()) + "(수정)";
+		}
+		model.addAttribute("board", board);
+		model.addAttribute("date", date);
+		log.info("board : " + board);
+	}
+	
+	
 	@Override
 	public int insertNotice(LogoBoardDTO dto) {
 		
@@ -164,15 +193,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	
-//	@Override
-//	public int delete(int board_id) {
-//		int result = boardMapper.delete(board_id);
-//		if (result == 1) {
-//			return 1;
-//		} else {
-//			return -1;
-//		}
-//	}
+	@Override
+	public int deleteNotice(int board_id) {
+		int result = boardMapper.deleteNotice(board_id);
+		if (result == 1) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
 	
 	
 	
@@ -187,17 +216,53 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void detail(int board_id, Model model) {
-		
-		LogoBoardDTO board = boardMapper.get(board_id);
-		String date;
-		if(board.getModified_at() == null) {
-			date = sdf.format(board.getCreated_at());
+	public int viewCountNotice(int board_id) {
+		int result = boardMapper.viewCount(board_id);
+		if (result == 1) {
+			return 1;
 		} else {
-			date = sdf.format(board.getModified_at()) + "(수정)";
+			return -1;
 		}
-		model.addAttribute("board", board);
+	
+	}
+	
+	
+	@Override
+	public int countBoardNotice() {
+		return boardMapper.countBoard();
+	}
+	
+	@Override
+	public void selectBoardNotice(Model model, PageVO vo, Integer nowPage, Integer cntPerPage) {
+		int total = countBoard();
+
+		log.info("now1 : " + nowPage + ", cPP1 : " + cntPerPage);
+		// 처음 화면은 1~5페이지가 나옴
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = 1;
+			cntPerPage = 5;
+		} else if (nowPage == null) {
+			nowPage = 1;
+		} else if (cntPerPage == null) {
+			cntPerPage = 5;
+		}
+		log.info("now2 : " + nowPage + ", cPP2 : " + cntPerPage);
+		vo = new PageVO(total, nowPage, cntPerPage);
+		
+		List<LogoBoardDTO> list = boardMapper.selectBoard(vo);
+		
+		log.info("start" +vo.getStart());
+		log.info("last" + vo.getEnd());
+		List<String> date = new ArrayList<String>();
+		log.info(vo);
+		log.info(list);
+
+		for (int i = 0; i < list.size(); i++) {
+			date.add(sdf.format(list.get(i).getCreated_at()));
+		}
+		model.addAttribute("page", vo);
+		model.addAttribute("list", list);
 		model.addAttribute("date", date);
-		log.info("board : " + board);
+		log.info("page, list, date");
 	}
 }
