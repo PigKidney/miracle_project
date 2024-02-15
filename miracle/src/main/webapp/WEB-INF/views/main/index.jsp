@@ -26,7 +26,7 @@
 	
 	<div class="w-1120px h-280px main m-div3 justify-between">
 			
-			<div class="h-100px">
+			<div id="calendarInfo" class="h-100px">
 				<div id="calendarList" class="mainWhite flex aa add-cursor">
 				</div>
 				<div id="daylight"class="mainWhite flex aa add-cursor">

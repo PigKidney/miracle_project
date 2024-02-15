@@ -33,21 +33,21 @@
 		</div>
 		
 		<div style="display: block; text-align: center;" class="mainWhite underline-none">		
-		<c:if test="${page.startPage != 1 }">
-			<a href="/board/index?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}">&lt;</a>
+		<c:if test="${page.startPage != 1}">
+			<a href="/board/index?nowPage=${page.startPage-1}&cntPerPage=${page.cntPerPage}">&lt;</a>
 		</c:if>
-		<c:forEach begin="${page.startPage }" end="${page.endPage }" var="p">
+		<c:forEach begin="${page.startPage}" end="${page.endPage}" var="p">
 			<c:choose>
-				<c:when test="${p == page.nowPage }">
-					<b>${p }</b>
+				<c:when test="${p == page.nowPage}">
+					<b>${p}</b>
 				</c:when>
-				<c:when test="${p != page.nowPage }">
-					<a href="/board/index?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
+				<c:when test="${p != page.nowPage}">
+					<a class="pageNumber" href="/board/index?nowPage=${p}&cntPerPage=${page.cntPerPage}">${p}</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${page.endPage != page.lastPage}">
-			<a href="/board/index?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">&gt;</a>
+			<a href="/board/index?nowPage=${page.endPage+1}&cntPerPage=${page.cntPerPage}">&gt;</a>
 		</c:if>
 	</div>
 		

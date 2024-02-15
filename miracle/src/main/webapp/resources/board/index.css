@@ -29,3 +29,12 @@
 .board-content:link {
 	color: #eaf0ec;	
 }
+.pageNumber:link{
+	color: #eaf0ec;		
+}
+.pageNumber:visited {
+	color: #eaf0ec;
+}
+.pageNumber{
+	text-decoration: none;	
+}
