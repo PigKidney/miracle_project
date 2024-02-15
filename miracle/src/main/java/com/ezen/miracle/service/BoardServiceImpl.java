@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.miracle.dto.LogoBoardDTO;
 import com.ezen.miracle.mapper.BoardMapper;
@@ -111,6 +112,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void selectBoard(Model model, PageVO vo, Integer nowPage, Integer cntPerPage) {
 		int total = countBoard();
+
+		log.info("now1 : " + nowPage + ", cPP1 : " + cntPerPage);
 		// 처음 화면은 1~5페이지가 나옴
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = 1;
@@ -120,9 +123,14 @@ public class BoardServiceImpl implements BoardService {
 		} else if (cntPerPage == null) {
 			cntPerPage = 5;
 		}
+		log.info("now2 : " + nowPage + ", cPP2 : " + cntPerPage);
 		vo = new PageVO(total, nowPage, cntPerPage);
 		List<LogoBoardDTO> list = boardMapper.selectBoard(vo);
+		log.info(vo.getStart());
+		log.info(vo.getEnd());
 		List<String> date = new ArrayList<String>();
+		log.info(vo);
+		log.info(list);
 
 		for (int i = 0; i < list.size(); i++) {
 			date.add(sdf.format(list.get(i).getCreated_at()));

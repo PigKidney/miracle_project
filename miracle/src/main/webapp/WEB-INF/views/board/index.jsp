@@ -19,7 +19,7 @@
 			<div class="p-b10">조회</div>
 			<div class="p-b10">추천</div>	
 		</div>
-			<c:forEach items="${list}" begin="0" end="9" var="list" varStatus="status">
+			<c:forEach items="${list}" var="list" varStatus="status">
 			<div class="item-center">
 				<div><p>${list.board_id}</p></div>
 				<div><p>${list.board_category}  &nbsp;&nbsp;&nbsp;</p></div>
@@ -31,6 +31,28 @@
 			</div>
 			</c:forEach>
 		</div>
+		
+		<div style="display: block; text-align: center;" class="mainWhite underline-none">		
+		<c:if test="${page.startPage != 1 }">
+			<a href="/board/index?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${page.startPage }" end="${page.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == page.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != page.nowPage }">
+					<a href="/board/index?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${page.endPage != page.lastPage}">
+			<a href="/board/index?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
+		
+		
+		
 		<div style="text-align: right;">
 			<button id="beginningToWriteBtn" class="btn-two green rounded font-16 bald">글쓰기</button>
 		</div>

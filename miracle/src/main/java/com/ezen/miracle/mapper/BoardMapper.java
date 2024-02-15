@@ -2,6 +2,8 @@ package com.ezen.miracle.mapper;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.ezen.miracle.dto.LogoBoardDTO;
 import com.ezen.miracle.util.PageVO;
 
