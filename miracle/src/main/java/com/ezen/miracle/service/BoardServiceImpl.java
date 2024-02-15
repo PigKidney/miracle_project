@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.miracle.dto.LogoBoardDTO;
 import com.ezen.miracle.mapper.BoardMapper;
@@ -139,5 +138,66 @@ public class BoardServiceImpl implements BoardService {
 		model.addAttribute("list", list);
 		model.addAttribute("date", date);
 		log.info("page, list, date");
+	}
+
+	@Override
+	public int insertNotice(LogoBoardDTO dto) {
+		
+		int result = boardMapper.insertNotice(dto);
+//		log.info("insertNotice" + result);
+		
+		if(result ==1) {
+			return dto.getBoard_id();
+		}else {
+			return result;
+		}
+	}
+
+	@Override
+	public int updateNotice(LogoBoardDTO dto) {
+		int result = boardMapper.updateNotice(dto);
+		if(result ==1) {
+			return dto.getBoard_id();
+		}else {
+			return result;
+		}
+	}
+
+	
+//	@Override
+//	public int delete(int board_id) {
+//		int result = boardMapper.delete(board_id);
+//		if (result == 1) {
+//			return 1;
+//		} else {
+//			return -1;
+//		}
+//	}
+	
+	
+	
+	@Override
+	public int rec(int board_id) {
+		int result = boardMapper.rec(board_id);
+		if (result == 1) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	@Override
+	public void detail(int board_id, Model model) {
+		
+		LogoBoardDTO board = boardMapper.get(board_id);
+		String date;
+		if(board.getModified_at() == null) {
+			date = sdf.format(board.getCreated_at());
+		} else {
+			date = sdf.format(board.getModified_at()) + "(수정)";
+		}
+		model.addAttribute("board", board);
+		model.addAttribute("date", date);
+		log.info("board : " + board);
 	}
 }

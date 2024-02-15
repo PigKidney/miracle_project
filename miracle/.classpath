@@ -35,6 +35,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Gi7E-36/git/miracle_project/miracle/src/main/webapp/resources/lib/ojdbc11.jar"/>
+	<classpathentry kind="lib" path="C:/javaFullstack_jks/database/sqldeveloper/jdbc/lib/ojdbc11.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
