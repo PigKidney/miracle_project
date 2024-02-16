@@ -17,6 +17,12 @@
 	 margirn-top:30px;
 	 border: 0 solid #e5e7eb;
 }
-.material-symbols-outlined{
-	 background-color:#0a0a23;
+.round2{
+	  width: 90px;
+      height: 50px;
+	  border-radius: 20%;
+	  background-color:pink;
+}
+.white{
+	color: white;
 }

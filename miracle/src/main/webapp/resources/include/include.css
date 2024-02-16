@@ -265,3 +265,9 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.category{
+	border-width: 1px;
+	border-radius: 14px
+}
+

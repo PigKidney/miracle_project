@@ -18,13 +18,5 @@ public interface BoardService {
 	int countBoard();
 	void selectBoard(Model model, PageVO vo, Integer nowPage, Integer cntPerPage);
 	
-//	void list(Model model);
-	void detail(int board_id, Model model);
-	int insertNotice(LogoBoardDTO dto);
-	int updateNotice(LogoBoardDTO dto);
-	int deleteNotice(int board_id);
-	int rec(int board_id);
-	int viewCountNotice(int board_id);
-	int countBoardNotice();
-	void selectBoardNotice(Model model, PageVO vo, Integer nowPage, Integer cntPerPage);
+	
 }

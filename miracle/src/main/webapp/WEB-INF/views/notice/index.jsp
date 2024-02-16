@@ -6,8 +6,10 @@
 <link rel="stylesheet" href="/resources/notice/index.css" />
 <c:url value="/resources/notice/index.js" var="indexJS"></c:url>
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-r
+ 
+<%
+String titleSearch = request.getParameter("titleSearch");
+%>
 
 
 
@@ -26,8 +28,7 @@ r
 			</c:forEach>
       </div>
       
-      	<div style="display: block; text-align: center;" class="mainWhite underline-none">	
-      		
+      	<div style="display: block; text-align: center;" class="mainWhite underline-none">		
       	<!-- 탭내 처음페이지가 1아니면 <누르면 432 로 가게하는 기능 -->
 		<c:if test="${page.startPage != 1 }">
 			<a href="/notice/index?nowPage=${page.startPage - 1}&cntPerPage=${page.cntPerPage}">&lt;</a>
@@ -45,15 +46,16 @@ r
 			</c:choose>
 		</c:forEach>
 		
-			<!-- 탭 내 마지막 페이지가  맨 마지막 페이지아니면 > 누르면이동시키기 -->
+			<!-- 탭 내 마지막 페이지가  맨 마지막 페이지아니면 누르면이동시키기 -->
 		<c:if test="${page.endPage != page.lastPage}">
 			<a href="/notice/index?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">&gt;</a>
 		</c:if>
 	</div>
-      
-      
-   <button id="writebtn" class=" round font-16 bald" >글쓰기</button>
-	
+      	<div class="top-text">
+				<span class="material-symbols-outlined search"> search </span> 
+				<input  name="board_title" class="top-box" type="text" placeholder="제목을입력해주세요" />
+			</div>
+   <button id="writebtn" class=" round1 white font-16 bald" >글쓰기</button>
 	</div>
 </div>
 

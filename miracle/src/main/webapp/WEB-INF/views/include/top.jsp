@@ -19,7 +19,6 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <%
-
 Long user_id = (Long) session.getAttribute("login_id");
 String user_nickname = (String) session.getAttribute("login_nickname");
 String user_password = (String) session.getAttribute("login_password");
@@ -103,7 +102,7 @@ console.log("user_id : " + idCheck);
 		</div>
 	</div>
 
-
+	<!-- 이거아님 -->
 	<form id="loginForm" action="/main/index" method="post">
 		<input id="userId" name="user_id" type="hidden" value="${user_id.value}" /> 
 		<input id="userEmail" name="user_email" type="hidden" value="${user_email.value}" /> 

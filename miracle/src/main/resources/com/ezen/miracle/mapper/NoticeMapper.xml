@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.miracle.mapper.NoticeMapper">
+<select id="getNoticeAll" resultType="com.ezen.miracle.dto.LogoBoardDTO">
+    SELECT *
+    FROM logo_board
+    WHERE board_category IN('공지','이벤트','점검') and board_show=1
+    ORDER BY board_id DESC
+</select>
+ 
+ <select id="get" resultType="com.ezen.miracle.dto.LogoBoardDTO">
+    SELECT * FROM logo_board WHERE board_id = #{board_id}
+ </select>
+ 
+   <!-- keyProperty: 전달한 DTO에 방금 INSERT 또는 UPDATE했을때의 키값을 넣어주는 mybatis 옵션 -->
+ <insert id="insertNotice" parameterType="com.ezen.miracle.dto.LogoBoardDTO">
+  <selectKey resultType="Integer" keyProperty="board_id" order="BEFORE">
+	  	SELECT Board_id_seq.nextval FROM dual
+  </selectKey>
+  	 INSERT INTO 
+	  	Logo_Board(
+		  board_id,
+		  board_title,
+		  board_content,
+		  view_count,
+		  board_category,
+		  created_at
+		  )
+	  	VALUES(
+	  	  #{board_id},
+	  	  #{board_title},
+	      #{board_content},
+	      0,
+		  #{board_category},
+		  sysTIMESTAMP
+		)
+  </insert>
+  
+  
+   <update id="updateNotice" parameterType="com.ezen.miracle.dto.LogoBoardDTO">
+  	UPDATE Logo_Board SET board_title = #{board_title},
+  			board_content = #{board_content},
+  			board_category=#{board_category},
+  			modified_at= sysTIMESTAMP
+  	WHERE board_id = #{board_id}
+
+  </update>
+  
+  
+  
+  	<update id="delete">
+		update logo_board set board_show = 0 where board_id = #{board_id}
+	</update>
+  <update id="rec">
+		update logo_board set board_good_count = board_good_count +1 where board_id = #{board_id}
+	</update>
+	
+	<update id="viewCount">
+		update logo_board set view_count = view_count +1 where board_id = #{board_id}
+	</update>
+	
+  	<!-- 총 게시글 갯수 출력 -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM logo_board where board_show=1
+	</select>
+
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectBoard"
+		resultType="com.ezen.miracle.dto.LogoBoardDTO">
+
+		select ddd.*
+  from(
+    select rownum as rn,ccc.* 
+    from (select board_id, board_title, board_content,
+		board_good_count, board_category, view_count,
+		logo_board.created_at as created_at, modified_at, board_show 
+        from logo_board where board_show =1 order by board_id DESC)ccc
+        ) ddd 
+    where ddd.rn BETWEEN #{start} and #{end}
+	</select>
+	
+	
+	
+		<select id = "selectTitle"
+			resultType="com.ezen.miracle.dto.LogoBoardDTO">
+			
+			select * from logo_board	
+				where board_title LIKE '%{$boatd_title}%' AND board_show=1
+				order by board_id DESC
+	 	 </select>
+ 	
+	
+</mapper>

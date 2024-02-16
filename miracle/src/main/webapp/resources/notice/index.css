@@ -19,9 +19,20 @@
 	text-decoration: none;	
 }
 
-.board-content:visited {
-	color: #eaf0ec;
+.round1{
+	  width: 80px;
+      height: 100px;
+	  border-radius: 20%;
+	  background-color:pink;
 }
-.board-content:link {
-	color: #eaf0ec;	
+
+.white{
+	color: white;
+}
+
+.pageNumber:link{
+	color: #eaf0ec;		
+}
+.pageNumber:visited {
+	color: #eaf0ec;
 }

@@ -21,22 +21,22 @@
 		</div>
 			
 			<input type="hidden" name="board_id" value="${board.board_id}"></input>
-			<button type="submit" id="modiBtn">수정하기</button>
+			<button type="submit" id="modiBtn" class=" round2 white font-16 bald white">수정하기</button>
 		</form>
 		<form action="/notice/delete" method="get">
 			<input type="hidden" name="board_id" value="${board.board_id}"/></input>
-			<button type="submit" id="delBtn">삭제하기</button>
+			<button type="submit" id="delBtn" class=" round2 white font-16 bald white">삭제하기</button>
 		</form>
 		
 		<div style="text-align: right;">
-			<button id="goodBtn" class="btn-two blue rounded font-16 bald"><span class="material-symbols-outlined">thumb_up</span></button>
+			<button id="goodBtn" class=" font-16 bald"><span class="material-symbols-outlined">thumb_up</span></button>
 		</div>		
 		
-		<div class="btn">
+		<div class>
 			<button class="material-symbols-outlined" onclick="location.href='/notice/index'">
 			    menu
 			</button>
-			<button id="arrowd" class="material-symbols-outlined">
+			<button id="arrowd" class="material-symbols-outlined" >
 				expand_less
 			</button>
 			<button id="arrowu" class="material-symbols-outlined" >
