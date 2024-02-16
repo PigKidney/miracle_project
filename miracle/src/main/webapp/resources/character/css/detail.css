@@ -143,6 +143,18 @@ body{
     align-items: center;
     justify-content: center;
 }
+.collection-grid{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(1px,1fr));
+    grid-gap: 10px;
+    margin: 20px;
+}
+
+.collection-flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 #gem-over{
     margin-bottom: 10px;
@@ -244,18 +256,20 @@ body{
     height: 150px;
 }
 
-#collectionPopup{
+.popup{
     position: absolute;
-    width: 800px;
-    height: 800px;
-    top: 88px;
-    left: 440px;
+    z-index: 1;
+    width: 759px;
+    /* height: 800px; */
+    /* top: 88px;
+    left: 440px; */
     border-radius: 15px;
     background-color: #42464D;
     box-shadow: 0 0 2px 0px white;
 }
 
 #collectionBar{
+    padding-top: 4px;
     display: grid;
     grid-template-columns: repeat(2,minmax(0,1fr));
 }
@@ -346,7 +360,7 @@ font{
     /* box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.387); */
 }
 
-.radius{
+.radius15{
     border-radius: 15px;
 }
 
@@ -417,7 +431,7 @@ p{
     overflow: hidden;
 }
 
-.gem-font{
+.font10{
     font-size: 10px;
 }
 
@@ -550,7 +564,7 @@ p{
     height: 154px 
 }
 
-.gem-radius{
+.radius10{
     border-radius: 10px;
 }
 
@@ -580,9 +594,14 @@ p{
     border-radius: 100%;
 }
 
-.flex-dir-c {
+.flex-dir-r {
 	display: flex;
     flex-direction: row;
+}
+
+.flex-dir-c {
+	display: flex;
+    flex-direction: column;
 }
 
 .color-back {
@@ -853,4 +872,151 @@ p{
 
 .h50{
     height: 50px;
+}
+
+.collection-select{
+    border: 2px solid #ffffff8a;
+}
+
+.unactive{
+    /* display: none; */
+    display: none;
+
+}
+
+/* font:not(.active){
+    display: none;
+} */
+
+.ColletNum{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 25px;
+    height: 25px;
+    background-color: #262626;
+    border-radius: 4px;
+    margin-right: 7px;
+}
+
+.stretch{
+    align-items: stretch;
+}
+
+.avtarDiv{
+    display: grid;
+    grid-template-columns: 50px 300px;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.avatarImg{
+    position: absolute;
+    width: 370px;
+    top: 60px;
+    left: 190px;
+    z-index: -1;
+}
+
+.avtarDivBoardColor{
+    background-color: rgb(22, 24, 29);
+    position: relative;
+    z-index: -2;
+    border-radius: 15px;
+}
+
+.avatarBoard{
+    padding-top: 36px;
+    padding-left: 40px;
+    /* display: flex;
+    flex-direction: column; */
+    height: 530px;
+    /* flex-wrap: wrap; */
+}
+
+.avatar-1{
+    position: absolute;
+    top: 50px;
+}
+
+.avatar-2{
+    position: absolute;
+    top: 110px;
+}
+
+.avatar-3{
+    position: absolute;
+    top: 200px;
+}
+
+.avatar-4{
+    position: absolute;
+    top: 260px;
+}
+
+.avatar-5{
+    position: absolute;
+    top: 350px;
+}
+
+.avatar-6{
+    position: absolute;
+    top: 410px;
+}
+
+.avatar-7{
+    grid-template-columns: 200px 50px;
+    text-align: right;
+    position: absolute;
+    top: 50px;
+    right: 40px;
+}
+
+.avatar-8{
+    grid-template-columns: 200px 50px;
+    text-align: right;
+    position: absolute;
+    top: 110px;
+    right: 40px;
+}
+
+.avatar-9{
+    grid-template-columns: 200px 50px;
+    text-align: right;
+    position: absolute;
+    top: 200px;
+    right: 40px;
+}
+
+.avatar-10{
+    grid-template-columns: 200px 50px;
+    text-align: right;
+    position: absolute;
+    top: 260px;
+    right: 40px;
+}
+
+.avatar-11{
+    grid-template-columns: 200px 50px;
+    text-align: right;
+    position: absolute;
+    top: 320px;
+    right: 40px;
+}
+
+.avatar-12{
+    grid-template-columns: 200px 50px;
+    text-align: right;
+    position: absolute;
+    top: 380px;
+    right: 40px;
+}
+
+.avatar-13{
+    grid-template-columns: 200px 50px;
+    text-align: right;
+    position: absolute;
+    top: 440px;
+    right: 40px;
 }
