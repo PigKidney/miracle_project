@@ -104,4 +104,7 @@ window.onload = async () => {
     }
 }
 
+function ourGit(){
+    window.open('https://github.com/PigKidney/miracle_project');
+}
 

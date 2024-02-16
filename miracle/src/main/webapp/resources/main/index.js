@@ -75,37 +75,53 @@ const bossNgate_1 = document.getElementById('bossNgate-1');
 const bossNgate_2 = document.getElementById('bossNgate-2');
 const bossNgate_3 = document.getElementById('bossNgate-3');
 const calendarInfo = document.getElementById('calendarInfo');
+let todayStar = '<span class="material-symbols-outlined twinkle-star">kid_star</span>';
 
 let today = new Date();
 let eventDayCheck = today.getDate();
 const dayList = ['일', '월', '화', '수', '목', '금', '토'];
 
-for (let i = 7; i > -8; i--) {
-    let dayOfPast = new Date(today - (3600000 * 24 * i));
-    daylight.appendChild(document.createElement('div')).innerText = dayList[dayOfPast.getDay()];
-    calendarList.appendChild(document.createElement('div')).innerText = dayOfPast.getDate();
+function colorOfSelectedDay(e) {
+    // 만들어야댐
 }
-// 7번자리가 오늘에 해당하는 중앙자리임
-// 요일
-let daylight7 = daylight.children[7].textContent;
-// 날짜
-let calendarList7 = calendarList.children[7].textContent;
 
+for (let i = 2; i > -8; i--) {
+    let dayOfPast = new Date(today - (3600000 * 24 * i));
+    if (dayOfPast.getDay() == 0) {
+        calendarList.appendChild(document.createElement('div')).innerText = dayOfPast.getDate() + '(' + dayList[dayOfPast.getDay()] + ')';
+        calendarList.lastChild.classList.add('sundayRed');
+    } else if (dayOfPast.getDay() == 6) {
+        calendarList.appendChild(document.createElement('div')).innerText = dayOfPast.getDate() + '(' + dayList[dayOfPast.getDay()] + ')';
+        calendarList.lastChild.classList.add('saturdayBlue');
+    } else {
+        calendarList.appendChild(document.createElement('div')).innerText = dayOfPast.getDate() + '(' + dayList[dayOfPast.getDay()] + ')';
+        calendarList.lastChild.classList.add('weekdayWhite');
+    }
+}
+// 날짜
+let calendarList7 = calendarList.children[2].textContent.substring(0, calendarList.children[0].textContent.length - 3);
 let islandList = [];
 let fieldBossList = [];
 let chaosGateList = [];
 let voyageList = [];
+calendarList.children[2].innerHTML += todayStar;
 
-for (let i = 0; i < 15; i++) {
+for (let i = 2; i < 8; i++) {
     calendarInfo.children[0].children[i].addEventListener('click', () => {
-        console.log(calendarInfo.children[0].children[i].textContent + ' / ' + calendarInfo.children[1].children[i].textContent);
 
-        calendarList7 = calendarInfo.children[0].children[i].textContent;
+        calendarList7 = calendarList.children[i].textContent.substring(0, calendarList.children[0].textContent.length - 3);
+        for (let j = 2; j < 8; j++) {
+            if (calendarList.children[j].children[0] != null) {
+                calendarList.children[j].children[0].remove();
+            }
+        }
+        calendarList.children[i].innerHTML += todayStar;
         islandList = [];
         fieldBossList = [];
         chaosGateList = [];
         voyageList = [];
         island();
+        return;
     })
 }
 function island() {
@@ -129,7 +145,6 @@ function island() {
 
                         } else if (i == 0) {
                             islandList.push(allInfo[i])
-                            console.log('add2')
                         }
                     }
                 }
@@ -272,36 +287,36 @@ function adventureTimer() {
         eventTimeMin = parseInt(eventTimeMin);
         eventTimeMin++;
     }
-    let eventTable = today.getDay();
+    let eventTable = setDay.getDay();
     if (hour >= 10 && hour < 23) {
         switch (eventTable) {
             case 0:
                 bossNgate_1.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
-                bossNgate_2.children[2].innerHTML = '<div class="maybe">출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
                 bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
             case 1:
-                bossNgate_1.children[2].innerHTML = '<div class="maybe">출현 예정</div>';
-                bossNgate_2.children[2].innerHTML = '<div class="maybe">출현 예정</div>';
+                bossNgate_1.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
                 bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
             case 2:
                 bossNgate_1.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
-                bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
-                bossNgate_3.children[2].innerHTML = '<div>출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
             case 3:
-                bossNgate_1.children[2].innerHTML = '<div>출현 예정</div>';
-                bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
-                bossNgate_3.children[2].innerHTML = '<div>출현 예정</div>';
+                bossNgate_1.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
             case 4:
-                bossNgate_1.children[2].innerHTML = '<div>출현 예정</div>';
-                bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
+                bossNgate_1.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
                 bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
             case 5:
                 bossNgate_1.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
-                bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
-                bossNgate_3.children[2].innerHTML = '<div>출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
             case 6:
-                bossNgate_1.children[2].innerHTML = '<div>출현 예정</div>';
-                bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
+                bossNgate_1.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
                 bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
         }
     }
