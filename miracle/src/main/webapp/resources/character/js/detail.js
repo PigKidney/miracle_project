@@ -1318,7 +1318,7 @@ function addAvatar(ch, div){
     chImage.src = ch.ArmoryProfile.CharacterImage;
     div.appendChild(chImage);
     let names = [['머리' , '전설'], ['머리' , '영웅'] , ['상의' , '전설'] , ['상의' , '영웅'] , ['하의' , '전설'] , ['하의' , '영웅'], 
-    ['무기' , '전설'] , ['무기' , '영웅'], ['악기' , '영웅'], ['얼굴1' , '영웅'] , ['얼굴2' , '영웅'], ['이동' , '영웅'] , ['변신' , '전설']];
+    ['무기' , '전설'] , ['무기' , '영웅'], ['악기' , '영웅'], ['얼굴1' , '영웅'] , ['얼굴2' , '영웅'], ['이동' , ''] , ['변신' , '']];
     let avatarBoard = document.createElement('div');
     avatarBoard.classList.add('avatarBoard');
     div.appendChild(avatarBoard);
@@ -1350,7 +1350,16 @@ function addAvatar(ch, div){
                 type.innerText = avatar[j].Type; 
 
                 find = true;
-            } 
+            } else if(avatar[j].Type.includes(names[i][0]) && i > 10){
+                coloerFilter(avatar[j] , imgDiv);
+                img.src = avatar[j].Icon;
+                name.innerText = avatar[j].Name;
+                cardNameColoer(avatar[j].Grade,name);
+                type.innerText = avatar[j].Type; 
+
+                find = true;
+            }
+            
         }
         if(!find) {
             imgDiv.classList.add('item-coloer-6');

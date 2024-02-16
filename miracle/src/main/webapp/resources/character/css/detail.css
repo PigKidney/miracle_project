@@ -966,7 +966,7 @@ p{
 }
 
 .avatar-7{
-    grid-template-columns: 200px 50px;
+    grid-template-columns: 250px 50px;
     text-align: right;
     position: absolute;
     top: 50px;
@@ -974,7 +974,7 @@ p{
 }
 
 .avatar-8{
-    grid-template-columns: 200px 50px;
+    grid-template-columns: 250px 50px;
     text-align: right;
     position: absolute;
     top: 110px;
@@ -982,7 +982,7 @@ p{
 }
 
 .avatar-9{
-    grid-template-columns: 200px 50px;
+    grid-template-columns: 250px 50px;
     text-align: right;
     position: absolute;
     top: 200px;
@@ -990,7 +990,7 @@ p{
 }
 
 .avatar-10{
-    grid-template-columns: 200px 50px;
+    grid-template-columns: 250px 50px;
     text-align: right;
     position: absolute;
     top: 260px;
@@ -998,7 +998,7 @@ p{
 }
 
 .avatar-11{
-    grid-template-columns: 200px 50px;
+    grid-template-columns: 250px 50px;
     text-align: right;
     position: absolute;
     top: 320px;
@@ -1006,7 +1006,7 @@ p{
 }
 
 .avatar-12{
-    grid-template-columns: 200px 50px;
+    grid-template-columns: 250px 50px;
     text-align: right;
     position: absolute;
     top: 380px;
@@ -1014,7 +1014,7 @@ p{
 }
 
 .avatar-13{
-    grid-template-columns: 200px 50px;
+    grid-template-columns: 250px 50px;
     text-align: right;
     position: absolute;
     top: 440px;
