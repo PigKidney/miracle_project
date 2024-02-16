@@ -80,15 +80,10 @@ console.log("user_id : " + idCheck);
 		
 		<div id="showbox" class="">
 					<div class="item-center justify-between cursor">
-			
-						<div class="">
-							<a id="loginTag" class="mainWhite underline-none" href="/login/index">
-							
-							</a>
+						<div class="m-r10">
+							<a id="loginTag" class="mainWhite underline-none" href="/login/index"></a>
 						</div>
-						<div id="nickName" class="mainWhite">
-							
-						</div>
+						<div id="nickName" class="mainWhite"></div>
 						<div id="addadd" class="hide">
 							<span class="material-symbols-outlined">expand_more</span>
 						</div>

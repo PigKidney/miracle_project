@@ -74,8 +74,56 @@ const adventure_island_3 = document.getElementById('adventure-island-3');
 const bossNgate_1 = document.getElementById('bossNgate-1');
 const bossNgate_2 = document.getElementById('bossNgate-2');
 const bossNgate_3 = document.getElementById('bossNgate-3');
+const calendarInfo = document.getElementById('calendarInfo');
+let todayStar = '<span class="material-symbols-outlined twinkle-star">kid_star</span>';
 
+let today = new Date();
+let eventDayCheck = today.getDate();
+const dayList = ['일', '월', '화', '수', '목', '금', '토'];
 
+function colorOfSelectedDay(e) {
+    // 만들어야댐
+}
+
+for (let i = 2; i > -8; i--) {
+    let dayOfPast = new Date(today - (3600000 * 24 * i));
+    if (dayOfPast.getDay() == 0) {
+        calendarList.appendChild(document.createElement('div')).innerText = dayOfPast.getDate() + '(' + dayList[dayOfPast.getDay()] + ')';
+        calendarList.lastChild.classList.add('sundayRed');
+    } else if (dayOfPast.getDay() == 6) {
+        calendarList.appendChild(document.createElement('div')).innerText = dayOfPast.getDate() + '(' + dayList[dayOfPast.getDay()] + ')';
+        calendarList.lastChild.classList.add('saturdayBlue');
+    } else {
+        calendarList.appendChild(document.createElement('div')).innerText = dayOfPast.getDate() + '(' + dayList[dayOfPast.getDay()] + ')';
+        calendarList.lastChild.classList.add('weekdayWhite');
+    }
+}
+// 날짜
+let calendarList7 = calendarList.children[2].textContent.substring(0, calendarList.children[0].textContent.length - 3);
+let islandList = [];
+let fieldBossList = [];
+let chaosGateList = [];
+let voyageList = [];
+calendarList.children[2].innerHTML += todayStar;
+
+for (let i = 2; i < 8; i++) {
+    calendarInfo.children[0].children[i].addEventListener('click', () => {
+
+        calendarList7 = calendarList.children[i].textContent.substring(0, calendarList.children[0].textContent.length - 3);
+        for (let j = 2; j < 8; j++) {
+            if (calendarList.children[j].children[0] != null) {
+                calendarList.children[j].children[0].remove();
+            }
+        }
+        calendarList.children[i].innerHTML += todayStar;
+        islandList = [];
+        fieldBossList = [];
+        chaosGateList = [];
+        voyageList = [];
+        island();
+        return;
+    })
+}
 function island() {
 
     var xmlHttpRequest = new XMLHttpRequest();
@@ -83,26 +131,7 @@ function island() {
     xmlHttpRequest.addEventListener('readystatechange', (e) => {
         if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
             let allInfo = JSON.parse(xmlHttpRequest.responseText);
-            let today = new Date();
-            const dayList = ['일', '월', '화', '수', '목', '금', '토'];
             console.log(allInfo);
-
-            for (let i = 7; i > -8; i--) {
-                let dayOfPast = new Date(today - (3600000 * 24 * i));
-                daylight.appendChild(document.createElement('div')).innerText = dayList[dayOfPast.getDay()];
-                calendarList.appendChild(document.createElement('div')).innerText = dayOfPast.getDate();
-            }
-
-            // 7번자리가 오늘에 해당하는 중앙자리임
-            // 요일
-            let daylight7 = daylight.children[7].textContent
-            // 날짜
-            let calendarList7 = calendarList.children[7].textContent
-            let islandList = [];
-            let fieldBossList = [];
-            let chaosGateList = [];
-            let voyageList = [];
-
 
             // 모험섬
             for (let i = 0; i < Object.keys(allInfo).length; i++) {
@@ -116,7 +145,6 @@ function island() {
 
                         } else if (i == 0) {
                             islandList.push(allInfo[i])
-                            console.log('add2')
                         }
                     }
                 }
@@ -125,10 +153,10 @@ function island() {
             for (let i = 0; i < Object.keys(islandList).length; i++) {
                 switch (i) {
                     case 0:
-
                         adventure_island_1.firstElementChild.innerHTML = '<img style="border-radius: 10px;" src="' + islandList[i].ContentsIcon + '"></img>';
                         adventure_island_1.children[1].children[0].textContent = islandList[i].ContentsName;
 
+                        adventure_island_1.children[1].children[1].innerHTML = '';
                         if (islandList[i].RewardItems[0].Name.substring(islandList[i].RewardItems[0].Name.length - 2, islandList[i].RewardItems[0].Name.length) == '마음') {
                             adventure_island_1.children[1].children[1].innerHTML += '<img style="border-radius: 5px;" height="36px" width="36px" src="https://cdn.korlark.com/lostark/icons/island/ico_island_simbol.png"></img>';
                         }
@@ -141,6 +169,7 @@ function island() {
                         adventure_island_2.firstElementChild.innerHTML = '<img style="border-radius: 10px;" src="' + islandList[i].ContentsIcon + '"></img>';
                         adventure_island_2.children[1].children[0].textContent = islandList[i].ContentsName;
 
+                        adventure_island_2.children[1].children[1].innerHTML = '';
                         if (islandList[i].RewardItems[0].Name.substring(islandList[i].RewardItems[0].Name.length - 2, islandList[i].RewardItems[0].Name.length) == '마음') {
                             adventure_island_2.children[1].children[1].innerHTML += '<img style="border-radius: 5px;" height="36px" width="36px" src="https://cdn.korlark.com/lostark/icons/island/ico_island_simbol.png"></img>';
                         }
@@ -153,6 +182,7 @@ function island() {
                         adventure_island_3.firstElementChild.innerHTML = '<img style="border-radius: 10px;" src="' + islandList[i].ContentsIcon + '"></img>';
                         adventure_island_3.children[1].children[0].textContent = islandList[i].ContentsName;
 
+                        adventure_island_3.children[1].children[1].innerHTML = '';
                         if (islandList[i].RewardItems[0].Name.substring(islandList[i].RewardItems[0].Name.length - 2, islandList[i].RewardItems[0].Name.length) == '마음') {
                             adventure_island_3.children[1].children[1].innerHTML += '<img style="border-radius: 5px;" height="36px" width="36px" src="https://cdn.korlark.com/lostark/icons/island/ico_island_simbol.png"></img>';
                         }
@@ -164,31 +194,32 @@ function island() {
             }
 
             // 필드보스
-            for (let i = 0; i < Object.keys(allInfo).length; i++) {
-                for (let j = 0; j < Object.keys(allInfo[i].StartTimes).length; j++) {
-                    let centerDay = new Date(allInfo[i].StartTimes[j]);
-                    if (allInfo[i].CategoryName == '필드보스' && centerDay.getDate() == calendarList7) {
-                        fieldBossList.push(allInfo[i])
+            if (eventDayCheck == 0 || eventDayCheck == 2 || eventDayCheck == 5) {
+                for (let i = 0; i < Object.keys(allInfo).length; i++) {
+                    for (let j = 0; j < Object.keys(allInfo[i].StartTimes).length; j++) {
+                        let centerDay = new Date(allInfo[i].StartTimes[j]);
+                        if (allInfo[i].CategoryName == '필드보스' && centerDay.getDate() == calendarList7) {
+                            fieldBossList.push(allInfo[i])
+                        }
                     }
                 }
             }
-            bossNgate_1.children[0].innerHTML = '<img style="border-radius: 5px;" height="40px" width="40px" src="' + fieldBossList[fieldBossList.length - 1].ContentsIcon + '"></img>';
-            bossNgate_1.children[1].innerHTML = fieldBossList[fieldBossList.length - 1].CategoryName;
-
-
+            bossNgate_1.children[0].innerHTML = '<img style="border-radius: 5px;" height="40px" width="40px" src="/resources/img/fieldboss.png"></img>';
+            bossNgate_1.children[1].innerHTML = '필드보스'
 
             // 카오스게이트
+            if (eventDayCheck == 0 || eventDayCheck == 1 || eventDayCheck == 4 || eventDayCheck == 6)
+                for (let i = 0; i < Object.keys(allInfo).length; i++) {
+                    for (let j = 0; j < Object.keys(allInfo[i].StartTimes).length; j++) {
+                        let centerDay = new Date(allInfo[i].StartTimes[j]);
+                        if (allInfo[i].CategoryName == '카오스게이트' && centerDay.getDate() == calendarList7) {
+                            chaosGateList.push(allInfo[i])
+                        }
 
-            for (let i = 0; i < Object.keys(allInfo).length; i++) {
-                for (let j = 0; j < Object.keys(allInfo[i].StartTimes).length; j++) {
-                    let centerDay = new Date(allInfo[i].StartTimes[j]);
-                    if (allInfo[i].CategoryName == '카오스게이트' && centerDay.getDate() == calendarList7) {
-                        chaosGateList.push(allInfo[i])
                     }
                 }
-            }
-            bossNgate_3.children[0].innerHTML = '<img style="border-radius: 5px;" height="40px" width="40px" src="' + chaosGateList[chaosGateList.length - 1].ContentsIcon + '"></img>';
-            bossNgate_3.children[1].innerHTML = chaosGateList[chaosGateList.length - 1].CategoryName;
+            bossNgate_3.children[0].innerHTML = '<img style="border-radius: 5px;" height="40px" width="40px" src="/resources/img/chaosgate.png"></img>';
+            bossNgate_3.children[1].innerHTML = '카오스게이트';
 
             // 항해
             for (let i = 0; i < Object.keys(allInfo).length; i++) {
@@ -199,10 +230,8 @@ function island() {
                     }
                 }
             }
-            bossNgate_2.children[0].innerHTML = '<img style="border-radius: 5px;" height="40px" width="40px" src="' + voyageList[voyageList.length - 1].ContentsIcon + '"></img>';
-            //      bossNgate_2.children[1].innerHTML = voyageList[voyageList.length - 1].CategoryName;
+            bossNgate_2.children[0].innerHTML = '<img style="border-radius: 5px;" height="40px" width="40px" src="/resources/img/voyage.png"></img>';
             bossNgate_2.children[1].innerHTML = '유령선';
-
         }
     })
     xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/gamecontents/calendar", true);
@@ -215,12 +244,10 @@ function island() {
 let noticeList = document.getElementById('noticeList');
 
 function official() {
-
     var xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.addEventListener('readystatechange', (e) => {
         if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
             let allInfo = JSON.parse(xmlHttpRequest.responseText);
-
             for (let i = 0; i < 5; i++) {
                 noticeList.appendChild(document.createElement('div')).innerText = allInfo[i].Type;
                 noticeList.appendChild(document.createElement('div')).innerText = allInfo[i].Title;
@@ -245,16 +272,14 @@ function adventureTimer() {
     let setDay = new Date()
     let today = new Date(setDay + 60000);
     let min = parseInt(today.getMinutes());
-    let hour = today.getHours();
+    let hour = setDay.getHours();
     let sec = parseInt(today.getSeconds());
-
     let eventTimeMin = 59 - min;
     let eventTimeSec = 60 - sec;
 
     if (eventTimeMin < 10) {
         eventTimeMin = '0' + eventTimeMin;
-    } 
-
+    }
     if (eventTimeSec < 10) {
         eventTimeSec = '0' + eventTimeSec;
     } else if (eventTimeSec == 60) {
@@ -262,38 +287,38 @@ function adventureTimer() {
         eventTimeMin = parseInt(eventTimeMin);
         eventTimeMin++;
     }
-
-    let eventTable = today.getDay();
-
-    switch (eventTable) {
-        case 0:
-            bossNgate_1.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
-            bossNgate_2.children[2].innerHTML = '<div class="maybe">출현 예정</div>';
-            bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
-        case 1:
-            bossNgate_1.children[2].innerHTML = '<div class="maybe">출현 예정</div>';
-            bossNgate_2.children[2].innerHTML = '<div class="maybe">출현 예정</div>';
-            bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
-        case 2:
-            bossNgate_1.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
-            bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
-            bossNgate_3.children[2].innerHTML = '<div>출현 예정</div>';
-        case 3:
-            bossNgate_1.children[2].innerHTML = '<div>출현 예정</div>';
-            bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
-            bossNgate_3.children[2].innerHTML = '<div>출현 예정</div>';
-        case 4:
-            bossNgate_1.children[2].innerHTML = '<div>출현 예정</div>';
-            bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
-            bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
-        case 5:
-            bossNgate_1.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
-            bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
-            bossNgate_3.children[2].innerHTML = '<div>출현 예정</div>';
-        case 6:
-            bossNgate_1.children[2].innerHTML = '<div>출현 예정</div>';
-            bossNgate_2.children[2].innerHTML = '<div>출현 예정</div>';
-            bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
+    let eventTable = setDay.getDay();
+    if (hour >= 10 && hour < 23) {
+        switch (eventTable) {
+            case 0:
+                bossNgate_1.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
+            case 1:
+                bossNgate_1.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
+            case 2:
+                bossNgate_1.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+            case 3:
+                bossNgate_1.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div style="font-size:12px>출현 예정</div>';
+            case 4:
+                bossNgate_1.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
+            case 5:
+                bossNgate_1.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+            case 6:
+                bossNgate_1.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+                bossNgate_2.children[2].innerHTML = '<div style="font-size:12px">출현 예정</div>';
+                bossNgate_3.children[2].innerHTML = '<div>' + (eventTimeMin) + ' : ' + (eventTimeSec) + '</div>';
+        }
     }
 }
 

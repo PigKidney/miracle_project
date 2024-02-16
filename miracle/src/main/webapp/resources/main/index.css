@@ -1,220 +1,321 @@
 #body2 {
-  padding-top: 68px;
+	padding-top: 68px;
 }
 
 .w-1120px {
-  width: 1120px;
+	width: 1120px;
 }
 
 .h-100px {
-  height: 100px;
+	height: 100px;
+}
+
+.h-50px {
+	height: 50px;
 }
 
 .h-280px {
-  height: 280px;
+	height: 280px;
 }
 
 .m-div2 {
-  height: 100px;
+	height: 100px;
 }
 
 .m-div3 {
-  height: 300px;
+	height: 300px;
 }
 
 .banner {
-  display: none;
+	display: none;
 }
 
 .grid-main-board {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+	display: grid;
+	grid-template-columns: 1fr 5fr;
 }
 
-.grid-main-board>*{
+.grid-main-board>* {
+	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-top: 10px;
+}
 
-  margin-bottom: 20px;
-  margin-left: 20px;
-  margin-top: 10px;
+.grid-main-board>*:nth-child(2n-1) {
+	border-right: #42464D solid 2px;
 }
-.maybe{
-	font-size: 18px;
-}
-.grid-main-board>*:nth-child(2n-1){
-  border-right: #42464D solid 2px;	
-}
-.notice-margin{
+
+.notice-margin {
 	margin-left: 15px;
 	margin-bottom: 15px;
 }
 
 .bannerShow {
-  display: block;
+	display: block;
 }
 
 .flex {
-  display: flex;
-  margin: 0 auto;
+	display: flex;
+	margin: 0 auto;
 }
 
 .inline-flex {
-  display: inline-flex;
+	display: inline-flex;
 }
 
 .justify-between {
-  justify-content: space-between;
+	justify-content: space-between;
+}
+
+.justify-between2 {
+	justify-content: space-around;
 }
 
 .w-550h-280 {
-  width: 550px;
-  height: 280px;
+	width: 550px;
+	height: 280px;
 }
 
 .m-top40 {
-  margin-top: 40px;
+	margin-top: 40px;
 }
 
 .grid {
-  display: grid;
-  grid-template-rows: 1fr 4fr;
+	display: grid;
+	grid-template-rows: 1fr 4fr;
 }
 
 .h-320px {
-  height: 320px;
+	height: 320px;
 }
 
 .bold {
-  font: bold;
+	font: bold;
 }
 
 .font-18 {
-  font-size: 18px;
+	font-size: 18px;
 }
 
 .slider {
-  position: relative;
-  overflow: hidden;
-
-  width: 1120px;
-  height: 280px;
-  z-index: 1;
+	position: relative;
+	overflow: hidden;
+	width: 1120px;
+	height: 280px;
+	z-index: 1;
 }
 
 .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-
-  animation: slider 12s infinite linear;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	animation: slider 12s infinite linear;
 }
 
 /* 에키드나 */
 .slide:nth-child(1) {
-  background-image: url(https://cdn.korlark.com/artworks/home/541657180860978066.webp);
-  animation-delay: 0;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/541657180860978066.webp);
+	animation-delay: 0;
 }
 
 /* 카멘 */
 .slide:nth-child(2) {
-  background-image: url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
-  animation-delay: -3s;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
+	animation-delay: -3s;
 }
 
 /* 상아탑 */
 .slide:nth-child(3) {
-  background-image: url(https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000);
-  animation-delay: -6s;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000);
+	animation-delay: -6s;
 }
 
 /* 가르가디스 */
 .slide:nth-child(4) {
-  background-image: url(https://cdn.korlark.com/artworks/home/417339171099840946.webp?t=1689753102000);
-  animation-delay: -9s;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/417339171099840946.webp?t=1689753102000);
+	animation-delay: -9s;
 }
 
-@keyframes slider {
-  0% {
-    transform: translateX(0);
-  }
-
-  15% {
-    transform: translateX(0);
-  }
-
-  25% {
-    transform: translateX(-100%);
-    animation-timing-function: step-end;
-  }
-
-  90% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+@
+keyframes slider { 0% {
+	transform: translateX(0);
 }
 
+15
+%
+{
+transform
+:
+translateX(
+0
+);
+}
+25
+%
+{
+transform
+:
+translateX(
+-100%
+);
+animation-timing-function
+:
+step-end;
+}
+90
+%
+{
+transform
+:
+translateX(
+100%
+);
+}
+100
+%
+{
+transform
+:
+translateX(
+0
+);
+}
+}
 .grid-2row {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
 }
-.grid-2row>div{
+
+.grid-2row>div {
 	display: grid;
 }
 
-.island-border-out{
-	border: 1px solid green;
+.island-border-out {
 	width: 300px;
 	height: 180px;
+	padding-top: 10px;
 }
 
-.grid-3col{
-  display: grid;
-  grid-template-columns: 2fr 8fr 4fr;
+.grid-3col {
+	display: grid;
+	grid-template-columns: 3fr 6fr 4fr;
 }
 
-#daylight>div{
-	border: 1px gray solid;
+#daylight>div {
 	width: 20px;
 	padding-top: 25px;
 	text-align: center;
 }
-#calendarList>div{
-	border: 1px gray solid;
+
+#calendarList>div {
 	width: 20px;
 	padding-top: 20px;
 	text-align: center;
 }
 
-.add-cursor>div{
-	cursor: pointer;
-}
-.aa{
-  justify-content: space-around;
+.add-cursor>div {
+	font-size: 15px;
+	font: bold;
 }
 
-.island-grid{
+.add-cursor>div:nth-child(n+3) {
+	cursor: pointer;
+}
+
+.add-cursor>div:first-child {
+	color: gray;
+	user-select: none;
+}
+
+.add-cursor>div:nth-child(2) {
+	color: gray;
+	user-select: none;
+}
+
+.add-cursor>div:nth-child(3)>span {
+	color: yellow;
+}
+
+.aa {
+	justify-content: space-around;
+}
+
+.text-center2 {
+	padding-bottom: 10px;
+}
+
+.island-grid {
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 }
-.island-grid>*{
-	border: 1px solid red;
+
+.island-grid {
+	border: 3px solid #42464D;
+	border-radius: 20px;
+	background-color: rgb(43, 45, 49);
+	margin-top: 18px;
+	padding-right: 0;
+	padding-left: 10px;
+	margin-right: 15px;
+	margin-left: 15px;
 }
-.grid-4col{
+
+.grid-4col {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	padding-left: 10px;
 }
-.island-box{
-	border: 2px solid #42464D;
-	border-radius: 5px;
+
+.island-box {
+	border: 3px solid #42464D;
+	border-radius: 10px;
 }
-.box-background-color{
-	
+
+.box-background-color {
 	background-color: #33353A;
+}
+
+.island-border-out>div:first-child {
+	border: 3px solid #42464D;
+	border-radius: 10px;
+	background-color: rgb(43, 45, 49);
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.island-border-out>div:first-child>div {
+	padding-top: 15px;
+	margin-right: 0px;
+	font-size: 16px;
+}
+
+.twinkle-star {
+	position: relative;
+	bottom: 35px;
+	color: yellow;
+	left: 35px;
+	user-select: none;
+	filter: drop-shadow(0 0 10px yellow);
+}
+
+.sundayRed {
+	color: red;
+	text-shadow: 0 0 10px white;
+}
+
+.saturdayBlue {
+	color: blue;
+	text-shadow: 0 0 10px white;
+}
+
+.weekdayWhite {
+	text-shadow: 0 0 10px white;
 }
