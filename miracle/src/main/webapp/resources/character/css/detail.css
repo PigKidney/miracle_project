@@ -435,6 +435,11 @@ p{
     font-size: 10px;
 }
 
+.font13{
+    font-size: 13px;
+}
+
+
 .eqi-EngraveName{
     color: white;
     font-size: 12px;
@@ -1020,3 +1025,22 @@ p{
     top: 440px;
     right: 40px;
 }
+
+
+.skillDiv{
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.magin-20{
+    margin: 20px;
+}
+
+.skillLine{
+    border-bottom: 1px solid #262626;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+

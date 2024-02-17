@@ -168,6 +168,7 @@ const guildPopup = document.getElementById('guildPopup');
 const pvpRankPopup = document.getElementById('pvpRankPopup');
 
 const avatarBar = document.getElementById('avatarPopupBar');
+const skillBar = document.getElementById('skillPopupBar');
 
 let popupBar = [skillPopup, avatarPopup , ownedCharactersPopup , guildPopup , pvpRankPopup];
 
@@ -417,6 +418,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             }
 
             addAvatar(chInfo, avatarBar);
+            addSkill(chInfo, skillBar);
         }
         
     });
@@ -1363,7 +1365,7 @@ function addAvatar(ch, div){
         }
         if(!find) {
             imgDiv.classList.add('item-coloer-6');
-            img.classList.add('item-coloer-6');
+            img.classList.add('hidden');
             name.innerText = '미장착';
             name.classList.add('white_text');
             type.innerText = names[i][0] + '아바타';
@@ -1386,6 +1388,97 @@ function addAvatar(ch, div){
             avatarDiv.appendChild(imgDiv);
             nameDiv.appendChild(name);
             nameDiv.appendChild(type);              
+        }
+    }
+}
+
+
+// 스킬 UI 
+function addSkill(ch, div){
+    let skills = ch.ArmorySkills;
+
+    let skillBoard = document.createElement('div');
+    skillBoard.classList.add('skillBoard');
+    skillBoard.classList.add('magin-20');
+    div.appendChild(skillBoard);
+    for(let i=0; i< skills.length ; i++){
+        if(skills[i].Level >= 4){
+
+            let skillDiv = document.createElement('div');
+            skillDiv.classList.add('skillDiv');
+            skillDiv.classList.add('skillLine');
+            skillBoard.appendChild(skillDiv);
+          
+            let imgDiv = document.createElement('div');
+            imgDiv.classList.add('w-h50');
+            imgDiv.classList.add('radius10');
+            imgDiv.classList.add('overflow-h');
+            
+            let img = document.createElement('img');
+            img.src = skills[i].Icon;
+            
+            let nameDiv = document.createElement('Div');
+            let name = document.createElement('span');
+            name.classList.add('bold700');
+            name.classList.add('white_text');
+            name.innerText = skills[i].Name;
+            
+            let level = document.createElement('span');
+            level.innerText = skills[i].Level + '레벨'; 
+    
+            img.classList.add('w-h50');
+            nameDiv.classList.add('flex-dir-c');
+            level.classList.add('white_text');
+            level.classList.add('font13');
+            
+            imgDiv.appendChild(img);
+            skillDiv.appendChild(imgDiv);
+            skillDiv.appendChild(nameDiv);
+            nameDiv.appendChild(level);              
+            nameDiv.appendChild(name);
+            
+            addTripods(skills[i], skillDiv);
+        }
+    }
+}
+
+function addTripods(ch , div){
+    let tripods = ch.Tripods;
+    for(let i=0; i < tripods.length; i++){
+        if(tripods[i].IsSelected == true){
+            let tripodsDiv = document.createElement('div');
+            tripodsDiv.classList.add('flex-dir-r');
+            tripodsDiv.classList.add('chid-al-center');
+            div.appendChild(tripodsDiv);
+
+            let imgDiv = document.createElement('div');
+            imgDiv.classList.add('w-h44');
+            imgDiv.classList.add('radius10');
+            imgDiv.classList.add('overflow-h');
+            
+            let img = document.createElement('img');
+            img.src = tripods[i].Icon;
+            
+            let nameDiv = document.createElement('Div');
+            let name = document.createElement('span');
+            name.classList.add('bold700');
+            name.classList.add('white_text');
+            name.classList.add('font13');
+            name.innerText = '['+tripods[i].Slot+'] ' + tripods[i].Name;
+            
+            let level = document.createElement('span');
+            level.innerText = 'Lv. ' + tripods[i].Level; 
+    
+            img.classList.add('w-h44');
+            nameDiv.classList.add('flex-dir-c');
+            level.classList.add('white_text');
+            level.classList.add('font13');
+            
+            imgDiv.appendChild(img);
+            nameDiv.appendChild(level);              
+            nameDiv.appendChild(name);
+            tripodsDiv.appendChild(imgDiv);
+            tripodsDiv.appendChild(nameDiv);
         }
     }
 }
