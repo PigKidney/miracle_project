@@ -38,7 +38,7 @@
 .grid-main-board>* {
 	margin-bottom: 20px;
 	margin-left: 20px;
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 .grid-main-board>*:nth-child(2n-1) {
@@ -144,50 +144,11 @@
 	animation-delay: -9s;
 }
 
-@
-keyframes slider { 0% {
-	transform: translateX(0);
-}
-
-15
-%
-{
-transform
-:
-translateX(
-0
-);
-}
-25
-%
-{
-transform
-:
-translateX(
--100%
-);
-animation-timing-function
-:
-step-end;
-}
-90
-%
-{
-transform
-:
-translateX(
-100%
-);
-}
-100
-%
-{
-transform
-:
-translateX(
-0
-);
-}
+@keyframes slider { 0% {transform: translateX(0);}
+15%{transform:translateX(0);}
+25%{transform:translateX(-100%);animation-timing-function:step-end;}
+90%{transform:translateX(100%);}
+100%{transform:translateX(0);}
 }
 .grid-2row {
 	display: grid;
@@ -305,17 +266,25 @@ translateX(
 	user-select: none;
 	filter: drop-shadow(0 0 10px yellow);
 }
+#islandTime{
+	font-weight: 900;
+}
 
 .sundayRed {
 	color: red;
-	text-shadow: 0 0 10px white;
+	text-shadow: 0 0 5px white, 0 0 7px white, 0 0 10px white;
+	font-size: 18px;
+
 }
 
 .saturdayBlue {
 	color: blue;
-	text-shadow: 0 0 10px white;
+	text-shadow: 0 0 5px white, 0 0 7px white, 0 0 10px white;
+	font-size: 18px;
+
 }
 
 .weekdayWhite {
 	text-shadow: 0 0 10px white;
+	font-size: 18px;
 }

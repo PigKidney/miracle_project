@@ -9,6 +9,9 @@
 <meta charset="UTF-8" name='view-transition'>
 <title></title>
 <script src="/resources/jquery/jquery-3.7.1.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/resources/button/button.css" />
 <link rel="stylesheet" href="/resources/board/index.css" />
 <link rel="stylesheet" href="/resources/board/read.css" />	
@@ -47,13 +50,13 @@ console.log("user_id : " + idCheck);
 		<!-- 올리면 글자색깔바뀌면서 밑줄생기는 이벤트리스너 추가 -->
 		<div id="top-tab2" class="item-center">
 			<div class="item-center tab2">
-				<div>
+				<div class="purpleTab">
 					<a class="mainWhite bold underline-none" href="/notice/index">공지사항</a>
 				</div>
-				<div>
+				<div class="purpleTab">
 					<a class="mainWhite bold underline-none" href="/character/index">전투정보실</a>
 				</div>
-				<div>
+				<div class="purpleTab">
 					<a class="mainWhite bold underline-none" href="/board/index">게시판</a>
 				</div>
 

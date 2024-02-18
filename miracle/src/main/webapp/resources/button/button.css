@@ -1,10 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
   background: #eaedf1;
-  font-family: 'Lato', sans-serif;
 }
 .header {
   background: white;
@@ -384,3 +384,45 @@ button[class*="btn"] {border: 0;}
 .btn-gradient.purple:active {background: #BD8EB7;}
 .btn-gradient.yellow:active {background: #DBC05B;}
 .btn-gradient.green:active  {background: #72B08E;}
+
+.btnFade.btnBlueGreen:hover {
+  background: #21825B;
+}
+
+.btnFade.btnLightBlue:hover {
+  background: #01939A;
+}
+
+.btnFade.btnOrange:hover {
+  background: #FF8E00;
+}
+
+.btnFade.btnPurple:hover {
+  background: #6D184B;
+}
+.btnBlueGreen {
+  background: #00AE68;
+}
+
+.btnLightBlue {
+  background: #5DC8CD;
+}
+
+.btnOrange {
+  background: #FFAA40;
+}
+
+.btnPurple {
+  background: #A74982;
+}
+.button {
+  position: relative;
+  width: 120px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
+  line-height: 50px;
+  color: #FFF;
+  border-radius: 10px;
+  transition: all 0.2s ;
+}
