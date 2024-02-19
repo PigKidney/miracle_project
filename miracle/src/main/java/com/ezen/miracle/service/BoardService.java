@@ -18,5 +18,7 @@ public interface BoardService {
 	int countBoard();
 	void selectBoard(Model model, PageVO vo, Integer nowPage, Integer cntPerPage);
 	
+	void membersList(Model model, Long user_id);
+	
 
 }

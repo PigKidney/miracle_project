@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.miracle.mapper.CharMapper">
+
+	<select id="charAll" resultType="com.ezen.miracle.dto.LogoCharDTO">
+		select * from logo_char
+	</select>
+
+	<select id="charSelectedServer" resultType="com.ezen.miracle.dto.LogoCharDTO">
+		select * from logo_char where char_server = #{char_server}
+	</select>
+
+	<select id="charSelectedClass" resultType="com.ezen.miracle.dto.LogoCharDTO">
+		select * from logo_char where char_class = #{char_class}
+	</select>
+	
+	<select id="charSelectedClassNServer" resultType="com.ezen.miracle.dto.LogoCharDTO">
+		select * from logo_char where char_class = #{char_class} and char_server = #{char_server}
+	</select>
+
+</mapper>

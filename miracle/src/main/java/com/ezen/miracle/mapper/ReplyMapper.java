@@ -9,5 +9,7 @@ public interface ReplyMapper {
 	List<LogoReplyDTO> getAll(int board_id);
 	int write(LogoReplyDTO dto);
 	int delete(int reply_id);
+	
+	List<LogoReplyDTO> membersList(Long user_id);
 
 }

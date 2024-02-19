@@ -19,7 +19,7 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Autowired
 	ReplyMapper replyMapper;
-	
+
 	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm");
 
 	@Override
@@ -45,6 +45,12 @@ public class ReplyServiceImpl implements ReplyService {
 	public int delete(int reply_id) {
 		replyMapper.delete(reply_id);
 		return 1;
+	}
+
+	@Override
+	public void membersList(Model model, Long user_id) {
+		List<LogoReplyDTO> membersReply = replyMapper.membersList(user_id);
+		model.addAttribute("membersReply", membersReply);
 	}
 
 }

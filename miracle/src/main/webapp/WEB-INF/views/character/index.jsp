@@ -56,13 +56,33 @@
    </div>
    <div>
    </div>
+   
+   
+   <hr />
+   <hr />
+
+   <c:forEach items="${charAll}" var="charAll">
+   ${charAll.char_level} <br />
+   ${charAll.char_name} <br />
+   ${charAll.char_class} <br />
+   ${charAll.char_server} <br />
+   ${charAll.char_guild} <br />
+   ${charAll.char_equipSet} <br />
+   ${charAll.char_classEng} <br />
+   <hr />
+   </c:forEach>
 
 
 
+<hr />
+<hr />
    <div class="flex-header">
       <div class="choice1">
+<form action="/character/index" method="get">
+
+<input type="submit" />
          <div id="server">
-            <select name="" id="serverSelect">
+            <select id="serverSelect" name="char_server">
                <option value="">전서버</option>
                <option value="루페온">루페온</option>
                <option value="실리안">실리안</option>
@@ -75,7 +95,7 @@
             </select>
          </div>
          <div id="jobclass">
-            <select name="" id="jobClassSelect">
+            <select id="jobClassSelect" name="char_class">
                <option value="">전체클래스</option>
                <option value="디스트로이어">디스트로이어</option>
                <option value="버서커">버서커</option>
@@ -104,6 +124,8 @@
                <option value="기상술사">기상술사</option>
             </select>
          </div>
+</form>
+
          <div id="engraving">
             <select name="" id="invisible"></select>
          </div>
