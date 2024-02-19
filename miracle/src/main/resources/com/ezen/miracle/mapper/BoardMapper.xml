@@ -79,6 +79,11 @@
         ) ddd 
     where ddd.rn BETWEEN #{start} and #{end}
 	</select>
+	
+	<select id="membersList">
+	select * from logo_board inner join logo_user using(user_id) where user_id=#{user_id}
+	
+	</select>
 	<!-- private Integer board_id; private String board_title; private String 
 		board_content; private String board_category; private Integer board_good_count; 
 		private Integer user_id; private Integer view_count; private Date created_at; 

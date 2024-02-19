@@ -21,5 +21,7 @@ public interface BoardMapper {
 	
 	int countBoard();
 	List<LogoBoardDTO> selectBoard(PageVO vo);
+	
+	List<LogoBoardDTO> membersList(Long user_id);
 
 }

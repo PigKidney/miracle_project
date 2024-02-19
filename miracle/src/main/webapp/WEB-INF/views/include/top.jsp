@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/resources/button/button.css" />
+<link rel="stylesheet" href="/resources/login/index.css" />
 <link rel="stylesheet" href="/resources/board/index.css" />
 <link rel="stylesheet" href="/resources/board/read.css" />	
 <link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
@@ -71,20 +72,15 @@ console.log("user_id : " + idCheck);
 		<div id="top-tab3" class="item-center login tab3">
 
 			<!-- dark, light 클래스 활용해서 일단 뭐 만들어야함 -->
-			<div class="dark">
-				<span class="material-symbols-outlined cursor"> dark_mode </span>
-			</div>
-			<div class="dark light">
-				<span class="material-symbols-outlined cursor"> light_mode </span>
-			</div>
+			
 			<div id="smsBtn" class="hide">
 				<span class="mainWhite material-symbols-outlined cursor">sms</span>
 			</div>
 		
-		<div id="showbox" class="">
+		<div id="showbox" class="p-r20">
 					<div class="item-center justify-between cursor">
 						<div class="m-r10">
-							<a id="loginTag" class="mainWhite underline-none" href="/login/index"></a>
+							<a id="loginTag" class="mainWhite underline-none" href='${localURL}'></a>
 						</div>
 						<div id="nickName" class="mainWhite"></div>
 						<div id="addadd" class="hide">
@@ -92,7 +88,7 @@ console.log("user_id : " + idCheck);
 						</div>
 					</div>
 				<div class="dropdown-content">
-						<a href="">MY PAGE </a>
+						<a href="/login/index">MY PAGE </a>
 						<a href="">ㅇㅅㅇ</a>
 						<a href="/main/logout">LOG OUT</a>
 				</div>

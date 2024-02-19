@@ -144,6 +144,9 @@ body {
 .mainPurple{
 	color: #8045dd;
 }
+.p-r20{
+	padding-right: 20px;
+}
 
 .hide{
 	display: none;
@@ -241,20 +244,26 @@ body {
   position : absolute;
   z-index : 1;
   font-weight: 400;
-  background-color: #f9f9f9;
-  min-width : 200px;
+  background-color: #42464D;
+  min-width : 110px;
+  border-radius: 10px;
+  border: 3px solid black;
+  margin-right: 10px;
+	color: white;
 }
 
 .dropdown-content a{
   display : block;
   text-decoration : none;
-  color : rgb(37, 37, 37);
+	color: white;
   font-size: 12px;
   padding : 12px 20px;
+  border-radius: 10px;
 }
 
 .dropdown-content a:hover{
-  background-color : #ececec
+  background-color : #ececec;
+  color: #42464D;
 }
 
 .dropdown:hover .dropdown-content {
@@ -263,7 +272,7 @@ body {
 
 .purpleTab>a:hover {
     color: #8045dd;
-    transition: all 300ms ease-in-out;
+    transition: all 200ms ease-in-out;
 }
 
 .logo{

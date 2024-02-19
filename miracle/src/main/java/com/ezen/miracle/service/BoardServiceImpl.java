@@ -140,4 +140,11 @@ public class BoardServiceImpl implements BoardService {
 		model.addAttribute("date", date);
 		log.info("page, list, date");
 	}
+	
+	@Override
+	public void membersList(Model model, Long user_id) {
+		List<LogoBoardDTO> membersList = boardMapper.membersList(user_id);
+		model.addAttribute("membersList", membersList);
+		
+	}
 }
