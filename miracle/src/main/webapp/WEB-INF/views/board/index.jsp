@@ -5,20 +5,20 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../include/top.jsp" />
-
+<title></title>
 <div class="include-top">
-	<div class="w-1120px">
-		<div class="mainWhite bold font-24">게시판</div>
+	<div class="w-1120px w5">
+		<div class="mainWhite bold font-24 w7">게시판</div>
 		<div class="mainWhite grid-board">
-		<div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div class="p-b10">조회</div>
-			<div class="p-b10">추천</div>	
-		</div>
+			<div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div class="p-b10">조회</div>
+				<div class="p-b10">추천</div>	
+			</div>
 			<c:forEach items="${list}" var="list" varStatus="status">
 			<div class="item-center">
 				<div><p>${list.board_id}</p></div>
@@ -32,7 +32,7 @@
 			</c:forEach>
 		</div>
 		
-		<div style="display: block; text-align: center;" class="mainWhite underline-none">		
+		<div style="display: block; text-align: center;" class="mainWhite underline-none p-t10">		
 		<c:if test="${page.startPage != 1}">
 			<a href="/board/index?nowPage=${page.startPage-1}&cntPerPage=${page.cntPerPage}">&lt;</a>
 		</c:if>
@@ -54,7 +54,7 @@
 		
 		
 		<div style="text-align: right;">
-			<button id="beginningToWriteBtn" class="btn-two green rounded font-16 bald">글쓰기</button>
+			<button id="beginningToWriteBtn" class="btn-two green rounded font-16 bald btn-deco-1">글쓰기</button>
 		</div>
 		<div class="slider1">
 			<div class="slide1"></div>

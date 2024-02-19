@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/resources/board/write.css" />
 <div class="include-top">
 	<div class="w-1120px">
-		<p style="color: white;">글쓰는곳이야</p>
+		<p style="color: white;" class="p-t10 p-b10">게시글 작성</p>
 		<input id="userId1" type="hidden" value="${login_id}" name="user_id" form="writeForm"/>
 			<select name="board_category" form="writeForm">
 				<option>잡담</option>

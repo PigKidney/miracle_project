@@ -36,7 +36,7 @@
 	</update>
 
 	<select id="get" resultType="com.ezen.miracle.dto.LogoBoardDTO">
-		select * from logo_board where
+		select * from logo_board inner join logo_user using (user_id) where
 		board_id = #{board_id}
 	</select>
 

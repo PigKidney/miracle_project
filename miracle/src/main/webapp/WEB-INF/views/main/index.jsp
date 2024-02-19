@@ -16,7 +16,7 @@
 	</div>
 	<div class="w-1120px h-280px main m-div2 flex justify-between">
 		<div class="m-top40 island">
-			<span class="island mainWhite bold font-20">현재 시간</span> <span
+			<span class="island mainWhite bold font-20">현재 시간&nbsp;&nbsp;&nbsp;</span> <span
 				id="islandTime" class="islandTime mainPurple bold font-20"></span>
 		</div>
 		<div class="m-top40 island">
