@@ -138,8 +138,8 @@ const setValue = ['사멸','갈망','배신','지배',"환각",'파괴','악몽'
 const img_g_uri = 'https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/profile/img_card_grade.png?f9e0ffc8a709611354db408dd0e7a7bb';
 const collections_img = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/sprite/sprite_profile.png?84b2cecac8652fc498fbe05c5df2d4f3";
 
-const eta = document.getElementById('eta');
-const etaBtnList = document.getElementById('eta_btns');
+const etc = document.getElementById('etc');
+const etcBtnList = document.getElementById('etc_btns');
 const cardEffectsDiv = document.getElementById('card-effect-div');
 
 const collectionPoints = document.getElementById('collectionPoints');
@@ -169,8 +169,11 @@ const pvpRankPopup = document.getElementById('pvpRankPopup');
 
 const avatarBar = document.getElementById('avatarPopupBar');
 const skillBar = document.getElementById('skillPopupBar');
+const ownedCharactersBar = document.getElementById('ownedCharactersPopupBar');
+
 
 let popupBar = [skillPopup, avatarPopup , ownedCharactersPopup , guildPopup , pvpRankPopup];
+
 
 document.addEventListener('DOMContentLoaded', (e) => {
     var xmlHttpRequest = new XMLHttpRequest();
@@ -372,6 +375,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
             // 캐릭터 사진 -> 로딩 후 최종적으로 캐릭터 사진 나오면 문제 X
             image.src = chInfo.ArmoryProfile.CharacterImage;
+            if(chInfo.ArmoryProfile.CharacterClassName == '기상술사' || chInfo.ArmoryProfile.CharacterClassName == '도화가'){
+                image.style.top = '-60px';
+            }
 
             addCollectibles(chInfo,collectionBar,collectionList);
             
@@ -393,20 +399,20 @@ document.addEventListener('DOMContentLoaded', (e) => {
             collectBoard[0].classList.remove("unactive");
             collectBars[0].classList.add("collection-select");
 
-            const etaBtns = document.querySelectorAll('#eta_btns > h3');
-            for(let i=0; i<etaBtns.length ; i++){
-                etaBtns[i].addEventListener('click', (e) => {
-                    for(let i=0; i<etaBtns.length ; i++){
+            const etcBtns = document.querySelectorAll('#etc_btns > h3');
+            for(let i=0; i<etcBtns.length ; i++){
+                etcBtns[i].addEventListener('click', (e) => {
+                    for(let i=0; i<etcBtns.length ; i++){
                         popupBar[i].classList.add("hidden");
                         // collectBoard[i].classList.add("unactive");
-                        etaBtns[i].classList.remove("collection-select");
+                        etcBtns[i].classList.remove("collection-select");
                     }
                     // isClick=false;
-                    if(e.currentTarget == etaBtns[i]) {
+                    if(e.currentTarget == etcBtns[i]) {
                         isClick=true;
                         popupBar[i].classList.remove("hidden");
                         // collectBoard[i].classList.remove("unactive");
-                        etaBtns[i].classList.toggle("collection-select");
+                        etcBtns[i].classList.toggle("collection-select");
                     }
                     if(collectIsClick){
                         collectionPopup.classList.add("hidden");
@@ -430,19 +436,91 @@ document.addEventListener('DOMContentLoaded', (e) => {
     xmlHttpRequest.send();
 });
 
+const serverName = ['루페온' , '실리안' , '니나브', '아브렐슈드', '아만', '카마인' , '카제로스' , '카단'];
+document.addEventListener('DOMContentLoaded', (e) => {
+    var xmlHttpRequest = new XMLHttpRequest();
+    xmlHttpRequest.addEventListener ('readystatechange', (e) => {
+        if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
+            const chList = JSON.parse(xmlHttpRequest.responseText);
+            console.dir(chList);
+            serverName.forEach(server => {
+                let serverDiv = document.createElement('div');
+                serverDiv.classList.add('magin-l15');
+                serverDiv.classList.add('magin-r10');
+                let serverName = document.createElement('h3');
+                serverName.classList.add('white_text');
+                serverName.innerText = server;
+                serverDiv.appendChild(serverName);
+
+                let chListDiv = document.createElement('div');
+                chListDiv.classList.add('chList');
+                serverDiv.appendChild(chListDiv);
+
+
+                chList.forEach(Character => {
+                    if(Character.ServerName == server){
+
+                        let chDiv = document.createElement('div');
+                        chDiv.classList.add('flex-dir-c');
+                        chDiv.classList.add('magin-l15');
+                        chDiv.classList.add('b-1p');
+                        chDiv.classList.add('radius15');
+                        chDiv.classList.add('pd-15');
+                        chDiv.classList.add('magin-r10');
+                        chDiv.classList.add('color-back');
+                        
+
+
+                        let chInfo  = document.createElement('span');
+                        chInfo.classList.add('white_text');
+                        chInfo.innerText = " Lv."+ Character.CharacterLevel +' '+Character.CharacterClassName ;
+                        
+                        let chName  = document.createElement('span');
+                        chName.classList.add('white_text');
+                        chName.innerText = Character.ItemMaxLevel +' '+ Character.CharacterName;
+
+                        // serverDiv.appendChild(serverName);
+                        chDiv.appendChild(chInfo);
+                        chDiv.appendChild(chName);
+                        chListDiv.appendChild(chDiv);
+                        chDiv.addEventListener('click', (e) => {
+                            window.location.href = URLforParameter.origin+URLforParameter.pathname+'?search='+Character.CharacterName;
+                        });
+                        ownedCharactersBar.appendChild(serverDiv);
+                    } else{
+                        // serverDiv.classList.add('hidden');
+                    }
+                });
+            });
+
+        }
+    });
+    
+    xmlHttpRequest.open("GET", `https://developer-lostark.game.onstove.com/characters/${getName}/siblings`, true);
+    xmlHttpRequest.setRequestHeader('accept', 'application/json');
+    xmlHttpRequest.setRequestHeader('authorization', 'bearer ' + APIkey);
+    xmlHttpRequest.onreadystatechange = () => { };
+    xmlHttpRequest.send();
+});
+
+
+
+
+
+
 window.addEventListener('click',function(e){
     if(isClick == true){ 
             let tgEl = e.target;
             let header = tgEl.parentNode;
-            if(header.id != 'eta_btns'){ 
+            if(header.id != 'etc_btns'){ 
                 // console.log(header.id);
-                let etaBtns = document.querySelectorAll('#eta_btns > h3');
-                for(let i=0; i<etaBtns.length ; i++){
+                let etcBtns = document.querySelectorAll('#etc_btns > h3');
+                for(let i=0; i<etcBtns.length ; i++){
                     popupBar[i].classList.add("hidden");
                     // collectBoard[i].classList.add("unactive");
-                    etaBtns[i].classList.remove("collection-select");
+                    etcBtns[i].classList.remove("collection-select");
                 }
-                etaBtnList.classList.add('hidden');
+                etcBtnList.classList.add('hidden');
                 return isClick = false;
 
             }
@@ -450,15 +528,15 @@ window.addEventListener('click',function(e){
     }
 });
 // 기타 버튼
-eta.addEventListener('mouseover', (e) => {
+etc.addEventListener('mouseover', (e) => {
     if(!isClick){
-        etaBtnList.classList.remove("hidden");
+        etcBtnList.classList.remove("hidden");
     }
 });
 
-eta.addEventListener('mouseout', (e) => {
+etc.addEventListener('mouseout', (e) => {
     if(!isClick){
-        etaBtnList.classList.add('hidden');
+        etcBtnList.classList.add('hidden');
     }
 });
 
@@ -703,6 +781,10 @@ function addGem(ch , num , imageP , image) {
             gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 홍염';
         } else if (ch.ArmoryGem.Gems[num].Name.includes('멸화')) {
             gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 멸화';
+        } else if (ch.ArmoryGem.Gems[num].Name.includes('청명')) {
+            gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 청명';
+        } else if (ch.ArmoryGem.Gems[num].Name.includes('원해')) {
+            gemEffect.innerText = 'Lv.'+ch.ArmoryGem.Gems[num].Level+' 원해';
         }
         imageP.appendChild(gemEffect);
 
@@ -1214,14 +1296,14 @@ function addCollectibles(ch, div , table){
         let img = document.createElement('div');
         img.classList.add('collection');
         img.classList.add('collection-pop');
-        img.classList.add('div-m10');
+        img.classList.add('margin-l10');
         collectFilter(collection[i],img);
         imgDiv.appendChild(img);
         
         let name = document.createElement('span');
         name.classList.add('collection-pop');
         name.classList.add('eqi-EngravePoint');
-        name.classList.add('div-m10');
+        name.classList.add('margin-l10');
         name.innerText = collection[i].Type;
         imgDiv.appendChild(name);
         collect.appendChild(imgDiv);
@@ -1396,14 +1478,13 @@ function addAvatar(ch, div){
 // 스킬 UI 
 function addSkill(ch, div){
     let skills = ch.ArmorySkills;
-
+    let gems = ch.ArmoryGem;
     let skillBoard = document.createElement('div');
     skillBoard.classList.add('skillBoard');
     skillBoard.classList.add('magin-20');
     div.appendChild(skillBoard);
     for(let i=0; i< skills.length ; i++){
         if(skills[i].Level >= 4){
-
             let skillDiv = document.createElement('div');
             skillDiv.classList.add('skillDiv');
             skillDiv.classList.add('skillLine');
@@ -1437,13 +1518,16 @@ function addSkill(ch, div){
             nameDiv.appendChild(level);              
             nameDiv.appendChild(name);
             
-            addTripods(skills[i], skillDiv);
+            addTripods(skills[i], skillDiv , gems);
         }
     }
 }
 
-function addTripods(ch , div){
+function addTripods(ch , div , gems){
     let tripods = ch.Tripods;
+    let Runes = ch.Rune;
+    let push = 0;
+
     for(let i=0; i < tripods.length; i++){
         if(tripods[i].IsSelected == true){
             let tripodsDiv = document.createElement('div');
@@ -1461,24 +1545,80 @@ function addTripods(ch , div){
             
             let nameDiv = document.createElement('Div');
             let name = document.createElement('span');
+            nameDiv.classList.add('margin-l10');
+
             name.classList.add('bold700');
             name.classList.add('white_text');
             name.classList.add('font13');
-            name.innerText = '['+tripods[i].Slot+'] ' + tripods[i].Name;
-            
+            name.innerText =  tripods[i].Name;
+
+            let tripodNum = document.createElement('span');
+            tripodNum.innerText = tripods[i].Slot;
+            tripodNum.classList.add('tripodNum');
+            if(tripods[i].Tier == 0){
+                tripodNum.classList.add('tripodColor-1');
+            } else if(tripods[i].Tier == 1){
+                tripodNum.classList.add('tripodColor-2');
+            } else if(tripods[i].Tier == 2){
+                tripodNum.classList.add('tripodColor-3');
+            }
+
             let level = document.createElement('span');
             level.innerText = 'Lv. ' + tripods[i].Level; 
-    
+            
             img.classList.add('w-h44');
             nameDiv.classList.add('flex-dir-c');
             level.classList.add('white_text');
             level.classList.add('font13');
             
+            
             imgDiv.appendChild(img);
-            nameDiv.appendChild(level);              
+            nameDiv.appendChild(level);
+            nameDiv.appendChild(tripodNum);
             nameDiv.appendChild(name);
             tripodsDiv.appendChild(imgDiv);
             tripodsDiv.appendChild(nameDiv);
+            push++;
         }
     }
+    if(ch.Level < 7){
+        fackdiv(div)
+        fackdiv(div)
+    } else if(ch.Level < 10){
+        fackdiv(div)
+    }
+    
+    let etc = document.createElement('div');
+    etc.classList.add('white_text');
+    etc.classList.add('flex-dir-r');
+    let rune = document.createElement('div');
+
+    let runeImg = document.createElement('img');
+    let runeName = document.createElement('span');
+
+    runeImg.classList.add('w-h20');
+    runeImg.classList.add('radius100');
+    if(Runes!= null){
+        coloerFilter(Runes , runeImg);
+        runeImg.src = Runes.Icon;
+        runeName.innerText = Runes.Name;
+
+    } else {
+        runeImg.classList.add('item-coloer-6');
+        runeImg.classList.add('hidden');
+    }
+    // addSkillEtc(div , item , icon , gems);
+    rune.appendChild(runeImg);
+    rune.appendChild(runeName);
+    etc.appendChild(rune);
+    div.appendChild(etc);
 }
+
+// 트라이포드 3단계까지 안될때 빈공간 채우기용
+function fackdiv(div){
+    let tripodsDiv = document.createElement('div');
+    tripodsDiv.classList.add('flex-dir-r');
+    tripodsDiv.classList.add('chid-al-center');
+    div.appendChild(tripodsDiv);
+}
+
