@@ -33,7 +33,6 @@ public class CharacterController {
 	@GetMapping("/index")
 	public String character(Model model, @Param("char_server") String char_server,
 			@Param("char_class") String char_class) {
-
 		log.info("서버 : " + char_server + " 클라스 : " + char_class);
 		if ((char_server == null || char_server == "") && (char_class == null || char_class == "")) {
 			log.info("널널");

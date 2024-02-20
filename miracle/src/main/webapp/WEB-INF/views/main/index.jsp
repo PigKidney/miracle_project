@@ -4,6 +4,7 @@
 
 <jsp:include page="../include/top.jsp" />
 
+<title>로고 - 로스트아크 전투정보, 랭킹</title>
 <link rel="stylesheet" href="/resources/main/index.css" />
 <div class="include-top">
 	<div class="w-1120px h-280px main m-div1 cursor">

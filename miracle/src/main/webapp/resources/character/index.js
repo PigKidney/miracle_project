@@ -9,42 +9,11 @@
 
 // document.addEventListener('DOMContentLoaded', init);
 // const select = document.querySelectorAll('#selectedClass');
-function chageLangSelect(){
-    var langSelect = document.getElementById("slecteForm");
-     
-    // select element에서 선택된 option의 value가 저장된다.
-    var selectValue = langSelect.options[langSelect.selectedIndex].value;
- 
-    // select element에서 선택된 option의 text가 저장된다.
-    var selectText = langSelect.options[langSelect.selectedIndex].text;
-}
-let selectedServer = null;
-let selectedClass = null;
-$("#slecteForm").on("change", function(){
-    // console.log($("#slecteForm option:selected").val());
-    // $("#slecteForm option:selected").val();
 
-    // let selectedServer = $("#selectedServer").val();
-    // $("#selectedServer option").index("#selectedServer option:selected");
 
-    // let selectedClass = $('#selectedClass').val();
-    // $("#selectedClass option").index("#selectedClass option:selected");
 
-    const select = $('#slecteForm option:selected').val();
-
-    $("#slecteForm").submit();
-    // $("#slecteForm option").index("#slecteForm option:selected");
-    // $(`#selectedServer [value="${selectedServer}"]`).prop("selected", true);
-    // $(`#selectedClass [value="${selectedClass}"]`).prop("selected", true);
-
-    
-});
-
-$("#slecteForm").ready(function() {
-    $('#slecteForm').change(select);
- });
 // document.getElementById('serverSelect').addEventListener('change', function() {
-    //     const selectedServer = this.value; // 선택된 서버
+//     const selectedServer = this.value; // 선택된 서버
 
 //     // 모든 캐릭터 항목을 숨김
 //     const characterItems = document.querySelectorAll('.list-item');
@@ -159,13 +128,7 @@ $("#slecteForm").ready(function() {
 //         });
 // }
 
- var slider = document.getElementById("mySlider");
-    var output = document.getElementById("sliderValue");
-    output.innerHTML = slider.value;
 
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-    }
 
 // function loadMoreCharacters() {
 //     loadCharacters();
@@ -173,9 +136,9 @@ $("#slecteForm").ready(function() {
 
 // function processCharacter(character, rank) {
 //     const listItem = document.createElement('li');
-    
-        
-   
+
+
+
 //     listItem.classList.add('list-item');
 //     listItem.setAttribute('data-server', character['server-name']); // 서버 정보 추가
 //     listItem.setAttribute('data-job', character['job-name']); // 직업 정보 추가
@@ -195,11 +158,11 @@ $("#slecteForm").ready(function() {
 //             <p class="engrave">${character['engravings']}</p>
 //         </div>
 //     `;
-    
+
 //     if (character['weapon-grade'] === '에스더') {
 //         listItem.querySelector('#ether').innerHTML = `${character['weapon-name'].substring(0, 2)} + ${character['weapon-grade']}`;
 //     }
-    
+
 //     characterList.appendChild(listItem);
 
 //     // 캐릭터를 배열에 추가합니다.
@@ -208,6 +171,17 @@ $("#slecteForm").ready(function() {
 //     // 이미지 설정 함수를 호출합니다.
 //     setTopImages(characters);
 
-   
-// }
 
+
+
+var slider = document.getElementById("mySlider");
+var output = document.getElementById("sliderValue");
+output.innerHTML = slider.value;
+
+slider.oninput = function () {
+    output.innerHTML = this.value;
+}
+
+$("#slecteForm").on("change", function () {
+    $("#slecteForm").submit();
+});

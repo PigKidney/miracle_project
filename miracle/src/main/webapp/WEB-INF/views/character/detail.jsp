@@ -9,6 +9,8 @@
 <c:url value="/resources/character/js/detail.js" var="detailJS"></c:url>
 <c:url value="/resources/character/js/avatar.js" var="avatarJS"></c:url>
 
+<%String characterSearch = request.getParameter("search");%>
+<title><%=characterSearch%> 전투정보 - 로고</title>
 
 
 

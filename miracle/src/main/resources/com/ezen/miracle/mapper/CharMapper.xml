@@ -6,15 +6,19 @@
 
 	<select id="charAll"
 		resultType="com.ezen.miracle.dto.LogoCharDTO">
-		select allrank.* from(select rownum as levelrank, mainrank.* from
-		( select * from logo_char order by char_level desc) mainrank) allrank
+		select allrank.* from(select rownum as levelrank,
+		mainrank.* from
+		( select * from logo_char order by char_level desc)
+		mainrank) allrank
 	</select>
 
 	<select id="charSelectedServer"
 		resultType="com.ezen.miracle.dto.LogoCharDTO">
 		select allrank.* from
-		(select rownum as levelrank, mainrank.* from
-		( select * from logo_char where char_server = #{char_server} order by
+		(select rownum as levelrank,
+		mainrank.* from
+		( select * from logo_char where char_server =
+		#{char_server} order by
 		char_level desc) mainrank) allrank
 
 
@@ -23,8 +27,10 @@
 	<select id="charSelectedClass"
 		resultType="com.ezen.miracle.dto.LogoCharDTO">
 		select allrank.* from
-		(select rownum as levelrank, mainrank.* from
-		( select * from logo_char where char_class = #{char_class} order by
+		(select rownum as levelrank,
+		mainrank.* from
+		( select * from logo_char where char_class =
+		#{char_class} order by
 		char_level desc) mainrank) allrank
 
 	</select>
@@ -32,18 +38,35 @@
 	<select id="charSelectedClassNServer"
 		resultType="com.ezen.miracle.dto.LogoCharDTO">
 		select allrank.* from
-		(select rownum as levelrank, mainrank.* from
-		( select * from logo_char where char_class = #{char_class} and
-		char_server = #{char_server} order by char_level desc) mainrank)
+		(select rownum as levelrank,
+		mainrank.* from
+		( select * from logo_char where char_class =
+		#{char_class} and
+		char_server = #{char_server} order by char_level
+		desc) mainrank)
 		allrank
 
 
 	</select>
 
 	<insert id="charSearchInsert">
-		insert into logo_char values
-		(#{char_level},#{char_name}, #{char_class}, #{char_server},
-		#{char_guild}, #{char_equipSet}, #{char_classEng})
+		MERGE INTO logo_char
+		USING dual
+		ON (char_name =
+		#{char_name})
+		WHEN MATCHED THEN
+		UPDATE SET char_level = #{char_level}
+		,char_class = #{char_class},
+		char_server = #{char_server},
+		char_guild =
+		#{char_guild}, char_equipset = #{char_equipSet}, char_classeng =
+		#{char_classEng}
+		WHEN NOT MATCHED THEN
+		INSERT (char_name, char_level,
+		char_class, char_server,
+		char_guild, char_equipset,char_classeng)
+		VALUES
+		(#{char_name},#{char_level},#{char_class},#{char_server},#{char_guild},#{char_equipSet},#{char_classEng})
 
 	</insert>
 

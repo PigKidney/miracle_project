@@ -6,70 +6,50 @@
 <c:url value="/resources/character/index.js" var="indexJS" />
 <script src="https://kit.fontawesome.com/068a9e1e3f.js"
 	crossorigin="anonymous"></script>
-
+<title>캐릭터 랭킹 - 로고</title>
 <div class="include-top">
 	<div class="w-1120px h-280px main m-div1 cursor mainWhite">
 		<form id="slecteForm" action="/character/index" method="get"
 			class="disply-flex space-between form-padding rank-list align-center margin-top20">
 			<div class="disply-flex">
 				<div>
+					<c:set value="전서버/루페온/실리안/아만/아브렐슈드/카단/카마인/카제로스/니나브" var="servers" />
 					<select id="selectedServer" name="char_server">
-						<c:set value="${null}/루페온/실리안/아만/아브렐슈드/카단/카마인/카제로스/니나브"
-							var="server" />
-						<option value="${null}">전 서버</option>
-					<%-- 	<c:forTokens var="server" items="${server}" delims="/">
-								<c:choose>
-									<c:when test="${server}">
-										<option value="${server}" selected="selected">${server}</option>
-									</c:when>
-									<c:otherwise>
-										<option value="${server}">${server}</option>
-									</c:otherwise>
-								</c:choose>
-						</c:forTokens> --%>
-						<!-- <c:if test="루페온">selected</c:if> -->
-						<option value="루페온">루페온</option>
-						<option value="실리안">실리안</option>
-						<option value="아만">아만</option>
-						<option value="아브렐슈드">아브렐슈드</option>
-						<option value="카단">카단</option>
-						<option value="카마인">카마인</option>
-						<option value="카제로스">카제로스</option>
-						<option value="니나브">니나브</option>
+						<c:forTokens items="${servers}" delims="/" var="server">
+							<c:choose>
+								<c:when test="${not empty char_server}">
+									<option 
+									<c:if test="${server eq '전서버'}">value="${null}"</c:if>
+									<c:if test ="${char_server eq server}">value="${server}" selected="selected"</c:if>>${server}</option>
+								</c:when>
+								<c:otherwise>
+									<option 
+										<c:if test="${server eq '전서버'}">value="${null}"</c:if>
+										<c:if test="${server ne '전서버'}">value="${server}"</c:if>>${server}
+									</option>
+								</c:otherwise>
+							</c:choose>
+						</c:forTokens>
 					</select>
 				</div>
 				<div>
-
+					<c:set value="전체클래스/디스트로이어/버서커/홀리나이트/슬레이어/스트라이커/브레이커/배틀마스터/인파이터/기공사/창술사/데빌헌터/블래스터/호크아이/스카우터/건슬링어/바드/서머너/아르카나/소서리스/블레이드/데모닉/리퍼/소울이터/도화가/기상술사" var="chrClasss" />
 					<select id="selectedClass" name="char_class">
-						<option value="${null}">전체클래스</option>
-						<option value="디스트로이어">디스트로이어</option>
-						<option value="버서커">버서커</option>
-						<option value="홀리나이트">홀리나이트</option>
-						<option value="슬레이어">슬레이어</option>
-						<option value="스트라이커">스트라이커</option>
-						<option value="브레이커">브레이커</option>
-						<option value="배틀마스터">배틀마스터</option>
-						<option value="인파이터">인파이터</option>
-						<option value="기공사">기공사</option>
-						<option value="창술사">창술사</option>
-						<option value="데빌헌터">데빌헌터</option>
-						<option value="블래스터">블래스터</option>
-						<option value="호크아이">호크아이</option>
-						<option value="스카우터">스카우터</option>
-						<option value="건슬링어">건슬링어</option>
-						<option value="바드">바드</option>
-						<option value="서머너">서머너</option>
-						<option value="아르카나">아르카나</option>
-						<option value="소서리스">소서리스</option>
-						<option value="블레이드">블레이드</option>
-						<option value="데모닉">데모닉</option>
-						<option value="리퍼">리퍼</option>
-						<option value="소울이터">소울이터</option>
-						<option value="도화가">도화가</option>
-						<option value="기상술사">기상술사</option>
+						<c:forTokens items="${chrClasss}" delims="/" var="chrClass">
+							<c:choose>
+								<c:when test="${not empty char_class}">
+									<option
+										<c:if test="${chrClass eq '전체클래스'}">value="${null}"</c:if>
+										<c:if test ="${char_class eq chrClass}">value="${chrClass}" selected="selected"</c:if>>${chrClass}</option>
+								</c:when>
+								<c:otherwise>
+									<option 
+										<c:if test="${chrClass eq '전체클래스'}">value="${null}"</c:if>
+										<c:if test="${chrClass ne '전체클래스'}">value="${chrClass}"</c:if>>${chrClass}</option>
+								</c:otherwise>
+							</c:choose>
+						</c:forTokens>
 					</select>
-					<!-- 		<input type="submit" /> -->
-
 				</div>
 			</div>
 			<div class="choice2 disply-flex">
