@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="../include/top.jsp" />
+<title>${read.board_title} - 로고</title>
 <div class="include-top">
 	<div class="w-1120px nanum-gothic-regular">
 		<div class="mainWhite p-t40">

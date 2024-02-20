@@ -6,7 +6,7 @@
 <c:url value="/resources/character/index.js" var="indexJS" />
 <script src="https://kit.fontawesome.com/068a9e1e3f.js"
 	crossorigin="anonymous"></script>
-
+<title>캐릭터 랭킹 - 로고</title>
 <div class="include-top">
 	<div class="w-1120px h-280px main m-div1 cursor mainWhite bord">
 

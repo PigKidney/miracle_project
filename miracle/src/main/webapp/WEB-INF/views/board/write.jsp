@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../include/top.jsp" />
 <link rel="stylesheet" href="/resources/board/write.css" />
+<title>게시글 작성 - 로고</title>
 <div class="include-top">
 	<div class="w-1120px">
 		<p style="color: white;" class="p-t10 p-b10">게시글 작성</p>
