@@ -14,6 +14,9 @@ const characterSearch = document.getElementById('characterSearch');
 const myIP = '118.33.154.162';
 const local = 'localhost';
 
+const localURL ='https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email';
+const dsURL = 'https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2F118.33.154.162%3A9000%2Fmain%2Findex&scope=identify+email';
+
 window.onload = async () => {
 
     characterSearch.addEventListener('keydown', (e)=>{
@@ -97,11 +100,14 @@ window.onload = async () => {
     if (nickName.value == undefined && loginCheck != '0') {
         nickName.innerText = '로그인';
         nickName.onclick = function () {
-            location.href = '/login/index';
+            location.href = localURL;
         }
     } else {
         nickName.innerText = nameCheck;
     }
 }
 
+function ourGit(){
+    window.open('https://github.com/PigKidney/miracle_project');
+}
 

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.p-t30{
+	padding-top: 30px;
+}
+.member-info{
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+.user-board{
+	display: grid;
+	grid-template-columns: 1fr 2fr 5fr 1fr 1fr;
+}
+.user-reply{
+	display: grid;
+	grid-template-columns: 1fr 6fr 2fr;
+}
+.divide-hr{
+	border-top: 1px white solid;
+}

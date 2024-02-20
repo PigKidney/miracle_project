@@ -3,10 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../include/top.jsp" />
 <link rel="stylesheet" href="/resources/board/modify.css" />
+<title>게시글 수정 - 로고</title>
 <div class="include-top">
 	<div class="w-1120px">
 
-		<p style="color: white;">수정하는곳이야</p>
+		<p style="color: white;" class="p-t10">작성글 수정</p>
 		<select id="categorySelect" name="board_category"  form="modifyForm">
 			<option id="sel1">잡담</option>
 			<option id="sel2">구매</option>

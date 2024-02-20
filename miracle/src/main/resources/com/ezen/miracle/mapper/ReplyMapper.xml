@@ -16,5 +16,10 @@
 	<update id="delete">
 		update logo_reply set reply_show = 0 where reply_id = #{reply_id}
 	</update>
+	
+	<select id="membersList">
+	select * from logo_reply inner join logo_user using(user_id) where user_id=#{user_id}
+	
+	</select>
 
 </mapper>

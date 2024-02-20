@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+.w5{
+	font-weight: 500;
+}
+.w7{
+	font-weight: 700;
+	padding-top: 30px;
+}
+
 .grid-board>div {
 	display: grid;
 	grid-template-columns: 1fr 1fr 10fr 1fr 1fr 1fr 1fr;

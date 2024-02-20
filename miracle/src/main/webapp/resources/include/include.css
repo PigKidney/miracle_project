@@ -49,7 +49,8 @@ body {
 }
 
 #top-tab3 {
-	padding-right: 24px;
+	padding-right: 60px;
+	line-height: 15px;
 }
 
 .include-top {
@@ -142,6 +143,9 @@ body {
 }
 .mainPurple{
 	color: #8045dd;
+}
+.p-r20{
+	padding-right: 20px;
 }
 
 .hide{
@@ -238,27 +242,39 @@ body {
 .dropdown-content{
   display : none;
   position : absolute;
-  z-index : 1; /*다른 요소들보다 앞에 배치*/
+  z-index : 1;
   font-weight: 400;
-  background-color: #f9f9f9;
-  min-width : 200px;
+  background-color: #42464D;
+  min-width : 110px;
+  border-radius: 10px;
+  border: 3px solid black;
+  margin-right: 10px;
+	color: white;
 }
 
 .dropdown-content a{
   display : block;
   text-decoration : none;
-  color : rgb(37, 37, 37);
+	color: white;
   font-size: 12px;
   padding : 12px 20px;
+  border-radius: 10px;
 }
 
 .dropdown-content a:hover{
-  background-color : #ececec
+  background-color : #ececec;
+  color: #42464D;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.purpleTab>a:hover {
+    color: #8045dd;
+    transition: all 200ms ease-in-out;
+}
+
 .logo{
     width: 100px;
     height: auto;
@@ -266,6 +282,7 @@ body {
     margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
 .category{
 	border-width: 1px;
 	border-radius: 14px
@@ -291,4 +308,37 @@ body {
 
 .mgt{
 	margin-top: 20px;
+html{
+font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.nanum-gothic-extrabold {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.nanum-gothic-bold {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.nanum-gothic-regular {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.btn-deco-1:hover {
+	background-color: #00AE68;
+	transition: all 0.2s;
+}
+.btn-deco-2:hover {
+	background-color: #5DC8CD;
+	transition: all 0.2s;
+}
+.btn-deco-3:hover {
+	background-color: #A74982;
+	transition: all 0.2s;
 }

@@ -19,8 +19,8 @@ public interface BoardMapper {
 	int deleteReply(int board_id);
 	int countBoard();
 	List<LogoBoardDTO> selectBoard(PageVO vo);
-		
-	
 
+	
+	List<LogoBoardDTO> membersList(Long user_id);
 
 }
