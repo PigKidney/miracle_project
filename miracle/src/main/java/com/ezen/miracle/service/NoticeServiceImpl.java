@@ -33,7 +33,7 @@ public class NoticeServiceImpl implements NoticeService {
 		}
 		model.addAttribute("date", date);
 		model.addAttribute("boards", board);
-		log.info("getAll");
+//		log.info("getAll");
 	}
 	
 	@Override
@@ -48,7 +48,7 @@ public class NoticeServiceImpl implements NoticeService {
 		}
 		model.addAttribute("board", board);
 		model.addAttribute("date", date);
-		log.info("board : " + board);
+//		log.info("board : " + board);
 	}
 	
 	
@@ -119,7 +119,7 @@ public class NoticeServiceImpl implements NoticeService {
 	public void selectBoard(Model model, PageVO vo, Integer nowPage, Integer cntPerPage) {
 		int total = countBoard();
 
-		log.info("now1 : " + nowPage + ", cPP1 : " + cntPerPage);
+//		log.info("now1 : " + nowPage + ", cPP1 : " + cntPerPage);
 		// 처음 화면은 1~5페이지가 나옴
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = 1;
@@ -129,16 +129,16 @@ public class NoticeServiceImpl implements NoticeService {
 		} else if (cntPerPage == null) {
 			cntPerPage = 5;
 		}
-		log.info("now2 : " + nowPage + ", cPP2 : " + cntPerPage);
+//		log.info("now2 : " + nowPage + ", cPP2 : " + cntPerPage);
 		vo = new PageVO(total, nowPage, cntPerPage);
 		
 		List<LogoBoardDTO> list = noticeMapper.selectBoard(vo);
 		
-		log.info("start" +vo.getStart());
-		log.info("last" + vo.getEnd());
+//		log.info("start" +vo.getStart());
+//		log.info("last" + vo.getEnd());
 		List<String> date = new ArrayList<String>();
-		log.info(vo);
-		log.info(list);
+//		log.info(vo);
+//		log.info(list);
 
 		for (int i = 0; i < list.size(); i++) {
 			date.add(sdf.format(list.get(i).getCreated_at()));
@@ -146,14 +146,32 @@ public class NoticeServiceImpl implements NoticeService {
 		model.addAttribute("page", vo);
 		model.addAttribute("list", list);
 		model.addAttribute("date", date);
-		log.info("page, list, date");
+//		log.info("page, list, date");
 	}
 
 	@Override
-	public void selectTitle(Model model) {
-		List<LogoBoardDTO> titleList = noticeMapper.selectTitle(model);
+	public void selectNoticeAll(Model model,String board_title) {
+		System.out.println("3");
+		System.out.println(board_title);
 		
+		//여기 매퍼부분이 문제?
+		List<LogoBoardDTO> titleList = noticeMapper.selectNoticeAll(board_title);
+		List<String> date = new ArrayList<String>();
+		
+		System.out.println("타이틀리스트" + titleList);
+		
+		for (int i = 0; i < titleList.size(); i++) {
+			date.add(sdf.format(titleList.get(i).getCreated_at()));
+		}
+		
+		model.addAttribute("date", date);
+		//titlelist 가 안나옴 model에 안실린건가
+		model.addAttribute("list", titleList);
+		log.info("search title : " + model.getAttribute("titleLists"));
 	}
+
+
+
 
 
 	

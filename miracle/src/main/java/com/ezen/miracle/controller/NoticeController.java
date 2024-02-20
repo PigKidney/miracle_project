@@ -31,16 +31,16 @@ public class NoticeController {
 
 	@GetMapping("/index")
 	public String notice(Model model, PageVO vo, Integer nowPage, Integer cntPerPage,HttpServletRequest request) {
-	
+		
+		
+		
 		noticeservice.countBoard();
 //		log.info("countBoard 데이터 수"  + noticeservice.countBoard());
 		noticeservice.selectBoard(model, vo, nowPage, cntPerPage);
-		log.info(model);
-		log.info("now0 : " + nowPage + " , cPP0 : " + cntPerPage + ", vo :" + vo);
+//		log.info(model);
+//		log.info("now0 : " + nowPage + " , cPP0 : " + cntPerPage + ", vo :" + vo);
 //		log.info("index model: " + model);
 		
-		// 제목입력시 제목포함 다 불러오는기능 
-		//noticeservice.selectTitle(model,request)
 		
 		return "notice/index";
 		
@@ -50,7 +50,7 @@ public class NoticeController {
 	
 	@GetMapping("/write")	
 	public String write() {
-		log.info("/write OK");
+//		log.info("/write OK");
 		return "notice/write";
 	}
 	
@@ -58,7 +58,7 @@ public class NoticeController {
 	public String write(Model model,LogoBoardDTO dto, RedirectAttributes rattr,HttpServletRequest req) {
 //		log.info(dto);
 		int board_id = noticeservice.insertNotice(dto);
-		log.info("board_id : " + board_id);
+//		log.info("board_id : " + board_id);
 		
 		if (board_id > 0) {
 //			log.info(rattr);
@@ -77,15 +77,15 @@ public class NoticeController {
 		boolean exist = false;
 		// 쿠키배열로 전부 꺼내기  getCookies(); //쿠키 목록 받아오기
 		Cookie[] cookies = request.getCookies();
-		log.info("쿠키 : " + cookies);
+//		log.info("쿠키 : " + cookies);
 		// 쿠키있으면 그 안에 있는 쿠키를 꺼내고
 		for (Cookie cookie : cookies) {
 			// 쿠키이름 가져오는 메서드 getName()
 			String name = cookie.getName();
-			log.info("쿠키name : 	" + name);
+//			log.info("쿠키name : 	" + name);
 			// 쿠키를 만들때 board_id 값을 사용해서 만듬
 			if (name.equals("" + board_id)) {
-				log.info("board_id :" + board_id);
+//				log.info("board_id :" + board_id);
 				exist = true;
 				break;
 			} 
@@ -94,16 +94,16 @@ public class NoticeController {
 		
 		if(!exist) {
 			Cookie viewCookie = new Cookie("" + board_id, "1");
-			log.info("viewCookie :" + viewCookie);
+//			log.info("viewCookie :" + viewCookie);
 			//5초동안 쿠키(board_id) 있게해 조회수 안올라가게 해논거
 			viewCookie.setMaxAge(5);
 			//응답받은곳에 viewCookie addCookie해주기
 			response.addCookie(viewCookie);
 			//뷰카운트 증가시켜주는거
 			noticeservice.viewCount(board_id);
-			log.info("viewCount +1");
+//			log.info("viewCount +1");
 		} else {
-			log.info("viewCount +0");			
+//			log.info("viewCount +0");			
 		}
 		noticeservice.detail(board_id, model);
 //		log.info("notice model: " + model);
@@ -114,18 +114,18 @@ public class NoticeController {
 	@PostMapping("/detail")
 	public String modify(Model model,int board_id, LogoBoardDTO dto) {
 		
-		log.info("model" + model);
+//		log.info("model" + model);
 		noticeservice.updateNotice(dto);
-		log.info("update" + dto);
+//		log.info("update" + dto);
 		noticeservice.detail(board_id, model);
-		log.info("board_id : " + board_id);
+//		log.info("board_id : " + board_id);
 		return "/notice/detail";
 	}
 
 	@GetMapping("/modify")
 	public String modify(Model model, int board_id) {
 		noticeservice.detail(board_id, model);
-		log.info("modi PK : " + board_id);
+//		log.info("modi PK : " + board_id);
 		return "notice/modify";
 	}
 	
@@ -144,6 +144,22 @@ public class NoticeController {
 		return "redirect:/notice/detail?board_id=" + board_id;
 	}
 	
+	@GetMapping("/search")
+	public String characterSearch(HttpServletRequest request, Model model,LogoBoardDTO dto ) {
+		
+		System.out.println("1");
+		String name = request.getParameter("titleSearch");
+		log.info("dd : " + name);
+		System.out.println("2");
+		//서비스부분 문제 model이 안실려오는 if문으로 동일한거 나오게 해야하나
+		noticeservice.selectNoticeAll(model, name);
+		
+		log.info("검색제목나와라" + model);
+	
+
+		return "/notice/index";
+	}
+
 	
 	
 }

@@ -17,5 +17,5 @@ public interface NoticeService {
 	void selectBoard(Model model, PageVO vo, Integer nowPage, Integer cntPerPage);
 	
 	
-	void selectTitle(Model model);
+	void selectNoticeAll(Model model,String board_title);
 }

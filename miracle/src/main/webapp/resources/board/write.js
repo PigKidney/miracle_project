@@ -10,6 +10,7 @@ $('.summernote').summernote(
         ['insert', ['link', 'picture', 'video']],
         ['view', ['fullscreen', 'codeview', 'help']]],
         lang: 'ko-KR',
+
     }
 );
 

@@ -2,34 +2,30 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../include/top.jsp" />
-<link rel="stylesheet" href="/resources/notice/detail.css" />
+<link rel="stylesheet" href="/resources/notice/write.css" />
 <c:url value="/resources/notice/write.js" var="noticeJS"></c:url>
 <div class="include-top">
 	<div class="w-1120px">
-
-		<form action="/notice/index" method="POST" id="asd">
-			<div class=asd>
-				<h2>공지사항</h2>
-				<div>공지카테고리 :</div>
-				<div>
+		<form action="/notice/index" method="POST" >
+				<div class="mgt">
 					<select name="board_category" id="category">
 						<option >이벤트</option>
 						<option >점검</option>
 						<option >공지</option>
 					</select>	
+					
 				</div>
-				<div>제목 :</div>
-				<div>
-					<textarea id="boardTitle" name="board_title" rows="3" cols="105" ></textarea>
+				<div class="bd">
+					<input id="boardTitle" placeholder="제목" name="board_title" />
 				</div>
-				<div>내용 :</div>
-				<div>
+				
+				<div class="mgt">
 					<textarea id="boardContent" class="summernote" name="board_content" ></textarea>
 				</div>
-			</div>
+		
 
-			<div>
-				<button id="writeConfirmBtn" type="submit" class=" round font-16 bald">글쓰기</button>
+			<div style="text-align: right;">
+				<button id="writeConfirmBtn" type="submit" class="round1 white font-16 bald">글작성</button>
 			</div>
 		</form>
 

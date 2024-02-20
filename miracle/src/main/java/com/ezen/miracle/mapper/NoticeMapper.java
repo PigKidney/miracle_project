@@ -19,6 +19,7 @@ public interface NoticeMapper {
 	int viewCount(int board_id);
 	int countBoard();
 	List<LogoBoardDTO> selectBoard(PageVO vo);
-	//제목찾아주는기능 selectTitle mapper를  dto에 실어주기
-	List<LogoBoardDTO> selectTitle(Model model);
+	
+	//제목찾아주는기능 selectNotice mapper를  dto에 실어주기 N
+	List<LogoBoardDTO> selectNoticeAll(String board_title);
 }

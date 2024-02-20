@@ -5,15 +5,15 @@ writebtn.addEventListener('click', () => {
    window.location.href = '/notice/write';
 });
 
-/*
+
 titleSearch.addEventListener('keydown', (e)=>{
-        if(e.key==='Enter'){
-            console.log(e);
-            console.log(titleSearch.value);
-            location.href = '/notice/index?titleSearch=' + titleSearch.value ;
+    if(e.key==='Enter'){
+        console.log(e);
+        console.log(titleSearch.value);
+        //if(titleSearch.value == ){
+            
+        location.href = '/notice/search?titleSearch=' + titleSearch.value ;
         }
-        
-    });
-    */
     
- 
+})
+    

@@ -20,12 +20,16 @@ String titleSearch = request.getParameter("titleSearch");
 		<c:forEach items="${list}" var="list" varStatus="status">
 				<div class="item-center">
 					<div class="category">${list.board_category}&nbsp;&nbsp;&nbsp;</div>
-					<div><p class="board-content"><a class="board-content" href="/notice/detail?board_id=${list.board_id}">${list.board_title}</a></p></div>
+					<div><p class="board-content "><a class="board-content " href="/notice/detail?board_id=${list.board_id}">${list.board_title}</a></p></div>
 					<div><p>${date[status.index]}<p></div>
 					<div><p><span class="material-symbols-outlined">visibility</span>${list.view_count}<p></div>
 					<div><p><span class="material-symbols-outlined">thumb_up</span>${list.board_good_count}<p></div>
-				</div> 
+				</div>
 			</c:forEach>
+			
+	
+			
+			
       </div>
       
       	<div style="display: block; text-align: center;" class="mainWhite underline-none">		
@@ -41,7 +45,7 @@ String titleSearch = request.getParameter("titleSearch");
 					<b>${p}</b>
 				</c:when>
 				<c:when test="${p != page.nowPage }">
-					<a href="/notice/index?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
+					<a class="pageNumber" href="/notice/index?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
@@ -53,9 +57,13 @@ String titleSearch = request.getParameter("titleSearch");
 	</div>
       	<div class="top-text">
 				<span class="material-symbols-outlined search"> search </span> 
-				<input  name="board_title" class="top-box" type="text" placeholder="제목을입력해주세요" />
-			</div>
-   <button id="writebtn" class=" round1 white font-16 bald" >글쓰기</button>
+				<input id="titleSearch" name="titleLists" class="top-box" type="text" placeholder="제목을입력해주세요" />
+		</div>
+		
+		<div style="text-align: right;">
+			<button id="writebtn" class=" round1 white bald"" >글쓰기</button>
+		</div>
+
 	</div>
 </div>
 

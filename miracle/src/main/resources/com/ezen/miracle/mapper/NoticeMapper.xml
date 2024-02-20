@@ -82,14 +82,13 @@
 	</select>
 	
 	
-	
-		<select id = "selectTitle"
+
+ 	<select id = "selectNoticeAll"
 			resultType="com.ezen.miracle.dto.LogoBoardDTO">
 			
 			select * from logo_board	
-				where board_title LIKE '%{$boatd_title}%' AND board_show=1
+				where board_title LIKE '%${board_title}%' AND board_show=1
 				order by board_id DESC
-	 	 </select>
- 	
+	 </select>
 	
 </mapper>

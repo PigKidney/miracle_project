@@ -1,11 +1,21 @@
 const arrowu = document.getElementById('arrowu');
 const arrowd = document.getElementById('arrowd');
 const goodBtn = document.getElementById('goodBtn');
-
+const modifyBtn = document.getElementById('modifyBtn');
+const deleteBtn = document.getElementById('deleteBtn');
 
 
 goodBtn.addEventListener('click', () => {
    location.href = '/notice/good?board_id=' + board_id;
+});
+
+modifyBtn.addEventListener('click', () => {
+	console.log("수정버튼");
+   location.href = '/notice/modify?board_id=' + board_id;
+});
+
+deleteBtn.addEventListener('click', () => {
+   location.href = '/notice/delete?board_id=' + board_id;
 });
 
 arrowu.addEventListener('click', () => {
@@ -43,3 +53,4 @@ arrowd.addEventListener('click', () => {
     
    
 });
+

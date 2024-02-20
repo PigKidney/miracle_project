@@ -10,41 +10,38 @@
 <div class="include-top">
 	<div class="w-1120px">
 	<div class="grid-read mainWhite">
-	<form action="/notice/modify" method="get" id="modiBtnForm">
 	<div class="grid-read mainWhite">
-			<span>${board.board_category}</span> 
-			<span>${board.board_title}</span> 
-			<span>${board.board_content}</span> 
-			<span>${date}</span> 
-			<span>조회수:${board.view_count}</span> 
-			<span>추천수:${board.board_good_count}</span> <br/>
+	<div class="gboard">
+			<div class="category">${board.board_category}</div>
+			<div class="white"><b>${board.board_title}</b></div> 
+			<div>${date}</div> 
+			<div>조회수:${board.view_count}</div> 
+			<div>추천수:${board.board_good_count}</div> <br/>
+	</div>
+			<div class="height600">
+				<div class="mgt">${board.board_content}</span> 
+
+			</div>
 		</div>
-			
-			<input type="hidden" name="board_id" value="${board.board_id}"></input>
-			<button type="submit" id="modiBtn" class=" round2 white font-16 bald white">수정하기</button>
-		</form>
-		<form action="/notice/delete" method="get">
-			<input type="hidden" name="board_id" value="${board.board_id}"/></input>
-			<button type="submit" id="delBtn" class=" round2 white font-16 bald white">삭제하기</button>
-		</form>
-		
-		<div style="text-align: right;">
-			<button id="goodBtn" class=" font-16 bald"><span class="material-symbols-outlined">thumb_up</span></button>
+	
+	
+		<div style="text-align: left;">
+		<button class="material-symbols-outlined round4 white font-16 bald" onclick="location.href='/notice/index'">
+			    menu</button>
+			<button id="goodBtn" class="material-symbols-outlined round4 white font-16 bald">thumb_up</button>
 		</div>		
 		
-		<div class>
-			<button class="material-symbols-outlined" onclick="location.href='/notice/index'">
-			    menu
-			</button>
-			<button id="arrowd" class="material-symbols-outlined" >
-				expand_less
-			</button>
-			<button id="arrowu" class="material-symbols-outlined" >
-				expand_more
-			</button>
 			
+			
+			
+		<div style="text-align: right;">
+			<button id="modifyBtn" class="round1  white bald">수정</button>
+			<button id="deleteBtn" class="round1  white bald">삭제</button>
+		</div>
+			
+		<div>
 			<script>
-			let board_id = ${board.board_id};
+			const board_id = ${board.board_id};
 			const board_show = ${board.board_show};
 			console.log('board_show = ' + board_show);
 			</script>

@@ -271,3 +271,24 @@ body {
 	border-radius: 14px
 }
 
+
+.round1{
+	  width: 87px;
+      height: 40px;
+      border-width: 1px;
+	  border-radius: 14px;
+	  background-color:#73797b;
+	  font-size: 17px;
+}
+
+.white{
+	color: white;
+}
+.btn2{
+	margin:9px;
+}
+
+
+.mgt{
+	margin-top: 20px;
+}
