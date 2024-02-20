@@ -460,9 +460,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
             logo_char.char_classEng = '';
             chInfo.ArmoryEngraving.Effects.forEach(effect => {
                 classeng.forEach(chrClass => {
-                    if(effect.Name.includes(chrClass)){
+                    if(effect.Name.includes(chrClass) && !effect.Name.includes('에테르 포식자')){
 
-                        logo_char.char_classEng += effect.Name+' ';
+                        logo_char.char_classEng += effect.Name+'</br>';
                     }
                 });
             });
@@ -476,9 +476,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 data: JSON.stringify(logo_char),
                 success: function(data) {
                     if (data == 1) {
-                        alert("성공");
+                        alert("업데이트 성공");
                     } else {
-                        alert("실패");
+                        alert("업데이트 실패");
                     }
                 }
             });
