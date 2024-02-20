@@ -4,20 +4,48 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ezen.miracle.mapper.CharMapper">
 
-	<select id="charAll" resultType="com.ezen.miracle.dto.LogoCharDTO">
-		select * from logo_char
+	<select id="charAll"
+		resultType="com.ezen.miracle.dto.LogoCharDTO">
+		select allrank.* from(select rownum as levelrank, mainrank.* from
+		( select * from logo_char order by char_level desc) mainrank) allrank
 	</select>
 
-	<select id="charSelectedServer" resultType="com.ezen.miracle.dto.LogoCharDTO">
-		select * from logo_char where char_server = #{char_server}
+	<select id="charSelectedServer"
+		resultType="com.ezen.miracle.dto.LogoCharDTO">
+		select allrank.* from
+		(select rownum as levelrank, mainrank.* from
+		( select * from logo_char where char_server = #{char_server} order by
+		char_level desc) mainrank) allrank
+
+
 	</select>
 
-	<select id="charSelectedClass" resultType="com.ezen.miracle.dto.LogoCharDTO">
-		select * from logo_char where char_class = #{char_class}
+	<select id="charSelectedClass"
+		resultType="com.ezen.miracle.dto.LogoCharDTO">
+		select allrank.* from
+		(select rownum as levelrank, mainrank.* from
+		( select * from logo_char where char_class = #{char_class} order by
+		char_level desc) mainrank) allrank
+
 	</select>
-	
-	<select id="charSelectedClassNServer" resultType="com.ezen.miracle.dto.LogoCharDTO">
-		select * from logo_char where char_class = #{char_class} and char_server = #{char_server}
+
+	<select id="charSelectedClassNServer"
+		resultType="com.ezen.miracle.dto.LogoCharDTO">
+		select allrank.* from
+		(select rownum as levelrank, mainrank.* from
+		( select * from logo_char where char_class = #{char_class} and
+		char_server = #{char_server} order by char_level desc) mainrank)
+		allrank
+
+
 	</select>
+
+	<insert id="charSearchInsert">
+		insert into logo_char values
+		(#{char_level},#{char_name}, #{char_class}, #{char_server},
+		#{char_guild}, #{char_equipSet}, #{char_classEng})
+
+	</insert>
+
 
 </mapper>

@@ -12,8 +12,8 @@
 
 		<div class="mainRankList nanum-gothic-regular">
 			<div>순위</div>
-			<div>캐릭터명</div>
 			<div>아이템 레벨</div>
+			<div>캐릭터명</div>
 			<div>클래스</div>
 			<div>서버명</div>
 			<div>길드명</div>
@@ -23,7 +23,7 @@
 
 		<div class="mainRankList nanum-gothic-regular">
 			<c:forEach items="${charAll}" var="charAll">
-				<div>Row Number</div>
+				<div>${charAll.levelrank}</div>
 				<div>${charAll.char_level}</div>
 				<div>${charAll.char_name}</div>
 				<div>${charAll.char_class}</div>
@@ -50,7 +50,6 @@
 					<option value="니나브">니나브</option>
 				</select>
 </div>
-
 <div>
 
 				<select id="selectedClass" name="char_class">

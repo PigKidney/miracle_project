@@ -2,7 +2,6 @@ package com.ezen.miracle.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -59,18 +58,19 @@ public class CharacterController {
 	}
 
 	@GetMapping("/search")
-	public String characterSearch(HttpServletRequest request, Model model) {
+	public String characterSearch(HttpServletRequest request, Model model, LogoCharDTO dto) {
 		String name = request.getParameter("characterSearch");
 		model.addAttribute("search", name);
 		log.info("search name : " + model.getAttribute("search"));
 
 		return "redirect:/character/detail";
 	}
-	
-	@RequestMapping(value="insert" , method= RequestMethod.POST)
-	public @ResponseBody int insertCharacter(@RequestBody LogoCharDTO dto){
-		log.info("POST: "+ dto);
-		
+
+	@RequestMapping(value = "insert", method = RequestMethod.POST)
+	public @ResponseBody int insertCharacter(@RequestBody LogoCharDTO dto) {
+		log.info("POST: " + dto);
+		charService.charSearchInsert(dto);
+
 		return 1;
 	}
 

@@ -2,6 +2,8 @@ package com.ezen.miracle.service;
 
 import org.springframework.ui.Model;
 
+import com.ezen.miracle.dto.LogoCharDTO;
+
 public interface CharService {
 
 	void charAll(Model model);
@@ -12,4 +14,5 @@ public interface CharService {
 
 	void charSelectedClassNServer(Model model, String char_class, String char_server);
 
+	void charSearchInsert(LogoCharDTO dto);
 }

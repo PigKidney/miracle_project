@@ -17,4 +17,5 @@ public interface CharMapper {
 	List<LogoCharDTO> charSelectedClassNServer(@Param("char_class") String char_class,
 			@Param("char_server") String char_server);
 
+	int charSearchInsert(LogoCharDTO dto);
 }
