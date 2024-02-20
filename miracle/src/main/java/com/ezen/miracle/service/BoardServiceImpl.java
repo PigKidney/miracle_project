@@ -7,9 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.miracle.dto.LogoBoardDTO;
 import com.ezen.miracle.mapper.BoardMapper;
+import com.ezen.miracle.util.PageVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -100,5 +102,49 @@ public class BoardServiceImpl implements BoardService {
 		} else {
 			return -1;
 		}
+	}
+
+	@Override
+	public int countBoard() {
+		return boardMapper.countBoard();
+	}
+
+	@Override
+	public void selectBoard(Model model, PageVO vo, Integer nowPage, Integer cntPerPage) {
+		int total = countBoard();
+
+		log.info("now1 : " + nowPage + ", cPP1 : " + cntPerPage);
+		// 처음 화면은 1~5페이지가 나옴
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = 1;
+			cntPerPage = 5;
+		} else if (nowPage == null) {
+			nowPage = 1;
+		} else if (cntPerPage == null) {
+			cntPerPage = 5;
+		}
+		log.info("now2 : " + nowPage + ", cPP2 : " + cntPerPage);
+		vo = new PageVO(total, nowPage, cntPerPage);
+		List<LogoBoardDTO> list = boardMapper.selectBoard(vo);
+		log.info(vo.getStart());
+		log.info(vo.getEnd());
+		List<String> date = new ArrayList<String>();
+		log.info(vo);
+		log.info(list);
+
+		for (int i = 0; i < list.size(); i++) {
+			date.add(sdf.format(list.get(i).getCreated_at()));
+		}
+		model.addAttribute("page", vo);
+		model.addAttribute("list", list);
+		model.addAttribute("date", date);
+		log.info("page, list, date");
+	}
+	
+	@Override
+	public void membersList(Model model, Long user_id) {
+		List<LogoBoardDTO> membersList = boardMapper.membersList(user_id);
+		model.addAttribute("membersList", membersList);
+		
 	}
 }

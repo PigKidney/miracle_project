@@ -1,3 +1,4 @@
+
 #topfix {
   z-index: 1;
 }
@@ -7,7 +8,7 @@ ul {
   margin: 0;
 }
 
-/* 컨테이너의 기본 스타일 */
+
 .flex-container {
   display: flex;
   flex-direction: column;
@@ -88,11 +89,7 @@ ul {
 
 }
 
-/* 
-.toprank > svg {
-    width: 32;
-    height: 48;
-} */
+
 
 
 
@@ -368,4 +365,17 @@ a:visited {
   padding: 0 10px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.mainRankList{
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+}
+
+.mainRankList>div{
+	padding-top: 10px;
+}
+.bord{
+	border: 1px yellow solid;
+	height: 1000px;
 }

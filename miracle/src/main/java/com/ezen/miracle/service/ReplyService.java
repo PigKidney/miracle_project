@@ -10,4 +10,5 @@ public interface ReplyService {
 	int write(LogoReplyDTO dto);
 	int delete(int reply_id);
 
+	void membersList(Model model, Long user_id);
 }

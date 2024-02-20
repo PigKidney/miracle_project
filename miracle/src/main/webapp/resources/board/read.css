@@ -12,6 +12,9 @@
 	color: red;
 }
 
+.p-t40{
+	padding-top: 40px;
+}
 
 .reply-body{
 	display: grid;
@@ -21,4 +24,21 @@
 
 .mainContent{
 	padding-left: 20px;
+}
+.grid-read-head{
+	display: grid;
+	grid-template-columns: 2fr 6fr 2fr 1fr 1fr;
+	padding-left: 30px;
+}
+.grid-read-body{
+	display: flex;
+	justify-content: space-between;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.grid-read-foot{
+	padding: 20px;
+}
+.read-title{
+	text-align: left;
 }

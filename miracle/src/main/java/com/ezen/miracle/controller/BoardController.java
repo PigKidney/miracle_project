@@ -19,6 +19,7 @@ import com.ezen.miracle.dto.LogoBoardDTO;
 import com.ezen.miracle.dto.LogoReplyDTO;
 import com.ezen.miracle.service.BoardService;
 import com.ezen.miracle.service.ReplyService;
+import com.ezen.miracle.util.PageVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -34,13 +35,13 @@ public class BoardController {
 	ReplyService replyService;
 
 	@GetMapping("/index")
-	public String board(Model model, Long user_id, HttpSession session) {
-		boardService.list(model);
+	public String board(Model model, Long user_id, PageVO vo, Integer nowPage, Integer cntPerPage) {
+		boardService.countBoard();
+		boardService.selectBoard(model, vo, nowPage, cntPerPage);
+		log.info("now0 : " + nowPage + " , cPP0 : " + cntPerPage);
 		log.info("GET : /board/index OK");
 		return "board/index";
 	}
-	
-	
 
 	@GetMapping("/write")
 	public String write(HttpSession session) {
@@ -69,17 +70,17 @@ public class BoardController {
 			if (name.equals("" + board_id)) {
 				exist = true;
 				break;
-			} 
+			}
 		}
-		
-		if(!exist) {
+
+		if (!exist) {
 			Cookie viewCookie = new Cookie("" + board_id, "1");
 			viewCookie.setMaxAge(5);
 			response.addCookie(viewCookie);
 			boardService.viewCount(board_id);
 			log.info("viewCount +1");
 		} else {
-			log.info("viewCount +0");			
+			log.info("viewCount +0");
 		}
 
 		replyService.list(model, board_id);

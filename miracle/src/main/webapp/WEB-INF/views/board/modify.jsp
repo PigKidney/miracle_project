@@ -6,7 +6,7 @@
 <div class="include-top">
 	<div class="w-1120px">
 
-		<p style="color: white;">수정하는곳이야</p>
+		<p style="color: white;" class="p-t10">작성글 수정</p>
 		<select id="categorySelect" name="board_category"  form="modifyForm">
 			<option id="sel1">잡담</option>
 			<option id="sel2">구매</option>

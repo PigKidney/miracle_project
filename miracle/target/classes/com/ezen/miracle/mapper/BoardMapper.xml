@@ -6,10 +6,14 @@
 
 	<select id="getAll"
 		resultType="com.ezen.miracle.dto.LogoBoardDTO">
-		select board_id, board_title, board_content, board_good_count, board_category, user_id, view_count, logo_board.created_at, modified_at, board_show,
-user_nickname, user_email, user_password, isadmin, logo_user.created_at,
-(select count(reply_id) from logo_reply where logo_board.board_id = logo_reply.board_id)
-as reply_count from logo_board inner join logo_user using (user_id) where board_show =1 order by board_id DESC
+		select board_id, board_title, board_content,
+		board_good_count, board_category, user_id, view_count,
+		logo_board.created_at, modified_at, board_show,
+		user_nickname, user_email, user_password, isadmin, logo_user.created_at,
+		(select count(reply_id) from logo_reply where logo_board.board_id =
+		logo_reply.board_id)
+		as reply_count from logo_board inner join logo_user using (user_id)
+		where board_show =1 order by board_id DESC
 	</select>
 
 	<insert id="write">
@@ -20,32 +24,66 @@ as reply_count from logo_board inner join logo_user using (user_id) where board_
 		#{board_category}, #{user_id},
 		0, systimestamp)
 	</insert>
-	
+
 	<update id="chuchu">
-		update logo_board set board_good_count = board_good_count +1 where board_id = #{board_id}
+		update logo_board set board_good_count =
+		board_good_count +1 where board_id = #{board_id}
 	</update>
-	
+
 	<update id="viewCount">
-		update logo_board set view_count = view_count +1 where board_id = #{board_id}
+		update logo_board set view_count = view_count +1
+		where board_id = #{board_id}
 	</update>
 
 	<select id="get" resultType="com.ezen.miracle.dto.LogoBoardDTO">
-		select * from logo_board where board_id = #{board_id}
+		select * from logo_board inner join logo_user using (user_id) where
+		board_id = #{board_id}
 	</select>
 
 	<update id="rewrite">
-		update logo_board set board_category = #{board_category}, board_content =
+		update logo_board set board_category =
+		#{board_category}, board_content =
 		#{board_content},
-		board_title = #{board_title}, modified_at = systimestamp where board_id =
+		board_title =
+		#{board_title}, modified_at = systimestamp where board_id =
 		#{board_id}
 	</update>
 
 	<update id="delete">
-		update logo_board set board_show = 0 where board_id = #{board_id}
+		update logo_board set board_show = 0 where board_id =
+		#{board_id}
 	</update>
 	<update id="deleteReply">
-		update logo_reply set reply_show = 0 where board_id = #{board_id}
+		update logo_reply set reply_show = 0 where board_id =
+		#{board_id}
 	</update>
+
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM logo_board where board_show=1
+	</select>
+
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectBoard"
+		resultType="com.ezen.miracle.dto.LogoBoardDTO">
+
+		select ddd.*
+  from(
+    select rownum as rn,ccc.* 
+    from (select board_id, board_title, board_content,
+		board_good_count, board_category, user_id, view_count,
+		logo_board.created_at as created_at, modified_at, board_show,
+		user_nickname, user_email, user_password, isadmin, 
+		(select count(reply_id) from logo_reply where logo_board.board_id = logo_reply.board_id) as reply_count 
+        from logo_board inner join logo_user using (user_id) where board_show =1 order by board_id DESC)ccc
+        ) ddd 
+    where ddd.rn BETWEEN #{start} and #{end}
+	</select>
+	
+	<select id="membersList">
+	select * from logo_board inner join logo_user using(user_id) where user_id=#{user_id}
+	
+	</select>
 	<!-- private Integer board_id; private String board_title; private String 
 		board_content; private String board_category; private Integer board_good_count; 
 		private Integer user_id; private Integer view_count; private Date created_at; 

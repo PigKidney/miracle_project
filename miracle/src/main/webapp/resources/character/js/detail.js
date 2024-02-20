@@ -439,12 +439,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
             
             // 랭킹페이지 보여주기위해 db보내줄 dto 입력값들
             var logo_char = new Object();
-            logo_char.char_level = parseFloat(chInfo.ArmoryProfile.ItemMaxLevel);
+            logo_char.char_level = chInfo.ArmoryProfile.ItemMaxLevel.replace(',', '');
             logo_char.char_name = chInfo.ArmoryProfile.CharacterName;
             logo_char.char_class = chInfo.ArmoryProfile.CharacterClassName;
             logo_char.char_server = chInfo.ArmoryProfile.ServerName;
             logo_char.char_guild = chInfo.ArmoryProfile.GuildName;
-            logo_char.char_equipset = '';
+            logo_char.char_equipSet = '';
             setValue.forEach(set => {
                 let count = chInfo.ArmoryEquipment.reduce((cnt, element) => element.Name.includes(set) == true ? cnt + 1 : cnt, 0);
                 if(count>0){
@@ -454,15 +454,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
                         }
                     });
                     console.log(set + count);
-                    logo_char.char_equipset += set + count + ' ';
+                    logo_char.char_equipSet += set + count + ' ';
                 }
             });
-            logo_char.char_classeng = '';
+            logo_char.char_classEng = '';
             chInfo.ArmoryEngraving.Effects.forEach(effect => {
                 classeng.forEach(chrClass => {
                     if(effect.Name.includes(chrClass)){
 
-                        logo_char.char_classeng += effect.Name+' ';
+                        logo_char.char_classEng += effect.Name+' ';
                     }
                 });
             });
