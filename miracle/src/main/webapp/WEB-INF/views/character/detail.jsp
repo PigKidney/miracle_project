@@ -9,6 +9,8 @@
 <c:url value="/resources/character/js/detail.js" var="detailJS"></c:url>
 <c:url value="/resources/character/js/avatar.js" var="avatarJS"></c:url>
 
+<%String characterSearch = request.getParameter("search");%>
+<title><%=characterSearch%> 전투정보 - 로고</title>
 
 
 
@@ -29,9 +31,9 @@
 				<div class="collection_title">수집 포인트</div>
 				<div id="collection_title" class="dis-flex jc-sb"></div>
 			</div>
-			<div id="eta" class="radius15 b-1p color-back p15-m0 pd-15">
-				<div id="eta_btn" class="eta_title">캐릭터 기타 정보</div>
-				<div id="eta_btns" class="hidden">
+			<div id="etc" class="radius15 b-1p color-back p15-m0 pd-15">
+				<div id="etc_btn" class="etc_title">캐릭터 기타 정보</div>
+				<div id="etc_btns" class="hidden">
 					<h3 id="skillTap">스 킬</h3>
 					<h3 id="avatar">아바타</h3>
 					<h3 id="ownedCharacters">보유캐릭터</h3>
@@ -61,7 +63,7 @@
 			</div>
 			<!-- 보유캐릭터 -->
 			<div id="ownedCharactersPopup" class="hidden popup">
-				<div id="ownedCharactersPopupBar"></div>
+				<div id="ownedCharactersPopupBar" class="pd-b-20"></div>
 			</div>
 			<!-- 길드 -->
 			<div id="guildPopup" class="hidden popup">
@@ -259,5 +261,4 @@
 
 
 <script src="${detailJS}"></script>
-<script src="${avatarJS}"></script>
 <jsp:include page="../include/bot.jsp" />

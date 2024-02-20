@@ -7,7 +7,6 @@
 <head>
 
 <meta charset="UTF-8" name='view-transition'>
-<title></title>
 <script src="/resources/jquery/jquery-3.7.1.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +28,7 @@ String user_nickname = (String) session.getAttribute("login_nickname");
 String user_password = (String) session.getAttribute("login_password");
 String user_email = (String) session.getAttribute("login_email");
 Object isAdmin = session.getAttribute("login_admin");
-String characterSearch = request.getParameter("characterSearch");
+String characterSearch = request.getParameter("search");
 %>
 </head>
 <body>
@@ -73,9 +72,7 @@ console.log("user_id : " + idCheck);
 
 			<!-- dark, light 클래스 활용해서 일단 뭐 만들어야함 -->
 			
-			<div id="smsBtn" class="hide">
-				<span class="mainWhite material-symbols-outlined cursor">sms</span>
-			</div>
+			<div id="smsBtn" class="hide"></div>
 		
 		<div id="showbox" class="p-r20">
 					<div class="item-center justify-between cursor">

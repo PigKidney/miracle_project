@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../include/top.jsp" />
+<title>my page - 로고</title>
 <div class="include-top">
 	<div class="w-1120px mainWhite p-t30 member-info">
 		<div class="divide-hr p-t10">

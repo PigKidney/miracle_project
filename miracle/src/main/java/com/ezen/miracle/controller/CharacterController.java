@@ -4,11 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ezen.miracle.dto.LogoCharDTO;
 
 import com.ezen.miracle.service.CharService;
 
@@ -27,13 +35,13 @@ public class CharacterController {
 			@Param("char_class") String char_class) {
 
 		log.info("서버 : " + char_server + " 클라스 : " + char_class);
-		if (char_server == null && char_class == null) {
+		if ((char_server == null || char_server == "") && (char_class == null || char_class == "")) {
 			log.info("널널");
 			charService.charAll(model);
-		} else if (char_server == null) {
+		} else if (char_server == null || char_server == "") {
 			log.info("서버널");
 			charService.charSelectedClass(model, char_class);
-		} else if (char_class == null) {
+		} else if (char_class == null || char_class == "") {
 			log.info("캐릭널");
 			charService.charSelectedServer(model, char_server);
 		} else {
@@ -50,12 +58,20 @@ public class CharacterController {
 	}
 
 	@GetMapping("/search")
-	public String characterSearch(HttpServletRequest request, Model model) {
+	public String characterSearch(HttpServletRequest request, Model model, LogoCharDTO dto) {
 		String name = request.getParameter("characterSearch");
 		model.addAttribute("search", name);
 		log.info("search name : " + model.getAttribute("search"));
 
 		return "redirect:/character/detail";
+	}
+
+	@RequestMapping(value = "insert", method = RequestMethod.POST)
+	public @ResponseBody int insertCharacter(@RequestBody LogoCharDTO dto) {
+		log.info("POST: " + dto);
+		charService.charSearchInsert(dto);
+
+		return 1;
 	}
 
 }
