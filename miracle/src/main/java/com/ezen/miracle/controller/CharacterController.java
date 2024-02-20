@@ -27,13 +27,13 @@ public class CharacterController {
 			@Param("char_class") String char_class) {
 
 		log.info("서버 : " + char_server + " 클라스 : " + char_class);
-		if (char_server == null && char_class == null) {
+		if ((char_server == null || char_server == "") && (char_class == null || char_class == "")) {
 			log.info("널널");
 			charService.charAll(model);
-		} else if (char_server == null) {
+		} else if (char_server == null || char_server == "") {
 			log.info("서버널");
 			charService.charSelectedClass(model, char_class);
-		} else if (char_class == null) {
+		} else if (char_class == null || char_class == "") {
 			log.info("캐릭널");
 			charService.charSelectedServer(model, char_server);
 		} else {
