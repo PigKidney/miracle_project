@@ -41,11 +41,11 @@ public class CharacterController {
 		return "redirect:/character/detail";
 	}
 	
-	@RequestMapping(value="insert" , method= RequestMethod.POST)
-	public @ResponseBody int insertCharacter(@RequestBody LogoCharDTO dto){
-		log.info("POST: "+ dto);
-		
-		return 1;
-	}
+//	@RequestMapping(value="insert" , method= RequestMethod.POST)
+//	public @ResponseBody int insertCharacter(@RequestBody LogoCharDTO dto){
+//		log.info("POST: "+ dto);
+//		
+//		return 1;
+//	}
 
 }
