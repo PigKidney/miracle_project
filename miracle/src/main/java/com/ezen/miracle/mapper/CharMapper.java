@@ -18,4 +18,6 @@ public interface CharMapper {
 			@Param("char_server") String char_server);
 
 	int charSearchInsert(LogoCharDTO dto);
+
+	List<LogoCharDTO> levelCut(Double char_level);
 }

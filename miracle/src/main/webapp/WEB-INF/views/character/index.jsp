@@ -53,9 +53,10 @@
 				</div>
 			</div>
 			<div class="choice2 disply-flex">
-				<input type="range" min="1300" max="1675" value="1675"
-					class="slider" id="mySlider"> <font
-					class="disply-flex slider-value"> <span id="sliderValue">1675</span>
+				<input type="range" min="1300" max="1675" value="1675" name="levelBar"
+					class="slider" id="mySlider"> 
+				<font class="disply-flex slider-value"> 
+					<span id="sliderValue"></span>
 				</font>
 			</div>
 
@@ -72,13 +73,12 @@
 			<div>장비</div>
 			<div>직업각인</div>
 		</div>
-
-		<div class="rank-list">
+		<div id="rankListCut" class="rank-list">
 			<c:forEach items="${charAll}" var="charAll">
 				<div class="rank-board"></div>
-				<div class="mainRankList nanum-gothic-bold">
+				<div id="level-cut" class="mainRankList nanum-gothic-bold">
 					<div>${charAll.levelrank}</div>
-					<div>${charAll.char_level}</div>
+					<div id="level-value">${charAll.char_level}</div>
 					<a href="/character/detail?search=${charAll.char_name}"
 						class="display-contents">${charAll.char_name}</a>
 					<div>${charAll.char_class}</div>
@@ -87,14 +87,16 @@
 					<div>${charAll.char_equipSet}</div>
 					<div>${charAll.char_classEng}</div>
 				</div>
+
 			</c:forEach>
 
 		</div>
 
-
-
 	</div>
 </div>
+<script>	
+	var levelValue = <%=request.getAttribute("levelBar")%>
+</script>
 
 <script src="${indexJS}"></script>
 

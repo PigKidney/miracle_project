@@ -172,14 +172,41 @@
 //     setTopImages(characters);
 
 
+let levelParam = new URLSearchParams(window.location.search)
+//let levelValue = levelParam.get('levelBar');
+
+console.log(levelValue);
+console.log(levelValue == null);
 
 
 var slider = document.getElementById("mySlider");
 var output = document.getElementById("sliderValue");
-output.innerHTML = slider.value;
+var rankListCut = document.getElementById('rankListCut');
+var level_value = document.getElementById('level-value');
+
+console.dir(rankListCut);
+
+if (levelValue == null) {
+    levelValue = 1675
+}
+for (let i = 1; i < rankListCut.children.length; i = i+2) {
+    console.log('널체크 : ' + levelValue + ' : ' + i);
+
+    if (rankListCut.children[i].children[1].innerText > levelValue) {
+        rankListCut.children[i].classList.add('hide');
+        i--;
+    } 
+}
+
+
+if (levelValue == null || levelValue == '') {
+    output.innerHTML = 1675;
+} else {
+    output.innerHTML = levelValue;
+}
 
 slider.oninput = function () {
-    output.innerHTML = this.value;
+    output.innerHTML = slider.value;
 }
 
 $("#slecteForm").on("change", function () {
