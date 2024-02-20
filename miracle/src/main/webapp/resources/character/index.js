@@ -6,7 +6,7 @@ let rowCount = 10; // 한 번에 로드할 행 수
 
 const characterList = document.getElementById('characterList');
 const loadMoreButton = document.getElementById('load-more');
-
+/*
 document.addEventListener('DOMContentLoaded', init);
 
 document.getElementById('serverSelect').addEventListener('change', function() {
@@ -125,13 +125,7 @@ function loadCharacters() {
         });
 }
 
- var slider = document.getElementById("mySlider");
-    var output = document.getElementById("sliderValue");
-    output.innerHTML = slider.value;
 
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-    }
 
 function loadMoreCharacters() {
     loadCharacters();
@@ -176,3 +170,12 @@ function processCharacter(character, rank) {
 
    
 }
+*/
+
+ var slider = document.getElementById("mySlider");
+    var output = document.getElementById("sliderValue");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
