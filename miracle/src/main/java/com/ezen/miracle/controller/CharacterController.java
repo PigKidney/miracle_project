@@ -34,7 +34,7 @@ public class CharacterController {
 			@Param("char_class") String char_class, @Param("levelBar") Double levelBar) {
 		log.info("서버 : " + char_server + " 클라스 : " + char_class + " 레벨 : " + levelBar);
 		if (levelBar != null) {
-			charService.levelCut(model, levelBar);
+			charService.levelCut(model, levelBar, char_class, char_server);
 		} else {
 
 			if ((char_server == null || char_server == "") && (char_class == null || char_class == "")) {

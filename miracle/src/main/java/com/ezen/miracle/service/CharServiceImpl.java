@@ -51,10 +51,12 @@ public class CharServiceImpl implements CharService {
 	}
 	
 	@Override
-	public void levelCut(Model model, Double char_level) {
+	public void levelCut(Model model, Double char_level, String char_class, String char_server) {
 		
 		model.addAttribute("charAll", charMapper.levelCut(char_level));
 		model.addAttribute("char_level", char_level);
+		model.addAttribute("char_server", char_server);
+		model.addAttribute("char_class", char_class);
 		
 	}
 

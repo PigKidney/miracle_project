@@ -16,5 +16,5 @@ public interface CharService {
 
 	void charSearchInsert(LogoCharDTO dto);
 	
-	void levelCut(Model model, Double char_level);
+	void levelCut(Model model, Double char_level, String char_class, String char_server);
 }

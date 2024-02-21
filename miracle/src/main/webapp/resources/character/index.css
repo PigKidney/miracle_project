@@ -458,3 +458,7 @@ a:visited {
 .display-contents{
   display: contents;
 }
+
+.disply-none{
+  display: none;
+}
