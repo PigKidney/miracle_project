@@ -72,23 +72,6 @@
 		resultType="com.ezen.miracle.dto.LogoBoardDTO">
 
 		select ddd.*
-<<<<<<< HEAD
-		from(
-		select rownum as rn,ccc.*
-		from (select board_id, board_title, board_content,
-		board_good_count,
-		board_category, user_id, view_count,
-		logo_board.created_at as
-		created_at, modified_at, board_show,
-		user_nickname, user_email,
-		user_password, isadmin,
-		(select count(reply_id) from logo_reply where logo_board.board_id =
-		logo_reply.board_id) as reply_count
-		from logo_board inner join logo_user using (user_id) where board_show =1
-		order by board_id DESC)ccc
-		) ddd
-		where ddd.rn BETWEEN #{start} and #{end}
-=======
   from(
     select rownum as rn,ccc.* 
     from (select board_id, board_title, board_content,
@@ -99,7 +82,7 @@
         from logo_board inner join logo_user using (user_id) where board_show =1 order by board_id DESC)ccc
         ) ddd 
     where ddd.rn BETWEEN #{start} and #{end}
->>>>>>> branch 'ds' of https://github.com/PigKidney/miracle_project.git
+
 	</select>
 	
 	<select id="membersList">

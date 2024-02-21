@@ -10,9 +10,7 @@ $('.summernote').summernote(
         ['insert', ['link', 'picture', 'video']],
         ['view', ['fullscreen', 'codeview', 'help']]],
         lang: 'ko-KR',
-<<<<<<< HEAD
 
-=======
         styleTags: [
             'p',  // 일반 문단 스타일 옵션
             {
@@ -29,7 +27,6 @@ $('.summernote').summernote(
                 value: 'pre',
             }]
         
->>>>>>> branch 'ds' of https://github.com/PigKidney/miracle_project.git
     }
 );
 
