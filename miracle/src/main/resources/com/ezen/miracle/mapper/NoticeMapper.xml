@@ -76,11 +76,11 @@
     from (select board_id, board_title, board_content,
 		board_good_count, board_category, view_count,
 		logo_board.created_at as created_at, modified_at, board_show 
-        from logo_board where board_show =1 order by board_id DESC)ccc
+        from logo_board  WHERE board_category IN('공지','이벤트','점검') and board_show=1 order by board_id DESC)ccc
         ) ddd 
     where ddd.rn BETWEEN #{start} and #{end}
 	</select>
-	
+
 	
 
  	<select id = "selectNoticeAll"

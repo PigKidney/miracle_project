@@ -68,11 +68,11 @@
 }
 
 .height600{
-	margin-top: 20px;
+	margin-top: 12px;
 	height:600px;
 	overflow: auto;
-	box-shadow: 5px 5px 5px 5px #6d6a65;
 	padding: 15px;
+	background-color: #635e5c;
 }
 
 .category {

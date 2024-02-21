@@ -7,17 +7,17 @@
 <div class="include-top">
 	<div class="w-1120px">
 		<form action="/notice/index" method="POST" >
+		<p style="color: white;">작성</p>
 				<div class="mgt">
 					<select name="board_category" id="category">
 						<option >이벤트</option>
 						<option >점검</option>
 						<option >공지</option>
 					</select>	
+					<input id="boardTitle" placeholder="제목입력해주세요" name="board_title" />
+				</div>
 					
-				</div>
-				<div class="bd">
-					<input id="boardTitle" placeholder="제목" name="board_title" />
-				</div>
+			
 				
 				<div class="mgt">
 					<textarea id="boardContent" class="summernote" name="board_content" ></textarea>

@@ -298,6 +298,16 @@ body {
 	  font-size: 17px;
 }
 
+.round2{
+	width: 67px;
+    height: 35px;
+    border-width: 1px;
+    border-radius: 14px;
+    background-color: #73797b;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
 .white{
 	color: white;
 }
