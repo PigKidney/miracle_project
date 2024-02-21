@@ -4,7 +4,9 @@
 .grid-reply {
 	display: grid;
 	grid-template-columns: 1fr 9fr 1fr;
-	border: 1px solid yellow;
+	border-bottom: 1px white solid;
+	padding-bottom: 6px;
+
 }
 
 

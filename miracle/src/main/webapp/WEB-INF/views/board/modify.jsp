@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/resources/board/modify.css" />
 <title>게시글 수정 - 로고</title>
 <div class="include-top">
-	<div class="w-1120px">
+	<div class="w-1120px font-regular">
 
 		<p style="color: white;" class="p-t10">작성글 수정</p>
 		<select id="categorySelect" name="board_category"  form="modifyForm">

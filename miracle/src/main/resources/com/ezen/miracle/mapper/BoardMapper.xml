@@ -74,7 +74,7 @@
 		board_good_count, board_category, user_id, view_count,
 		logo_board.created_at as created_at, modified_at, board_show,
 		user_nickname, user_email, user_password, isadmin, 
-		(select count(reply_id) from logo_reply where logo_board.board_id = logo_reply.board_id) as reply_count 
+		(select count(reply_id) from logo_reply where logo_board.board_id = logo_reply.board_id and logo_reply.reply_show =1) as reply_count 
         from logo_board inner join logo_user using (user_id) where board_show =1 order by board_id DESC)ccc
         ) ddd 
     where ddd.rn BETWEEN #{start} and #{end}
