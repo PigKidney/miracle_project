@@ -25,17 +25,22 @@ public class CharServiceImpl implements CharService {
 	@Override
 	public void charSelectedClass(Model model, String char_class) {
 		model.addAttribute("charAll", charMapper.charSelectedClass(char_class));
+		model.addAttribute("char_class", char_class);
 	}
 
 	@Override
 	public void charSelectedServer(Model model, String char_server) {
 		model.addAttribute("charAll", charMapper.charSelectedServer(char_server));
+		model.addAttribute("char_server", char_server);
+
 	}
 
 	@Override
 	public void charSelectedClassNServer(Model model, @Param("char_class") String char_class,
 			@Param("char_server") String char_server) {
 		model.addAttribute("charAll", charMapper.charSelectedClassNServer(char_class, char_server));
+		model.addAttribute("char_server", char_server);
+		model.addAttribute("char_class", char_class);
 	}
 
 	@Override
@@ -43,6 +48,16 @@ public class CharServiceImpl implements CharService {
 		log.info("impl1 : "+dto);
 		charMapper.charSearchInsert(dto);
 		log.info("impl2 : "+dto);
+	}
+	
+	@Override
+	public void levelCut(Model model, Double char_level, String char_class, String char_server) {
+		
+		model.addAttribute("charAll", charMapper.levelCut(char_level));
+		model.addAttribute("char_level", char_level);
+		model.addAttribute("char_server", char_server);
+		model.addAttribute("char_class", char_class);
+		
 	}
 
 }

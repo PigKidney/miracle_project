@@ -47,7 +47,7 @@ window.onload = async () => {
         },
     });
     console.log("result : ", oauthResult);
-
+    
     const oauthData = await oauthResult.json();
     console.log("oauthData : ", oauthData);
 
