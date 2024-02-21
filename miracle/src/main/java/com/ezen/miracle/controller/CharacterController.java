@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.miracle.dto.LogoCharDTO;
@@ -32,9 +33,13 @@ public class CharacterController {
 
 	@GetMapping("/index")
 	public String character(Model model, @Param("char_server") String char_server,
-			@Param("char_class") String char_class) {
+			@Param("char_class") String char_class, @Param("levelBar") Double levelBar) {
+		log.info("서버 : " + char_server + " 클라스 : " + char_class + " 레벨 : " + levelBar);
+		if (levelBar != null) {
+			charService.levelCut(model, levelBar);
+		} else {
+			
 
-		log.info("서버 : " + char_server + " 클라스 : " + char_class);
 		if ((char_server == null || char_server == "") && (char_class == null || char_class == "")) {
 			log.info("널널");
 			charService.charAll(model);
@@ -48,6 +53,9 @@ public class CharacterController {
 			log.info("둘다 널아님");
 			charService.charSelectedClassNServer(model, char_class, char_server);
 		}
+	}
+		model.addAttribute("levelBar", levelBar);
+		log.info(levelBar);
 		log.info("/character/index OK");
 		return "character/index";
 	}
