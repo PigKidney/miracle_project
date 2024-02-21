@@ -5,7 +5,7 @@
 <jsp:include page="../include/top.jsp" />
 <title>${read.board_title} - 로고</title>
 <div class="include-top">
-	<div class="w-1120px nanum-gothic-regular">
+	<div class="w-1120px font-regular">
 		<div class="mainWhite p-t40">
 			<div class="grid-read-head">
 				<span>${read.user_nickname}</span> 
@@ -17,7 +17,7 @@
 				<hr />
 			<div class="grid-read-body">
 				<span>[${read.board_category}]</span>
-				<span><a class="board-content" href="board/index">[목록으로]</a></span>
+				<span><a class="board-content" href="/board/index">[목록으로]</a></span>
 			</div>
 			<div class="grid-read-foot">
 				${read.board_content}
@@ -30,7 +30,7 @@
 			<button id="deleteBtn" class="btn-two green rounded font-16 bald btn-deco-1">삭제하기</button>
 		</div>
 
-		<div class="grid-row2 mainWhite">
+		<div id="fifth-del" class="grid-row2 mainWhite">
 			<c:forEach items="${replyList}" var="replyList" varStatus="status">
 				<hr />
 				<div class="reply-body">
@@ -38,12 +38,13 @@
 					<div>${replyList.user_nickname}</div>
 					<div class="mainContent">${replyList.reply_content}</div>
 					<div>${replyDate[status.index]}</div>
-					<input type="hidden" value="${replyList.reply_id}" name="reply_id"
-						form="deleteReplyForm" /> 
-					<input type="hidden"
-						value="${read.board_id}" name="board_id" form="deleteReplyForm" />
-					<span id="deleteReplyBtn"
-						class="material-symbols-outlined cursor red">close</span>
+					
+		<form action="/board/deleteReply" method="post" id="deleteReplyForm">
+					<input type="hidden" value="${replyList.reply_id}" name="reply_id" id="realDelete"/> 
+					<input type="hidden" value="${read.board_id}" name="board_id"/>
+					<span id="deleteReplyBtn" 
+						class="material-symbols-outlined cursor red deleteTest" data-reply-id="${replyList.reply_id}">close</span>
+		</form>
 
 				</div>
 			</c:forEach>
@@ -68,7 +69,6 @@
 		<input type="hidden" value="${read.board_id}" name="board_id" form="replyForm" />
 
 		<form action="/board/reply" method="post" id="replyForm"></form>
-		<form action="/board/deleteReply" method="post" id="deleteReplyForm"></form>
 		<script>
 			const board_id = ${read.board_id};
 			const user_id = ${read.user_id};

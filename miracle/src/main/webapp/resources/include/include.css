@@ -8,6 +8,9 @@
 .h-280px {
 	height: 280px;
 }
+.font-regular{
+	font-weight: 400;
+}
 
 .font-24{
 	font-size: 24px;
@@ -283,27 +286,12 @@ body {
 }
 
 html{
-font-family: "Nanum Gothic", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-.nanum-gothic-extrabold {
-  font-family: "Nanum Gothic", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.nanum-gothic-bold {
-  font-family: "Nanum Gothic", sans-serif;
+ font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
 
-.nanum-gothic-regular {
-  font-family: "Nanum Gothic", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
 .btn-deco-1:hover {
 	background-color: #00AE68;
 	transition: all 0.2s;
