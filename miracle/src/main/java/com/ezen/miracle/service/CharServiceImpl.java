@@ -52,10 +52,28 @@ public class CharServiceImpl implements CharService {
 	
 	@Override
 	public void levelCut(Model model, Double char_level) {
-		
 		model.addAttribute("charAll", charMapper.levelCut(char_level));
+		model.addAttribute("char_level", char_level);
+	}
+	
+	@Override
+	public void charSelectedClassNlevelCut(Model model, String char_class, Double char_level) {
+		model.addAttribute("charAll", charMapper.charSelectedClassNlevelCut(char_class, char_level));
+		model.addAttribute("char_class", char_class);
+		model.addAttribute("char_level", char_level);
+	}
+	@Override
+	public void charSelectedServerNlevelCut(Model model, String char_server, Double char_level) {
+		model.addAttribute("charAll", charMapper.charSelectedServerNlevelCut(char_server, char_level));
+		model.addAttribute("char_server", char_server);
+		model.addAttribute("char_level", char_level);
+	}
+	@Override
+	public void allSearch(Model model, String char_class, String char_server, Double char_level) {
+		model.addAttribute("charAll", charMapper.allSearch(char_class, char_server, char_level));
+		model.addAttribute("char_class", char_class);
+		model.addAttribute("char_server", char_server);
 		model.addAttribute("char_level", char_level);
 		
 	}
-
 }

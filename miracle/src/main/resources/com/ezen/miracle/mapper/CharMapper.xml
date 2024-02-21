@@ -69,15 +69,48 @@
 		(#{char_name},#{char_level},#{char_class},#{char_server},#{char_guild},#{char_equipSet},#{char_classEng})
 
 	</insert>
-	
+
 	<select id="levelCut">
-	select allrank.* from
+		select allrank.* from
 		(select rownum as levelrank,
 		mainrank.* from
-		( select * from logo_char where char_level between 1300 and 
-		#{char_level} order by
-		char_level desc) mainrank) allrank
-	
+		( select *
+		from logo_char where char_level between 1300 and #{char_level} order
+		by char_level desc) mainrank) allrank
+
+	</select>
+	<select id="charSelectedServerNlevelCut">
+		select allrank.* from
+		(select rownum as levelrank,
+		mainrank.* from
+		( select *
+		from logo_char where char_level between 1300 and #{char_level} and
+		char_server = #{char_server} order by char_level desc) mainrank)
+		allrank
+	</select>
+
+	<select id="charSelectedClassNlevelCut">
+		select allrank.* from
+		(select rownum as levelrank,
+		mainrank.* from
+		( select *
+		from logo_char where char_level between 1300 and #{char_level} and
+		char_class = #{char_class} order by char_level
+		desc) mainrank)
+		allrank
+	</select>
+
+	<select id="allSearch">
+		select allrank.* from
+		(select rownum as levelrank,
+		mainrank.* from
+		( select *
+		from logo_char where char_level between 1300 and #{char_level} and
+		char_server = #{char_server} and char_class = #{char_class} order by
+		char_level
+		desc) mainrank)
+		allrank
+
 	</select>
 
 

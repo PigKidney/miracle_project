@@ -127,6 +127,8 @@ public class BoardController {
 	@PostMapping("/deleteReply")
 	public String completeToDeleteReply(int reply_id, int board_id) {
 		replyService.delete(reply_id);
+		log.info("리플아이디 : " + reply_id);
+		log.info("리플아이디 : " + reply_id);
 		log.info("/deleteReply >> redirect:/board/read");
 		return "redirect:/board/read?board_id=" + board_id;
 	}
