@@ -36,10 +36,7 @@ String titleSearch = request.getParameter("titleSearch");
       </div>
       
       	<div style="display: block; text-align: center;" class="mainWhite underline-none">		
-      	<!-- 탭내 처음페이지가 1아니면 <누르면 432 로 가게하는 기능 -->
-		<c:if test="${page.startPage != 1 }">
-			<a href="/notice/index?nowPage=${page.startPage - 1}&cntPerPage=${page.cntPerPage}">&lt;</a>
-		</c:if>
+  
 		
 		
 		<c:forEach begin="${page.startPage}" end="${page.endPage}" var="p">
@@ -53,10 +50,7 @@ String titleSearch = request.getParameter("titleSearch");
 			</c:choose>
 		</c:forEach>
 		
-			<!-- 탭 내 마지막 페이지가  맨 마지막 페이지아니면 누르면이동시키기 -->
-		<c:if test="${page.endPage != page.lastPage}">
-			<a href="/notice/index?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">&gt;</a>
-		</c:if>
+		
 	</div>
       	<div class="top-text">
 				<span class="material-symbols-outlined search"> search </span> 

@@ -145,16 +145,17 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/search")
-	public String characterSearch(HttpServletRequest request, Model model,LogoBoardDTO dto ) {
+	public String characterSearch(HttpServletRequest request, Model model,LogoBoardDTO dto,PageVO vo, Integer nowPage, Integer cntPerPage ) {
+		
 		
 //		System.out.println("1");
 		String name = request.getParameter("titleSearch");
-		log.info("dd : " + name);
+//		log.info("dd : " + name);
 //		System.out.println("2");
-		//서비스부분 문제 model이 안실려오는 if문으로 동일한거 나오게 해야하나
+		
 		noticeservice.selectNoticeAll(model, name);
 		
-		log.info("검색제목나와라" + model);
+//		log.info("검색제목나와라" + model);
 	
 
 		return "/notice/index";
