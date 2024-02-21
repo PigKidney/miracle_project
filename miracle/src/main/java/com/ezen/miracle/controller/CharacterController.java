@@ -47,7 +47,7 @@ public class CharacterController {
 			log.info("둘다 널아님");
 			charService.charSelectedClassNServer(model, char_class, char_server);
 		}
-		log.info("/character/index OK");
+		log.info("/character/index OK");	
 		return "character/index";
 	}
 
