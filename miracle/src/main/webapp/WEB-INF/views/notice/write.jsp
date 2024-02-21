@@ -24,7 +24,7 @@
 				</div>
 		
 
-			<div style="text-align: right;">
+			<div class="sumit" style="text-align: right;">
 				<button id="writeConfirmBtn" type="submit" class="round1 white font-16 bald">글작성</button>
 			</div>
 		</form>

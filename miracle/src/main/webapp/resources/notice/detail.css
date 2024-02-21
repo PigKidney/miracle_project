@@ -68,8 +68,11 @@
 }
 
 .height600{
+	margin-top: 20px;
 	height:600px;
 	overflow: auto;
+	box-shadow: 5px 5px 5px 5px #6d6a65;
+	padding: 15px;
 }
 
 .category {
@@ -85,4 +88,7 @@
 .white{
 	color: white;
 	font-size: 20px;
+}
+.ico{
+	padding:30px;
 }

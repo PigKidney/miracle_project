@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="/resources/notice/write.css" />
 <jsp:include page="../include/top.jsp" />
 
 <div class="include-top">
@@ -15,7 +16,7 @@
 		<input id="noteTitle" type="text" name="board_title" value="${board.board_title}" form="modifyForm"/>
 		<textarea id="noteContent" class="summernote" name="board_content" form="modifyForm">${board.board_content}</textarea>
 			
-		<div style="text-align: right;">
+		<div class="sumit" style="text-align: right;">
 			<button id="rewriteBtn" class="round1 white bald">수정완료</button>
 		</div>
 		<input type="hidden" name="board_id" value="${board.board_id}" form="modifyForm"/>

@@ -25,7 +25,7 @@
 		</div>
 	
 	
-		<div style="text-align: left;">
+		<div  class=ico style="text-align: left;">
 		<button class="material-symbols-outlined round4 white font-16 bald" onclick="location.href='/notice/index'">
 			    menu</button>
 			<button id="goodBtn" class="material-symbols-outlined round4 white font-16 bald">thumb_up</button>
