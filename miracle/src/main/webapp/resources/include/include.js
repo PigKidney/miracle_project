@@ -14,18 +14,18 @@ const characterSearch = document.getElementById('characterSearch');
 const myIP = '118.33.154.162';
 const local = 'localhost';
 
-const localURL ='https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email';
+const localURL = 'https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email';
 const dsURL = 'https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2F118.33.154.162%3A9000%2Fmain%2Findex&scope=identify+email';
 
 window.onload = async () => {
 
-    characterSearch.addEventListener('keydown', (e)=>{
-        if(e.key==='Enter'){
+    characterSearch.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
             console.log(e);
             console.log(characterSearch.value);
-            location.href = '/character/search?characterSearch=' + characterSearch.value ;
+            location.href = '/character/search?characterSearch=' + characterSearch.value;
         }
-        
+
     })
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -47,7 +47,7 @@ window.onload = async () => {
         },
     });
     console.log("result : ", oauthResult);
-    
+
     const oauthData = await oauthResult.json();
     console.log("oauthData : ", oauthData);
 
@@ -80,7 +80,7 @@ window.onload = async () => {
     }
 
     // 일반 회원으로 로그인
-    if (loginCheck === '0') {
+    if (loginCheck === '0' || loginCheck === '1') {
         smsBtn.classList.remove('hide');
         smsBtn.classList.add('show');
 
@@ -97,7 +97,7 @@ window.onload = async () => {
     }
 
     // 로그인하면 로그인글자 없어지면서 회원 닉네임 노출
-    if (nickName.value == undefined && loginCheck != '0') {
+    if (nickName.value == undefined && loginCheck != '0' && loginCheck != '1') {
         nickName.innerText = '로그인';
         nickName.onclick = function () {
             location.href = localURL;
@@ -107,7 +107,7 @@ window.onload = async () => {
     }
 }
 
-function ourGit(){
+function ourGit() {
     window.open('https://github.com/PigKidney/miracle_project');
 }
 
