@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,22 +31,30 @@ public class CharacterController {
 
 	@GetMapping("/index")
 	public String character(Model model, @Param("char_server") String char_server,
-			@Param("char_class") String char_class) {
-		log.info("서버 : " + char_server + " 클라스 : " + char_class);
-		if ((char_server == null || char_server == "") && (char_class == null || char_class == "")) {
-			log.info("널널");
-			charService.charAll(model);
-		} else if (char_server == null || char_server == "") {
-			log.info("서버널");
-			charService.charSelectedClass(model, char_class);
-		} else if (char_class == null || char_class == "") {
-			log.info("캐릭널");
-			charService.charSelectedServer(model, char_server);
+			@Param("char_class") String char_class, @Param("levelBar") Double levelBar) {
+		log.info("서버 : " + char_server + " 클라스 : " + char_class + " 레벨 : " + levelBar);
+		if (levelBar != null) {
+			charService.levelCut(model, levelBar);
 		} else {
-			log.info("둘다 널아님");
-			charService.charSelectedClassNServer(model, char_class, char_server);
+
+			if ((char_server == null || char_server == "") && (char_class == null || char_class == "")) {
+				log.info("널널");
+				charService.charAll(model);
+			} else if (char_server == null || char_server == "") {
+				log.info("서버널");
+				charService.charSelectedClass(model, char_class);
+			} else if (char_class == null || char_class == "") {
+				log.info("캐릭널");
+				charService.charSelectedServer(model, char_server);
+			} else {
+				log.info("둘다 널아님");
+				charService.charSelectedClassNServer(model, char_class, char_server);
+			}
 		}
-		log.info("/character/index OK");	
+		model.addAttribute("levelBar", levelBar);
+		log.info(levelBar);
+		log.info("/character/index OK");
+
 		return "character/index";
 	}
 
@@ -64,7 +71,6 @@ public class CharacterController {
 
 		return "redirect:/character/detail";
 	}
-
 
 	@RequestMapping(value = "insert", method = RequestMethod.POST)
 	public @ResponseBody int insertCharacter(@RequestBody LogoCharDTO dto) {

@@ -69,6 +69,16 @@
 		(#{char_name},#{char_level},#{char_class},#{char_server},#{char_guild},#{char_equipSet},#{char_classEng})
 
 	</insert>
+	
+	<select id="levelCut">
+	select allrank.* from
+		(select rownum as levelrank,
+		mainrank.* from
+		( select * from logo_char where char_level between 1300 and 
+		#{char_level} order by
+		char_level desc) mainrank) allrank
+	
+	</select>
 
 
 </mapper>

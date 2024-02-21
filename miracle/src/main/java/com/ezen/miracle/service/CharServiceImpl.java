@@ -49,5 +49,13 @@ public class CharServiceImpl implements CharService {
 		charMapper.charSearchInsert(dto);
 		log.info("impl2 : "+dto);
 	}
+	
+	@Override
+	public void levelCut(Model model, Double char_level) {
+		
+		model.addAttribute("charAll", charMapper.levelCut(char_level));
+		model.addAttribute("char_level", char_level);
+		
+	}
 
 }
