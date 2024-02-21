@@ -53,8 +53,8 @@
 				</div>
 			</div>
 			<div class="choice2 disply-flex">
-				<input type="range" min="1300" max="1675" value="1675" name="levelBar"
-					class="slider" id="mySlider"> 
+				<input type="range" min="1300" max="1675" name="levelBar" class="slider" id="mySlider"
+				<c:if test="${not empty char_level}">value="${char_level}"</c:if>value="1675" > 
 				<font class="disply-flex slider-value"> 
 					<span id="sliderValue"></span>
 				</font>
@@ -100,4 +100,21 @@
 
 <script src="${indexJS}"></script>
 
-<jsp:include page="../include/bot.jsp" />
+<div id="botfix" class="flex-just-center disply-none">
+	<div class="mainWhite w-1120px h-280px item-center justify-between">
+		<div style="font-size: 12px; width: 860px;">© 2022 KorLARK. KorLARK isn’t
+			endorsed by Smilegate RPG and doesn’t reflect the views or opinions
+			of Smilegate RPG or anyone officially involved in producing or
+			managing Lostark. Lostark and Smilegate RPG are trademarks or
+			registered trademarks of Smilegate RPG, Inc. Lostark © Smilegate RPG,
+			Inc.
+		</div>
+		<div>
+			<div style="font-size: 12px"><a class="mainWhite underline-none" href="">이용약관</a> | <a class="mainWhite underline-none" href="">개인정보처리방침</a></div>
+			<img class="cursor" src="/resources/img/gitcat.png" alt="gitcat" onclick='ourGit()'/>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

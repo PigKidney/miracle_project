@@ -208,6 +208,7 @@ if (levelValue == null || levelValue == '') {
 slider.oninput = function () {
     output.innerHTML = slider.value;
 }
+console.dir(slider);
 
 $("#slecteForm").on("change", function () {
     $("#slecteForm").submit();
