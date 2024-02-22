@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+	<%@page import="java.util.ArrayList"%>
 <%@page import="com.ezen.miracle.dto.LogoBoardDTO" %>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -22,7 +22,7 @@
 			<c:forEach items="${list}" var="list" varStatus="status">
 			<div class="item-center">
 				<div><p>${list.board_id}</p></div>
-				<div><p>${list.board_category}  &nbsp;&nbsp;&nbsp;</p></div>
+				<div class="category"><p>${list.board_category}  &nbsp;&nbsp;&nbsp;</p></div>
 				<div><p class="board-content"><a class="board-content" href="/board/read?board_id=${list.board_id}">${list.board_title} [${list.reply_count}]</a></p></div>
 				<div class="nick-deco"><p>${list.user_nickname}</p></div>
 				<div><p>${date[status.index]}</p></div>

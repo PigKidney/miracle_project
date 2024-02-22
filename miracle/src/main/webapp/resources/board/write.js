@@ -10,6 +10,7 @@ $('.summernote').summernote(
         ['insert', ['link', 'picture', 'video']],
         ['view', ['fullscreen', 'codeview', 'help']]],
         lang: 'ko-KR',
+
         styleTags: [
             'p',  // 일반 문단 스타일 옵션
             {
