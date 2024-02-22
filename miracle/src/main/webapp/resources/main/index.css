@@ -9,7 +9,12 @@
 .h-100px {
 	height: 100px;
 }
-
+.p-r15{
+	padding-right: 15px;
+}
+.p-l15{
+	padding-left: 15px;
+}
 .h-50px {
 	height: 50px;
 }
@@ -37,7 +42,7 @@
 
 .grid-main-board>* {
 	margin-bottom: 20px;
-	margin-left: 20px;
+	margin-left: 30px;
 	margin-top: 20px;
 }
 
@@ -287,4 +292,13 @@
 .weekdayWhite {
 	text-shadow: 0 0 10px white;
 	font-size: 18px;
+}
+.pageNumber:link{
+	color: #eaf0ec;		
+}
+.pageNumber:visited {
+	color: #eaf0ec;
+}
+.pageNumber{
+	text-decoration: none;	
 }

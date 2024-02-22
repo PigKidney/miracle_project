@@ -7,6 +7,13 @@
 	font-weight: 700;
 	padding-top: 30px;
 }
+.nowSelectedPage{
+	font-weight: 700;
+	text-decoration: underline;
+}
+.nonSelectedPage{
+	font-weight: 400;
+}
 
 .grid-board>div {
 	display: grid;

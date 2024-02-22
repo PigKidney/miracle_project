@@ -10,7 +10,6 @@
 <div class="include-top">
 	<div class="w-1120px">
 	<div class="grid-read mainWhite">
-	<div class="grid-read mainWhite">
 	<div class="gboard">
 			<div class="category">${board.board_category}</div>
 			<div class="white"><b>${board.board_title}</b></div> 
@@ -19,10 +18,8 @@
 			<div>추천수:${board.board_good_count}</div> <br/>
 	</div>
 			<div class="height600">
-				<div class="mgt">${board.board_content}</span> 
-
+				<div class="mgt">${board.board_content}</div>
 			</div>
-		</div>
 	
 	
 		<div  class=ico style="text-align: left;">
@@ -47,6 +44,7 @@
 			</script>
 		</div>
 	</div>
+</div>
 </div>
 <script src="/resources/notice/detail.js"></script>
 <jsp:include page="../include/bot.jsp" />

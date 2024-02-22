@@ -12,7 +12,7 @@ String titleSearch = request.getParameter("titleSearch");
 %>
 
 
-
+<title>공지사항 - 로고</title>
 <div class="include-top">
 	<div class="w-1120px w5">
 	<div class="mainWhite bold font-24 w7">공지사항</div>
@@ -50,10 +50,10 @@ String titleSearch = request.getParameter("titleSearch");
 		<c:forEach begin="${page.startPage}" end="${page.endPage}" var="p">
 			<c:choose>
 				<c:when test="${p == page.nowPage }">
-					<b>${p}</b>
+					<b class="nowSelectedPage">${p}</b>
 				</c:when>
 				<c:when test="${p != page.nowPage }">
-					<a class="pageNumber" href="/notice/index?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
+					<a class="pageNumber nonSelectedPage" href="/notice/index?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>

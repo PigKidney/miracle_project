@@ -39,10 +39,10 @@
 		<c:forEach begin="${page.startPage}" end="${page.endPage}" var="p">
 			<c:choose>
 				<c:when test="${p == page.nowPage}">
-					<b>${p}</b>
+					<b class="nowSelectedPage">${p}</b>
 				</c:when>
 				<c:when test="${p != page.nowPage}">
-					<a class="pageNumber" href="/board/index?nowPage=${p}&cntPerPage=${page.cntPerPage}">${p}</a>
+					<a class="pageNumber nonSelectedPage" href="/board/index?nowPage=${p}&cntPerPage=${page.cntPerPage}">${p}</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>

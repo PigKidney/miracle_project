@@ -17,11 +17,11 @@
 	</div>
 	<div class="w-1120px h-280px main m-div2 flex justify-between">
 		<div class="m-top40 island">
-			<span class="island mainWhite bold font-20">현재 시간&nbsp;&nbsp;&nbsp;</span> <span
+			<span class="island mainWhite bold font-20 p-l15">현재 시간&nbsp;&nbsp;&nbsp;</span> <span
 				id="islandTime" class="islandTime mainPurple bold font-20"></span>
 		</div>
 		<div class="m-top40 island">
-			<span id="islandDate" class="mainWhite bold font-20"></span>
+			<span id="islandDate" class="mainWhite bold font-20 p-r15"></span>
 		</div>
 	</div>
 
@@ -108,15 +108,15 @@
 				comment</div>
 			<div
 				class="justify-between grid-main-board island-box box-background-color ">
-				<c:forEach begin="0" end="4" step="1" var="i">
-					<div class="mainWhite">${i}</div>
-					<div class="mainWhite">ㅇㅅㅇ/</div>
+				<c:forEach items="${boards}" var="boards">
+					<div class="mainWhite">${boards.board_category}</div>
+					<div class="mainWhite"><a class="pageNumber" href="/notice/detail?board_id=${boards.board_id}">${boards.board_title}</a></div>
 				</c:forEach>
 			</div>
 		</div>
 	</div>
 </div>
-
+<div class="m-div2"></div>
 <script type="text/javascript" src="/resources/main/index.js">
 	
 </script>

@@ -85,7 +85,7 @@ console.log("user_id : " + idCheck);
 					</div>
 				<div class="dropdown-content">
 						<a href="/login/index">MY PAGE </a>
-						<a href="">ㅇㅅㅇ</a>
+						<a class="cursor" onclick='ourGit()'>GitHub <img class="blackCat" src="/resources/img/gitcat.png" height="23px" width="23px" alt="" /></a>
 						<a href="/main/logout">LOG OUT</a>
 				</div>
 		</div>

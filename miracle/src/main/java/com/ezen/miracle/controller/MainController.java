@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.ezen.miracle.dto.LogoUserDTO;
+import com.ezen.miracle.service.BoardService;
+import com.ezen.miracle.service.NoticeService;
 import com.ezen.miracle.service.UserService;
 
 import lombok.extern.log4j.Log4j;
@@ -22,9 +24,14 @@ public class MainController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	NoticeService noticeService;
 
 	@GetMapping("/index")
-	public String main(Long user_id) {
+	public String main(Long user_id, Model model) {
+		noticeService.list(model);
+		log.info(model);
 		log.info("USER ID : " + user_id);
 		log.info("GET : /main/index OK");
 		return "main/index";
@@ -33,6 +40,7 @@ public class MainController {
 	@PostMapping("/index")
 	public String mainLogin(Model model, Long user_id, LogoUserDTO dto, HttpSession session) {
 		// user_id가 DB에 저장되어 있으면 데이터를 가져오고 1을 리턴함
+		noticeService.list(model);
 		int result = userService.get(model, user_id);
 		if (result == 1) {
 			log.info("signed DATA");

@@ -17,7 +17,7 @@
 				<hr />
 			<div class="grid-read-body">
 				<span>[${read.board_category}]</span>
-				<span><a class="board-content" href="/board/index">[목록으로]</a></span>
+				<span><a class="board-content border-bot-line" href="/board/index">[목록으로]</a></span>
 			</div>
 			<div class="grid-read-foot">
 				${read.board_content}

@@ -19,7 +19,7 @@
 }
 
 .font-20 {
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .font-16 {
@@ -58,7 +58,7 @@ body {
 
 #top-tab3 {
 	padding-right: 60px;
-	line-height: 15px;
+	line-height: 20px;
 }
 
 .include-top {
@@ -167,7 +167,7 @@ body {
 }
 
 .p-r20 {
-	padding-right: 20px;
+	padding-right: 30px;
 }
 
 .hide {
@@ -258,7 +258,7 @@ body {
 	z-index: 1;
 	font-weight: 400;
 	background-color: #42464D;
-	min-width: 110px;
+	min-width: 120px;
 	border-radius: 10px;
 	border: 3px solid black;
 	margin-right: 10px;
@@ -269,11 +269,16 @@ body {
 	display: block;
 	text-decoration: none;
 	color: white;
-	font-size: 12px;
+	font-size: 14px;
 	padding: 12px 20px;
 	border-radius: 10px;
 }
-
+.blackCat{
+	vertical-align: middle;
+}
+.dropdown-content a:nth-child(2){
+	display: table-cell; 
+}
 .dropdown-content a:hover {
 	background-color: #ececec;
 	color: #42464D;
@@ -355,4 +360,7 @@ html {
 
 .sumit {
 	padding-top: 40px;
+}
+.border-bot-line{
+	border-bottom: 1px solid white;
 }
