@@ -34,7 +34,7 @@
 		
 		<div style="display: block; text-align: center;" class="mainWhite underline-none p-t10">		
 		<c:if test="${page.startPage != 1}">
-			<a href="/board/index?nowPage=${page.startPage-1}&cntPerPage=${page.cntPerPage}">&lt;</a>
+			<a class="pageNumber" href="/board/index?nowPage=${page.startPage-1}&cntPerPage=${page.cntPerPage}">&lt;</a>
 		</c:if>
 		<c:forEach begin="${page.startPage}" end="${page.endPage}" var="p">
 			<c:choose>
@@ -47,7 +47,7 @@
 			</c:choose>
 		</c:forEach>
 		<c:if test="${page.endPage != page.lastPage}">
-			<a href="/board/index?nowPage=${page.endPage+1}&cntPerPage=${page.cntPerPage}">&gt;</a>
+			<a class="pageNumber" href="/board/index?nowPage=${page.endPage+1}&cntPerPage=${page.cntPerPage}">&gt;</a>
 		</c:if>
 	</div>
 		

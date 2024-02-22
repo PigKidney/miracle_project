@@ -64,7 +64,7 @@
 	<!-- 총 게시글 갯수 출력 -->
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM
-		logo_board where board_show=1
+		logo_board where board_category IN('잡담','구매','판매') and board_show=1
 	</select>
 
 	<!-- 페이징 처리 후 게시글 조회 -->
@@ -79,7 +79,7 @@
 		logo_board.created_at as created_at, modified_at, board_show,
 		user_nickname, user_email, user_password, isadmin, 
 		(select count(reply_id) from logo_reply where logo_board.board_id = logo_reply.board_id and logo_reply.reply_show =1) as reply_count 
-        from logo_board inner join logo_user using (user_id) where board_show =1 order by board_id DESC)ccc
+        from logo_board inner join logo_user using (user_id) where board_category IN('잡담','구매','판매') and board_show =1 order by board_id DESC)ccc
         ) ddd 
     where ddd.rn BETWEEN #{start} and #{end}
 

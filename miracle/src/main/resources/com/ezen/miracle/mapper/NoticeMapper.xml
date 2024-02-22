@@ -63,7 +63,7 @@
 	
   	<!-- 총 게시글 갯수 출력 -->
 	<select id="countBoard" resultType="int">
-		SELECT COUNT(*) FROM logo_board where board_show=1
+		SELECT COUNT(*) FROM logo_board where board_category IN('공지','이벤트','점검') and board_show=1
 	</select>
 
 	<!-- 페이징 처리 후 게시글 조회 -->
