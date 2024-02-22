@@ -14,11 +14,19 @@ String titleSearch = request.getParameter("titleSearch");
 
 
 <div class="include-top">
-	<div class="w-1120px">
-	<div class="mainWhite bold font-16">공지사항</div>
+	<div class="w-1120px w5">
+	<div class="mainWhite bold font-24 w7">공지사항</div>
 	<div class="mainWhite grid-board ">
+	<div>
+				
+				<div></div>
+				<div></div>
+				<div></div>
+				<div class="p-b10">조회</div>
+				<div class="p-b10">추천</div>	
+			</div>
 		<c:forEach items="${list}" var="list" varStatus="status">
-				<div class="item-center">
+				<div class="item-center" style="height: 80px;">
 					<div class="category">${list.board_category}&nbsp;&nbsp;&nbsp;</div>
 					<div><p class="board-content "><a class="board-content " href="/notice/detail?board_id=${list.board_id}">${list.board_title}</a></p></div>
 					<div><p>${date[status.index]}<p></div>
@@ -35,7 +43,7 @@ String titleSearch = request.getParameter("titleSearch");
 			
       </div>
       
-      	<div style="display: block; text-align: center;" class="mainWhite underline-none">		
+      	<div style="display: block; text-align: center;" class="mainWhite underline-none p-t10">		
   
 		
 		
