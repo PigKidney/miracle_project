@@ -13,19 +13,19 @@
 			class="disply-flex space-between form-padding rank-list align-center margin-top20">
 			<div class="disply-flex">
 				<div>
-					<c:set value="전서버/루페온/실리안/아만/아브렐슈드/카단/카마인/카제로스/니나브" var="servers" />
+					<c:set value="전 서버/루페온/실리안/아만/아브렐슈드/카단/카마인/카제로스/니나브" var="servers" />
 					<select id="selectedServer" name="char_server">
 						<c:forTokens items="${servers}" delims="/" var="server">
 							<c:choose>
 								<c:when test="${not empty char_server}">
 									<option 
-									<c:if test="${server eq '전서버'}">value="${null}"</c:if>
+									<c:if test="${server eq '전 서버'}">value="${null}"</c:if>
 									<c:if test ="${char_server eq server}">value="${server}" selected="selected"</c:if>>${server}</option>
 								</c:when>
 								<c:otherwise>
 									<option 
-										<c:if test="${server eq '전서버'}">value="${null}"</c:if>
-										<c:if test="${server ne '전서버'}">value="${server}"</c:if>>${server}
+										<c:if test="${server eq '전 서버'}">value="${null}"</c:if>
+										<c:if test="${server ne '전 서버'}">value="${server}"</c:if>>${server}
 									</option>
 								</c:otherwise>
 							</c:choose>
@@ -33,19 +33,19 @@
 					</select>
 				</div>
 				<div>
-					<c:set value="전체클래스/디스트로이어/버서커/홀리나이트/슬레이어/스트라이커/브레이커/배틀마스터/인파이터/기공사/창술사/데빌헌터/블래스터/호크아이/스카우터/건슬링어/바드/서머너/아르카나/소서리스/블레이드/데모닉/리퍼/소울이터/도화가/기상술사" var="chrClasss" />
+					<c:set value="전체 클래스/디스트로이어/버서커/홀리나이트/슬레이어/스트라이커/브레이커/배틀마스터/인파이터/기공사/창술사/데빌헌터/블래스터/호크아이/스카우터/건슬링어/바드/서머너/아르카나/소서리스/블레이드/데모닉/리퍼/소울이터/도화가/기상술사" var="chrClasss" />
 					<select id="selectedClass" name="char_class">
 						<c:forTokens items="${chrClasss}" delims="/" var="chrClass">
 							<c:choose>
 								<c:when test="${not empty char_class}">
 									<option
-										<c:if test="${chrClass eq '전체클래스'}">value="${null}"</c:if>
+										<c:if test="${chrClass eq '전체 클래스'}">value="${null}"</c:if>
 										<c:if test ="${char_class eq chrClass}">value="${chrClass}" selected="selected"</c:if>>${chrClass}</option>
 								</c:when>
 								<c:otherwise>
 									<option 
-										<c:if test="${chrClass eq '전체클래스'}">value="${null}"</c:if>
-										<c:if test="${chrClass ne '전체클래스'}">value="${chrClass}"</c:if>>${chrClass}</option>
+										<c:if test="${chrClass eq '전체 클래스'}">value="${null}"</c:if>
+										<c:if test="${chrClass ne '전체 클래스'}">value="${chrClass}"</c:if>>${chrClass}</option>
 								</c:otherwise>
 							</c:choose>
 						</c:forTokens>
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<div class="choice2 disply-flex">
-				<input type="range" min="1300" max="1675" name="levelBar" class="slider" id="mySlider"
+				<input type="range" min="1415" max="1675" name="levelBar" class="slider" id="mySlider"
 				<c:if test="${not empty char_level}">value="${char_level}"</c:if>value="1675" > 
 				<font class="disply-flex slider-value"> 
 					<span id="sliderValue"></span>
