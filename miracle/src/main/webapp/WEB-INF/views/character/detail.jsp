@@ -77,97 +77,69 @@
 			<div id="equi" class="radius15 b-1p color-back">
 
 				<div id="l1" class=" list-def">
-					<div id="l1Image" class="eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="l1Image" class="eq-img item-coloer-6"></div>
 					<div id="l1Tooltip" class="p15-m0"></div>
 				</div>
 
 				<div id="r1" class=" list-def">
-					<div id="r1Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="r1Image" class=" eq-img item-coloer-6"></div>
 					<div id="r1Tooltip" class="p15-m0"></div>
 				</div>
 
 				<div id="l2" class=" list-def">
-					<div id="l2Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="l2Image" class=" eq-img item-coloer-6"></div>
 					<div id="l2Tooltip" class="p15-m0"></div>
 				</div>
 
 				<div id="r2" class=" list-def">
-					<div id="r2Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="r2Image" class=" eq-img item-coloer-6"></div>
 					<div id="r2Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="l3" class="list-def">
-					<div id="l3Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="l3Image" class=" eq-img item-coloer-6"></div>
 					<div id="l3Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="r3" class=" list-def">
-					<div id="r3Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="r3Image" class=" eq-img item-coloer-6"></div>
 					<div id="r3Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="l4" class="list-def">
-					<div id="l4Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="l4Image" class=" eq-img item-coloer-6"></div>
 					<div id="l4Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="r4" class=" list-def">
-					<div id="r4Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="r4Image" class=" eq-img item-coloer-6"></div>
 					<div id="r4Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="l5" class="list-def">
-					<div id="l5Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="l5Image" class=" eq-img item-coloer-6"></div>
 					<div id="l5Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="r5" class="list-def">
-					<div id="r5Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="r5Image" class=" eq-img item-coloer-6"></div>
 					<div id="r5Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="l6" class="list-def">
-					<div id="l6Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="l6Image" class=" eq-img item-coloer-6"></div>
 					<div id="l6Tooltip" class="p15-m0"></div>
 				</div>
 				<div id="r6" class="list-def">
-					<div id="r6Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="r6Image" class=" eq-img item-coloer-6"></div>
 					<div id="r6Tooltip" class="p15-m0"></div>
 				</div>
 
 				<!-- 각인 -->
 				<div id="l7" class="list-def">
 					<div id="l7-1" class="flex-dir-r ">
-						<img src="" alt="" title="" class="radius100" />
-						<div id="l7-1Tooltip" class="p15-m0"></div>
+						<div id="l7-1Tooltip" class="p15-m0 flex-dir-r"></div>
 					</div>
 					<div id="l7-2" class="flex-dir-r">
-						<img src="" alt="" title="" class="radius100 " />
-						<div id="l7-2Tooltip" class="p15-m0"></div>
+						<div id="l7-2Tooltip" class="p15-m0 flex-dir-r"></div>
 					</div>
 				</div>
 
 				<div id="r7" class="list-def">
-					<div id="r7Image" class=" eq-img">
-						<img src="" alt="" title="" class="" />
-					</div>
+					<div id="r7Image" class=" eq-img  item-coloer-6"></div>
 					<div id="r7Tooltip" class="p15-m0"></div>
 				</div>
 			</div>
@@ -255,10 +227,22 @@
 	</div>
 </div>
 
-
-<div id='clear'></div>
-
-
-
 <script src="${detailJS}"></script>
-<jsp:include page="../include/bot.jsp" />
+<div id="botfix" class="flex-just-center hidden">
+	<div class="mainWhite w-1120px h-280px item-center justify-between">
+		<div style="font-size: 12px; width: 860px;">© 2022 KorLARK. KorLARK isn’t
+			endorsed by Smilegate RPG and doesn’t reflect the views or opinions
+			of Smilegate RPG or anyone officially involved in producing or
+			managing Lostark. Lostark and Smilegate RPG are trademarks or
+			registered trademarks of Smilegate RPG, Inc. Lostark © Smilegate RPG,
+			Inc.
+		</div>
+		<div>
+			<div style="font-size: 12px"><a class="mainWhite underline-none" href="">이용약관</a> | <a class="mainWhite underline-none" href="">개인정보처리방침</a></div>
+			<img class="cursor" src="/resources/img/gitcat.png" alt="gitcat" onclick='ourGit()'/>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
