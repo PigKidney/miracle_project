@@ -16,11 +16,10 @@ public interface BoardMapper {
 	int delete(int board_id);
 	int chuchu(int board_id);
 	int viewCount(int board_id);
-	// 글을 지우면 댓글들도 같이 삭제되는 기능
 	int deleteReply(int board_id);
-	
 	int countBoard();
 	List<LogoBoardDTO> selectBoard(PageVO vo);
+
 	
 	List<LogoBoardDTO> membersList(Long user_id);
 

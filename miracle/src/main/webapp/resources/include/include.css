@@ -1,6 +1,7 @@
 * {
 	box-sizing: border-box;
 }
+
 .w-1120px {
 	width: 1120px;
 }
@@ -8,19 +9,23 @@
 .h-280px {
 	height: 280px;
 }
-.font-regular{
+
+.font-regular {
 	font-weight: 400;
 }
 
-.font-24{
+.font-24 {
 	font-size: 24px;
 }
-.font-20{
+
+.font-20 {
 	font-size: 18px;
 }
-.font-16{
+
+.font-16 {
 	font-size: 16px;
 }
+
 #topfix {
 	position: fixed;
 	top: 0%;
@@ -68,23 +73,28 @@ body {
 	display: flex;
 	align-items: center;
 }
-.text-center{
+
+.text-center {
 	align-items: center;
 	text-align: center;
-	line-height : 35px;
+	line-height: 35px;
 	padding-top: 25px;
 }
-.text-center2{
+
+.text-center2 {
 	align-items: center;
 	text-align: center;
 }
-.p-t10{
+
+.p-t10 {
 	padding-top: 10px;
 }
-.p-b10{
+
+.p-b10 {
 	padding-bottom: 10px;
 }
-.p-t15{
+
+.p-t15 {
 	padding-top: 15px;
 }
 
@@ -119,188 +129,230 @@ body {
 	color: #B9BBBE;
 }
 
-.dark{
+.dark {
 	display: none;
 }
-.light{
+
+.light {
 	display: block;
 }
-.cursor{
+
+.cursor {
 	cursor: pointer;
 }
-.bold{
+
+.bold {
 	font: bold;
 }
-.flex-just-center{
+
+.flex-just-center {
 	display: flex;
 	justify-content: center;
 }
-.justify-between{
+
+.justify-between {
 	justify-content: space-between;
 }
-.underline-none{
+
+.underline-none {
 	text-decoration: none;
 }
-.mainWhite{
+
+.mainWhite {
 	color: #eaf0ec;
 }
-.mainPurple{
+
+.mainPurple {
 	color: #8045dd;
 }
-.p-r20{
+
+.p-r20 {
 	padding-right: 20px;
 }
 
-.hide{
+.hide {
 	display: none;
 }
-.show{
+
+.show {
 	display: block;
 }
-.login-admin{
+
+.login-admin {
 	visibility: hidden;
 }
 
-.tab3>*{
+.tab3>* {
 	padding-left: 20px;
 }
 
 .slider1 {
-  position: relative;
-  overflow: hidden;
-  
-  width: 1120px;
-  height: 280px;
+	position: relative;
+	overflow: hidden;
+	width: 1120px;
+	height: 280px;
 }
 
 .slide1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-
-  animation: slider1 7.5s infinite linear;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	animation: slider1 7.5s infinite linear;
 }
 
 .slide1:nth-child(1) {
-  background-image: url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
-  animation-delay: 0;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
+	animation-delay: 0;
 }
+
 .slide1:nth-child(2) {
-  background-image: url(https://cdn.korlark.com/artworks/home/509107984186712397.webp?t=1698938628000);
-  animation-delay: -2.5s;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/509107984186712397.webp?t=1698938628000);
+	animation-delay: -2.5s;
 }
+
 .slide1:nth-child(3) {
-  background-image: url(https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000);
-  animation-delay: -5s;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000);
+	animation-delay: -5s;
 }
 
-@keyframes slider1 {
-  0% {
-    transform: translateX(0);
-  }
-
-  26% {
-    transform: translateX(0);
-  }
-  33% {
-    transform: translateX(-100%);
-    animation-timing-function: step-end;
-  }
-  93% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+@keyframes slider1 { 0% {transform: translateX(0);}
+26%{transform:translateX(0);}
+33%{transform:translateX(-100%);animation-timing-function:step-end;}
+93%{transform:translateX(100%);}
+100%{transform:translateX(0);}
 }
-
-
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-.dropdown{
-  position : relative;
-  display : inline-block;
+.dropdown {
+	position: relative;
+	display: inline-block;
 }
 
-.dropbtn_icon{
-  font-family : 'Material Icons';
+.dropbtn_icon {
+	font-family: 'Material Icons';
 }
-.dropbtn{
-  border : 1px solid rgb(37, 37, 37);
-  border-radius : 4px;
-  background-color: #f5f5f5;
-  font-weight: 400;
-  color : rgb(37, 37, 37);
-  padding : 12px;
-  width :200px;
-  text-align: left;
-  cursor : pointer;
-  font-size : 12px;
+
+.dropbtn {
+	border: 1px solid rgb(37, 37, 37);
+	border-radius: 4px;
+	background-color: #f5f5f5;
+	font-weight: 400;
+	color: rgb(37, 37, 37);
+	padding: 12px;
+	width: 200px;
+	text-align: left;
+	cursor: pointer;
+	font-size: 12px;
 }
-.dropdown-content{
-  display : none;
-  position : absolute;
-  z-index : 1;
-  font-weight: 400;
-  background-color: #42464D;
-  min-width : 110px;
-  border-radius: 10px;
-  border: 3px solid black;
-  margin-right: 10px;
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	z-index: 1;
+	font-weight: 400;
+	background-color: #42464D;
+	min-width: 110px;
+	border-radius: 10px;
+	border: 3px solid black;
+	margin-right: 10px;
 	color: white;
 }
 
-.dropdown-content a{
-  display : block;
-  text-decoration : none;
+.dropdown-content a {
+	display: block;
+	text-decoration: none;
 	color: white;
-  font-size: 12px;
-  padding : 12px 20px;
-  border-radius: 10px;
+	font-size: 12px;
+	padding: 12px 20px;
+	border-radius: 10px;
 }
 
-.dropdown-content a:hover{
-  background-color : #ececec;
-  color: #42464D;
+.dropdown-content a:hover {
+	background-color: #ececec;
+	color: #42464D;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+	display: block;
 }
 
 .purpleTab>a:hover {
-    color: #8045dd;
-    transition: all 200ms ease-in-out;
+	color: #8045dd;
+	transition: all 200ms ease-in-out;
 }
 
-.logo{
-    width: 100px;
-    height: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.logo {
+	width: 100px;
+	height: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
-html{
- font-family: "Noto Sans KR", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
+.category {
+	border-width: 1px;
+	border-radius: 14px
+}
+
+.round1 {
+	width: 87px;
+	height: 40px;
+	border-width: 1px;
+	border-radius: 14px;
+	background-color: #73797b;
+	font-size: 17px;
+}
+
+.round2 {
+	width: 67px;
+	height: 35px;
+	border-width: 1px;
+	border-radius: 14px;
+	background-color: #73797b;
+	font-size: 17px;
+	margin-top: 10px;
+}
+
+.white {
+	color: white;
+}
+
+.btn2 {
+	margin: 9px;
+}
+
+.mgt {
+	margin-top: 20px;
+}
+
+html {
+	font-family: "Noto Sans KR", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-style: normal;
 }
 
 .btn-deco-1:hover {
 	background-color: #00AE68;
 	transition: all 0.2s;
 }
+
 .btn-deco-2:hover {
 	background-color: #5DC8CD;
 	transition: all 0.2s;
 }
+
 .btn-deco-3:hover {
 	background-color: #A74982;
 	transition: all 0.2s;
+}
+
+.sumit {
+	padding-top: 40px;
 }

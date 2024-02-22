@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.grid-board>div {
+	display: grid;
+	grid-template-columns: 1fr 10fr 2fr 1fr 1fr;
+}
+
+.grid-board>div {
+	border-bottom: 1px solid #eaf0ec;
+	text-align: center;
+}
+
+.grid-board>div:nth-child(n+2):hover {
+	background-color: #38393e;
+}
+
+.board-content {
+	text-align: left;
+	text-decoration: none;	
+}
+
+.pageNumber:visited {
+	color: #eaf0ec;
+}
+.pageNumber{
+	text-decoration: none;	
+}
+
+.asd{
+	position: relative;
+    top: 6px;
+    right: 2px;
+}
+
+.asd2{
+   	position: relative;
+    top: 4px;
+    right: 2px;
+}
+
