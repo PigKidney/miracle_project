@@ -295,17 +295,13 @@ body {
 	margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
 
-.category{
-=======
 .category {
->>>>>>> branch 'ds' of https://github.com/PigKidney/miracle_project.git
+
 	border-width: 1px;
 	border-radius: 14px
 }
 
-<<<<<<< HEAD
 
 .round1{
 	width: 120px;
@@ -320,29 +316,9 @@ body {
     background-size: 200% auto;
     text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
    background-image: linear-gradient(to right, rgb(96 111 126) 51%, #252d28 100%);
-	  
-=======
-.round1 {
-	width: 87px;
-	height: 40px;
-	border-width: 1px;
-	border-radius: 14px;
-	background-color: #73797b;
-	font-size: 17px;
 }
 
-.round2 {
-	width: 67px;
-	height: 35px;
-	border-width: 1px;
-	border-radius: 14px;
-	background-color: #73797b;
-	font-size: 17px;
-	margin-top: 10px;
->>>>>>> branch 'ds' of https://github.com/PigKidney/miracle_project.git
-}
 
-<<<<<<< HEAD
 .round2{
    width: 120px;
     height: 35px;
@@ -350,12 +326,12 @@ body {
     border-radius: 14px;
     background-color: #73797b;
     font-size: 17px;
-    margin-top: 10px;
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
     text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
     background-image: linear-gradient(to right,rgb(96 111 126) 51%, #252d28 100%);
+    text-align:center;
 }
 
 .round2:hover {
@@ -369,10 +345,8 @@ body {
 
 
 
-.white{
-=======
 .white {
->>>>>>> branch 'ds' of https://github.com/PigKidney/miracle_project.git
+
 	color: white;
 }
 

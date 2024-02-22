@@ -6,7 +6,7 @@
 <select id="getNoticeAll" resultType="com.ezen.miracle.dto.LogoBoardDTO">
     SELECT *
     FROM logo_board
-    WHERE board_category IN('공지','이벤트','점검') and board_show=1
+    WHERE board_category IN('공지','이벤트','점검','서다슬','양권모','김석주','정기상') and board_show=1
     ORDER BY board_id DESC
 </select>
  
@@ -63,7 +63,7 @@
 	
   	<!-- 총 게시글 갯수 출력 -->
 	<select id="countBoard" resultType="int">
-		SELECT COUNT(*) FROM logo_board where board_category IN('공지','이벤트','점검') and board_show=1
+		SELECT COUNT(*) FROM logo_board where board_category IN('공지','이벤트','점검','서다슬','양권모','김석주','정기상') and board_show=1
 	</select>
 	
 	<!-- 검색한 총 게시글 갯수 출력 -->
@@ -83,7 +83,7 @@
     from (select board_id, board_title, board_content,
 		board_good_count, board_category, view_count,
 		logo_board.created_at as created_at, modified_at, board_show 
-        from logo_board  WHERE board_category IN('공지','이벤트','점검') and board_show=1 order by board_id DESC)ccc
+        from logo_board  WHERE board_category IN('공지','이벤트','점검','서다슬','양권모','김석주','정기상') and board_show=1 order by board_id DESC)ccc
         ) ddd 
     where ddd.rn BETWEEN #{start} and #{end}
 	</select>
