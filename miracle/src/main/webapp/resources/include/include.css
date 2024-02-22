@@ -383,3 +383,23 @@ html {
 .sumit {
 	padding-top: 40px;
 }
+
+.effBtn{
+	 width: 120px;
+    height: 35px;
+    border-radius: 14px;
+    background-color: #73797b;
+    font-size: 17px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+ 	background-image: linear-gradient(to right, rgb(96 111 126) 51%, #252d28 100%);
+ 	margin-left: 20px;
+ 	border: solid 1px white;
+ }
+
+.effBtn:hover {
+  background-position: right center; 
+   box-shadow: 0 0 20px #eee;
+    border:none;
+}

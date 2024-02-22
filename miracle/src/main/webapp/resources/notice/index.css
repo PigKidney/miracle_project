@@ -26,20 +26,10 @@
 	text-decoration: none;	
 }
 
-.asd{
-	position: relative;
-    top: 6px;
-    right: 2px;
-}
-
-.asd2{
-   	position: relative;
-    top: 4px;
-    right: 2px;
-}
-.asd22 {
-	display: grid;
-    grid-template-columns: 1fr 2fr;
+.ntary {
+	display: flex;
     margin-top: 20px;
+    justify-content: center;
+	align-items: center;
 }
 

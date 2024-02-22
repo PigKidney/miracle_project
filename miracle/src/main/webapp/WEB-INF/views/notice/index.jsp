@@ -31,8 +31,8 @@ String titleSearch = request.getParameter("titleSearch");
 					<div><p class="board-content "><a class="board-content " href="/notice/detail?board_id=${list.board_id}">${list.board_title}</a></p></div>
 					<div><p>${date[status.index]}<p></div>
 				
-					<div><p><span class="asd"></span>${list.view_count}<p></div>
-					<div><p><span class="asd2"></span>${list.board_good_count}<p></div>
+					<div><p><span></span>${list.view_count}<p></div>
+					<div><p><span></span>${list.board_good_count}<p></div>
 				
 					
 				</div>
@@ -60,15 +60,15 @@ String titleSearch = request.getParameter("titleSearch");
 		
 		
 	</div>
-	<div class="asd22">
+	<div class="ntary">
       	<div class="top-text">
 				<span class="material-symbols-outlined search"> search </span> 
 				<input id="titleSearch" name="titleLists" class="top-box" type="text" placeholder="제목을입력해주세요" />
 		</div>
-		<button id="search" class=" round2 white bald">검색</button>
+		<button id="search" class=" effBtn white bald">검색</button>
 	</div>
 		<div style="text-align: right;" >
-			<button id="writebtn" class=" round1 white bald" >글쓰기</button>
+			<button id="writebtn" class=" effBtn white bald" >글쓰기</button>
 		</div>
 
 	</div>
