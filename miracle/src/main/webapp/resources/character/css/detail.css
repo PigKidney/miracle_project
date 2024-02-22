@@ -31,10 +31,10 @@ body{
 }
 
 #chImage > h4 {
-    line-height: 40px;
-	padding-left: 15px;
+    line-height: 33px;
+    padding-left: 15px;
     display: block;
-    font-weight: 200;
+    font-weight: 500;
 }
 
 #chImage > div {
@@ -212,7 +212,7 @@ body{
     font-weight: 500;
     width: 250px;
     height: 50px;
-    line-height: 52px;
+    line-height: 49px;
 }
 
 #states-etc{
@@ -444,10 +444,14 @@ p{
     font-size: 13px;
 }
 
+.font16{
+    font-size: 16px;
+}
+
 
 .eqi-EngraveName{
     color: white;
-    font-size: 12px;
+    font-size: 11px;
     padding: 0;
     margin: 0;
     margin-top: 6px;
@@ -455,13 +459,15 @@ p{
 
 .eqi-EngravePoint{
     color: white;
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: lighter;
 }
 
 .eqi-StatePoint{
     color: white;
     font-size: 14px;
     font-weight: 400;
+    margin-bottom: -5px;
 }
 
 .item-coloer-1{
@@ -620,9 +626,10 @@ p{
 }
 
 .t-indent {
-    text-indent : 20px;
-    line-height: 2.4rem;
+    text-indent: 20px;
+    line-height: 1.9rem;
     display: block;
+    font-weight: 400;
 
 }
 
@@ -630,7 +637,24 @@ p{
     display: flex;
 }
 
-
+.bold100{
+    font-weight: 100;
+}
+.bold200{
+    font-weight: 200;
+}
+.bold300{
+    font-weight: 300;
+}
+.bold400{
+    font-weight: 400;
+}
+.bold500{
+    font-weight: 500;
+}
+.bold600{
+    font-weight: 600;
+}
 .bold700{
     font-weight: 700;
 }
@@ -644,7 +668,7 @@ p{
 }
 
 .progress-bar {
-    margin-top: 5px;
+    margin-top: 11px;
     width: 80%;
     height: 5px;
     background-color: #dedede;
@@ -689,7 +713,7 @@ p{
 
 
 .state-title{
-    margin-bottom: 15px;
+    margin-bottom: 7px;
     background-color: #262626;
     color: #dedede;
     border-radius: 20px;
@@ -706,7 +730,8 @@ p{
     text-align: center;
     padding: 5px;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
+    padding-bottom: 17px;
 }
 
 .cards-size{
@@ -821,7 +846,7 @@ p{
 
 .collection-pop{
     position: relative;
-    top: -40px;
+    top: -43px;
 }
 
 .card-states{
@@ -873,7 +898,7 @@ p{
     text-align: center;
     padding: 5px;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .magin-l15{
@@ -908,6 +933,8 @@ p{
     background-color: #262626;
     border-radius: 4px;
     margin-right: 7px;
+    font-weight: 400;
+    font-size: 13px;
 }
 
 .stretch{
@@ -948,31 +975,37 @@ p{
 .avatar-1{
     position: absolute;
     top: 50px;
+    font-weight: 500;
 }
 
 .avatar-2{
     position: absolute;
     top: 110px;
+    font-weight: 500;
 }
 
 .avatar-3{
     position: absolute;
     top: 200px;
+    font-weight: 500;
 }
 
 .avatar-4{
     position: absolute;
     top: 260px;
+    font-weight: 500;
 }
 
 .avatar-5{
     position: absolute;
     top: 350px;
+    font-weight: 500;
 }
 
 .avatar-6{
     position: absolute;
     top: 410px;
+    font-weight: 500;
 }
 
 .avatar-7{
@@ -997,6 +1030,7 @@ p{
     position: absolute;
     top: 200px;
     right: 40px;
+    font-weight: 500;
 }
 
 .avatar-10{
@@ -1005,6 +1039,7 @@ p{
     position: absolute;
     top: 260px;
     right: 40px;
+    font-weight: 500;
 }
 
 .avatar-11{
@@ -1013,6 +1048,7 @@ p{
     position: absolute;
     top: 320px;
     right: 40px;
+    font-weight: 500;
 }
 
 .avatar-12{
@@ -1021,6 +1057,7 @@ p{
     position: absolute;
     top: 380px;
     right: 40px;
+    font-weight: 500;
 }
 
 .avatar-13{
@@ -1029,6 +1066,7 @@ p{
     position: absolute;
     top: 440px;
     right: 40px;
+    font-weight: 500;
 }
 
 
@@ -1047,12 +1085,20 @@ p{
     border-bottom: 1px solid #262626;
     padding-bottom: 10px;
     padding-top: 10px;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.skillLun{
+    position: relative;
+    top: -5px;
+    left: 3px;
 }
 
 .tripodNum{
     position: absolute;
     margin-left: -26px;
-    margin-top: 18px;
+    margin-top: 23px;
     width: 17px;
     height: 17px;
     display: flex;
@@ -1060,6 +1106,8 @@ p{
     justify-content: center;
     border-radius: 20%;
     color: white;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .tripodColor-1{
@@ -1084,3 +1132,23 @@ p{
     display: flex;
     justify-content: space-between;
 } */
+
+.line-height18p{
+    line-height: 18px;
+}
+
+.margin-bottom-5{
+    margin-bottom: -5px;
+}
+
+#r7Tooltip > h4{
+    margin-bottom: -5px;
+}
+
+.magin-t4{
+ margin-top: 4px;
+}
+
+.magin-l5{
+    margin-left: 5px;
+   }

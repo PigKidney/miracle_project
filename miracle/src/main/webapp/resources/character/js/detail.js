@@ -114,7 +114,7 @@ const collections = document.getElementById('collection_title');
 
 const ststes = ['치명', '특화', '신속', '제압', '인내', '숙련'];
 const elixirs = ['강맹', '달인', '선각자', '선봉대', '신념', '진군', '칼날 방패', '행운', '회심'];
-const setValue = ['사멸', '갈망', '배신', '지배', "환각", '파괴', '악몽'];
+const setValue = ['사멸', '갈망', '배신', '지배', "환각", '파괴', '악몽' , '매혹'];
 
 const img_g_uri = 'https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/profile/img_card_grade.png?f9e0ffc8a709611354db408dd0e7a7bb';
 const collections_img = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/pc/sprite/sprite_profile.png?84b2cecac8652fc498fbe05c5df2d4f3";
@@ -157,7 +157,7 @@ let popupBar = [skillPopup, avatarPopup, ownedCharactersPopup, guildPopup, pvpRa
 
 let classeng = ['분노의 망치', '중력 수련', '고독한 기사', '전투 태세', '광기', '광전사의 비기', '축복의 오라', '심판자', '처단자', '포식자',
     '오의난무', '일격필살', '권왕파천무', '수라의 길', '오의 강화', '초심', '극의:체술', '충격 단련', '세맥타통', '역천지체', '절정', '절제',
-    '강화무기', '핸드거너', '포격 강화', '화력 강화', '두 번째 동료', '죽음의 습격', '아르데타인의 기술', '진화의 유산', '사냥의 시간', '피스메이커',
+    '강화 무기', '핸드거너', '포격 강화', '화력 강화', '두 번째 동료', '죽음의 습격', '아르데타인의 기술', '진화의 유산', '사냥의 시간', '피스메이커',
     '절실한 구원', '진실된 용맹', '넘치는 교감', '상급 소환사', '황제의 칙령', '황후의 은총', '점화', '환류',
     '버스트', '잔재된 기운', '멈출 수 없는 충동', '완벽한 억제', '갈증', '달의 소리', '만월의 집행자', '그믐의 경계',
     '만개', '회귀', '이슬비', '질풍노도'];
@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
 
             const chInfo = JSON.parse(xmlHttpRequest.responseText);
+            console.dir(chInfo);
             if (chInfo != null) {
                 // lv 클래스 이름 서버이름
                 const h5 = document.createElement('h4');
@@ -317,6 +318,19 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
                     // 보석
                     if (chInfo.ArmoryGem != null) {
+                        // 보석  순서 정렬 => 멸홍 정렬 후 레벨 정렬
+                        let Agem = chInfo.ArmoryGem.Gems;
+                        Agem.sort(function(a, b) {
+                            let aName = a.Name.substring(a.Name.search('레벨') + 2, a.Name.length).replace("</FONT></P>", '').replace(">", '');
+                            let bName = b.Name.substring(b.Name.search('레벨') + 2, b.Name.length).replace("</FONT></P>", '').replace(">", '');
+                            if(aName > bName){return 1;}
+                            if(aName < bName){return -1;}
+                            if(aName == bName){return 0;}
+                        });
+                        Agem.sort(function(a, b) {
+                            return b.Level - a.Level;
+                        });
+                        
                         addGem(chInfo, 0, g1, g1Image);
                         addGem(chInfo, 1, g2, g2Image);
                         addGem(chInfo, 2, g3, g3Image);
@@ -442,14 +456,17 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
                 if (chInfo.ArmoryEquipment != null) {
                     setValue.forEach(set => {
-                        let count = chInfo.ArmoryEquipment.reduce((cnt, element) => element.Name.includes(set) == true ? cnt + 1 : cnt, 0);
+                        let count = chInfo.ArmoryEquipment.reduce((cnt, element) => 
+                            (element.Name.includes(set) == true && 
+                            element.Name.includes('목걸이') == false && 
+                            element.Name.includes('귀걸이') == false && 
+                            element.Name.includes('반지') == false) ? cnt + 1 : cnt, 0);
                         if (count > 0) {
                             chInfo.ArmoryEquipment.forEach(equi => {
                                 if (equi.Grade.includes('에스더') && count % 2 != 0) {
                                     count++;
                                 }
                             });
-                            console.log(set + count);
                             logo_char.char_equipSet += set + count + ' ';
                         }
                     });
@@ -541,10 +558,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
                             let chInfo = document.createElement('span');
                             chInfo.classList.add('white_text');
+                            chInfo.classList.add('bold300');
+                            chInfo.classList.add('font13');
                             chInfo.innerText = " Lv." + Character.CharacterLevel + ' ' + Character.CharacterClassName;
 
                             let chName = document.createElement('span');
                             chName.classList.add('white_text');
+                            chName.classList.add('font16');
+                            chName.classList.add('bold500');
                             chName.innerText = Character.ItemMaxLevel + ' ' + Character.CharacterName;
 
                             // serverDiv.appendChild(serverName);
@@ -586,11 +607,9 @@ window.addEventListener('click', function (e) {
         let tgEl = e.target;
         let header = tgEl.parentNode;
         if (header.id != 'etc_btns') {
-            // console.log(header.id);
             let etcBtns = document.querySelectorAll('#etc_btns > h3');
             for (let i = 0; i < etcBtns.length; i++) {
                 popupBar[i].classList.add("hidden");
-                // collectBoard[i].classList.add("unactive");
                 etcBtns[i].classList.remove("collection-select");
             }
             etcBtnList.classList.add('hidden');
@@ -631,8 +650,6 @@ collectionPoints.addEventListener('click', (e) => {
     } else if (!collectIsClick) {
         collectIsClick = true;
     }
-    // collectIsClick = true ? false : true;
-    // console.log(collectIsClick);
 });
 
 
@@ -641,12 +658,16 @@ collectionPoints.addEventListener('click', (e) => {
 function addSpan(text) {
     const span = document.createElement('sapn');
     span.classList.add('image-box-text');
+    span.classList.add('bold400');
+    span.classList.add('line-height18p');
     span.innerText = text;
     return span;
 }
 function addSpanWhite(text) {
     const span = document.createElement('sapn');
     span.classList.add('white_text');
+    span.classList.add('bold400');
+    span.classList.add('magin-l5');
     span.innerText = text;
     return span;
 }
@@ -700,8 +721,10 @@ function addEqui(ch, num , imageP, tooltip) {
     const tooltipName = document.createElement('h4');
     tooltipName.classList.add('p-m0');
     tooltipName.classList.add('white_text');
+    tooltipName.classList.add('margin-bottom-5');
+
     if (num <= 12 && num >= 6 || num == 0) {
-        tooltipName.classList.add('magin-t6');
+        tooltipName.classList.add('magin-t4');
     }
     tooltipName.innerText = ch.ArmoryEquipment[num].Name;
     tooltip.appendChild(tooltipName);
@@ -742,7 +765,6 @@ function addEqui(ch, num , imageP, tooltip) {
 // 장비
 function addAccessories(ch, num , imageP, tooltip) {
     let type = ch.ArmoryEquipment[num].Type;
-    console.dir(ch.ArmoryEquipment[num]);
     let img = document.createElement('img');
     img.src = ch.ArmoryEquipment[num].Icon;
     img.alt = ch.ArmoryEquipment[num].Name;
@@ -769,10 +791,11 @@ function addAccessories(ch, num , imageP, tooltip) {
     const tooltipName = document.createElement('h4');
     tooltipName.classList.add('p-m0');
     tooltipName.classList.add('white_text');  
-    tooltipName.classList.add('magin-t6');
+    tooltipName.classList.add('magin-t4');
     tooltipName.innerText = ch.ArmoryEquipment[num].Name;
+    // tooltipName.classList.add('margin-bottom-5');
+
     tooltip.appendChild(tooltipName);
-    console.log(type);
     if (ch.ArmoryEquipment[num] != undefined) {
         if (ch.ArmoryEquipment[num].Type != '어빌리티 스톤' && ch.ArmoryEquipment[num].Type != '팔찌') {
             const eq_lv = document.createElement('div');
@@ -933,6 +956,8 @@ function addGem(ch, num, imageP, image) {
         const gemEffect = document.createElement('span');
         gemEffect.classList.add('white_text');
         gemEffect.classList.add('font10');
+        gemEffect.classList.add('bold400');
+
 
         if (ch.ArmoryGem.Gems[num].Name.includes('홍염')) {
             gemEffect.innerText = 'Lv.' + ch.ArmoryGem.Gems[num].Level + ' 홍염';
@@ -1024,6 +1049,7 @@ function addState(ch, div, name) {
             let value = document.createElement('span');
             value.classList.add('white_text');
             value.classList.add('align-right');
+            value.classList.add('bold400');
             value.innerText = ch.ArmoryProfile.Stats[i].Value;
             column.appendChild(value);
 
@@ -1049,6 +1075,7 @@ function addTendencies(ch, div) {
         let value = document.createElement('span');
         value.classList.add('white_text');
         value.classList.add('align-right');
+        value.classList.add('bold400');
         value.innerText = ch.ArmoryProfile.Tendencies[i].Point;
         column.appendChild(value);
 
@@ -1094,6 +1121,7 @@ function addCards(ch, div) {
         value.classList.add('al-center');
         value.classList.add('dis-block');
         value.classList.add('card-name');
+        value.classList.add('bold500');
         value.innerText = ch.ArmoryCard.Cards[i].Name;
         column.appendChild(value);
 
@@ -1122,7 +1150,7 @@ function addCardEffects(ch, div) {
         cardEffects.classList.add('radius15');
         // cardEffects.classList.add('magin-b10');
         cardEffects.classList.add('card-states');
-
+        
         cardEffectsBack.appendChild(cardEffects);
 
         for (let j = 0; j < ch.ArmoryCard.Effects[i].Items.length; j++) {
@@ -1132,6 +1160,8 @@ function addCardEffects(ch, div) {
             column.classList.add('white_text');
             column.classList.add('al-center');
             column.classList.add('dis-block');
+            column.classList.add('bold700');
+
             column.innerText = ch.ArmoryCard.Effects[i].Items[j].Name;
             column.style.marginLeft = '1rem';
             column.style.marginTop = '15px';
@@ -1144,6 +1174,7 @@ function addCardEffects(ch, div) {
             effects.classList.add('white_text');
             effects.classList.add('al-center');
             effects.classList.add('dis-block');
+            effects.classList.add('bold400');
             effects.innerText = ch.ArmoryCard.Effects[i].Items[j].Description;
             effects.style.marginTop = ' -0.6rem';
             value.appendChild(effects);
@@ -1243,10 +1274,6 @@ function searchElixirPoint(ch, div) {
                                 if (p == 'contentStr') {
                                     for (const lv in json[type][value][a][p]) {
                                         if (p == 'contentStr') {
-                                            // console.log(json[type][value][a][p][lv].contentStr.substring(
-                                            //     json[type][value][a][p][lv].contentStr.indexOf(']')+8,
-                                            //     json[type][value][a][p][lv].contentStr.indexOf('</FONT><br>')
-                                            // ).replace('<FONT color=\'#FFD200\'>',' '));
                                             let point = json[type][value][a][p][lv].contentStr.substring(
                                                 json[type][value][a][p][lv].contentStr.indexOf(']') + 8,
                                                 json[type][value][a][p][lv].contentStr.indexOf('</FONT><br>')
@@ -1276,7 +1303,7 @@ function searchElixirTotailPoint(ch) {
             for (const value in json[type]) {
                 if (value == 'value') {
                     for (const a in json[type][value]) {
-                        if (json[type][value][a].topStr.includes('연성 추가 효과')) {
+                        if (json[type][value][a].topStr.includes('연성 추가 효과') && json[type][value][a].topStr.includes('단계')) {
                             let str = json[type][value][a].topStr;
                             for (let i = 0; i < elixirs.length; i++) {
                                 if (str.includes(elixirs[i])) {
@@ -1302,7 +1329,6 @@ function searchEqiStatePoint(ch) {
                     for (const a in json[type][value]) {
                         for (let i = 0; i < ststes.length; i++) {
                             if (json[type][value][a].includes(ststes[i])) {
-                                console.log(json[type][value][a].replace('<BR>', ' '));
                                 return json[type][value][a].replace('<BR>', ' ');
                             }
 
@@ -1359,10 +1385,6 @@ function searchBraceletEP(ch, div) {
                     for (const a in json[type][value]) {
                         for (let i = 0; i < ststes.length; i++) {
                             if (json[type][value][a].includes(`${ststes[i]} +`)) {
-                                // console.log(json[type][value][a]);
-                                // console.log(json[type][value][a].search(`${ststes[i]} +`));
-                                // console.log(json[type][value][a].substring(
-                                //     json[type][value][a].search(`${ststes[i]} +`),json[type][value][a].search(`${ststes[i]} +`)+7));
                                 const point = json[type][value][a].substring(
                                     json[type][value][a].search(`${ststes[i]} +`), json[type][value][a].search(`${ststes[i]} +`) + 7)
                                     .replace('<', '').replace('>', '');
@@ -1418,7 +1440,8 @@ function searchCollectionPoint(ch, div) {
         let point = document.createElement('div');
         point.innerText = collection[i].Point;
         point.classList.add('white_text');
-        point.classList.add('magin-t6');
+        point.classList.add('magin-t4');
+        point.classList.add('bold400');
         collect.appendChild(point);
         div.appendChild(collect);
 
@@ -1530,6 +1553,8 @@ function addCollectionList(ch, bar, table) {
         info.innerText = ch.CollectiblePoints[j].PointName;
         info.classList.add('white_text');
         info.classList.add('all-center');
+        info.classList.add('bold400');
+
         ColletTitle.appendChild(info);
 
         if (ch.Type == '모코코 씨앗') {
@@ -1537,6 +1562,7 @@ function addCollectionList(ch, bar, table) {
             point.innerText = '[' + ch.CollectiblePoints[j].Point + ' / ' + ch.CollectiblePoints[j].MaxPoint + ']';
             point.classList.add('white_text');
             point.classList.add('magin-l15');
+            point.classList.add('bold600');
             info.appendChild(point);
         }
 
@@ -1621,6 +1647,7 @@ function addAvatar(ch, div) {
         nameDiv.classList.add('flex-dir-c');
         type.classList.add('white_text');
         type.classList.add('font10');
+        type.classList.add('bold400');
 
         if (i < 6) {
             nameDiv.appendChild(name);
@@ -1762,7 +1789,7 @@ function addTripods(ch, div, gems) {
 
     let runeImg = document.createElement('img');
     let runeName = document.createElement('span');
-
+    runeName.classList.add('skillLun');
     runeImg.classList.add('w-h20');
     runeImg.classList.add('radius100');
     if (Runes != null) {
