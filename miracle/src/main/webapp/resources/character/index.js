@@ -1,11 +1,11 @@
 // const sheetId = '1qBYgzQkoF5q0BWKOXq0X8DJC8cohiQPsNWkF_2THWos';
 // const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
 // const sheetName = 'profile';
-// let startRow = 0; // 시작 행
-// let rowCount = 10; // 한 번에 로드할 행 수
+let startRow = 0; // 시작 행
+let rowCount = 10; // 한 번에 로드할 행 수
 
-// const characterList = document.getElementById('characterList');
-// const loadMoreButton = document.getElementById('load-more');
+const characterList = document.querySelector('.rank-board');
+const loadMoreButton = document.getElementById('load-more');
 
 // document.addEventListener('DOMContentLoaded', init);
 // const select = document.querySelectorAll('#selectedClass');
@@ -92,14 +92,14 @@
 
 
 // function init() {
-//     // loadCharacters();
+//     loadCharacters();
 //     loadMoreButton.addEventListener('click', loadMoreCharacters);
 // }
 
 // function loadCharacters() {
 //     const query = encodeURIComponent(`Select * limit ${rowCount} offset ${startRow}`);
 //     const url = `${base}&sheet=${sheetName}&tq=${query}`;
-
+// `?char_server=${char_server}&char_class=${char_class}&levelBar=${levelBar}`
 //     fetch(url)
 //         .then(res => res.text())
 //         .then(rep => {
@@ -119,7 +119,7 @@
 //                 colz.forEach((ele, ind) => {
 //                     character[ele] = (rowData.c[ind] != null) ? rowData.c[ind].v : '';
 //                 });
-//                 processCharacter(character, startRow + i); // Pass index to represent rank
+//                 processCharacter(character); // Pass index to represent rank
 //             }
 //             startRow += jsonData.table.rows.length;
 //             if (jsonData.table.rows.length < rowCount) {
@@ -134,31 +134,27 @@
 //     loadCharacters();
 // }
 
-// function processCharacter(character, rank) {
+// function processCharacter(charAll) {
 //     const listItem = document.createElement('li');
 
 
 
 //     listItem.classList.add('list-item');
-//     listItem.setAttribute('data-server', character['server-name']); // 서버 정보 추가
-//     listItem.setAttribute('data-job', character['job-name']); // 직업 정보 추가
+//     // listItem.setAttribute('data-server', character['server-name']); // 서버 정보 추가
+//     // listItem.setAttribute('data-job', character['job-name']); // 직업 정보 추가
 
 //     listItem.innerHTML = `
-//         <div class="characterListContainer">
-//             <p class="rank">${rank + 1}</p>
-//             <a href="${character['char-img']}">${character['char-name']}</a>
-//             <p class="item-level">${character['item-level']}</p>
-//             <p class="class-name">${character['job-name']}</p>
-//             <p class="server-name">${character['server-name']}</p>
-//             <p class="guild-name">${character['guild-name']}</p>
-//             <div>
-//                <p id="ether"></p>
-//                <p id="equip"></p>
-//             </div>
-//             <p class="engrave">${character['engravings']}</p>
-//         </div>
+//         <div>${charAll.levelrank}</div>
+//         <div id="level-value">${charAll.char_level}</div>
+//         <a href="/character/detail?search=${charAll.char_name}"
+//             class="display-contents">${charAll.char_name}</a>
+//         <div>${charAll.char_class}</div>
+//         <div>${charAll.char_server}</div>
+//         <div>${charAll.char_guild}</div>
+//         <div>${charAll.char_equipSet}</div>
+//         <div>${charAll.char_classEng}</div>
 //     `;
-
+// }
 //     if (character['weapon-grade'] === '에스더') {
 //         listItem.querySelector('#ether').innerHTML = `${character['weapon-name'].substring(0, 2)} + ${character['weapon-grade']}`;
 //     }
@@ -172,11 +168,9 @@
 //     setTopImages(characters);
 
 
-let levelParam = new URLSearchParams(window.location.search)
+// let levelParam = new URLSearchParams(window.location.search)
 //let levelValue = levelParam.get('levelBar');
 
-console.log(levelValue);
-console.log(levelValue == null);
 
 
 var slider = document.getElementById("mySlider");
@@ -189,13 +183,13 @@ console.dir(rankListCut);
 if (levelValue == null) {
     levelValue = 1675
 }
-for (let i = 1; i < rankListCut.children.length; i = i+2) {
+for (let i = 1; i < rankListCut.children.length; i = i + 2) {
     console.log('널체크 : ' + levelValue + ' : ' + i);
 
     if (rankListCut.children[i].children[1].innerText > levelValue) {
         rankListCut.children[i].classList.add('hide');
         i--;
-    } 
+    }
 }
 
 
@@ -213,3 +207,102 @@ console.dir(slider);
 $("#slecteForm").on("change", function () {
     $("#slecteForm").submit();
 });
+const chrList = document.querySelectorAll('#level-cut');
+
+console.dir(chrList);
+
+for(let i=0 ; i < 20 ; i++){
+    console.log('클릭');
+    chrList[i].classList.remove("disply-none");
+}
+
+const btn = document.getElementById('load-more');
+
+let count = 20;
+loadMoreButton.addEventListener('click', (e) =>  {
+    if(chrList != undefined){
+        if(chrList.length <= count+20){
+            count = chrList.length;
+            for(let i=0 ; i < chrList.length ; i++){
+                chrList[i].classList.remove("disply-none");
+                loadMoreButton.classList.add("disply-none");
+            }
+            
+        } else{
+            for(let i=count ; i < count + 20 ; i++){
+                chrList[i].classList.remove("disply-none");
+            }
+            count = count + 20;
+        }
+
+    } else{
+        chrList[i].classList.remove("disply-none");
+    }
+   
+    console.log(count);
+});
+
+// function moreList() {
+//     $.ajax({
+//         url: "add",
+//         type: "POST",
+//         cache: false,
+//         dataType: 'json',
+//         contentType: "application/json; charset=UTF-8",
+//         data: charAll = {'char_name' : char_name , 'char_level' : char_level , 'char_class' : char_class , 'char_guild' : char_guild, 
+//             'char_equipSet' : char_equipSet , 'char_classEng' : char_classEng } ,
+//         success: function (data) {
+//             console.log(data);
+        
+
+//             var content = "";
+//             for (var i = 0; i < 20 ; i++) {
+//                 content +=
+//                     `<div id="level-cut"
+// 					class="mainRankList nanum-gothic-bold rank-board">
+// 					<div>${charAll.levelrank}</div>
+// 					<div id="level-value">${charAll.char_level}</div>
+// 					<a href="/character/detail?search=${charAll.char_name}"
+// 						class="display-contents">${charAll.char_name}</a>
+// 					<div>${charAll.char_class}</div>
+// 					<div>${charAll.char_server}</div>
+// 					<div>${charAll.char_guild}</div>
+// 					<div>${charAll.char_equipSet}</div>
+// 					<div>${charAll.char_classEng}</div>
+// 				</div>`
+//             }
+//             content += "<button id=\"load-more\"></button>";
+//             $('#addbtn').remove();//remove btn
+//             $(content).appendTo("#rankListCut");
+//         }, error: function (request, status, error) {
+//             alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+//         }
+//     });
+// };
+
+// function moreList(data) {    
+//     const charAll = JSON.parse(data.value);
+//     console.dir(charAll);
+//     for (var i = 0; i < 20 ; i++) {
+//         const temp = document.createElement("div");
+// 	        temp.id = "level-cut";
+// 	        temp.classList.add('mainRankList');
+// 	        temp.classList.add('nanum-gothic-bold');
+// 	        temp.classList.add('rank-board');
+// 	        temp.innerHTML = 
+// 	        	 "<div id=\"level-cut\"" +
+// 					"class=\"mainRankList nanum-gothic-bold rank-board\">" +
+// 		            "<div>"+ charAll[i].levelrank+ "</div>" +
+// 		            "<div id=\"level-value\">" + charAll[i].char_level + "</div>" + 
+// 		            "<a href=\"/character/detail?search="+ charAll[i].char_name  +
+// 		                "class=\"display-contents\">"+ charAll[i].char_name + "</a>" +
+// 		            "<div>" + charAll[i].char_class + "</div>" +
+// 		            "<div>" + charAll[i].char_server+ "</div>" +
+// 		            "<div>" + charAll[i].char_guild+ "</div>" +
+// 		            "<div>" + charAll[i].char_equipSet+ "</div>" +
+// 		            "<div>" + charAll[i].char_classEng+ "</div>" +
+// 				"</div>" ;
+	       
+// 	        $('#rankListCut').append(temp);
+//     }
+// };
