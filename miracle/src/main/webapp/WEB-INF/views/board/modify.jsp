@@ -18,7 +18,7 @@
 		<textarea id="noteContent" class="summernote" name="board_content" form="modifyForm">${read.board_content}</textarea>
 			
 		<div style="text-align: right;">
-			<button id="rewriteBtn" class="btn-two green rounded font-16 bald">작성완료</button>
+			<button id="rewriteBtn" class="btn-two rounded font-16 bald btn-deco-1 fw5">작성완료</button>
 		</div>
 		<input type="hidden" name="board_id" value="${read.board_id}" form="modifyForm"/>
 		<input type="hidden" name="view_count" value="${read.view_count}" form="modifyForm"/>

@@ -63,12 +63,12 @@ String titleSearch = request.getParameter("titleSearch");
 	<div class="ntary">
       	<div class="top-text">
 				<span class="material-symbols-outlined search"> search </span> 
-				<input id="titleSearch" name="titleLists" class="top-box" type="text" placeholder="제목을입력해주세요" />
+				<input id="titleSearch" name="titleLists" class="top-box" type="text" placeholder="제목을 입력해주세요" />
 		</div>
 		<button id="search" class=" effBtn white bald">검색</button>
 	</div>
 		<div style="text-align: right;" >
-			<button id="writebtn" class=" effBtn white bald" >글쓰기</button>
+			<button id="writebtn" class="fw5 effBtn white bald" >글쓰기</button>
 		</div>
 
 	</div>

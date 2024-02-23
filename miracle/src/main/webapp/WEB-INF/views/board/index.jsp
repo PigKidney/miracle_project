@@ -54,7 +54,7 @@
 		
 		
 		<div style="text-align: right;">
-			<button id="beginningToWriteBtn" class="btn-two green rounded font-16 bald btn-deco-1">글쓰기</button>
+			<button id="beginningToWriteBtn" class="fw5 font-16 bald effBtn mainWhite">글쓰기</button>
 		</div>
 		<div class="slider1">
 			<div class="slide1"></div>

@@ -16,7 +16,7 @@
 			<input id="noteTitle" type="text" name="board_title" form="writeForm" /> 
 			<textarea id="noteContent" class="summernote" name="board_content" form="writeForm" ></textarea>
 			<div style="text-align: right;">
-				<button id="writeBtn" class="btn-two green rounded font-16 bald btn-deco-1">작성완료</button>
+				<button id="writeBtn" class="btn-two rounded font-16 bald btn-deco-1 fw5">작성완료</button>
 			</div>
 		<form action="/board/index" method="post" id="writeForm"></form>
 	</div>
