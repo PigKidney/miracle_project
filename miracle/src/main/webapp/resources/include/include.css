@@ -433,13 +433,13 @@ html {
 .btn-deco-1{
 	background-color: rgb(84, 179, 60);
 	border: solid 2px white;
-	padding: 15px 25px;
+	padding: 10px 30px;
 	margin: 10px;
 }
 .btn-deco-2{
 	background-color: rgb(67, 102, 216);
 	border: solid 2px white;
-	padding: 15px 25px;
+	padding: 10px 25px;
 	margin: 10px;
 }
 .btn-deco-3{
@@ -447,6 +447,6 @@ html {
 	line-height: 30px;
 	background-color: rgb(255, 57, 57);
 	border: solid 2px white;
-	padding: 15px 25px;
-	margin: 10px;
+	padding: 10px 25px;
+	margin: 16px;
 }
