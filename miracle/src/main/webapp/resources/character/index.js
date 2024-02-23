@@ -220,7 +220,7 @@ const btn = document.getElementById('load-more');
 
 let count = 20;
 loadMoreButton.addEventListener('click', (e) =>  {
-    if(chrList != undefined){
+    if(chrList != null){
         if(chrList.length <= count+20){
             count = chrList.length;
             for(let i=0 ; i < chrList.length ; i++){

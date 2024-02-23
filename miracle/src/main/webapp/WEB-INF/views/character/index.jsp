@@ -90,8 +90,11 @@
 				</div>
 			</c:forEach>
 		</div>
+		<div class="align-center disply-grid justify-center">
 			<button id="load-more"> 더보기 </button>		
-		
+		</div>
+		<div id="blink">
+		</div>
 	
 	</div>
 </div>
