@@ -93,5 +93,13 @@ public class CharacterController {
 
 		return 1;
 	}
+	
+//	@RequestMapping(value = "add", method = RequestMethod.POST)
+//	public @ResponseBody int addlist(Model model , @RequestBody String char_class, String char_server, Double levelBar) {
+////		log.info("POST: " + dto);
+////		charService.charSearchInsert(dto);
+//		charService.allSearch(model, char_class, char_server, levelBar);
+//		return 1;
+//	}
 
 }
