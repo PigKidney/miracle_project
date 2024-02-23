@@ -2,7 +2,7 @@
 
 .grid-board>div {
 	display: grid;
-	grid-template-columns: 1fr 10fr 2fr 1fr 1fr;
+	grid-template-columns: 2fr 10fr 2fr 1fr 1fr;
 }
 
 .grid-board>div {
@@ -33,15 +33,10 @@
 	text-decoration: none;	
 }
 
-.asd{
-	position: relative;
-    top: 6px;
-    right: 2px;
-}
-
-.asd2{
-   	position: relative;
-    top: 4px;
-    right: 2px;
+.ntary {
+	display: flex;
+    margin-top: 20px;
+    justify-content: center;
+	align-items: center;
 }
 

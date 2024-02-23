@@ -17,7 +17,7 @@
 		<textarea id="noteContent" class="summernote" name="board_content" form="modifyForm">${board.board_content}</textarea>
 			
 		<div class="sumit" style="text-align: right;">
-			<button id="rewriteBtn" class="round1 white bald">수정완료</button>
+			<button id="rewriteBtn" class="effBtn white bald">수정완료</button>
 		</div>
 		<input type="hidden" name="board_id" value="${board.board_id}" form="modifyForm"/>
 		<input type="hidden" name="view_count" value="${board.view_count}" form="modifyForm"/>

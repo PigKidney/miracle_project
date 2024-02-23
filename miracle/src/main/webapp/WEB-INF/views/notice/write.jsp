@@ -10,9 +10,13 @@
 		<p style="color: white;">작성</p>
 				<div class="mgt">
 					<select name="board_category" id="category">
-						<option >이벤트</option>
+						<option>이벤트</option>
 						<option >점검</option>
 						<option >공지</option>
+						<option>정기상</option>
+						<option >김석주</option>
+						<option >서다슬</option>
+						<option >양권모</option>
 					</select>	
 					<input id="boardTitle" placeholder="제목입력해주세요" name="board_title" />
 				</div>
@@ -25,7 +29,7 @@
 		
 
 			<div class="sumit" style="text-align: right;">
-				<button id="writeConfirmBtn" type="submit" class="round1 white font-16 bald">글작성</button>
+				<button id="writeConfirmBtn" type="submit" class="effBtn white font-16 bald">글작성</button>
 			</div>
 		</form>
 
