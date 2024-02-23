@@ -25,9 +25,9 @@
 		</div>
 
 		<div style="text-align: right;">
-			<button id="goodBtn" class="btn-two blue rounded font-16 bald btn-deco-2">추천</button>
-			<button id="modifyBtn" class="btn-two green rounded font-16 bald btn-deco-1">수정하기</button>
-			<button id="deleteBtn" class="btn-two green rounded font-16 bald btn-deco-1">삭제하기</button>
+			<button id="goodBtn" class="rounded font-16 bald btn-deco-2 mainWhite fw5">추천</button>
+			<button id="modifyBtn" class="rounded font-16 bald btn-deco-1 mainWhite fw5">수정하기</button>
+			<button id="deleteBtn" class="rounded font-16 bald btn-deco-1 mainWhite fw5">삭제하기</button>
 		</div>
 
 		<div id="fifth-del" class="grid-row2 mainWhite">
@@ -43,7 +43,7 @@
 					<input type="hidden" value="${replyList.reply_id}" name="reply_id" id="realDelete"/> 
 					<input type="hidden" value="${read.board_id}" name="board_id"/>
 					<span id="deleteReplyBtn" 
-						class="material-symbols-outlined cursor red deleteTest" data-reply-id="${replyList.reply_id}">close</span>
+						class="material-symbols-outlined cursor red deleteTest " data-reply-id="${replyList.reply_id}">close</span>
 		</form>
 
 				</div>
@@ -62,7 +62,7 @@
 					placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌받을 수 있습니다."></textarea>
 			</div>
 			<div>
-				<button id="addReplyBtn" class="btn-two red rounded font-16 bald mainWhite btn-deco-3">댓글작성</button>
+				<button id="addReplyBtn" class="btn-two rounded font-16 bald mainWhite btn-deco-3 fw5">댓글작성</button>
 			</div>
 		</div>
 		<input type="hidden" value="${login_id}" name="user_id" form="replyForm" /> 

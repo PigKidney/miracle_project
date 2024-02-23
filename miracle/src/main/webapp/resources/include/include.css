@@ -226,8 +226,7 @@ body {
 26%{transform:translateX(0);}
 33%{transform:translateX(-100%);animation-timing-function:step-end;}
 93%{transform:translateX(100%);}
-100%{transform:translateX(0);}
-}
+100%{transform:translateX(0);}}
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 .dropdown {
@@ -273,12 +272,15 @@ body {
 	padding: 12px 20px;
 	border-radius: 10px;
 }
-.blackCat{
+
+.blackCat {
 	vertical-align: middle;
 }
-.dropdown-content a:nth-child(2){
-	display: table-cell; 
+
+.dropdown-content a:nth-child(2) {
+	display: table-cell;
 }
+
 .dropdown-content a:hover {
 	background-color: #ececec;
 	color: #42464D;
@@ -306,22 +308,47 @@ body {
 }
 
 .round1 {
-	width: 87px;
-	height: 40px;
-	border-width: 1px;
-	border-radius: 14px;
-	background-color: #73797b;
-	font-size: 17px;
-}
-
-.round2 {
-	width: 67px;
+	width: 120px;
 	height: 35px;
 	border-width: 1px;
 	border-radius: 14px;
 	background-color: #73797b;
 	font-size: 17px;
 	margin-top: 10px;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-image: linear-gradient(to right, rgb(96 111 126) 51%, #252d28
+		100%);
+}
+
+.round2 {
+	width: 120px;
+	height: 35px;
+	border-width: 1px;
+	border-radius: 14px;
+	background-color: #73797b;
+	font-size: 17px;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	background-image: linear-gradient(to right, rgb(96 111 126) 51%, #252d28
+		100%);
+	text-align: center;
+}
+
+.round2:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	box-shadow: 0 0 20px #eee;
+}
+
+.round1:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	box-shadow: 0 0 20px #eee;
 }
 
 .white {
@@ -346,21 +373,80 @@ html {
 .btn-deco-1:hover {
 	background-color: #00AE68;
 	transition: all 0.2s;
+	background-position: right center;
+	box-shadow: 0 0 20px #eee;
 }
 
 .btn-deco-2:hover {
 	background-color: #5DC8CD;
 	transition: all 0.2s;
+	background-position: right center;
+	box-shadow: 0 0 20px #eee;
 }
 
 .btn-deco-3:hover {
 	background-color: #A74982;
 	transition: all 0.2s;
+	background-position: right center;
+	box-shadow: 0 0 20px #eee;
 }
 
 .sumit {
 	padding-top: 40px;
 }
-.border-bot-line{
+
+.border-bot-line {
 	border-bottom: 1px solid white;
+}
+
+.effBtn {
+	width: 120px;
+	height: 35px;
+	border-radius: 14px;
+	background-color: #73797b;
+	font-size: 17px;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	background-image: linear-gradient(to right, rgb(96 111 126) 51%, #252d28
+		100%);
+	margin-left: 20px;
+	border: solid 2px white;
+}
+
+.effBtn:hover {
+	background-position: right center;
+	box-shadow: 0 0 20px #eee;
+	border: none;
+}
+.btn-deco-3:hover {
+	background-position: right center;
+	box-shadow: 0 0 20px #eee;
+}
+.fw5{
+	font-weight: 500;
+}
+.fw7{
+	font-weight: 700;
+}
+
+.btn-deco-1{
+	background-color: rgb(84, 179, 60);
+	border: solid 2px white;
+	padding: 10px 30px;
+	margin: 10px;
+}
+.btn-deco-2{
+	background-color: rgb(67, 102, 216);
+	border: solid 2px white;
+	padding: 10px 25px;
+	margin: 10px;
+}
+.btn-deco-3{
+	width:120px;
+	line-height: 30px;
+	background-color: rgb(255, 57, 57);
+	border: solid 2px white;
+	padding: 10px 25px;
+	margin: 16px;
 }

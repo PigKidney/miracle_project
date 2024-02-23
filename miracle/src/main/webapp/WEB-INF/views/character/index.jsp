@@ -18,13 +18,11 @@
 						<c:forTokens items="${servers}" delims="/" var="server">
 							<c:choose>
 								<c:when test="${not empty char_server}">
-									<option 
-									<c:if test="${server eq '전 서버'}">value="${null}"</c:if>
-									<c:if test ="${char_server eq server}">value="${server}" selected="selected"</c:if>>${server}</option>
+									<option <c:if test="${server eq '전 서버'}">value="${null}"</c:if>
+										<c:if test ="${char_server eq server}">value="${server}" selected="selected"</c:if>>${server}</option>
 								</c:when>
 								<c:otherwise>
-									<option 
-										<c:if test="${server eq '전 서버'}">value="${null}"</c:if>
+									<option <c:if test="${server eq '전 서버'}">value="${null}"</c:if>
 										<c:if test="${server ne '전 서버'}">value="${server}"</c:if>>${server}
 									</option>
 								</c:otherwise>
@@ -33,7 +31,9 @@
 					</select>
 				</div>
 				<div>
-					<c:set value="전체 클래스/디스트로이어/버서커/홀리나이트/슬레이어/스트라이커/브레이커/배틀마스터/인파이터/기공사/창술사/데빌헌터/블래스터/호크아이/스카우터/건슬링어/바드/서머너/아르카나/소서리스/블레이드/데모닉/리퍼/소울이터/도화가/기상술사" var="chrClasss" />
+					<c:set
+						value="전체 클래스/디스트로이어/버서커/홀리나이트/슬레이어/스트라이커/브레이커/배틀마스터/인파이터/기공사/창술사/데빌헌터/블래스터/호크아이/스카우터/건슬링어/바드/서머너/아르카나/소서리스/블레이드/데모닉/리퍼/소울이터/도화가/기상술사"
+						var="chrClasss" />
 					<select id="selectedClass" name="char_class">
 						<c:forTokens items="${chrClasss}" delims="/" var="chrClass">
 							<c:choose>
@@ -43,7 +43,7 @@
 										<c:if test ="${char_class eq chrClass}">value="${chrClass}" selected="selected"</c:if>>${chrClass}</option>
 								</c:when>
 								<c:otherwise>
-									<option 
+									<option
 										<c:if test="${chrClass eq '전체 클래스'}">value="${null}"</c:if>
 										<c:if test="${chrClass ne '전체 클래스'}">value="${chrClass}"</c:if>>${chrClass}</option>
 								</c:otherwise>
@@ -53,9 +53,10 @@
 				</div>
 			</div>
 			<div class="choice2 disply-flex">
-				<input type="range" min="1415" max="1675" name="levelBar" class="slider" id="mySlider"
-				<c:if test="${not empty char_level}">value="${char_level}"</c:if>value="1675" > 
-				<font class="disply-flex slider-value"> 
+				<input type="range" min="1415" max="1675" name="levelBar"
+					class="slider" id="mySlider"
+					<c:if test="${not empty char_level}">value="${char_level}"</c:if>
+					value="1675"> <font class="disply-flex slider-value">
 					<span id="sliderValue"></span>
 				</font>
 			</div>
@@ -73,10 +74,10 @@
 			<div>장비</div>
 			<div>직업각인</div>
 		</div>
-		<div id="rankListCut" class="rank-list">
+		<div id="rankListCut" class="rank-list ">
 			<c:forEach items="${charAll}" var="charAll">
-				<div class="rank-board"></div>
-				<div id="level-cut" class="mainRankList nanum-gothic-bold">
+				<div id="level-cut"
+					class="mainRankList nanum-gothic-bold rank-board disply-none">
 					<div>${charAll.levelrank}</div>
 					<div id="level-value">${charAll.char_level}</div>
 					<a href="/character/detail?search=${charAll.char_name}"
@@ -87,31 +88,39 @@
 					<div>${charAll.char_equipSet}</div>
 					<div>${charAll.char_classEng}</div>
 				</div>
-
 			</c:forEach>
-
 		</div>
-
+		<div class="align-center disply-grid justify-center">
+			<button id="load-more"> 더보기 </button>		
+		</div>
+		<div id="blink">
+		</div>
+	
 	</div>
 </div>
-<script>	
-	var levelValue = <%=request.getAttribute("levelBar")%>
+<script>
+	var levelValue =
+<%=request.getAttribute("levelBar")%>
+	
 </script>
 
 <script src="${indexJS}"></script>
 
 <div id="botfix" class="flex-just-center disply-none">
 	<div class="mainWhite w-1120px h-280px item-center justify-between">
-		<div style="font-size: 12px; width: 860px;">© 2022 KorLARK. KorLARK isn’t
-			endorsed by Smilegate RPG and doesn’t reflect the views or opinions
-			of Smilegate RPG or anyone officially involved in producing or
-			managing Lostark. Lostark and Smilegate RPG are trademarks or
-			registered trademarks of Smilegate RPG, Inc. Lostark © Smilegate RPG,
-			Inc.
-		</div>
+		<div style="font-size: 12px; width: 860px;">© 2022 KorLARK.
+			KorLARK isn’t endorsed by Smilegate RPG and doesn’t reflect the views
+			or opinions of Smilegate RPG or anyone officially involved in
+			producing or managing Lostark. Lostark and Smilegate RPG are
+			trademarks or registered trademarks of Smilegate RPG, Inc. Lostark ©
+			Smilegate RPG, Inc.</div>
 		<div>
-			<div style="font-size: 12px"><a class="mainWhite underline-none" href="">이용약관</a> | <a class="mainWhite underline-none" href="">개인정보처리방침</a></div>
-			<img class="cursor" src="/resources/img/gitcat.png" alt="gitcat" onclick='ourGit()'/>
+			<div style="font-size: 12px">
+				<a class="mainWhite underline-none" href="">이용약관</a> | <a
+					class="mainWhite underline-none" href="">개인정보처리방침</a>
+			</div>
+			<img class="cursor" src="/resources/img/gitcat.png" alt="gitcat"
+				onclick='ourGit()' />
 		</div>
 	</div>
 </div>

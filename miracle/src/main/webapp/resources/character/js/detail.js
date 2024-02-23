@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
                     data: JSON.stringify(logo_char),
                     success: function (data) {
                         if (data == 1) {
-                            alert("업데이트 성공");
+                          
                         } else {
                             alert("업데이트 실패");
                         }

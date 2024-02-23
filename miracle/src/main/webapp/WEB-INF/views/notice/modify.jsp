@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/resources/notice/write.css" />
 <jsp:include page="../include/top.jsp" />
-
+<title>공지글 수정 - 로고</title>
 <div class="include-top">
 	<div class="w-1120px">
 	<p style="color: white;">수정</p>
@@ -17,7 +17,7 @@
 		<textarea id="noteContent" class="summernote" name="board_content" form="modifyForm">${board.board_content}</textarea>
 			
 		<div class="sumit" style="text-align: right;">
-			<button id="rewriteBtn" class="round1 white bald">수정완료</button>
+			<button id="rewriteBtn" class="effBtn white bald">수정완료</button>
 		</div>
 		<input type="hidden" name="board_id" value="${board.board_id}" form="modifyForm"/>
 		<input type="hidden" name="view_count" value="${board.view_count}" form="modifyForm"/>
