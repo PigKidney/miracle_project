@@ -4,6 +4,7 @@
 <jsp:include page="../include/top.jsp" />
 <link rel="stylesheet" href="/resources/notice/write.css" />
 <c:url value="/resources/notice/write.js" var="noticeJS"></c:url>
+<title>공지글 작성 - 로고</title>
 <div class="include-top">
 	<div class="w-1120px">
 		<form action="/notice/index" method="POST" >

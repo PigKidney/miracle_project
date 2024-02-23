@@ -1,9 +1,10 @@
 .gboard{
 	display: grid;
     grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
-    margin-top: 20px;
-    border-bottom: 1px solid;
+   	margin-top: 35px;
+   	border-bottom: 1px solid white;
 }
+
 .asd{
 	width:1200px;
 }
@@ -77,10 +78,9 @@
 }
 
 .height600{
-	margin-top: 12px;
+	margin-top: 10px;
 	height:600px;
 	overflow: auto;
-	background-color: #42464D;
 	padding-left: 15px;
 	border-radius: 30px; 
 }
