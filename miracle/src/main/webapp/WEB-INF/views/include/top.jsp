@@ -8,6 +8,7 @@
 
 <meta charset="UTF-8" name='view-transition'>
 <script src="/resources/jquery/jquery-3.7.1.min.js"></script>
+<link rel="icon" href="/resources/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
