@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/resources/notice/write.css" />
 <jsp:include page="../include/top.jsp" />
-
+<title>공지글 수정 - 로고</title>
 <div class="include-top">
 	<div class="w-1120px">
 	<p style="color: white;">수정</p>
