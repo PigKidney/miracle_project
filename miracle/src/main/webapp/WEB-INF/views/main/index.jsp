@@ -108,7 +108,7 @@
 				comment</div>
 			<div
 				class="justify-between grid-main-board island-box box-background-color ">
-				<c:forEach items="${boards}" var="boards">
+				<c:forEach items="${boards}" begin="0" end="4" var="boards">
 					<div class="mainWhite">${boards.board_category}</div>
 					<div class="mainWhite"><a class="pageNumber" href="/notice/detail?board_id=${boards.board_id}">${boards.board_title}</a></div>
 				</c:forEach>
