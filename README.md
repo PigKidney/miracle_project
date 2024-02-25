@@ -27,6 +27,14 @@
 <hr>
 
 <h2>팀 구성</h2>
+<ul>
+  <li> 
 [서다슬](https://github.com/tjektmf "GitHub로 이동")
+  </li>
+ <li>
 [양권모](https://github.com/PigKidney "GitHub로 이동")
+  </li>
+ <li>
 [정기상](https://github.com/jks1363 "GitHub로 이동")
+  </li>
+</ul>
