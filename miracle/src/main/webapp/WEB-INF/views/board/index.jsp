@@ -1,4 +1,4 @@
-	<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.ezen.miracle.dto.LogoBoardDTO" %>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
