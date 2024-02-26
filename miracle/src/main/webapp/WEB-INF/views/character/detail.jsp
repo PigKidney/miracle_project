@@ -40,8 +40,8 @@
 					<h3 id="guild">길 드</h3>
 					<h3 id="pvpRank">증명의 전장</h3>
 				</div>
-				<div id="logo">
-					<img src="/resources/img/LOGO.png" alt="logo" class="logo">
+				<div id="detail_logo">
+					<img src="/resources/img/LOGO_WP.png" alt="logo" class="detail_logo">
 				</div>
 			</div>
 		</div>

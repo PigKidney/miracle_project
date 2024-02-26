@@ -213,6 +213,7 @@ body{
     width: 250px;
     height: 50px;
     line-height: 49px;
+    cursor: pointer;
 }
 
 #states-etc{
@@ -597,7 +598,12 @@ p{
 
 .gem-select{
     border: 2px solid white;
-    margin: 0;;
+    margin: 0;
+    transition: 0.2s;
+}
+
+#collectionPoints{
+    cursor: pointer;
 }
 
 .coloer-select{
@@ -830,6 +836,10 @@ p{
     background-position: 0 -216px;
 }
 
+#collectBars{
+    cursor: pointer;
+}
+
 .collection-div{
     display: flex;
     flex-direction: column;
@@ -876,13 +886,13 @@ p{
     top: 4px;
 }
 
-.logo{
+.detail_logo{
     width: 100px;
     height: auto;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-#logo{
+#detail_logo{
     display: flex;
     justify-content: center;
     align-items: center;

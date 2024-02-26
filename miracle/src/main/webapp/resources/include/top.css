@@ -27,3 +27,7 @@ body {
 	display: flex;
 	grid-template-columns : 50px 1fr 1fr 1fr 4fr 30px; 
 }
+
+#showbox{
+	width: 20px;
+}
