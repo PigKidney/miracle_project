@@ -337,7 +337,7 @@ label {
 }
 
 a {
-  width: 180px;
+  /* width: 180px; */
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -436,6 +436,7 @@ a:visited {
 .space-between{
   justify-content: space-between;
 }
+
 
 .form-padding{
  

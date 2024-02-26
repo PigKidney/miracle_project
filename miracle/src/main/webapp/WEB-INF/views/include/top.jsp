@@ -1,4 +1,4 @@
-<%@page import="oracle.jdbc.internal.XSSessionNamespace"%>
+<%@ page import="oracle.jdbc.internal.XSSessionNamespace"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -43,7 +43,9 @@ console.log("user_id : " + idCheck);
 	<div id="topfix" class="flex-test">
 		<div id="top-tab1" class="item-center">
 			<div>
-				<a class="mainWhite bold underline-none" href="/main/index"><img src="/resources/img/LOGOW.png" alt="logo" class="logo"></a>
+				<!-- <div class="mainWhite bold underline-none logo" ></div> -->
+				<a class="mainWhite bold underline-none logo" href="/main/index">
+					<!-- <img src="/resources/img/LOGO_WP.png" alt="logo" class="logo"> --></a>
 
 			</div>
 		</div>
