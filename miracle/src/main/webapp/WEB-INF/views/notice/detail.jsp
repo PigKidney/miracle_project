@@ -6,7 +6,7 @@
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="/resources/notice/detail.css" />
 
-
+<title>${board.board_title} - 로고</title>
 <div class="include-top">
 	<div class="w-1120px">
 	<div class="grid-read mainWhite">
