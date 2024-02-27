@@ -54,15 +54,16 @@
 ### 팀 구성
 
 + **[서다슬](https://github.com/tjektmf)**
-
+<a href="https://github.com/tjektmf" target="_blank"><img src="https://img.shields.io/badge/서다슬-FF9A00?style=for-the-badge&logo=java&logoColor=black"></a>
   
 + **[양권모](https://github.com/PigKidney)**
-
+<a href="https://github.com/PigKidney" target="_blank"><img src="https://img.shields.io/badge/양권모-FF9A00?style=for-the-badge&logo=java&logoColor=black"></a>
   
 + **[정기상](https://github.com/jks1363)**
-<a href="(https://github.com/jks1363)" target="_blank"><img src="https://img.shields.io/badge/정기상-5382a1?style=for-the-badge&logo=java&logoColor=ffffff"></a>
+<a href="https://github.com/jks1363" target="_blank"><img src="https://img.shields.io/badge/정기상-5382a1?style=for-the-badge&logo=java&logoColor=ffffff"></a>
 
 + **[김석주](https://github.com/Justwait23)**
+<a href="https://github.com/Justwait23" target="_blank"><img src="https://img.shields.io/badge/김석주-5382a1?style=for-the-badge&logo=java&logoColor=ffffff"></a>
 
 
 ![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=3)
