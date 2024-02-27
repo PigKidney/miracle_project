@@ -1,3 +1,5 @@
+![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6&text=MIRACLE&animation=fadeIn&fontSize=30&height=100&fontAlign=15&fontAlignY=75&desc=PROJECT&descSize=22&descAlign=29&descAlignY=77)
+
 ### PROJECT MIRACLE
 
 ![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=3)
