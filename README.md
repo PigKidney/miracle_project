@@ -60,7 +60,7 @@
 
   
 + **[정기상](https://github.com/jks1363)**
-
+<a href="(https://github.com/jks1363)" target="_blank"><img src="https://img.shields.io/badge/정기상-5382a1?style=for-the-badge&logo=java&logoColor=ffffff"></a>
 
 + **[김석주](https://github.com/Justwait23)**
 
