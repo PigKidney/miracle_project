@@ -77,7 +77,7 @@ console.log("user_id : " + idCheck);
 			<div id="smsBtn" class="hide"></div>
 		
 		<div id="showbox" class="p-r20">
-					<div class="item-center justify-between cursor">
+					<div class="item-center justify-between cursor"style="display: -webkit-box;">
 						<div class="m-r10">
 							<a id="loginTag" class="mainWhite underline-none" href='${localURL}'></a>
 						</div>

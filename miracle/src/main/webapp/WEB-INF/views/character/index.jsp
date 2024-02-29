@@ -8,7 +8,7 @@
 	crossorigin="anonymous"></script>
 <title>캐릭터 랭킹 - 로고</title>
 <div class="include-top">
-	<div class="w-1120px h-280px main m-div1 cursor mainWhite">
+	<div class="w-1120px h-280px main m-div1 mainWhite">
 		<form id="slecteForm" action="/character/index" method="get"
 			class="disply-flex space-between form-padding rank-list align-center margin-top20">
 			<div class="disply-flex">

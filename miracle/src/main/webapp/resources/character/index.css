@@ -25,6 +25,9 @@ ul {
 #flex2 {
   width: 1120px;
 }
+.rank-board:hover{
+background-color: #38393e;
+}
 
 
 .flex-header {
