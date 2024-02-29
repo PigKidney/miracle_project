@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class LogoUserDTO {
-	private Integer user_id;
+	private Long user_id;
 	private String user_email;
 	private String user_password;
 	private String user_nickname;

@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+.w5{
+	font-weight: 500;
+}
+.w7{
+	font-weight: 700;
+	padding-top: 30px;
+}
+.nowSelectedPage{
+	font-weight: 700;
+	text-decoration: underline;
+}
+.nonSelectedPage{
+	font-weight: 400;
+}
+
 .grid-board>div {
 	display: grid;
 	grid-template-columns: 1fr 1fr 10fr 1fr 1fr 1fr 1fr;
@@ -10,7 +25,7 @@
 	text-align: center;
 }
 
-.grid-board>div:hover {
+.grid-board>div:nth-child(n+2):hover {
 	background-color: #38393e;
 }
 
@@ -18,10 +33,23 @@
 	text-align: left;
 	text-decoration: none;	
 }
+.nick-deco{
+	border-left: #33353A 2px solid;
+	border-right: #33353A 2px solid;
+}
 
 .board-content:visited {
 	color: #eaf0ec;
 }
 .board-content:link {
 	color: #eaf0ec;	
+}
+.pageNumber:link{
+	color: #eaf0ec;		
+}
+.pageNumber:visited {
+	color: #eaf0ec;
+}
+.pageNumber{
+	text-decoration: none;	
 }

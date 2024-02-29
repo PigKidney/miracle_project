@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.grid-board>div {
+	display: grid;
+	grid-template-columns: 2fr 10fr 2fr 1fr 1fr;
+}
+
+.grid-board>div {
+	border-bottom: 1px solid #eaf0ec;
+	text-align: center;
+}
+.nowSelectedPage{
+	font-weight: 700;
+	text-decoration: underline;
+}
+.nonSelectedPage{
+	font-weight: 400;
+}
+
+.grid-board>div:nth-child(n+2):hover {
+	background-color: #38393e;
+}
+
+.board-content {
+	text-align: left;
+	text-decoration: none;	
+}
+
+.pageNumber:visited {
+	color: #eaf0ec;
+}
+.pageNumber{
+	text-decoration: none;	
+}
+
+.ntary {
+	display: flex;
+    margin-top: 20px;
+    justify-content: center;
+	align-items: center;
+}
+

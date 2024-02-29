@@ -1,161 +1,197 @@
+
 #topfix {
-	z-index: 1;
+  z-index: 1;
 }
 
 
 ul {
-   margin: 0;
+  margin: 0;
 }
 
-/* 컨테이너의 기본 스타일 */
+
 .flex-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 1200px;
+  max-width: 100%;
   padding-top: 68px;
 }
 
-/* 헤더의 스타일 */
-.flex-header  {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    height: 54px;
-    background-color: #33353a; 
-    border-radius: 10px;
-    margin-top: 28px; 
-    padding: 0 10px;
+.flex-container>* {
+  margin: 0 auto;
+}
+
+#flex2 {
+  width: 1120px;
+}
+.rank-board:hover{
+background-color: #38393e;
+}
+
+
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 54px;
+  background-color: #33353a;
+  border-radius: 10px;
+  margin-top: 28px;
+  padding: 0 10px;
+}
+
+
+.flex-header .choice1,
+.flex-header .choice2 {
+  display: flex;
+  align-items: center;
+}
+
+.choice2 {
+  width: 350px;
+  /* height: 40px; */
 }
 
 .toprank {
   display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    height: 220px;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  height: 220px;
 }
 
 .toprank a {
   border-radius: 10px;
 }
 
-.toprank img {
-    height: auto;
-}
 
-.toprank img:nth-child(odd) {
-  width: 450px;  
+.toprank img {
+  width: 560px;
   height: 521px;
 }
 
-
-.toprank > a:nth-child(odd) {
-    width: 260px;
-    height: 200px;
+.toprank img:first-child {
+  right: 10px;
 }
 
-.toprank > a:nth-child(even) {
-    width: 560px;
-    height: 100%;
+
+.toprank>a:nth-child(odd) {
+  width: 260px;
+  height: 200px;
 }
+
+.toprank>a:nth-child(even) {
+  width: 560px;
+  height: 100%;
+}
+
 .rank-badge {
-    width: 32px;
-    height: 48px;
+  width: 32px;
+  height: 48px;
 
 }
-/* 
-.toprank > svg {
-    width: 32;
-    height: 48;
-} */
+
+
 
 
 
 .character-card {
-    position: relative;
-    width: 260px;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 10px;
-    background-color: #15181d;
+  position: relative;
+  width: 260px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #15181d;
+  opacity: 1;
+}
+.wide-card {
+  width: 560px;
+}
+
+.wide-card .image-container {
+  width: 100%;
 }
 
 
 .image-container {
   position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+
 
 
 .overlay {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to top, #15181d, #15181d00);
-    opacity: 0.8;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, #15181d, #15181d00);
+  opacity: 0.8;
 }
 
 .rank-badge {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    fill: #fff;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  fill: #fff;
 }
 
 .text-content {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    color: #fff;
-    user-select: text;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  color: #fff;
+  user-select: text;
 }
 
 .class-name {
-    font-size: 0.75rem;
-    font-weight: 300;
+  font-size: 0.75rem;
+  font-weight: 300;
 }
 
 .character-name {
-    font-size: 1.25rem;
-    font-weight: 500;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .character-card:hover {
-    transform: scale(1.05);
-    transition: transform 0.7s ease-out;
+  transform: scale(1.05);
+  transition: transform 0.7s ease-out;
 }
 
+.font-size12{
+  font-size: 12px;
+}
 
+ 
 
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 select {
-  -moz-appearance: none;
   -webkit-appearance: none;
-  appearance: none;
-  
-  font-family: "Noto Sansf KR", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  
-  color: #444;
-  background-color: #fff;
-  
-  padding: .6em 1.4em .5em .8em;
-  margin: 0;
-  
-  border: 1px solid #aaa;
-  border-radius: .5em;
-  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    appearance: none;
+    width: 95px;
+    height: 33px;
+    font-family: "Noto Sansf KR", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #42464D;
+    /* padding: 0.6em 1.4em 0.5em 0.8em; */
+    margin: 0;
+    border: 2px solid #aaa;
+    border-radius: 10px;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
+    /* text-align: center; */
+    /* margin-left: 10px; */
+    text-align: center;
 }
 
 
@@ -167,7 +203,7 @@ select:focus {
   border-color: #aaa;
   box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
   box-shadow: 0 0 0 3px -moz-mac-focusring;
-  color: #222;
+  color: #b4b4b4;
   outline: none;
 }
 
@@ -180,111 +216,134 @@ label {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.3;
-  
+
   color: #444;
   margin-right: 0.5em;
 }
 
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 
-body {
-  margin: 0;
-}
 
 /* 테두리 컨테이너의 스타일 */
 .border-container {
-    display: grid;
-    max-width: 1200px;
-    grid-template-columns: 82px 196px 110px 134px 112px 202px 140px 110px;
-    margin-top: 31px;
-    padding: 7px 20px 7px 20px;
+  display: grid;
+  max-width: 1200px;
+  grid-template-columns: 82px 196px 110px 134px 112px 202px 140px 110px;
+  margin-top: 31px;
+  padding: 7px 20px 7px 20px;
 }
 
 /* 테두리 컨테이너 내부 아이템의 스타일 */
 .border-container p {
-	font-size: 12px;
+  font-size: 12px;
   /* padding-left: 1.25rem;
   padding-right: 1.25rem; */
 }
 
 /* 마지막 아이템의 오른쪽 테두리 제거 */
 .border-container p:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 /* 리스트 컨테이너의 스타일 */
 .list-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 0px;
-    background-color: #33353a;
-    border-radius: 10px;
-    overflow: hidden;
-    border: #4d4f55;
-    font-size: 14px;
-    
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0px;
+  background-color: #33353a;
+  border-radius: 10px;
+  overflow: hidden;
+  border: #4d4f55;
+  font-size: 14px;
+
 }
 
 /* 리스트 아이템의 스타일 */
 .list-item {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  align-items: center;
+  /* padding-left: 1.25rem;
+  padding-right: 2.25rem; */
 }
 
-.list-item > div:hover {
-    background-color: #3a3b41;
+.rank-board:last-child{
+  border: none;
+}
+.rank-board{
+  border-radius: 0%;
+}
+.rank-board:not(:last-child){
+  border-bottom: 1px solid #929292;
+}
+.list-item>div:hover {
+  background-color: #3a3b41;
 }
 
 
 /* 리스트 아이템 내부 div의 스타일 */
-.list-item > div {
-    display: grid;
-  
-    grid-template-columns: repeat(8, 1fr);
+.list-item>div {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  width: 100%;
 }
 
 /* 리스트 아이템 내부 div의 p 태그 스타일 */
 .list-item div p {
-    margin: 0;
-    font-weight: 700;
-    font-size: 14px;
-    color: #EAF0EC;
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+  color: #EAF0EC;
 }
 
-#characterListContainer {
+/* #characterListContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+} */
+
+.characterListContainer {
+  height: 48px;
+}
+
+.characterListContainer > p, a {
+  height: 20px;
+}
+
+.slider {
+  height: 20px;
+  width: 300px;
+  background: red;
 }
 
 #rank,
 #item-level,
 #server-name,
-.guild-name {
-  width: 110px;
-  text-align: center;
+#guild-name {
+  width: 90px;
+  text-align: left;
+}
+
+#class-name {
+   width: 110px;
 }
 
 #rank {
-  width: 76px;
+  width: 92px;
+  text-align: center;
 }
 
 a {
-  width: 196px;
+  /* width: 180px; */
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  
+
 }
+
 a:link {
   color: #EAF0EC;
   text-decoration: none;
@@ -296,9 +355,6 @@ a:visited {
   text-decoration: none;
 }
 
-#class-name {
-  width: 134px;
-}
 
 #guild-name {
   width: 140px;
@@ -309,4 +365,118 @@ a:visited {
 #guild-name p {
   width: 70px;
   text-align: center;
+}
+
+#load-more {
+     color: white;
+    align-items: center;
+    width: 600px;
+    height: 35px;
+    background-color: #33353a;
+    border: solid 1px white;
+    border-radius: 10px;
+    margin-top: 28px;
+    padding: 0 10px;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 14px;
+    margin-bottom: 50px;
+}
+
+.mainRankList{
+	display: grid;
+	grid-template-columns: 50px repeat(7, 1fr);
+  justify-items: center;
+  align-items: center;
+  /* padding-bottom: 15px; */
+  font-size: 12px;
+  height: 45px;
+  margin-left: 15px;
+  margin-right: 15px;
+
+}
+
+.border-none{
+  border: none;
+}
+
+.mainRankList>div{
+	/* padding-top: 10px; */
+}
+.bord{
+	border: 1px yellow solid;
+	height: 1000px;
+}
+
+.disply-flex{
+  display: flex;
+}
+
+.rank-board{
+  background-color: #42464D;
+  /* border-radius: 5px; */
+  color: white;
+  /* margin-left: 15px;
+  margin-right: 15px; */
+}
+
+.rank-list{
+  background-color: #42464D;
+  border-radius: 5px;
+  color: white;
+  /* margin-left: 15px;
+  margin-right: 15px; */
+}
+
+.rank-list>div{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.space-between{
+  justify-content: space-between;
+}
+
+
+.form-padding{
+ 
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.align-center{
+  align-items: center;
+}
+
+.margin-top20{
+  margin-top: 20px;
+}
+
+.slider-value{
+  font-size: 13px;
+  text-align: center;
+  margin-left: 10px;
+  line-height: 23px;
+}
+
+#selectedServer{
+  margin-right: 10px;
+}
+
+.display-contents{
+  display: contents;
+}
+
+.disply-none{
+  display: none;
+}
+
+.justify-center{
+	justify-items: center;
+}
+.disply-grid{
+  display: grid;
+}
+#blink{
+	height:50px;
 }

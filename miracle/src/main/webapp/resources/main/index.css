@@ -4,7 +4,19 @@
 
 .w-1120px {
 	width: 1120px;
-	border: 1px yellow solid;
+}
+
+.h-100px {
+	height: 100px;
+}
+.p-r15{
+	padding-right: 15px;
+}
+.p-l15{
+	padding-left: 15px;
+}
+.h-50px {
+	height: 50px;
 }
 
 .h-280px {
@@ -23,101 +35,270 @@
 	display: none;
 }
 
+.grid-main-board {
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+}
+
+.grid-main-board>* {
+	margin-bottom: 20px;
+	margin-left: 30px;
+	margin-top: 20px;
+}
+
+.grid-main-board>*:nth-child(2n-1) {
+	border-right: #42464D solid 2px;
+}
+
+.notice-margin {
+	margin-left: 15px;
+	margin-bottom: 15px;
+}
+
 .bannerShow {
 	display: block;
 }
 
 .flex {
 	display: flex;
-	margin: 0 auto;	
+	margin: 0 auto;
+}
+
+.inline-flex {
+	display: inline-flex;
 }
 
 .justify-between {
 	justify-content: space-between;
 }
-.w-550h-280{
+
+.justify-between2 {
+	justify-content: space-around;
+}
+
+.w-550h-280 {
 	width: 550px;
 	height: 280px;
 }
-.m-top40{
-	margin-top: 40px;	
+
+.m-top40 {
+	margin-top: 40px;
 }
-.grid{
+
+.grid {
 	display: grid;
 	grid-template-rows: 1fr 4fr;
 }
-.w-550h-280>div{
-	border: 1px red solid;
-}
-.h-320px{
+
+.h-320px {
 	height: 320px;
 }
 
-.bold{
+.bold {
 	font: bold;
 }
-.font-20{
-	font-size: 20px;
+
+.font-18 {
+	font-size: 18px;
 }
 
-<!-- -->
-
 .slider {
-  position: relative;
-  overflow: hidden;
-  
-  width: 1120px;
-  height: 280px;
-  z-index: -1;
+	position: relative;
+	overflow: hidden;
+	width: 1120px;
+	height: 280px;
+	z-index: 1;
 }
 
 .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-
-  animation: slider 12s infinite linear;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	animation: slider 12s infinite linear;
 }
 
+/* 에키드나 */
 .slide:nth-child(1) {
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/541657180860978066.webp);
+	animation-delay: 0;
+}
+
 /* 카멘 */
-  background-image: url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
-  animation-delay: 0;
-}
 .slide:nth-child(2) {
-  background-image: url(https://cdn.korlark.com/artworks/home/509107984186712397.webp?t=1698938628000);
-  animation-delay: -3s;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/488811896510808360.webp?t=1695484641000);
+	animation-delay: -3s;
 }
+
+/* 상아탑 */
 .slide:nth-child(3) {
-  background-image: url(https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000);
-  animation-delay: -6s;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/417333464422097379.webp?t=1689753032000);
+	animation-delay: -6s;
 }
+
+/* 가르가디스 */
 .slide:nth-child(4) {
-  background-image: url(https://cdn.korlark.com/artworks/home/526277166854538395.webp);
-  animation-delay: -9s;
+	background-image:
+		url(https://cdn.korlark.com/artworks/home/417339171099840946.webp?t=1689753102000);
+	animation-delay: -9s;
 }
 
-@keyframes slider {
-  0% {
-    transform: translateX(0);
-  }
+@keyframes slider { 0% {transform: translateX(0);}
+15%{transform:translateX(0);}
+25%{transform:translateX(-100%);animation-timing-function:step-end;}
+90%{transform:translateX(100%);}
+100%{transform:translateX(0);}
+}
+.grid-2row {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+}
 
-  15% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-100%);
-    animation-timing-function: step-end;
-  }
-  90% {
-    transform: translateX(100%);
-  }
+.grid-2row>div {
+	display: grid;
+}
 
-  100% {
-    transform: translateX(0);
-  }
+.island-border-out {
+	width: 300px;
+	height: 180px;
+	padding-top: 10px;
+}
+
+.grid-3col {
+	display: grid;
+	grid-template-columns: 3fr 6fr 4fr;
+}
+
+#daylight>div {
+	width: 20px;
+	padding-top: 25px;
+	text-align: center;
+}
+
+#calendarList>div {
+	width: 20px;
+	padding-top: 20px;
+	text-align: center;
+}
+
+.add-cursor>div {
+	font-size: 15px;
+	font: bold;
+}
+
+.add-cursor>div:nth-child(n+3) {
+	cursor: pointer;
+}
+
+.add-cursor>div:first-child {
+	color: gray;
+	user-select: none;
+}
+
+.add-cursor>div:nth-child(2) {
+	color: gray;
+	user-select: none;
+}
+
+.add-cursor>div:nth-child(3)>span {
+	color: yellow;
+}
+
+.aa {
+	justify-content: space-around;
+}
+
+.text-center2 {
+	padding-bottom: 10px;
+}
+
+.island-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+}
+
+.island-grid {
+	border: 3px solid #42464D;
+	border-radius: 20px;
+	background-color: rgb(43, 45, 49);
+	margin-top: 18px;
+	padding-right: 0;
+	padding-left: 10px;
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.grid-4col {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	padding-left: 10px;
+}
+
+.island-box {
+	border: 3px solid #42464D;
+	border-radius: 10px;
+}
+
+.box-background-color {
+	background-color: #33353A;
+}
+
+.island-border-out>div:first-child {
+	border: 3px solid #42464D;
+	border-radius: 10px;
+	background-color: rgb(43, 45, 49);
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.island-border-out>div:first-child>div {
+	padding-top: 15px;
+	margin-right: 0px;
+	font-size: 16px;
+}
+
+.twinkle-star {
+	position: relative;
+	bottom: 35px;
+	color: yellow;
+	left: 35px;
+	user-select: none;
+	filter: drop-shadow(0 0 10px yellow);
+}
+#islandTime{
+	font-weight: 900;
+}
+
+.sundayRed {
+	color: red;
+	text-shadow: 0 0 5px white, 0 0 7px white, 0 0 10px white;
+	font-size: 18px;
+
+}
+
+.saturdayBlue {
+	color: blue;
+	text-shadow: 0 0 5px white, 0 0 7px white, 0 0 10px white;
+	font-size: 18px;
+
+}
+
+.weekdayWhite {
+	text-shadow: 0 0 10px white;
+	font-size: 18px;
+}
+.pageNumber:link{
+	color: #eaf0ec;		
+}
+.pageNumber:visited {
+	color: #eaf0ec;
+}
+.pageNumber{
+	text-decoration: none;	
 }

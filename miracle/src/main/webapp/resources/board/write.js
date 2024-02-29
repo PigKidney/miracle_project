@@ -1,6 +1,5 @@
 $('.summernote').summernote(
     {
-        placeholder: 'ㅇㅅㅇ/',
         tabsize: 2,
         height: 480,
         toolbar: [['style', ['style']],
@@ -11,22 +10,42 @@ $('.summernote').summernote(
         ['insert', ['link', 'picture', 'video']],
         ['view', ['fullscreen', 'codeview', 'help']]],
         lang: 'ko-KR',
+
+        styleTags: [
+            'p',  // 일반 문단 스타일 옵션
+            {
+                title: 'Blockquote',
+                tag: 'blockquote',
+                className: 'blockquote',
+                value: 'blockquote',
+            },  // 인용구 스타일 옵션
+            'pre',  // 코드 단락 스타일 옵션
+            {
+                title: 'code_light',
+                tag: 'pre',
+                className: 'code_light',
+                value: 'pre',
+            }]
+        
     }
 );
 
 // @param {String} color
-$('.summernote').summernote('backColor', '#2b2d31');
+//$('.summernote').summernote('backColor', 'white');
 
 // @param {String} color
-$('.summernote').summernote('foreColor', 'white');
+//$('.summernote').summernote('foreColor', 'white');
 
 const writeBtn = document.getElementById('writeBtn');
+const writeForm = document.getElementById('writeForm');
 const noteContent = document.getElementById('noteContent');
 const noteTitle = document.getElementById('noteTitle');
-const writeForm = document.getElementById('writeForm');
+const userId1 = document.getElementById('userId1');
+console.dir('밸류  : ' + userId1.value);
+
 
 writeBtn.addEventListener('click', () => {
-    if(noteContent.value.trim()=='' || noteTitle.value.trim()==''){
+    if (noteContent.value.trim() == '' || noteTitle.value.trim() == '') {
         alert('제목 또는 내용을 입력해주세요');
         return;
     }

@@ -4,109 +4,126 @@
 <jsp:include page="../include/top.jsp" />
 <link rel="stylesheet" href="/resources/character/index.css" />
 <c:url value="/resources/character/index.js" var="indexJS" />
-<script src="https://kit.fontawesome.com/068a9e1e3f.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/068a9e1e3f.js"
+	crossorigin="anonymous"></script>
+<title>캐릭터 랭킹 - 로고</title>
+<div class="include-top">
+	<div class="w-1120px h-280px main m-div1 mainWhite">
+		<form id="slecteForm" action="/character/index" method="get"
+			class="disply-flex space-between form-padding rank-list align-center margin-top20">
+			<div class="disply-flex">
+				<div>
+					<c:set value="전 서버/루페온/실리안/아만/아브렐슈드/카단/카마인/카제로스/니나브" var="servers" />
+					<select id="selectedServer" name="char_server">
+						<c:forTokens items="${servers}" delims="/" var="server">
+							<c:choose>
+								<c:when test="${not empty char_server}">
+									<option <c:if test="${server eq '전 서버'}">value="${null}"</c:if>
+										<c:if test ="${char_server eq server}">value="${server}" selected="selected"</c:if>>${server}</option>
+								</c:when>
+								<c:otherwise>
+									<option <c:if test="${server eq '전 서버'}">value="${null}"</c:if>
+										<c:if test="${server ne '전 서버'}">value="${server}"</c:if>>${server}
+									</option>
+								</c:otherwise>
+							</c:choose>
+						</c:forTokens>
+					</select>
+				</div>
+				<div>
+					<c:set
+						value="전체 클래스/디스트로이어/버서커/홀리나이트/슬레이어/스트라이커/브레이커/배틀마스터/인파이터/기공사/창술사/데빌헌터/블래스터/호크아이/스카우터/건슬링어/바드/서머너/아르카나/소서리스/블레이드/데모닉/리퍼/소울이터/도화가/기상술사"
+						var="chrClasss" />
+					<select id="selectedClass" name="char_class">
+						<c:forTokens items="${chrClasss}" delims="/" var="chrClass">
+							<c:choose>
+								<c:when test="${not empty char_class}">
+									<option
+										<c:if test="${chrClass eq '전체 클래스'}">value="${null}"</c:if>
+										<c:if test ="${char_class eq chrClass}">value="${chrClass}" selected="selected"</c:if>>${chrClass}</option>
+								</c:when>
+								<c:otherwise>
+									<option
+										<c:if test="${chrClass eq '전체 클래스'}">value="${null}"</c:if>
+										<c:if test="${chrClass ne '전체 클래스'}">value="${chrClass}"</c:if>>${chrClass}</option>
+								</c:otherwise>
+							</c:choose>
+						</c:forTokens>
+					</select>
+				</div>
+			</div>
+			<div class="choice2 disply-flex">
+				<input type="range" min="1415" max="1675" name="levelBar"
+					class="slider" id="mySlider"
+					<c:if test="${not empty char_level}">value="${char_level}"</c:if>
+					value="1675"> <font class="disply-flex slider-value">
+					<span id="sliderValue"></span>
+				</font>
+			</div>
+
+		</form>
 
 
-<div class="flex-container">
-<div>
-	<div class="toprank">
-		<a href="/characters/%ED%95%AD%EC%83%81%EA%B7%B8%EB%86%88">
-			<div class="character-card">
-				<div class="image-container">
-					<img src="https://example.com/image1.jpg" alt="Character 1">
-				</div>
-				<div class="overlay"></div>
-				<div class="rank-badge">
-					
-				</div>
-				<div class="text-content">
-					<p class="class-name">Class 1</p>
-					<p class="character-name">Character Name 1</p>
-				</div>
-			</div>
-		</a> <a href="/characters/%ED%95%AD%EC%83%81%EA%B7%B8%EB%86%88">
-			<div class="character-card">
-				<div class="image-container">
-					<img src="https://example.com/image2.jpg" alt="Character 2">
-				</div>
-				<div class="overlay"></div>
-				<div class="rank-badge">
-					<svg>
-                    	<path></path>
-                	</svg>
-				</div>
-				<div class="text-content">
-					<p class="class-name">Class 2</p>
-					<p class="character-name">Character Name 2</p>
-				</div>
-			</div>
-		</a> <a href="/characters/%ED%95%AD%EC%83%81%EA%B7%B8%EB%86%88">
-			<div class="character-card">
-				<div class="image-container">
-					<img src="https://example.com/image3.jpg" alt="Character 3">
-				</div>
-				<div class="overlay"></div>
-				<div class="rank-badge">
-					<svg>
-                    <path></path>
-                </svg>
-				</div>
-				<div class="text-content">
-					<p class="class-name">Class 3</p>
-					<p class="character-name">Character Name 3</p>
-				</div>
-			</div>
-		</a>
-	</div>
-	<div>
-		<br />
-		<button id="btn1"> 1번 이미</button>
-		<br />
-	</div>
-
-
-
-	<div class="flex-header">
-		<div class="choice">
-			<div id="server">
-				<select name="" id="serverSelect">
-					<option value="">전서버</option>
-					<option value="루페온">루페온</option>
-					<option value="실리안">실리안</option>
-					<option value="아만">아만</option>
-					<option value="아브렐슈">아브렐슈</option>
-				</select>
-			</div>
-			<div id="jobclass" id="jobClassSelect">
-				<select name="" id="">
-					<option value="">전체클래스</option>
-					<option value="디스트로이어">디스트로이어</option>
-					<option value="워로드">워로드</option>
-				</select>
-			</div>
-			<div id="engraving">
-				<select name="" id="invisible"></select>
-			</div>
+		<div class="mainRankList nanum-gothic-regular font-size12 border-none">
+			<div>순위</div>
+			<div>아이템 레벨</div>
+			<div>캐릭터명</div>
+			<div>클래스</div>
+			<div>서버명</div>
+			<div>길드명</div>
+			<div>장비</div>
+			<div>직업각인</div>
 		</div>
-		<div class="choice"></div>
-	</div>
-	<div class="border-container">
-		<p class="rank">순위</p>
-		<p class="character-name">캐릭터 명</p>
-		<p class="item-level">아이템 레벨</p>
-		<p class="class-name">클래스</p>
-		<p class="server-name">서버명</p>
-		<p class="guild-name">길드명</p>
-		<p class="equip">장비</p>
-		<p class="egrave">직업 각인</p>
-	</div>
-	<ul class="list-container" id="characterList">
-		<li class="list-item"></li>
-	</ul>
-	<button id="loadMore">더보기</button>
+		<div id="rankListCut" class="rank-list ">
+			<c:forEach items="${charAll}" var="charAll">
+				<div id="level-cut"
+					class="mainRankList nanum-gothic-bold rank-board disply-none">
+					<div>${charAll.levelrank}</div>
+					<div id="level-value">${charAll.char_level}</div>
+					<a href="/character/detail?search=${charAll.char_name}"
+						class="display-contents">${charAll.char_name}</a>
+					<div>${charAll.char_class}</div>
+					<div>${charAll.char_server}</div>
+					<div>${charAll.char_guild}</div>
+					<div>${charAll.char_equipSet}</div>
+					<div>${charAll.char_classEng}</div>
+				</div>
+			</c:forEach>
+		</div>
+		<div class="align-center disply-grid justify-center">
+			<button id="load-more"> 더보기 </button>		
+		</div>
+		<div id="blink">
+		</div>
+	
 	</div>
 </div>
+<script>
+	var levelValue =
+<%=request.getAttribute("levelBar")%>
+	
+</script>
 
 <script src="${indexJS}"></script>
 
-<jsp:include page="../include/bot.jsp" />
+<div id="botfix" class="flex-just-center disply-none">
+	<div class="mainWhite w-1120px h-280px item-center justify-between">
+		<div style="font-size: 12px; width: 860px;">© 2022 KorLARK.
+			KorLARK isn’t endorsed by Smilegate RPG and doesn’t reflect the views
+			or opinions of Smilegate RPG or anyone officially involved in
+			producing or managing Lostark. Lostark and Smilegate RPG are
+			trademarks or registered trademarks of Smilegate RPG, Inc. Lostark ©
+			Smilegate RPG, Inc.</div>
+		<div>
+			<div style="font-size: 12px">
+				<a class="mainWhite underline-none" href="">이용약관</a> | <a
+					class="mainWhite underline-none" href="">개인정보처리방침</a>
+			</div>
+			<img class="cursor" src="/resources/img/gitcat.png" alt="gitcat"
+				onclick='ourGit()' />
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
