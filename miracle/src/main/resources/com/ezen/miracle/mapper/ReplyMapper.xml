@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.miracle.mapper.ReplyMapper">
+
+	<select id="getAll" resultType="com.ezen.miracle.dto.LogoReplyDTO">
+		select * from logo_reply inner join logo_user using(user_id) where board_id = #{board_id} and reply_show = 1
+	</select>
+
+	<insert id="write">
+		insert into logo_reply (reply_id, board_id, reply_content, user_id, created_at)
+		values (reply_id_seq.nextval, #{board_id}, #{reply_content}, #{user_id}, systimestamp)
+	</insert>
+
+	<update id="delete">
+		update logo_reply set reply_show = 0 where reply_id = #{reply_id}
+	</update>
+	
+	<select id="membersList">
+	select * from logo_reply inner join logo_user using(user_id) where user_id=#{user_id}
+	
+	</select>
+
+</mapper>
