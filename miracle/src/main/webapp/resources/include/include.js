@@ -39,7 +39,7 @@ window.onload = async () => {
             client_secret: 'YDQ7PiLXZ5xh5zI-h9dX43vQySk3t2wO',
             grant_type: 'authorization_code',
             code: code,
-            redirect_uri: 'http://' + myIP + ':9000/main/index',
+            redirect_uri: 'http://' + local + ':9000/main/index',
             scope: 'identify, email',
         }),
         headers: {
@@ -100,7 +100,7 @@ window.onload = async () => {
     if (nickName.value == undefined && loginCheck != '0' && loginCheck != '1') {
         nickName.innerText = '로그인';
         nickName.onclick = function () {
-            location.href = dsURL;
+            location.href = localURL;
         }
     } else {
         nickName.innerText = nameCheck;
