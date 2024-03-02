@@ -11,11 +11,11 @@ const nickName = document.getElementById('nickName');
 const addadd = document.getElementById('addadd');
 const characterSearch = document.getElementById('characterSearch');
 
-const myIP = '222.120.210.227';
+const myIP = '14.56.25.66';
 const local = 'localhost';
 
 const localURL = 'https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email';
-const dsURL = 'https://discord.com/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2F222.120.210.227%3A9000%2Fmain%2Findex&scope=identify+email';
+const dsURL = 'https://discord.com/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2F14.56.25.66%3A9000%2Fmain%2Findex&scope=identify+email';
 
 window.onload = async () => {
 
@@ -39,7 +39,7 @@ window.onload = async () => {
             client_secret: 'YDQ7PiLXZ5xh5zI-h9dX43vQySk3t2wO',
             grant_type: 'authorization_code',
             code: code,
-            redirect_uri: 'http://' + local + ':9000/main/index',
+            redirect_uri: 'http://' + myIP + ':9000/main/index',
             scope: 'identify, email',
         }),
         headers: {
@@ -100,7 +100,7 @@ window.onload = async () => {
     if (nickName.value == undefined && loginCheck != '0' && loginCheck != '1') {
         nickName.innerText = '로그인';
         nickName.onclick = function () {
-            location.href = localURL;
+            location.href = dsURL;
         }
     } else {
         nickName.innerText = nameCheck;
