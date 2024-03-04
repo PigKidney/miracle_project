@@ -96,6 +96,10 @@ console.log("user_id : " + idCheck);
 		</div>
 	</div>
 
+	
+	<script src="/resources/include/include.js"></script>
+
+
 	<!-- 이거아님 -->
 	<form id="loginForm" action="/main/index" method="post">
 		<input id="userId" name="user_id" type="hidden" value="${user_id.value}" /> 
