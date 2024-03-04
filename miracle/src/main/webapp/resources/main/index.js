@@ -105,12 +105,12 @@ let fieldBossList = [];
 let chaosGateList = [];
 let voyageList = [];
 calendarList.children[2].innerHTML += todayStar;
-console.log(calendarList7)
 
 for (let i = 2; i < 8; i++) {
     calendarInfo.children[0].children[i].addEventListener('click', () => {
 
         calendarList7 = calendarList.children[i].textContent.substring(0, calendarList.children[0].textContent.length - 3).replace('(','');
+
         for (let j = 2; j < 8; j++) {
             if (calendarList.children[j].children[0] != null) {
                 calendarList.children[j].children[0].remove();
@@ -139,6 +139,7 @@ function island() {
                 for (let j = 0; j < Object.keys(allInfo[i].StartTimes).length; j++) {
                     let centerDay = new Date(allInfo[i].StartTimes[j]);
                     if (allInfo[i].CategoryName == '모험 섬' && centerDay.getDate() == calendarList7) {
+
                         if (i >= 1 && allInfo[i - 1].ContentsName != allInfo[i].ContentsName) {
                             islandList.push(allInfo[i])
                             break;
