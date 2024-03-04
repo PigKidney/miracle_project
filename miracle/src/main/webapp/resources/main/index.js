@@ -99,22 +99,25 @@ for (let i = 2; i > -8; i--) {
     }
 }
 // 날짜
-let calendarList7 = calendarList.children[2].textContent.substring(0, calendarList.children[0].textContent.length - 3).replace('(','');
+let calendarList7 = calendarList.children[2].textContent.substring(0, calendarList.children[0].textContent.length - 3);
 let islandList = [];
 let fieldBossList = [];
 let chaosGateList = [];
 let voyageList = [];
 calendarList.children[2].innerHTML += todayStar;
-console.log(calendarList7)
 
 for (let i = 2; i < 8; i++) {
     calendarInfo.children[0].children[i].addEventListener('click', () => {
 
+<<<<<<< HEAD
         calendarList7 = calendarList.children[i].textContent.substring(0, calendarList.children[0].textContent.length - 3).replace('(','');
 <<<<<<< HEAD
         console.log('ddd : ' + calendarList7)
 =======
 >>>>>>> branch 'ds' of https://github.com/PigKidney/miracle_project.git
+=======
+        calendarList7 = calendarList.children[i].textContent.substring(0, calendarList.children[0].textContent.length - 3);
+>>>>>>> parent of babcafc (1~9일 ( 추가되는 버그 수정)
         for (let j = 2; j < 8; j++) {
             if (calendarList.children[j].children[0] != null) {
                 calendarList.children[j].children[0].remove();
@@ -143,6 +146,7 @@ function island() {
                 for (let j = 0; j < Object.keys(allInfo[i].StartTimes).length; j++) {
                     let centerDay = new Date(allInfo[i].StartTimes[j]);
                     if (allInfo[i].CategoryName == '모험 섬' && centerDay.getDate() == calendarList7) {
+
                         if (i >= 1 && allInfo[i - 1].ContentsName != allInfo[i].ContentsName) {
                             islandList.push(allInfo[i])
                             break;
