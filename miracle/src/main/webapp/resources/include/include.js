@@ -1,23 +1,23 @@
-const userId = document.getElementById('userId');
-const userEmail = document.getElementById('userEmail');
-const userPassword = document.getElementById('userPassword');
-const userNickname = document.getElementById('userNickname');
-const loginForm = document.getElementById('loginForm');
-const showbox = document.getElementById('showbox');
-
-const smsBtn = document.getElementById('smsBtn');
-const loginTag = document.getElementById('loginTag');
-const nickName = document.getElementById('nickName');
-const addadd = document.getElementById('addadd');
-const characterSearch = document.getElementById('characterSearch');
-
-const myIP = '222.120.210.227';
-const local = 'localhost';
-
-const localURL = 'https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email';
-const dsURL = 'https://discord.com/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2F222.120.210.227%3A9000%2Fmain%2Findex&scope=identify+email';
 
 window.onload = async () => {
+    const userId = document.getElementById('userId');
+    const userEmail = document.getElementById('userEmail');
+    const userPassword = document.getElementById('userPassword');
+    const userNickname = document.getElementById('userNickname');
+    const loginForm = document.getElementById('loginForm');
+    const showbox = document.getElementById('showbox');
+    
+    const smsBtn = document.getElementById('smsBtn');
+    const loginTag = document.getElementById('loginTag');
+    const nickName = document.getElementById('nickName');
+    const addadd = document.getElementById('addadd');
+    const characterSearch = document.getElementById('characterSearch');
+    
+    const myIP = '222.120.210.227';
+    const local = 'localhost';
+    
+    const localURL = 'https://discord.com/api/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9000%2Fmain%2Findex&scope=identify+email';
+    const dsURL = 'https://discord.com/oauth2/authorize?client_id=1202415748950265966&response_type=code&redirect_uri=http%3A%2F%2F222.120.210.227%3A9000%2Fmain%2Findex&scope=identify+email';
 
     characterSearch.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
