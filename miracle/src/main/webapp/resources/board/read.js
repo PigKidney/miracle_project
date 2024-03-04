@@ -34,7 +34,7 @@ $(document).ready(function() {
         
         // replyId를 사용하여 원하는 작업 수행
         console.log("Delete reply with ID: " + replyId);
-        rightCheck.value == idCheck ? deleteReplyForm.submit() : alert('다른 사람의 댓글은 지울 수 없어요!')
+        rightCheck.value === idCheck ? deleteReplyForm.submit() : alert('다른 사람의 댓글은 지울 수 없어요!')
 
         // 예를 들어, AJAX를 사용하여 삭제 요청 보내기
         /*
