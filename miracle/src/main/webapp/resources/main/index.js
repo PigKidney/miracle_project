@@ -99,7 +99,7 @@ for (let i = 2; i > -8; i--) {
     }
 }
 // 날짜
-let calendarList7 = calendarList.children[2].textContent.substring(0, calendarList.children[0].textContent.length - 3);
+let calendarList7 = calendarList.children[2].textContent.substring(0, calendarList.children[0].textContent.length - 3).replace('(','');
 let islandList = [];
 let fieldBossList = [];
 let chaosGateList = [];
@@ -109,7 +109,8 @@ calendarList.children[2].innerHTML += todayStar;
 for (let i = 2; i < 8; i++) {
     calendarInfo.children[0].children[i].addEventListener('click', () => {
 
-        calendarList7 = calendarList.children[i].textContent.substring(0, calendarList.children[0].textContent.length - 3);
+        calendarList7 = calendarList.children[i].textContent.substring(0, calendarList.children[0].textContent.length - 3).replace('(','');
+        console.log('ddd : ' + calendarList7)
         for (let j = 2; j < 8; j++) {
             if (calendarList.children[j].children[0] != null) {
                 calendarList.children[j].children[0].remove();
