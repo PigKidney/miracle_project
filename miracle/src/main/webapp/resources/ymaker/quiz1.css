@@ -1,0 +1,38 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+}
+.y-main-grid {
+	border: 1px black solid;
+	background-color: white;
+	width: 600px;
+	height: auto;
+	margin-left: 100px;
+	margin-top: 50px;
+}
+
+.y-tab1-grid {
+
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	border-bottom: 1px black solid;
+	padding: 10px;
+	
+}
+
+.y-tab2-buttonList {
+	text-align: right;
+	padding: 10px;
+}
+
+.y-tab2-buttonList>* {
+	border-radius: 10px;
+}
+
+.y-tab2-grid {
+	display: grid;
+	border: 1px black solid;
+	margin: 10px;
+	grid-template-columns: repeat(6, 1fr);
+	width: 580px;
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.miracle.mapper.QuizMapper">
+
+<select id="selectCountry">
+select * from country 
+</select>
+
+<select id="selectCity">
+select * from city
+</select>
+
+<insert id="insertInfo">
+		MERGE INTO yquiz1
+		USING dual
+		ON 
+		(y_id = #{y_id})
+		WHEN MATCHED THEN
+		UPDATE SET 
+		y_name = #{y_name} ,sex = #{sex}, country_name = #{country_name}, city_name = #{city_name}, y_date = #{y_date}
+		WHEN NOT MATCHED THEN
+		INSERT 
+		(y_id, y_name, sex, country_name,city_name, y_date)
+		VALUES
+		(#{y_id},#{y_name},#{sex},#{country_name},#{city_name},sysdate)
+	</insert>
+	
+	<select id="selectAll">
+	select * from yquiz1
+	</select>
+	
+	
+	<delete id="deleteInfo">
+	delete from yquiz1 where y_id=#{y_id}
+	</delete>
+
+
+</mapper>

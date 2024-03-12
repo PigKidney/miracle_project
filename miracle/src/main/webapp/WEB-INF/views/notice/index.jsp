@@ -72,6 +72,7 @@ String titleSearch = request.getParameter("titleSearch");
 		</div>
 
 	</div>
+	<a href="/ymaker/quiz1">퀴즈 페이지로 이동</a>
 </div>
 
 <script src="/resources/notice/index.js"></script>

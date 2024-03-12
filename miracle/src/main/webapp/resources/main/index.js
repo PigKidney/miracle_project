@@ -99,17 +99,18 @@ for (let i = 2; i > -8; i--) {
     }
 }
 // 날짜
-let calendarList7 = calendarList.children[2].textContent.substring(0, calendarList.children[0].textContent.length - 3).replace('(','');
+let calendarList7 = calendarList.children[2].textContent.substring(0, calendarList.children[0].textContent.length - 2).replace('(', '');
 let islandList = [];
 let fieldBossList = [];
 let chaosGateList = [];
 let voyageList = [];
 calendarList.children[2].innerHTML += todayStar;
 
+
 for (let i = 2; i < 8; i++) {
     calendarInfo.children[0].children[i].addEventListener('click', () => {
 
-        calendarList7 = calendarList.children[i].textContent.substring(0, calendarList.children[0].textContent.length - 3).replace('(','');
+        calendarList7 = calendarList.children[i].textContent.substring(0, calendarList.children[0].textContent.length - 2).replace('(', '');
 
         for (let j = 2; j < 8; j++) {
             if (calendarList.children[j].children[0] != null) {
@@ -139,7 +140,6 @@ function island() {
                 for (let j = 0; j < Object.keys(allInfo[i].StartTimes).length; j++) {
                     let centerDay = new Date(allInfo[i].StartTimes[j]);
                     if (allInfo[i].CategoryName == '모험 섬' && centerDay.getDate() == calendarList7) {
-
                         if (i >= 1 && allInfo[i - 1].ContentsName != allInfo[i].ContentsName) {
                             islandList.push(allInfo[i])
                             break;
@@ -150,6 +150,7 @@ function island() {
                     }
                 }
             }
+            console.log(islandList)
 
             for (let i = 0; i < Object.keys(islandList).length; i++) {
                 switch (i) {
