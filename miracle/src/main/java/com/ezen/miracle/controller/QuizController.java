@@ -3,6 +3,7 @@ package com.ezen.miracle.controller;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -14,11 +15,14 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.miracle.dto.Quiz1DTO;
 import com.ezen.miracle.service.QuizService;
@@ -42,18 +46,18 @@ public class QuizController {
 
 		quizService.selectCountry(model);
 		quizService.selectCity(model);
-		quizService.selectAll(model, country_name, city_name, y_id, y_name, sex, firstDate, lastDate);
+		quizService.selectAll(model);
 
 		log.info("main : " + country_name);
 		return "/ymaker/quiz1";
 	}
-	
+
 	@GetMapping("/quiz2")
 	public String firstQuiz2(Quiz1DTO dto, Model model) {
 		quizService.selectCountry(model);
 		quizService.selectCity(model);
 		log.info("팝업");
-		
+
 		return "/ymaker/quiz2";
 	}
 
@@ -64,7 +68,7 @@ public class QuizController {
 		log.info("read : " + dto);
 		quizService.selectCountry(model);
 		quizService.selectCity(model);
-		quizService.selectAll(model, country_name, city_name, y_id, y_name, sex, firstDate, lastDate);
+		quizService.selectAll(model);
 		return "/ymaker/quiz1";
 	}
 
@@ -77,6 +81,7 @@ public class QuizController {
 		log.info("추가 : " + dto);
 		return "redirect:/ymaker/quiz1";
 	}
+
 	@PostMapping("/save2")
 	public String save2(Quiz1DTO dto) {
 		if (dto.getY_date() == null) {
@@ -97,7 +102,8 @@ public class QuizController {
 	@PostMapping("/excel")
 	public void excel(HttpServletResponse response, Model model, @Param("country_name") String country_name,
 			@Param("city_name") String city_name, @Param("y_id") String y_id, @Param("y_name") String y_name,
-			@Param("sex") String sex, @Param("firstDate") String firstDate, @Param("lastDate") String lastDate) throws IOException {
+			@Param("sex") String sex, @Param("firstDate") String firstDate, @Param("lastDate") String lastDate)
+			throws IOException {
 		Workbook wb = new XSSFWorkbook();
 		Sheet sheet = wb.createSheet("excel");
 		Row row = null;
@@ -118,9 +124,9 @@ public class QuizController {
 		cell = row.createCell(5);
 		cell.setCellValue("y_date");
 
-		quizService.selectAll(model, country_name, city_name, y_id, y_name, sex, firstDate, lastDate);
+		quizService.selectAll(model);
 		List<Quiz1DTO> list = (List) model.getAttribute("selectAll");
-		for (int i = 0; i < list.size(); i++) {	
+		for (int i = 0; i < list.size(); i++) {
 			row = sheet.createRow(rowNum++);
 			cell = row.createCell(0);
 			cell.setCellValue(list.get(i).getY_id());
@@ -135,14 +141,52 @@ public class QuizController {
 			cell = row.createCell(5);
 			cell.setCellValue(list.get(i).getY_date());
 		}
-		
-		 // 컨텐츠 타입과 파일명 지정
-		response.setContentType("ms-vnd/excel");
-        response.setHeader("Content-Disposition", "attachment;filename=yQuiz.xlsx");
 
-        // Excel File Output
-        wb.write(response.getOutputStream());
-        wb.close();
+		// 컨텐츠 타입과 파일명 지정
+		response.setContentType("ms-vnd/excel");
+		response.setHeader("Content-Disposition", "attachment;filename=yQuiz.xlsx");
+
+		// Excel File Output
+		wb.write(response.getOutputStream());
+		wb.close();
 	}
 
+	@ResponseBody
+	@GetMapping(value = "/list", produces = "application/text; charset=UTF-8")
+	public String readTheList(Model model, String country_name, String city_name, String y_id, String y_name, String sex, String firstDate, String lastDate) {
+		log.info(country_name + ", " + city_name + ", " + y_id + ", " + y_name + ", " + sex + ", "+ firstDate + " ~ " + lastDate);
+		return country_name + ", " + city_name + ", " + y_id + ", " + y_name + ", " + sex + ", "+ firstDate + " ~ " + lastDate;
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/getCountry", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Quiz1DTO> getCountry(Model model) {
+		quizService.selectCountry(model);
+		List<Quiz1DTO> list = (List<Quiz1DTO>) model.getAttribute("selectCountry");
+		return list;
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/getCity", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Quiz1DTO> getCity(Model model) {
+		quizService.selectCity(model);
+		List<Quiz1DTO> list = (List<Quiz1DTO>) model.getAttribute("selectCity");
+		return list;
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/getList", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Quiz1DTO> getList(Model model) {
+		quizService.selectAll(model);
+		List<Quiz1DTO> list = (List<Quiz1DTO>) model.getAttribute("selectAll");
+		return list;
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/getId", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getId(Model model, String y_id) {
+		model.addAttribute("y_id", y_id);
+		log.info(y_id);
+		return y_id;
+	}
 }

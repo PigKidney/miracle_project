@@ -1,7 +1,9 @@
 @charset "UTF-8";
-*{
+
+* {
 	box-sizing: border-box;
 }
+
 .y-main-grid {
 	border: 1px black solid;
 	background-color: white;
@@ -12,12 +14,10 @@
 }
 
 .y-tab1-grid {
-
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	border-bottom: 1px black solid;
 	padding: 10px;
-	
 }
 
 .y-tab2-buttonList {
@@ -30,9 +30,27 @@
 }
 
 .y-tab2-grid {
-	display: grid;
 	border: 1px black solid;
 	margin: 10px;
-	grid-template-columns: repeat(6, 1fr);
 	width: 580px;
+	text-align: center;
+}
+
+#cityBox {
+	width: 93px;
+}
+
+#countryBox {
+	width: 93px;
+}
+
+.add-grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+}
+.plzDoubleClick{
+	cursor: pointer;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	user-select: none;
 }

@@ -6,57 +6,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="/resources/jquery/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="/resources/ymaker/quiz2.css" />
 </head>
 <body>
 	<form id="popUpForm" action="./save2" method="post">
-		<div>
-			<select id="countryBox" name="country_name">
-				<option value="">국가</option>
-				<c:forEach items="${selectCountry}" var="country">
-					<c:choose>
-						<c:when test="${param.country_name eq country.country_name}">
-							<option selected="selected">${country.country_name}</option>
-						</c:when>
-						<c:otherwise>
-							<option>${country.country_name}</option>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</select>
+		<div id="popUpMain">
+			<div id="popUpGrid">
+				<div>아이디</div>
+				<div>
+					<input type="text" size="8" name="y_id" value="${param.y_id}"
+						readonly="readonly" />
+				</div>
+				<div>이름</div>
+				<div>
+					<input type="text" placeholder="이름" size="8" name="y_name" />
+				</div>
+				<div>성별</div>
+				<div>
+					<input type="radio" id="radioMale" name="sex" value="male" />남 <input
+						type="radio" id="radioFemale" name="sex" value="female" />여
+				</div>
+				<div>국가</div>
+				<div>
+					<select id="countryBox" name="country_name">
+						<option value="">국가</option>
+					</select>
+				</div>
+				<div>도시</div>
+				<div>
+					<select id="cityBox" name="city_name">
+						<option value="">도시</option>
+					</select>
+				</div>
+				<div>
+					<button id="popUpFormBtn">저장</button>
+				</div>
+				<div>
+					<button id="cancelBtn">취소</button>
+				</div>
+			</div>
 		</div>
-		<div>
-			<select id="cityBox" name="city_name">
-				<option value="">도시</option>
-				<c:forEach items="${selectCity}" var="city">
-					<c:if test="${param.country_name eq city.country_name}">
-						<c:choose>
-							<c:when test="${param.city_name eq city.city_name}">
-								<option selected="selected">${city.city_name}</option>
-							</c:when>
-							<c:otherwise>
-								<option>${city.city_name}</option>
-							</c:otherwise>
-						</c:choose>
-					</c:if>
-
-				</c:forEach>
-			</select>
-
-		</div>
-		<div>
-			<input type="text" placeholder="아이디" size="8" name="y_id"
-				/>
-		</div>
-		<div>
-			<input type="text" placeholder="이름" size="8" name="y_name"
-				/>
-		</div>
-		<div></div>
-		<div>
-			<input type="radio" id="radioMale" name="sex" value="male" />남 
-			<input type="radio" id="radioFemale" name="sex" value="female" />여
-		</div>
-		<button id="popUpFormBtn">저장</button>
 	</form>
 	<script src="/resources/ymaker/quiz2.js"></script>
 </body>

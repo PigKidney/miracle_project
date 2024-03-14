@@ -31,49 +31,26 @@
 			<div class="y-tab1-grid">
 				<div>
 					<input type="text" placeholder="아이디" size="8" name="y_id"
-						form="saveForm" />
+						form="saveForm" id="yId" />
 				</div>
 				<div>
 					<input type="text" placeholder="이름" size="8" name="y_name"
-						form="saveForm" />
+						form="saveForm" id="yName" />
 				</div>
 				<div></div>
 				<div>
 					<input type="radio" id="radioMale" name="sex" form="saveForm"
-						value="male" />남 <input type="radio" id="radioFemale" name="sex"
-						form="saveForm" value="female" />여
+						value="남" />남 <input type="radio" id="radioFemale" name="sex"
+						form="saveForm" value="여" />여
 				</div>
 				<div>
 					<select id="countryBox" name="country_name" form="saveForm">
 						<option value="">국가</option>
-						<c:forEach items="${selectCountry}" var="country">
-							<c:choose>
-								<c:when test="${param.country_name eq country.country_name}">
-									<option selected="selected">${country.country_name}</option>
-								</c:when>
-								<c:otherwise>
-									<option>${country.country_name}</option>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
 					</select>
 				</div>
 				<div>
 					<select id="cityBox" name="city_name" form="saveForm">
 						<option value="">도시</option>
-						<c:forEach items="${selectCity}" var="city">
-							<c:if test="${param.country_name eq city.country_name}">
-								<c:choose>
-									<c:when test="${param.city_name eq city.city_name}">
-										<option selected="selected">${city.city_name}</option>
-									</c:when>
-									<c:otherwise>
-										<option>${city.city_name}</option>
-									</c:otherwise>
-								</c:choose>
-							</c:if>
-
-						</c:forEach>
 					</select>
 				</div>
 				<div>
@@ -84,36 +61,33 @@
 				</div>
 			</div>
 		</form>
-			<div class="y-tab2-buttonList">
-			<button id="modifyBtn" form="saveForm" formaction="./save">수정</button>
-				<button id="readFormBtn" form="saveForm" formaction="./read">조회</button>
-				<button id="saveFormBtn">저장</button>
-				<button id="excelDownBtn" form="saveForm" formaction="./excel">엑셀다운</button>
-				<button id="deleteFormBtn" form="delForm" formaction="./delete">삭제</button>
-			</div>
+		<div class="y-tab2-buttonList">
+			<button id="readFormBtn">조회</button>
+			<button id="addBtn">추가</button>
+			<button id="addRowFormBtn">저장</button>
+			<button id="excelDownBtn" form="saveForm" formaction="./excel">엑셀다운</button>
+			<button id="deleteFormBtn" form="delForm" formaction="./delete">삭제</button>
+		</div>
 
-		<form id=delForm method="POST">
-			<div class="y-tab2-grid">
+		<div class="y-tab2-grid">
+			<div class="add-grid">
 				<div>선택</div>
 				<div>아이디</div>
 				<div>이름</div>
 				<div>성별</div>
 				<div>국가</div>
 				<div>도시</div>
-				<c:forEach items="${selectAll}" var="all">
-					<div>
-						<input type="checkbox" name="y_id" value="${all.y_id}" />
-					</div>
-					<div>${all.y_id}</div>
-					<div>${all.y_name}</div>
-					<div>${all.sex}</div>
-					<div>${all.country_name}</div>
-					<div>${all.city_name}</div>
-				</c:forEach>
-
 			</div>
-		</form>
+			<form action="./save" method="post" id="addRowForm">
+				<div id="addDataList" class="add-grid"></div>
+			</form>
+			<form id="delForm" method="POST">
+				<div id="selectedList" class=""></div>
+			</form>
+		</div>
 
+
+		<div id="testDiv">ㅇㅅㅇ</div>
 	</div>
 	<script src="/resources/ymaker/quiz1.js"></script>
 </body>

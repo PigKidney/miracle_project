@@ -1,0 +1,29 @@
+@charset "UTF-8";
+#popUpMain{
+	border: 1px black solid;
+	width: 260px;
+	height: auto;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+#popUpGrid{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 10px;
+	text-align: center;
+}
+
+#popUpFormBtn{
+	width: 60px;
+}
+#cancelBtn{
+	width: 60px;
+}
+#cityBox {
+	width: 100px;
+}
+
+#countryBox {
+	width: 100px;
+}

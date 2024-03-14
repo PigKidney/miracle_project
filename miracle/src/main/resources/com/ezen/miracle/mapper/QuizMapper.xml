@@ -28,7 +28,7 @@ select * from city
 	</insert>
 	
 	<select id="selectAll">
-	select * from yquiz1
+	select * from yquiz1 order by y_date desc
 	</select>
 	
 	
