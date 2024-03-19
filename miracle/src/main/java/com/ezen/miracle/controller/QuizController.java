@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.miracle.dto.Quiz1DTO;
 import com.ezen.miracle.service.QuizService;
+import com.ezen.miracle.util.PageVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -42,13 +43,15 @@ public class QuizController {
 	@GetMapping("/quiz1")
 	public String firstQuiz(Model model, @Param("country_name") String country_name,
 			@Param("city_name") String city_name, @Param("y_id") String y_id, @Param("y_name") String y_name,
-			@Param("sex") String sex, @Param("firstDate") String firstDate, @Param("lastDate") String lastDate) {
+			@Param("sex") String sex, @Param("firstDate") String firstDate, @Param("lastDate") String lastDate, PageVO vo, Integer nowPage, Integer cntPerPage) {
 
 		quizService.selectCountry(model);
 		quizService.selectCity(model);
-		quizService.selectAll(model);
-
+		quizService.pageAll(model, vo, nowPage, cntPerPage);
+		
+		log.info("now0 : " + nowPage + " , cPP0 : " + cntPerPage);
 		log.info("main : " + country_name);
+		log.info(model);
 		return "/ymaker/quiz1";
 	}
 
@@ -153,9 +156,9 @@ public class QuizController {
 
 	@ResponseBody
 	@GetMapping(value = "/list", produces = "application/text; charset=UTF-8")
-	public String readTheList(Model model, String country_name, String city_name, String y_id, String y_name, String sex, String firstDate, String lastDate) {
+	public String readTheList(Model model, String country_name, String[] city_name, String y_id, String y_name, String sex, String firstDate, String lastDate) {
 		log.info(country_name + ", " + city_name + ", " + y_id + ", " + y_name + ", " + sex + ", "+ firstDate + " ~ " + lastDate);
-		return country_name + ", " + city_name + ", " + y_id + ", " + y_name + ", " + sex + ", "+ firstDate + " ~ " + lastDate;
+		return country_name + ", " + Arrays.toString(city_name) + ", " + y_id + ", " + y_name + ", " + sex + ", "+ firstDate + " ~ " + lastDate;
 	}
 
 	@ResponseBody
@@ -189,4 +192,19 @@ public class QuizController {
 		log.info(y_id);
 		return y_id;
 	}
+	
+	@ResponseBody
+	@GetMapping(value = "/modifiedPopUp", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String modifiedPopUp(Quiz1DTO dto) {
+		log.info(dto);
+		quizService.insertInfo(dto);
+		return "success";
+	}
+	
+	@GetMapping("/quiz3")
+	public String quiz3(Model model, String y_id) {
+		quizService.selectOne(model, y_id);
+		return "/ymaker/quiz3";
+	}
+	
 }

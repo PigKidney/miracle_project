@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <script src="/resources/jquery/jquery-3.7.1.min.js"></script>
+<title>Insert title here</title>
+<link rel="stylesheet" href="/resources/ymaker/quiz1.css" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <script
@@ -21,13 +22,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
 	integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="/resources/ymaker/quiz1.css" />
-
 </head>
-
 <body>
 
-	Grid그리드
+Grid그리드
 	<div class="y-main-grid">
 		<form id="saveForm" method="POST">
 			<div class="y-tab1-grid">
@@ -39,14 +37,11 @@
 					<input type="text" placeholder="이름" size="14" name="y_name"
 						form="saveForm" id="yName" />
 				</div>
+				<div></div>
 				<div>
 					<input type="radio" id="radioMale" name="sex" form="saveForm"
 						value="남" />남 <input type="radio" id="radioFemale" name="sex"
 						form="saveForm" value="여" />여
-				</div>
-				<div>
-					<input type="radio" />한국어 <input type="radio" />English
-
 				</div>
 				<div>
 					<select id="countryBox" name="country_name" form="saveForm">
@@ -97,77 +92,16 @@
 				<div id="addDataList" class="add-grid add-row"></div>
 			</form>
 			<form id="delForm" method="POST">
-				<div id="selectedList" class="">
-					<div>
-						<c:forEach items="${ylist}" var="list" begin="0" end="4">
-							<c:choose>
-								<c:when test="${list.sex eq '남'}">
-									<div
-										class="test-color add-grid plzDoubleClick add-row male-row">
-										<div>
-											<input type="checkbox" />
-										</div>
-										<div>${list.y_id}</div>
-										<div>${list.y_name}</div>
-										<div>${list.sex}</div>
-										<div>${list.country_name}</div>
-										<div>${list.city_name}</div>
-									</div>
-								</c:when>
-
-								<c:otherwise>
-									<div
-										class="test-color add-grid plzDoubleClick add-row female-row">
-										<div>
-											<input type="checkbox" />
-										</div>
-										<div>${list.y_id}</div>
-										<div>${list.y_name}</div>
-										<div>${list.sex}</div>
-										<div>${list.country_name}</div>
-										<div>${list.city_name}</div>
-									</div>
-
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-					</div>
-
-					<c:choose>
-						<c:when test="${ypage.startPage != 1}">
-							<a class="pageNumber"
-								href="/ymaker/quiz1?nowPage=${ypage.startPage-1}&cntPerPage=${ypage.cntPerPage}">&lt;</a>
-
-						</c:when>
-						<c:otherwise>&lt;</c:otherwise>
-					</c:choose>
-
-					<c:forEach begin="${ypage.startPage}" end="${ypage.endPage}"
-						var="p">
-						<c:choose>
-							<c:when test="${p == ypage.nowPage}">
-								<b class="nowSelectedPage">${p}</b>
-							</c:when>
-							<c:when test="${p != ypage.nowPage}">
-								<a class="pageNumber nonSelectedPage"
-									href="/ymaker/quiz1?nowPage=${p}&cntPerPage=${ypage.cntPerPage}">${p}</a>
-							</c:when>
-						</c:choose>
-					</c:forEach>
-
-					<c:choose>
-						<c:when test="${ypage.endPage != ypage.lastPage}">
-							<a class="pageNumber"
-								href="/ymaker/quiz1?nowPage=${ypage.endPage+1}&cntPerPage=${ypage.cntPerPage}">&gt;</a>
-						</c:when>
-						<c:otherwise>&gt;</c:otherwise>
-					</c:choose>
-
-
-
+				<div id="selectedList" class=""></div>
+				<div class="add-grid plzDoubleClick add-row">
+				<div>${selectOne.y_number}</div>
+				<div>${selectOne.y_id}</div>
+				<div>${selectOne.y_name}</div>
+				<div>${selectOne.sex}</div>
+				<div>${selectOne.country_name}</div>
+				<div>${selectOne.city_name}</div>
 				</div>
 			</form>
-			<div class="pageDiv"></div>
 		</div>
 
 
@@ -175,5 +109,6 @@
 	</div>
 
 	<script src="/resources/ymaker/quiz1.js"></script>
+
 </body>
 </html>

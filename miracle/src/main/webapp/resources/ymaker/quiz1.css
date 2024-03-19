@@ -7,7 +7,7 @@
 .y-main-grid {
 	border: 1px black solid;
 	background-color: white;
-	width: 600px;
+	width: 1000px;
 	height: auto;
 	margin-left: 100px;
 	margin-top: 50px;
@@ -19,7 +19,9 @@
 	border-bottom: 1px black solid;
 	padding: 10px;
 }
-
+.y-tab1-grid>div{
+	padding: 10px;
+}
 .y-tab2-buttonList {
 	text-align: right;
 	padding: 10px;
@@ -32,25 +34,90 @@
 .y-tab2-grid {
 	border: 1px black solid;
 	margin: 10px;
-	width: 580px;
+	width: 980px;
 	text-align: center;
 }
 
 #cityBox {
-	width: 93px;
+	width: 140px;
 }
 
 #countryBox {
-	width: 93px;
+	width: 100px;
 }
 
 .add-grid {
 	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
-.plzDoubleClick{
+.add-grid2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+}
+
+.plzDoubleClick {
 	cursor: pointer;
-	margin-top: 5px;
-	margin-bottom: 5px;
 	user-select: none;
+	border-top: 1px black solid;
+	padding: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.cursor{
+	cursor: pointer;
+}
+
+.row-bar {
+	padding: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	user-select: none;
+}
+
+.add-row {
+	border-top: 1px black solid;
+	padding: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+		
+}
+
+.male-row {
+	background-color: skyblue;
+}
+
+.female-row {
+	background-color: wheat;
+}
+.cityCheckBox{
+	width: 150px;
+	height: 33px;
+	border-bottom: 1px black solid;
+	border-left: 1px black solid;
+	border-right: 1px black solid;
+	padding: 5px;
+}
+.cityMainBox{
+	width: 150px;
+	height: 33px;
+	border: 1px black solid;
+	padding: 5px;
+}
+.cityCheckBoxOff{
+	display: none;
+}
+
+.arrow{
+	font-size: 15px;
+	font-weight: bold;
+	user-select: none;
+}
+
+.ms4-grid{
+	display: grid;
+	grid-template-columns: 1fr 1fr
+}
+
+.row-bar-height{
+	line-height: 40px;
 }
