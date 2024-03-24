@@ -40,7 +40,7 @@ public class QuizServiceImpl implements QuizService {
 	}
 
 	@Override
-	public void insertInfo(Quiz1DTO dto) {		
+	public void insertInfo(Quiz1DTO dto) {
 		log.info("insert : " + dto);
 		quizMapper.insertInfo(dto);
 	}
@@ -58,16 +58,26 @@ public class QuizServiceImpl implements QuizService {
 	public void selectAll(Model model) {
 		model.addAttribute("selectAll", quizMapper.selectAll());
 	}
-	
-	@Override
-	public int countAll() {
-		return quizMapper.countAll();
-	}
-	@Override
-	public void pageAll(Model model, PageVO vo, Integer nowPage, Integer cntPerPage) {
-		int total = countAll();
 
+	@Override
+	public int countAll(String y_id,
+			String y_name, String sex, String country_name,
+			String city_name, String firstDate,
+			String lastDate) {
+		return quizMapper.countAll(y_id, y_name, sex, country_name, city_name, firstDate, lastDate);
+	}
+
+	@Override
+	public void pageAll(Model model, PageVO vo, Integer nowPage, Integer cntPerPage, String y_id, String y_name, String sex, String country_name,
+			String city_name, String firstDate, String lastDate) {
+		int count = countAll(y_id, y_name, sex, country_name, city_name, firstDate, lastDate);
 		log.info("now1 : " + nowPage + ", cPP1 : " + cntPerPage);
+		log.info("firstDate : " + firstDate + " / lastDate :" + lastDate);
+		log.info("id : " + y_id + " / name :" + y_name);
+		
+		log.warn("pageAll : "+country_name + ", " + city_name + ", " + y_id + ", " + y_name + ", " + sex + ", " + firstDate + " ~ "
+				+ lastDate);
+		
 		// 처음 화면은 1~5페이지가 나옴
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = 1;
@@ -78,18 +88,15 @@ public class QuizServiceImpl implements QuizService {
 			cntPerPage = 5;
 		}
 		log.info("now2 : " + nowPage + ", cPP2 : " + cntPerPage);
-		vo = new PageVO(total, nowPage, cntPerPage);
-		List<Quiz1DTO> list = quizMapper.pageAll(vo);
-		log.info(vo.getStart());
-		log.info(vo.getEnd());
-		log.info(vo);
-		log.info(list);
-
+		vo = new PageVO(count, nowPage, cntPerPage);
+		List<Quiz1DTO> list = quizMapper.pageAll(vo.getStart(), vo.getEnd(), y_id, y_name, sex, country_name, city_name,
+				firstDate, lastDate);
+		log.fatal(list);
+		
 		model.addAttribute("ypage", vo);
 		model.addAttribute("ylist", list);
-
 	}
-	
+
 	@Override
 	public void selectOne(Model model, String y_id) {
 		model.addAttribute("selectOne", quizMapper.selectOne(y_id));

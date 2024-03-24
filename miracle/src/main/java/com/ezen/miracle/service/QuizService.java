@@ -17,9 +17,16 @@ public interface QuizService {
 	void deleteInfo(String[] y_id);
 
 	void selectAll(Model model);
-	
+
 	void selectOne(Model model, String y_id);
-	
-	int countAll();
-	void pageAll(Model model, PageVO vo, Integer nowPage, Integer cntPerPage);
+
+	int countAll(@Param("y_id") String y_id,
+			@Param("y_name") String y_name, @Param("sex") String sex, @Param("country_name") String country_name,
+			@Param("city_name") String city_name, @Param("firstDate") String firstDate,
+			@Param("lastDate") String lastDate);
+
+	void pageAll(Model model, PageVO vo, Integer nowPage, Integer cntPerPage, @Param("y_id") String y_id,
+			@Param("y_name") String y_name, @Param("sex") String sex, @Param("country_name") String country_name,
+			@Param("city_name") String city_name, @Param("firstDate") String firstDate,
+			@Param("lastDate") String lastDate);
 }

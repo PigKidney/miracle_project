@@ -12,4 +12,5 @@ public class Quiz1DTO {
 	private String city_name;
 	private String y_date;
 	private Integer y_number;
+	private Integer rn;
 }

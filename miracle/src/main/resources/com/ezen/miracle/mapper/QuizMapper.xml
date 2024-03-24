@@ -4,51 +4,113 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ezen.miracle.mapper.QuizMapper">
 
-<select id="selectCountry">
-select * from country 
-</select>
+	<select id="selectCountry">
+		select * from country
+	</select>
 
-<select id="selectCity">
-select * from city
-</select>
+	<select id="selectCity">
+		select * from city
+	</select>
 
-<insert id="insertInfo">
+	<insert id="insertInfo">
 		MERGE INTO yquiz1
 		USING dual
-		ON 
+		ON
 		(y_id = #{y_id})
-		WHEN MATCHED THEN
-		UPDATE SET 
-		y_name = #{y_name} ,sex = #{sex}, country_name = #{country_name}, city_name = #{city_name}, y_date = sysdate
-		WHEN NOT MATCHED THEN
-		INSERT 
-		(y_id, y_name, sex, country_name,city_name, y_date, y_number)
+		WHEN
+		MATCHED THEN
+		UPDATE SET
+		y_name = #{y_name} ,sex = #{sex}, country_name =
+		#{country_name}, city_name
+		= #{city_name}, y_date = sysdate
+		WHEN NOT
+		MATCHED THEN
+		INSERT
+		(y_id, y_name, sex, country_name,city_name, y_date,
+		y_number)
 		VALUES
-		(#{y_id},#{y_name},#{sex},#{country_name},#{city_name},sysdate, y_number_seq.nextval)
+		(#{y_id},#{y_name},#{sex},#{country_name},#{city_name},sysdate,
+		y_number_seq.nextval)
 	</insert>
-	
+
 	<select id="selectAll">
-	select * from yquiz1 order by y_date desc
+		select * from yquiz1 order by y_date desc
 	</select>
-	
-	
+
+
 	<delete id="deleteInfo">
-	delete from yquiz1 where y_id=#{y_id}
+		delete from yquiz1 where y_id=#{y_id}
 	</delete>
-	
+
 	<select id="selectOne">
-	select * from yquiz1 where y_id =#{y_id}
+		select * from yquiz1 where y_id =#{y_id}
 	</select>
-	
+
 	<select id="countAll">
-	select count(*) from yquiz1
+		select count(*) from yquiz1
+		
+		<where>
+			<if test='y_id != null and y_id != ""'>
+				and y_id = #{y_id}
+			</if>
+			<if test='y_name != null and y_name !=""'>
+				and y_name = #{y_name}
+			</if>
+			<if test='sex != null and sex !=""'>
+				and sex = #{sex}
+			</if>
+			<if test='country_name != null and country_name !=""'>
+				and country_name = #{country_name}
+			</if>
+			<if test='city_name != null and city_name !="" and city_name !="ALL"'>
+				and city_name = #{city_name}
+			</if>
+			<if test='firstDate != null and firstDate !=""'>
+				and #{firstDate} <![CDATA[<]]> y_date 			
+			</if>
+			<if test='lastDate != null and lastDate !=""'>
+				and #{lastDate} <![CDATA[>]]> y_date
+			</if>
+		</where>
+		
 	</select>
-	
+
 	<select id="pageAll">
-	select bb.* from (select rownum as rn, aa.* from (select * from yquiz1 order by y_number DESC) aa) 
-	bb where bb.rn BETWEEN #{start} and #{end}
-	
+		select bb.* from (select rownum as rn, aa.* from
+
+		(select * from yquiz1
+
+		<where>
+			<if test='y_id != null and y_id != ""'>
+				and y_id = #{y_id}
+			</if>
+			<if test='y_name != null and y_name !=""'>
+				and y_name = #{y_name}
+			</if>
+			<if test='sex != null and sex !=""'>
+				and sex = #{sex}
+			</if>
+			<if test='country_name != null and country_name !=""'>
+				and country_name = #{country_name}
+			</if>
+			<if test='city_name != null and city_name !="" and city_name !="ALL"'>
+				and city_name = #{city_name}
+			</if>
+			<if test='firstDate != null and firstDate !=""'>
+				and #{firstDate} <![CDATA[<]]> y_date 			
+			</if>
+			<if test='lastDate != null and lastDate !=""'>
+				and #{lastDate} <![CDATA[>]]> y_date
+			</if>
+		</where>
+
+		order by y_number DESC)
+		aa) bb where bb.rn BETWEEN #{start} and #{end}
+
+
+
 	</select>
+
 
 
 </mapper>

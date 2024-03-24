@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,33 +30,37 @@
 
 	Grid그리드
 	<div class="y-main-grid">
-		<form id="saveForm" method="POST">
+		<form id="saveForm" method="GET" action="./quiz1">
 			<div class="y-tab1-grid">
 				<div>
-					<input type="text" placeholder="아이디" size="10" name="y_id"
+					<input type="text" placeholder="<spring:message code="boxid"></spring:message>" size="10" name="y_id"
 						form="saveForm" id="yId" />
 				</div>
 				<div>
-					<input type="text" placeholder="이름" size="14" name="y_name"
+					<input type="text" placeholder="<spring:message code="boxname"></spring:message>" size="14" name="y_name"
 						form="saveForm" id="yName" />
 				</div>
 				<div>
 					<input type="radio" id="radioMale" name="sex" form="saveForm"
-						value="남" />남 <input type="radio" id="radioFemale" name="sex"
-						form="saveForm" value="여" />여
+						value="남" /><spring:message code="male"></spring:message> <input type="radio" id="radioFemale" name="sex"
+						form="saveForm" value="여" /> <spring:message code="female"></spring:message> 
 				</div>
 				<div>
-					<input type="radio" />한국어 <input type="radio" />English
-
+					<input type="radio" name="lang" class="langko" value="ko" checked="checked"
+					<c:if test="${param.lang eq 'ko'}">checked="checked" </c:if>
+					/>한국어 
+					<input type="radio" name="lang" class="langen" value="en"
+					<c:if test="${param.lang eq 'en'}">checked="checked" </c:if>
+					/>English
 				</div>
 				<div>
 					<select id="countryBox" name="country_name" form="saveForm">
-						<option value="">국가</option>
+						<option value=""><spring:message code="country"></spring:message></option>
 					</select>
 				</div>
 				<div>
 					<div class="cityMainBox">
-						<input type="checkbox" name="city_name" value="ALL" />전체&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						<input type="checkbox" name="city_name" value="ALL" /><spring:message code="cityall"></spring:message>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
 							class="material-symbols-outlined cursor clickToShow arrow">
 							keyboard_arrow_down </span>
 					</div>
@@ -70,25 +75,25 @@
 			</div>
 		</form>
 		<div class="y-tab2-buttonList">
-			<button id="readFormBtn">조회</button>
-			<button id="addBtn">추가</button>
-			<button id="addRowFormBtn">저장</button>
-			<button id="excelDownBtn" form="saveForm" formaction="./excel">엑셀다운</button>
-			<button id="deleteFormBtn" form="delForm" formaction="./delete">삭제</button>
+			<button id="readFormBtn" type="button"><spring:message code="search"></spring:message></button>
+			<button id="addBtn"><spring:message code="insert"></spring:message></button>
+			<button id="addRowFormBtn"><spring:message code="save"></spring:message></button>
+			<button id="excelDownBtn" form="saveForm" formaction="./excel"><spring:message code="excel"></spring:message></button>
+			<button id="deleteFormBtn" form="delForm" formaction="./delete"><spring:message code="delete"></spring:message></button>
 		</div>
 
 		<div class="y-tab2-grid">
 			<div class="add-grid2 row-bar">
 
-				<div class="row-bar-height">선택</div>
-				<div class="row-bar-height">아이디</div>
-				<div class="row-bar-height">이름</div>
-				<div class="row-bar-height">성별</div>
+				<div class="row-bar-height"><spring:message code="select"></spring:message></div>
+				<div class="row-bar-height"><spring:message code="id"></spring:message></div>
+				<div class="row-bar-height"><spring:message code="name"></spring:message></div>
+				<div class="row-bar-height"><spring:message code="sex"></spring:message></div>
 				<div>
-					<div>장소</div>
+					<div><spring:message code="location"></spring:message></div>
 					<div class="ms4-grid">
-						<div>국가</div>
-						<div>도시</div>
+						<div><spring:message code="country"></spring:message></div>
+						<div><spring:message code="city"></spring:message></div>
 					</div>
 				</div>
 
@@ -98,12 +103,15 @@
 			</form>
 			<form id="delForm" method="POST">
 				<div id="selectedList" class="">
-					<div>
+				</div>
+				
+				<!-- 
+					<div class="dbcBox">
 						<c:forEach items="${ylist}" var="list" begin="0" end="4">
 							<c:choose>
 								<c:when test="${list.sex eq '남'}">
-									<div
-										class="test-color add-grid plzDoubleClick add-row male-row">
+									<div class="test-color add-grid plzDoubleClick add-row male-row dbcEvent" 
+									ondblclick="window.open('./quiz2?y_id=${list.y_id}&y_name=${y_name}&sex=${list.sex}&country_name=${list.country_name}&city_name=${list.city_name}','','width=1200,height=800,top=200,left=200')">
 										<div>
 											<input type="checkbox" />
 										</div>
@@ -117,7 +125,7 @@
 
 								<c:otherwise>
 									<div
-										class="test-color add-grid plzDoubleClick add-row female-row">
+										class="test-color add-grid plzDoubleClick add-row female-row dbcEvent" ondblclick="window.open('./quiz2?y_id=${list.y_id}&y_name=${y_name}&sex=${list.sex}&country_name=${list.country_name}&city_name=${list.city_name}','','width=1200,height=800,top=200,left=200')">
 										<div>
 											<input type="checkbox" />
 										</div>
@@ -132,45 +140,42 @@
 							</c:choose>
 						</c:forEach>
 					</div>
-
+				 -->
+					
+<!-- 
 					<c:choose>
 						<c:when test="${ypage.startPage != 1}">
-							<a class="pageNumber"
-								href="/ymaker/quiz1?nowPage=${ypage.startPage-1}&cntPerPage=${ypage.cntPerPage}">&lt;</a>
-
+							&lt;
 						</c:when>
 						<c:otherwise>&lt;</c:otherwise>
 					</c:choose>
 
-					<c:forEach begin="${ypage.startPage}" end="${ypage.endPage}"
-						var="p">
+					<c:forEach begin="${ypage.startPage}" end="${ypage.endPage}" var="p">
 						<c:choose>
 							<c:when test="${p == ypage.nowPage}">
 								<b class="nowSelectedPage">${p}</b>
 							</c:when>
 							<c:when test="${p != ypage.nowPage}">
-								<a class="pageNumber nonSelectedPage"
-									href="/ymaker/quiz1?nowPage=${p}&cntPerPage=${ypage.cntPerPage}">${p}</a>
+								${p}
 							</c:when>
 						</c:choose>
 					</c:forEach>
 
 					<c:choose>
 						<c:when test="${ypage.endPage != ypage.lastPage}">
-							<a class="pageNumber"
-								href="/ymaker/quiz1?nowPage=${ypage.endPage+1}&cntPerPage=${ypage.cntPerPage}">&gt;</a>
+							&gt;
 						</c:when>
 						<c:otherwise>&gt;</c:otherwise>
 					</c:choose>
-
-
-
-				</div>
+ -->
+ <div id="pageDiv">
+ 
+ </div>
+ 
+					
 			</form>
 			<div class="pageDiv"></div>
 		</div>
-
-
 		<div id="testDiv"></div>
 	</div>
 

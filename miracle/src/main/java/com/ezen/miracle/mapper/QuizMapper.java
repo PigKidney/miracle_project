@@ -17,9 +17,16 @@ public interface QuizMapper {
 	int deleteInfo(String y_id);
 
 	List<Quiz1DTO> selectAll();
-	
+
 	Quiz1DTO selectOne(String y_id);
-	
-	int countAll();
-	List<Quiz1DTO> pageAll(PageVO vo);
+
+	int countAll(@Param("y_id") String y_id,
+			@Param("y_name") String y_name, @Param("sex") String sex, @Param("country_name") String country_name,
+			@Param("city_name") String city_name, @Param("firstDate") String firstDate,
+			@Param("lastDate") String lastDate);
+
+	List<Quiz1DTO> pageAll(@Param("start") Integer start, @Param("end") Integer end, @Param("y_id") String y_id,
+			@Param("y_name") String y_name, @Param("sex") String sex, @Param("country_name") String country_name,
+			@Param("city_name") String city_name, @Param("firstDate") String firstDate,
+			@Param("lastDate") String lastDate);
 }

@@ -11,6 +11,8 @@ const yId = document.getElementById('yId');
 const yName = document.getElementById('yName');
 const radioMale = document.getElementById('radioMale');
 const radioFemale = document.getElementById('radioFemale');
+const pageDiv = document.getElementById('pageDiv');
+
 
 window.name = 'mainList';
 
@@ -33,7 +35,7 @@ $("#datepicker1").datepicker({
     , maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
 });
 
-$('#datepicker1').datepicker('setDate', 'today-5D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
+$('#datepicker1').datepicker('setDate', 'today-10D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
 
 
 $("#datepicker2").datepicker({
@@ -55,7 +57,7 @@ $("#datepicker2").datepicker({
     , maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
 });
 
-$('#datepicker2').datepicker('setDate', 'today+5D');
+$('#datepicker2').datepicker('setDate', 'today+10D');
 
 
 deleteFormBtn.addEventListener('click', () => {
@@ -65,10 +67,11 @@ deleteFormBtn.addEventListener('click', () => {
         alert('삭제가 취소되었습니다.')
     }
 })
-
-
-
-
+/*
+$('#readFormBtn').click(function (e) {
+    $('#saveForm').submit();
+});
+*/
 
 $("#readFormBtn").click(function () {
 
@@ -86,144 +89,175 @@ $("#readFormBtn").click(function () {
     xhttp.addEventListener('readystatechange', () => {
         if (xhttp.status == 200 && xhttp.readyState == 4) {
             const cargo = xhttp.responseText;
-            const obj = JSON.parse(cargo);
-            console.log(obj);
+            const objdata = JSON.parse(cargo);
 
             $.ajax({
                 type: "GET",
-                url: "./list",
+                url: "./getList",
                 data: {
                     country_name: countryBox.value,
                     city_name: $("input[name='city_name']:checked").val(),
                     y_id: yId.value,
                     y_name: yName.value,
-                    sex: radioCheck == '남' ? '남' : radioCheck == '여' ? '여' : 'male & female',
+                    sex: radioCheck == '남' ? '남' : radioCheck == '여' ? '여' : '',
                     firstDate: datepicker1.value,
                     lastDate: datepicker2.value,
                 },
                 contentType: "application/json; charset:UTF-8",
-                dataType: "text",
-                success: function (data, status, xhr) {
-                    console.log(data)
-                    console.log('-----------')
+                dataType: "json",
+                success: function (obj, status, xhr) {
+                    changePage(obj);
 
-                    //                $("#testDiv").text(data);
+                    $.ajax({
+                        type: "GET",
+                        url: "./getPage",
+                        data: {
+                            country_name: countryBox.value,
+                            city_name: $("input[name='city_name']:checked").val(),
+                            y_id: yId.value,
+                            y_name: yName.value,
+                            sex: radioCheck == '남' ? '남' : radioCheck == '여' ? '여' : '',
+                            firstDate: datepicker1.value,
+                            lastDate: datepicker2.value,
+                        },
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response);
+                            pageDiv.innerText = '';
+                            const prev = document.createElement('span');
+                            prev.classList.add('cursor');
+                            prev.textContent = '< ';
+                            pageDiv.append(prev);
+                            const next = document.createElement('span');
+                            next.classList.add('cursor');
+                            next.textContent = ' >'
 
+                            for (let i = response.startPage; i <= response.endPage; i++) {
+                                const pageNum = document.createElement('span');
+                                pageNum.classList.add('cursor')
+                                pageNum.textContent = i;
+                                pageDiv.append(pageNum);
+
+                                $(pageNum).click(function (e) {
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "./getList",
+                                        data: {
+                                            nowPage: pageNum.textContent,
+                                            cntPerPage: 5,
+                                            country_name: countryBox.value,
+                                            city_name: $("input[name='city_name']:checked").val(),
+                                            y_id: yId.value,
+                                            y_name: yName.value,
+                                            sex: radioCheck == '남' ? '남' : radioCheck == '여' ? '여' : '',
+                                            firstDate: datepicker1.value,
+                                            lastDate: datepicker2.value,
+                                        },
+                                        dataType: "json",
+                                        success: function (response) {
+
+                                            changePage(response);
+                                            prev.addEventListener('click', () => {
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "./getDataObject",
+                                                    data: {
+                                                        nowPage: pageNum.textContent,
+                                                        cntPerPage: 5,
+                                                        country_name: countryBox.value,
+                                                        city_name: $("input[name='city_name']:checked").val(),
+                                                        y_id: yId.value,
+                                                        y_name: yName.value,
+                                                        sex: radioCheck == '남' ? '남' : radioCheck == '여' ? '여' : '',
+                                                        firstDate: datepicker1.value,
+                                                        lastDate: datepicker2.value,
+                                                    },
+                                                    dataType: "json",
+                                                    success: function (response) {
+                                                    }
+                                                });
+                                            })
+                                        }
+                                    });
+                                });
+                            }
+                            pageDiv.append(next);
+                            prev.addEventListener('click', () => {
+
+                                if (response.startPage != 1) {
+                                    response.startPage -= 5;
+                                    response.endPage -= 5;
+                                    for (let i = 1; i < pageDiv.children.length - 1; i++) {
+                                        if (parseInt(pageDiv.children[i].textContent) + 5 <= response.lastPage) {
+                                            pageDiv.children[i].classList.remove('hidePage')
+                                            pageDiv.children[i].textContent = parseInt(pageDiv.children[i].textContent) - 5;
+                                        } else {
+                                            pageDiv.children[i].classList.remove('hidePage')
+                                            pageDiv.children[i].textContent = i;
+                                        }
+                                    }
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "./getList",
+                                        data: {
+                                            nowPage: response.nowPage,
+                                            cntPerPage: 5,
+                                            country_name: countryBox.value,
+                                            city_name: $("input[name='city_name']:checked").val(),
+                                            y_id: yId.value,
+                                            y_name: yName.value,
+                                            sex: radioCheck == '남' ? '남' : radioCheck == '여' ? '여' : '',
+                                            firstDate: datepicker1.value,
+                                            lastDate: datepicker2.value,
+                                        },
+                                        dataType: "json",
+                                        success: function (response) {
+                                            changePage(response)
+                                        }
+                                    });
+                                }
+                            })
+                            next.addEventListener('click', () => {
+                                if (response.endPage <= response.lastPage) {
+
+                                    response.startPage += 5;
+                                    response.endPage += 5;
+                                    for (let i = 1; i < pageDiv.children.length - 1; i++) {
+                                        if (parseInt(pageDiv.children[i].textContent) + 5 <= response.lastPage) {
+                                            pageDiv.children[i].textContent = parseInt(pageDiv.children[i].textContent) + 5;
+                                        } else {
+                                            pageDiv.children[i].classList.add('hidePage');
+                                        }
+                                    }
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "./getList",
+                                        data: {
+                                            nowPage: response.nowPage + 5,
+                                            cntPerPage: 5,
+                                            country_name: countryBox.value,
+                                            city_name: $("input[name='city_name']:checked").val(),
+                                            y_id: yId.value,
+                                            y_name: yName.value,
+                                            sex: radioCheck == '남' ? '남' : radioCheck == '여' ? '여' : '',
+                                            firstDate: datepicker1.value,
+                                            lastDate: datepicker2.value,
+                                        },
+                                        dataType: "json",
+                                        success: function (response) {
+                                            changePage(response)
+
+                                        }
+                                    });
+                                }
+                            })
+                        }
+                    });
                 },
                 error: function (xhr, status, error) {
                     console.log("error", error, status);
                 }
             });
-            $('#selectedList').children().remove();
-
-            for (let i = 0; i < obj.length; i++) {
-                if (yId.value == obj[i].y_id && yId.value != '' && yId.value != null) {
-                    const rowDiv = document.createElement('div');
-                    const makeDiv1 = document.createElement('div');
-                    const makeDiv2 = document.createElement('div');
-                    const makeDiv3 = document.createElement('div');
-                    const makeDiv4 = document.createElement('div');
-                    const makeDiv5 = document.createElement('div');
-                    const makeDiv6 = document.createElement('div');
-                    const makeCheckBox = document.createElement('input');
-                    const dblcickClass = 'plzDoubleClick-' + obj[i].y_id;
-
-                    rowDiv.classList.add('add-grid');
-                    rowDiv.classList.add(dblcickClass);
-                    rowDiv.classList.add('plzDoubleClick');
-                    rowDiv.value = obj[i].y_id;
-                    rowDiv.name = 'y_id';
-
-                    obj[i].sex == '남' ? rowDiv.classList.add('male-row') : rowDiv.classList.add('female-row');
-
-                    makeCheckBox.type = 'checkbox';
-                    makeCheckBox.name = 'y_id';
-                    makeCheckBox.value = obj[i].y_id;
-
-                    makeDiv1.appendChild(makeCheckBox);
-                    makeDiv2.innerText = (obj[i].y_id);
-                    makeDiv3.innerText = (obj[i].y_name);
-                    makeDiv4.innerText = (obj[i].sex);
-                    makeDiv5.innerText = (obj[i].country_name);
-                    makeDiv6.innerText = (obj[i].city_name);
-                    $('#selectedList').append(rowDiv);
-                    rowDiv.appendChild(makeDiv1);
-                    rowDiv.appendChild(makeDiv2);
-                    rowDiv.appendChild(makeDiv3);
-                    rowDiv.appendChild(makeDiv4);
-                    rowDiv.appendChild(makeDiv5);
-                    rowDiv.appendChild(makeDiv6);
-
-                    $('.' + dblcickClass).dblclick(function (e) {
-                        window.open('./quiz2?y_id=' + makeDiv2.innerText + '&y_name=' + makeDiv3.innerText + '&sex=' + makeDiv4.innerText + '&country_name=' + makeDiv5.innerText + '&city_name=' + makeDiv6.innerText, '', "width=1200,height=800,top=200,left=200");
-                    });
-                    return;
-                }
-            }
-            const start = new Date(datepicker1.value);
-            const final = new Date(datepicker2.value);
-
-            for (let i = 0; i < obj.length; i++) {
-                const savedDay = new Date(obj[i].y_date);
-                if (yName.value != obj[i].y_name && yName.value != '' && yName.value != null) {
-                    obj.splice(i, 1)
-                    i--;
-                } else if (countryBox.value != obj[i].country_name && countryBox.value != '' && countryBox.value != null) {
-                    obj.splice(i, 1)
-                    i--;
-                } else if (!parseCity.includes([obj[i].city_name]) && !parseCity.includes('ALL')) {
-                    obj.splice(i, 1)
-                    i--;
-                } else if (radioCheck != obj[i].sex && radioCheck != '' && radioCheck != null) {
-                    obj.splice(i, 1)
-                    i--;
-                } else if (start > savedDay || final < savedDay) {
-                    obj.splice(i, 1)
-                    i--;
-                }
-            }
-            for (let i = 0; i < obj.length; i++) {
-
-                const rowDiv = document.createElement('div');
-                const makeDiv1 = document.createElement('div');
-                const makeDiv2 = document.createElement('div');
-                const makeDiv3 = document.createElement('div');
-                const makeDiv4 = document.createElement('div');
-                const makeDiv5 = document.createElement('div');
-                const makeDiv6 = document.createElement('div');
-                const makeCheckBox = document.createElement('input');
-                const dblcickClass = 'plzDoubleClick-' + obj[i].y_id;
-
-                rowDiv.classList.add('add-grid');
-                rowDiv.classList.add(dblcickClass);
-                rowDiv.classList.add('plzDoubleClick');
-                rowDiv.value = obj[i].y_id;
-                rowDiv.name = 'y_id';
-
-                obj[i].sex == '남' ? rowDiv.classList.add('male-row') : rowDiv.classList.add('female-row');
-
-                makeCheckBox.type = 'checkbox';
-                makeCheckBox.name = 'y_id';
-                makeCheckBox.value = obj[i].y_id;
-
-                makeDiv1.appendChild(makeCheckBox);
-                makeDiv2.innerText = (obj[i].y_id);
-                makeDiv3.innerText = (obj[i].y_name);
-                makeDiv4.innerText = (obj[i].sex);
-                makeDiv5.innerText = (obj[i].country_name);
-                makeDiv6.innerText = (obj[i].city_name);
-                $('#selectedList').append(rowDiv);
-                rowDiv.appendChild(makeDiv1);
-                rowDiv.appendChild(makeDiv2);
-                rowDiv.appendChild(makeDiv3);
-                rowDiv.appendChild(makeDiv4);
-                rowDiv.appendChild(makeDiv5);
-                rowDiv.appendChild(makeDiv6);
-
-                $('.' + dblcickClass).dblclick(function (e) {
-                    window.open('./quiz2?y_id=' + makeDiv2.innerText + '&y_name=' + makeDiv3.innerText + '&sex=' + makeDiv4.innerText + '&country_name=' + makeDiv5.innerText + '&city_name=' + makeDiv6.innerText, '', "width=600,height=500,top=200,left=200");
-                });
-            }
         }
     })
     xhttp.open('GET', 'getList');
@@ -255,6 +289,13 @@ $('#countryBox').click(function (e) {
     xhttp.send();
 });
 
+$('.langko').change(function (e) {
+    location.href = './quiz1?lang=ko'
+});
+$('.langen').change(function (e) {
+    location.href = './quiz1?lang=en'
+});
+
 $('#countryBox').change(function (e) {
 
     const xhttp = new XMLHttpRequest();
@@ -262,6 +303,18 @@ $('#countryBox').change(function (e) {
         if (xhttp.status == 200 && xhttp.readyState == 4) {
             const cargo = xhttp.responseText;
             const obj = JSON.parse(cargo);
+
+            $.ajax({
+                type: "get",
+                url: "./getCity",
+                data: {
+                    country_name: countryBox.value,
+                },
+                dataType: "json",
+                success: function (response) {
+
+                }
+            });
 
             $('#cityBox').children().remove();
 
@@ -767,4 +820,104 @@ function pageReload() {
     })
     xhttp.open('GET', 'getList');
     xhttp.send();
+}
+
+function changePage(obj) {
+    $('#selectedList').children().remove();
+    for (let i = 0; i < obj.length; i++) {
+
+        const rowDiv = document.createElement('div');
+        const makeDiv1 = document.createElement('div');
+        const makeDiv2 = document.createElement('div');
+        const makeDiv3 = document.createElement('div');
+        const makeDiv4 = document.createElement('div');
+        const makeDiv5 = document.createElement('div');
+        const makeDiv6 = document.createElement('div');
+        const makeCheckBox = document.createElement('input');
+        const dblcickClass = 'plzDoubleClick-' + obj[i].y_id;
+
+        rowDiv.classList.add('add-grid');
+        rowDiv.classList.add(dblcickClass);
+        rowDiv.classList.add('plzDoubleClick');
+        rowDiv.value = obj[i].y_id;
+        rowDiv.name = 'y_id';
+
+        obj[i].sex == '남' ? rowDiv.classList.add('male-row') : rowDiv.classList.add('female-row');
+
+        makeCheckBox.type = 'checkbox';
+        makeCheckBox.name = 'y_id';
+        makeCheckBox.value = obj[i].y_id;
+
+        makeDiv1.appendChild(makeCheckBox);
+        makeDiv2.innerText = (obj[i].y_id);
+        makeDiv3.innerText = (obj[i].y_name);
+        makeDiv4.innerText = (obj[i].sex);
+        makeDiv5.innerText = (obj[i].country_name);
+        makeDiv6.innerText = (obj[i].city_name);
+        $('#selectedList').append(rowDiv);
+        rowDiv.appendChild(makeDiv1);
+        rowDiv.appendChild(makeDiv2);
+        rowDiv.appendChild(makeDiv3);
+        rowDiv.appendChild(makeDiv4);
+        rowDiv.appendChild(makeDiv5);
+        rowDiv.appendChild(makeDiv6);
+
+        $('.' + dblcickClass).dblclick(function (e) {
+            window.open('./quiz2?y_id=' + makeDiv2.innerText + '&y_name=' + makeDiv3.innerText + '&sex=' + makeDiv4.innerText + '&country_name=' + makeDiv5.innerText + '&city_name=' + makeDiv6.innerText, '', "width=600,height=500,top=200,left=200");
+        });
+    }
+}
+
+function changePageTab() {
+
+    for (let i = response.startPage; i <= response.endPage; i++) {
+        const pageNum = document.createElement('span');
+        pageNum.classList.add('cursor')
+        pageNum.textContent = ' ' + i + ' ';
+        pageDiv.append(pageNum);
+
+        $(pageNum).click(function (e) {
+            $.ajax({
+                type: "GET",
+                url: "./getList",
+                data: {
+                    nowPage: pageNum.textContent,
+                    cntPerPage: 5,
+                    country_name: countryBox.value,
+                    city_name: $("input[name='city_name']:checked").val(),
+                    y_id: yId.value,
+                    y_name: yName.value,
+                    sex: radioCheck == '남' ? '남' : radioCheck == '여' ? '여' : '',
+                    firstDate: datepicker1.value,
+                    lastDate: datepicker2.value,
+                },
+                dataType: "json",
+                success: function (response) {
+
+                    changePage(response);
+                    prev.addEventListener('click', () => {
+                        $.ajax({
+                            type: "GET",
+                            url: "./getDataObject",
+                            data: {
+                                nowPage: pageNum.textContent,
+                                cntPerPage: 5,
+                                country_name: countryBox.value,
+                                city_name: $("input[name='city_name']:checked").val(),
+                                y_id: yId.value,
+                                y_name: yName.value,
+                                sex: radioCheck == '남' ? '남' : radioCheck == '여' ? '여' : '',
+                                firstDate: datepicker1.value,
+                                lastDate: datepicker2.value,
+                            },
+                            dataType: "json",
+                            success: function (response) {
+                            }
+                        });
+                    })
+
+                }
+            });
+        });
+    }
 }

@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.annotations.Param;
@@ -43,15 +45,17 @@ public class QuizController {
 	@GetMapping("/quiz1")
 	public String firstQuiz(Model model, @Param("country_name") String country_name,
 			@Param("city_name") String city_name, @Param("y_id") String y_id, @Param("y_name") String y_name,
-			@Param("sex") String sex, @Param("firstDate") String firstDate, @Param("lastDate") String lastDate, PageVO vo, Integer nowPage, Integer cntPerPage) {
+			@Param("sex") String sex, @Param("firstDate") String firstDate, @Param("lastDate") String lastDate,
+			PageVO vo, Integer nowPage, Integer cntPerPage, HttpServletRequest request, @Param("rn") Integer rn) {
 
+		country_name = request.getParameter("country_name");
 		quizService.selectCountry(model);
 		quizService.selectCity(model);
-		quizService.pageAll(model, vo, nowPage, cntPerPage);
-		
+	//	quizService.pageAll(model, vo, nowPage, cntPerPage, y_id, y_name, sex, country_name, city_name, firstDate, lastDate);
+
 		log.info("now0 : " + nowPage + " , cPP0 : " + cntPerPage);
-		log.info("main : " + country_name);
-		log.info(model);
+		log.info("data : "+ country_name + ", " + city_name + ", " + y_id + ", " + y_name + ", " + sex + ", " + firstDate + " ~ "
+				+ lastDate);
 		return "/ymaker/quiz1";
 	}
 
@@ -156,9 +160,11 @@ public class QuizController {
 
 	@ResponseBody
 	@GetMapping(value = "/list", produces = "application/text; charset=UTF-8")
-	public String readTheList(Model model, String country_name, String[] city_name, String y_id, String y_name, String sex, String firstDate, String lastDate) {
-		log.info(country_name + ", " + city_name + ", " + y_id + ", " + y_name + ", " + sex + ", "+ firstDate + " ~ " + lastDate);
-		return country_name + ", " + Arrays.toString(city_name) + ", " + y_id + ", " + y_name + ", " + sex + ", "+ firstDate + " ~ " + lastDate;
+	public String readTheList(Model model, String country_name, String[] city_name, String y_id, String y_name,
+			String sex, String firstDate, String lastDate) {
+		
+		return country_name + ", " + Arrays.toString(city_name) + ", " + y_id + ", " + y_name + ", " + sex + ", "
+				+ firstDate + " ~ " + lastDate;
 	}
 
 	@ResponseBody
@@ -171,18 +177,57 @@ public class QuizController {
 
 	@ResponseBody
 	@GetMapping(value = "/getCity", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Quiz1DTO> getCity(Model model) {
+	public List<Quiz1DTO> getCity(Model model, String country_name, HttpServletRequest request) {
 		quizService.selectCity(model);
+		model.addAttribute("country_name", country_name);
 		List<Quiz1DTO> list = (List<Quiz1DTO>) model.getAttribute("selectCity");
 		return list;
 	}
 
 	@ResponseBody
 	@GetMapping(value = "/getList", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Quiz1DTO> getList(Model model) {
-		quizService.selectAll(model);
-		List<Quiz1DTO> list = (List<Quiz1DTO>) model.getAttribute("selectAll");
+	public List<Quiz1DTO> getList(Model model, @Param("country_name") String country_name,
+			@Param("city_name") String city_name, @Param("y_id") String y_id, @Param("y_name") String y_name,
+			@Param("sex") String sex, @Param("firstDate") String firstDate, @Param("lastDate") String lastDate,
+			PageVO vo, Integer nowPage, Integer cntPerPage) {
+
+		quizService.countAll(y_id, y_name, sex, country_name, city_name, firstDate, lastDate);
+		quizService.pageAll(model, vo, nowPage, cntPerPage, y_id, y_name, sex, country_name, city_name, firstDate, lastDate);
+		List<Quiz1DTO> list = (List<Quiz1DTO>) model.getAttribute("ylist");
+		log.fatal(list);
 		return list;
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "/getPage", produces = MediaType.APPLICATION_JSON_VALUE)
+	public PageVO getPage(Model model, @Param("country_name") String country_name,
+			@Param("city_name") String city_name, @Param("y_id") String y_id, @Param("y_name") String y_name,
+			@Param("sex") String sex, @Param("firstDate") String firstDate, @Param("lastDate") String lastDate,
+			PageVO vo, Integer nowPage, Integer cntPerPage) {
+
+		quizService.countAll(y_id, y_name, sex, country_name, city_name, firstDate, lastDate);
+		quizService.pageAll(model, vo, nowPage, cntPerPage, y_id, y_name, sex, country_name, city_name, firstDate, lastDate);
+		PageVO list = (PageVO) model.getAttribute("ypage");
+		log.fatal(list);
+		return list;
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "/getDataObject", produces = MediaType.APPLICATION_JSON_VALUE)
+	public HashMap<String, Object> getDataObject(Model model, @Param("country_name") String country_name,
+			@Param("city_name") String city_name, @Param("y_id") String y_id, @Param("y_name") String y_name,
+			@Param("sex") String sex, @Param("firstDate") String firstDate, @Param("lastDate") String lastDate,
+			PageVO vo, Integer nowPage, Integer cntPerPage) {
+
+		quizService.countAll(y_id, y_name, sex, country_name, city_name, firstDate, lastDate);
+		quizService.pageAll(model, vo, nowPage, cntPerPage, y_id, y_name, sex, country_name, city_name, firstDate, lastDate);
+		PageVO list = (PageVO) model.getAttribute("ypage");
+		List<Quiz1DTO> list2 = (List<Quiz1DTO>) model.getAttribute("ylist");
+		log.fatal(list);
+		HashMap<String, Object> allList = new HashMap<String, Object>();
+		allList.put("pageData", list);
+		allList.put("listData", list2);
+		return allList;
 	}
 
 	@ResponseBody
@@ -192,7 +237,7 @@ public class QuizController {
 		log.info(y_id);
 		return y_id;
 	}
-	
+
 	@ResponseBody
 	@GetMapping(value = "/modifiedPopUp", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String modifiedPopUp(Quiz1DTO dto) {
@@ -200,11 +245,11 @@ public class QuizController {
 		quizService.insertInfo(dto);
 		return "success";
 	}
-	
+
 	@GetMapping("/quiz3")
 	public String quiz3(Model model, String y_id) {
 		quizService.selectOne(model, y_id);
 		return "/ymaker/quiz3";
 	}
-	
+
 }
